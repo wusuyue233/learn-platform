@@ -78,6 +78,11 @@ const message = ref('Hello Vue3')
 div { color: blue; }
 </style>`,
         verification: '组件显示 "Hello Vue3" 文本，使用了 ref 响应式数据',
+        solution: `解题步骤：
+1. 在 <script setup> 中导入 ref：import { ref } from 'vue'
+2. 创建响应式变量：const message = ref('Hello Vue3')
+3. 在 <template> 中用 {{ message }} 显示内容
+4. 可选：添加 <style scoped> 设置样式`,
         filePath: 'src/components/Hello.vue'
       },
       {
@@ -133,6 +138,11 @@ import { ref } from 'vue'
 const count = ref(0)
 </script>`,
         verification: '点击按钮后数字递增，使用了 @click 事件绑定',
+        solution: `解题步骤：
+1. 用 ref(0) 创建计数变量
+2. 按钮上绑定 @click="count++"
+3. 模板中用 {{ count }} 显示当前值
+4. 注意：JS 中修改要用 count.value++，模板中直接用 count`,
         filePath: 'src/components/Counter.vue'
       },
       {
@@ -470,6 +480,12 @@ const totalPrice = computed(() =>
 )
 </script>`,
         verification: '使用了 computed 计算属性，模板中显示总价',
+        solution: `解题步骤：
+1. 用 ref([]) 定义商品数组 items
+2. 用 computed(() => {...}) 创建计算属性
+3. 在回调中用 items.value.reduce() 累加
+4. 累加公式：sum + item.price * item.quantity
+5. 初始值设为 0`,
         filePath: 'src/components/CartTotal.vue'
       },
       {
