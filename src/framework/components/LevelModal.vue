@@ -112,6 +112,9 @@
           <div class="editor-header">
             <span class="modal-file">{{ level.filePath }}<span v-if="dirty" class="dirty-dot" title="有未保存的修改"> ●</span></span>
             <div class="editor-actions">
+              <button class="btn-action" @click="resetCode" title="重置为初始模板">
+                🔄 重置
+              </button>
               <button class="btn-action" @click="saveFile" :disabled="saving">
                 {{ saving ? '保存中...' : '💾 保存' }}
               </button>
@@ -157,7 +160,7 @@
 <script setup>
 import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useProgressStore } from '../stores/progress'
-import { readFile, writeFile } from '../utils/fileStore'
+import { readFile, writeFile, deleteFile } from '../utils/fileStore'
 import { verify } from '../utils/verifier'
 import CodeEditor from './CodeEditor.vue'
 
@@ -385,6 +388,16 @@ function loadFile() {
   } finally {
     loadingFile.value = false
   }
+}
+
+function resetCode() {
+  if (!confirm('确定要重置代码吗？当前编辑内容将丢失。')) return
+  deleteFile(props.level.filePath)
+  code.value = props.level.starterCode || props.level.contextCode || ''
+  originalCode.value = code.value
+  saveMsg.value = '✓ 已重置'
+  saveOk.value = true
+  setTimeout(() => { saveMsg.value = '' }, 2000)
 }
 
 function saveFile() {
