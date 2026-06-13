@@ -377,8 +377,8 @@ function loadFile() {
       code.value = content
       originalCode.value = content
     } else {
-      code.value = props.level.contextCode || ''
-      originalCode.value = props.level.contextCode || ''
+      code.value = props.level.starterCode || props.level.contextCode || ''
+      originalCode.value = props.level.starterCode || props.level.contextCode || ''
     }
   } catch (e) {
     loadError.value = '加载文件失败'
