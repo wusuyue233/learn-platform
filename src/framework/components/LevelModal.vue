@@ -361,8 +361,8 @@ function loadFile() {
       code.value = content
       originalCode.value = content
     } else {
-      code.value = props.level.code || ''
-      originalCode.value = props.level.code || ''
+      code.value = props.level.contextCode || ''
+      originalCode.value = props.level.contextCode || ''
     }
   } catch (e) {
     loadError.value = '加载文件失败'
