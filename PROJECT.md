@@ -273,6 +273,129 @@ npm run build
 
 ---
 
+## 踩坑记录与注意事项
+
+### 1. 模板字符串中的反引号冲突 ⚠️ 高频
+
+**问题**：关卡的 `prerequisites`、`conceptDetail`、`code` 等字段使用模板字符串（反引号）定义，但内容中包含 JavaScript 代码示例时，反引号和 `${}` 会被当作 JS 表达式解析，导致页面空白或报错。
+
+**错误示例**：
+```js
+// ❌ 错误：${变量名} 被当作模板表达式
+conceptDetail: `用 ${变量名} 插入变量值`
+
+// ❌ 错误：反引号被当作字符串定界符结束
+prerequisites: `<p>用反引号 \`\` 包裹</p>`
+```
+
+**正确写法**：
+```js
+// ✅ 方案1：用 ${'{变量名}'} 拼接
+conceptDetail: `用 ${'{变量名}'} 插入变量值`
+
+// ✅ 方案2：用 \${} 转义（注意：不一定可靠）
+conceptDetail: `用 \${变量名} 插入变量值`
+
+// ✅ 方案3：反引号直接写（HTML 中不需要转义）
+prerequisites: `<p>用反引号包裹</p>`
+```
+
+**检查清单**：
+- [ ] 所有 `conceptDetail` 中的 `${...}` 是否正确转义
+- [ ] 所有 `prerequisites` 中的反引号是否冲突
+- [ ] 所有 `code` 和 `contextCode` 中的模板语法
+- [ ] 所有 `hints` 数组中的字符串
+
+---
+
+### 2. GitHub Pages 部署配置
+
+**问题**：首次部署后页面空白。
+
+**原因与解决**：
+1. **Source 未选择 GitHub Actions** → Settings → Pages → Source 选 "GitHub Actions"
+2. **base path 配置错误** → `vite.config.js` 中 `base` 必须是 `'/仓库名/'`
+3. **workflow 文件错误** → 检查 `.github/workflows/deploy.yml` 的 Node.js 版本
+
+**正确配置**：
+```js
+// vite.config.js
+export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/learn-platform/' : '/'
+})
+```
+
+```yaml
+# .github/workflows/deploy.yml
+- name: Setup Node
+  uses: actions/setup-node@v4
+  with:
+    node-version: 22  # 用 22，不要用 20（已弃用）
+```
+
+---
+
+### 3. 关卡验证规则匹配
+
+**问题**：验证规则中的 pattern 与实际代码不匹配。
+
+**注意事项**：
+- 正则表达式用 `/pattern/` 格式，首尾都是 `/`
+- 字符串匹配是精确包含（`content.includes(pattern)`）
+- `filePath` 必须与课程实际使用的路径一致
+- 中文路径在 Windows 下可能有问题，尽量用英文
+
+---
+
+### 4. localStorage 存储限制
+
+**问题**：浏览器 localStorage 通常限制 5-10MB，大量关卡数据可能超限。
+
+**解决方案**：
+- 关卡数据用 JS 模块导入（不存 localStorage）
+- 只存用户编辑的代码和进度
+- 提供导入/导出功能作为备份
+
+---
+
+### 5. Monaco Editor CDN 加载
+
+**问题**：CDN 加载失败导致编辑器不显示。
+
+**解决方案**：
+- 使用双 CDN fallback（jsdelivr → unpkg）
+- 加载失败时显示友好提示
+- 考虑离线场景（可选：本地打包 Monaco）
+
+---
+
+### 6. 课程包扩展规范
+
+**添加新课程的标准步骤**：
+1. 在 `src/courses/` 下创建目录
+2. 创建 `index.js`（元数据）、`levels.js`（关卡）、`verify.js`（验证）
+3. 在 `src/courses/index.js` 中注册
+4. **必须检查**：所有模板字符串中的 `${}` 和反引号
+
+**关卡 ID 命名规范**：
+- 格式：`课程前缀-序号`（如 `vue3-1`、`py-1`、`js-1`）
+- 保持唯一性，不能重复
+
+---
+
+### 7. 常见报错速查
+
+| 错误信息 | 原因 | 解决方案 |
+|----------|------|----------|
+| `页面空白` | JS 运行时错误 | F12 查看 Console |
+| `xxx is not a function` | 模板字符串未转义 | 检查 `${}` 和反引号 |
+| `变量名 is not defined` | `${变量名}` 被当作表达式 | 用 `${'{变量名}'}` 拼接 |
+| `Deploy failed` | workflow 配置错误 | 检查 Node.js 版本和步骤 |
+| `404 Not Found` | base path 错误 | 检查 vite.config.js 的 base |
+| `localStorage quota exceeded` | 存储空间满 | 清理旧数据或用导入导出 |
+
+---
+
 ## 待办事项
 
 - [ ] 添加更多课程（React、TypeScript、SQL、Node.js、Git 等）
