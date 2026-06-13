@@ -369,7 +369,7 @@ console.log(evens)  // [2, 4]`,
         difficulty: 'easy',
         task: '用模板字符串构建动态文本',
         prerequisites: `<h4>🐍 模板字符串</h4>
-<p>用反引号 `` 包裹，支持多行和插值：</p>
+<p>用反引号包裹，支持多行和插值：</p>
 <pre><code>const name = "Alice"
 const greeting = \`Hello, \${name}!\`
 
