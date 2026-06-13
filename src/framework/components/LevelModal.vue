@@ -77,6 +77,13 @@
             <div class="modal-verification">{{ level.verification }}</div>
           </div>
 
+          <div class="modal-section">
+            <button class="hint-btn" @click="showAnswer = !showAnswer">
+              {{ showAnswer ? '📕 收起答案' : '📖 查看参考答案' }}
+            </button>
+            <div v-if="showAnswer" class="hint-box code-hint">{{ level.code }}</div>
+          </div>
+
           <div v-if="results.length" class="modal-section">
             <h3>📊 验证结果</h3>
             <div class="result-list">
@@ -160,6 +167,7 @@ const hintLevel = ref(0)
 const showPrereq = ref(true)
 const showConcept = ref(false)
 const showContext = ref(false)
+const showAnswer = ref(false)
 const editorRef = ref(null)
 const code = ref('')
 const originalCode = ref('')
