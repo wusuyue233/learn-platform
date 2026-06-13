@@ -31,10 +31,23 @@ let age = 25           // 变量，可以重新赋值
 
 步骤 3 — 用 console.log 输出
 [console.log()](在控制台输出信息) 调试查看变量值。`,
-        contextCode: `// 在这里声明变量
-// 用 const 声明一个名字字符串
-// 用 let 声明一个年龄数字
-// 用 console.log 输出它们`,
+        contextCode: `// let/const 区别参考
+const PI = 3.14        // 常量，不可重新赋值
+let count = 0          // 变量，可重新赋值
+count = 1              // OK
+// PI = 3.14159        // 报错！
+
+// const 对象/数组可修改内容
+const arr = [1, 2]
+arr.push(3)            // OK（修改内容）
+// arr = [4, 5]        // 报错（重新赋值）
+
+// 作用域：let/const 有块级作用域
+if (true) {
+  let x = 1           // 只在 if 块内有效
+  const y = 2         // 只在 if 块内有效
+}
+// console.log(x)     // 报错`,
         hints: [
           'const name = "你的名字"',
           'let age = 你的年龄',
@@ -78,12 +91,22 @@ typeof 123n        // "bigint"
 
 步骤 3 — 注意类型转换
 JavaScript 是动态类型，注意隐式转换。`,
-        contextCode: `// 检测以下值的类型
-console.log(typeof "hello")   // ???
-console.log(typeof 42)        // ???
-console.log(typeof true)      // ???
-console.log(typeof undefined) // ???
-console.log(typeof null)      // ???`,
+        contextCode: `// typeof 类型表参考
+typeof "hello"       // "string"
+typeof 42            // "number"
+typeof 3.14          // "number"
+typeof true          // "boolean"
+typeof undefined     // "undefined"
+typeof null          // "object"    ← 历史bug
+typeof []            // "object"
+typeof {}            // "object"
+typeof function(){}  // "function"
+typeof Symbol()      // "symbol"
+typeof 123n          // "bigint"
+
+// 更准确的类型判断
+Array.isArray([])       // true
+Object.prototype.toString.call([])  // "[object Array]"`,
         hints: [
           'typeof "hello" 返回 "string"',
           'typeof 42 返回 "number"',
@@ -135,13 +158,21 @@ const greet = (name) => "Hello, " + name
 
 步骤 3 — 箭头函数
 ES6 箭头函数语法更简洁。`,
-        contextCode: `// 1. 用函数声明定义 add
-// 2. 用函数表达式定义 multiply
-// 3. 用箭头函数定义 subtract
+        contextCode: `// 三种函数定义方式参考
+// 1. 函数声明（会提升）
+function add(a, b) {
+  return a + b
+}
 
-console.log(add(2, 3))       // 5
-console.log(multiply(2, 3))  // 6
-console.log(subtract(5, 2))  // 3`,
+// 2. 函数表达式
+const multiply = function(a, b) {
+  return a * b
+}
+
+// 3. 箭头函数（简洁，无自己的 this）
+const subtract = (a, b) => a - b
+const square = x => x * x          // 单参数省略括号
+const fn = () => { return 1 }      // 多行需大括号`,
         hints: [
           'function add(a, b) { return a + b }',
           'const multiply = function(a, b) { return a * b }',
@@ -197,16 +228,23 @@ const sum = numbers.reduce((acc, n) => acc + n, 0)
 
 步骤 3 — 用 reduce 归约
 [reduce](将数组归约为单个值) 计算总和。`,
-        contextCode: `const numbers = [1, 2, 3, 4, 5]
+        contextCode: `// map/filter/reduce 用法参考
+const numbers = [1, 2, 3, 4, 5]
 
-// 1. 用 map 生成每个数的平方
-const squares = ???
+// map：转换每个元素，返回新数组
+const doubled = numbers.map(n => n * 2)  // [2,4,6,8,10]
 
-// 2. 用 filter 过滤出大于 3 的数
-const bigNumbers = ???
+// filter：过滤元素，返回新数组
+const evens = numbers.filter(n => n % 2 === 0)  // [2,4]
 
-// 3. 用 reduce 计算乘积
-const product = ???`,
+// reduce：归约为单个值
+const sum = numbers.reduce((acc, n) => acc + n, 0)  // 15
+
+// 链式调用
+const result = numbers
+  .filter(n => n > 2)
+  .map(n => n * 10)
+  .reduce((a, b) => a + b, 0)  // 120`,
         hints: [
           'map: numbers.map(n => n * n)',
           'filter: numbers.filter(n => n > 3)',
@@ -260,16 +298,23 @@ const { role = "guest" } = user
 
 步骤 3 — 设置默认值
 等号后跟默认值。`,
-        contextCode: `const user = {
-  name: "Alice",
-  age: 25,
-  city: "Beijing",
-  hobby: "编程"
-}
+        contextCode: `// 对象解构语法参考
+const user = { name: "Alice", age: 25, city: "Beijing" }
 
-// 解构提取 name 和 age
-// 解构提取 hobby 并重命名为 userHobby
-// 解构提取 role（默认值 "user"）`,
+// 基本解构
+const { name, age } = user     // name="Alice", age=25
+
+// 重命名
+const { name: userName } = user  // userName="Alice"
+
+// 默认值
+const { role = "guest" } = user  // role="guest"
+
+// 嵌套解构
+const { address: { city } } = { address: { city: "BJ" } }
+
+// 剩余属性
+const { name: n, ...rest } = user  // rest={age:25, city:"BJ"}`,
         hints: [
           'const { name, age } = user',
           'const { hobby: userHobby } = user',
@@ -336,16 +381,26 @@ const greet = () => "Hello"
 
 步骤 3 — 在回调中使用
 数组方法的回调最适合用箭头函数。`,
-        contextCode: `const numbers = [1, 2, 3, 4, 5]
+        contextCode: `// 箭头函数语法参考
+const add = (a, b) => a + b
+const square = x => x * x
+const fn = () => 42
 
-// 用箭头函数重写以下代码
-const doubled = numbers.map(function(n) {
-  return n * 2
-})
+// 多行函数体
+const process = (a, b) => {
+  const sum = a + b
+  return sum * 2
+}
 
-const evens = numbers.filter(function(n) {
-  return n % 2 === 0
-})`,
+// 回调中的应用
+[1, 2, 3].map(n => n * 2)
+arr.forEach(item => console.log(item))
+arr.filter(n => n > 10)
+
+// 注意：箭头函数没有自己的 this
+const obj = {
+  name: "test",
+  greet: () => this.name  // this 不指向 obj`,
         hints: [
           'map(n => n * 2) 单行箭头函数',
           'filter(n => n % 2 === 0)',
@@ -395,14 +450,27 @@ const html = \`
 
 步骤 3 — 多行文本
 模板字符串可以跨越多行。`,
-        contextCode: `const user = { name: "Alice", age: 25 }
-const items = ["苹果", "香蕉", "橙子"]
+        contextCode: `// 模板字符串语法参考
+const name = "Alice"
+const age = 25
 
-// 用模板字符串构建用户信息
-const userInfo = ???
+// 插值表达式
+const msg = \`Hello, \${name}!\`           // "Hello, Alice!"
+const info = \`年龄：\${age + 1}\`         // "年龄：26"
 
-// 用模板字符串构建列表 HTML
-const listHtml = ???`,
+// 多行字符串
+const html = \`
+  <div>
+    <h1>\${name}</h1>
+    <p>Age: \${age}</p>
+  </div>
+\`
+
+// 表达式
+const list = \`<ul>\${items.map(i => \`<li>\${i}</li>\`).join("")}\` 
+
+// 标签模板（高级）
+const result = String.raw\`C:\\Users\``,
         hints: [
           '`用户：${user.name}，年龄：${user.age}`',
           'items.map(item => `<li>${item}</li>`).join("")',
@@ -450,13 +518,26 @@ const obj2 = { ...obj1, c: 3 }  // { a: 1, b: 2, c: 3 }
 
 步骤 3 — 合并与覆盖
 后面的属性会覆盖前面的同名属性。`,
-        contextCode: `const defaults = { color: "red", size: "medium", theme: "light" }
-const userPrefs = { color: "blue", theme: "dark" }
+        contextCode: `// 展开运算符用法参考
+// 数组展开
+const arr1 = [1, 2, 3]
+const arr2 = [...arr1, 4, 5]     // [1,2,3,4,5]
+const copy = [...arr1]           // 浅拷贝
 
-// 用展开运算符合并，用户设置覆盖默认值
-const settings = ???
+// 对象展开
+const obj1 = { a: 1, b: 2 }
+const obj2 = { ...obj1, c: 3 }  // {a:1, b:2, c:3}
+const merged = { ...obj1, ...obj2 }  // 后面覆盖前面
 
-console.log(settings)`,
+// 函数参数
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0)
+}
+sum(1, 2, 3)  // 6
+
+// 浅拷贝
+const arrCopy = [...original]
+const objCopy = { ...original }`,
         hints: [
           'const settings = { ...defaults, ...userPrefs }',
           '展开运算符合并对象属性',
@@ -505,13 +586,23 @@ const [first, , third] = [1, 2, 3]
 
 步骤 3 — 数组解构
 按位置提取数组元素。`,
-        contextCode: `// 重写这个函数，使用参数解构
-function createUser(user) {
-  return \`\${user.name}, \${user.age}岁, 来自\${user.city}\`
-}
+        contextCode: `// 解构赋值语法参考
+// 数组解构
+const [a, b, c] = [1, 2, 3]     // a=1, b=2, c=3
+const [first, ...rest] = [1,2,3] // first=1, rest=[2,3]
+const [x = 10] = []              // x=10（默认值）
 
-const user = { name: "Alice", age: 25, city: "Beijing" }
-console.log(createUser(user))`,
+// 跳过元素
+const [, second] = [1, 2, 3]    // second=2
+
+// 函数参数解构
+function greet({ name, age = 0 }) {
+  return \`\${name} is \${age}\`
+}
+greet({ name: "Alice", age: 25 })
+
+// 嵌套解构
+const { a: { b } } = { a: { b: 1 } }  // b=1`,
         hints: [
           'function createUser({ name, age, city })',
           '直接在参数中解构对象',
@@ -567,23 +658,27 @@ then 处理成功，catch 处理失败。
 
 步骤 3 — 链式调用
 Promise 支持链式 then 调用。`,
-        contextCode: `// 创建一个 Promise，模拟获取用户数据
-function fetchUser(id) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (id > 0) {
-        resolve({ id, name: "User" + id })
-      } else {
-        reject("无效 ID")
-      }
-    }, 500)
-  })
-}
+        contextCode: `// Promise 用法参考
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("成功")   // 或 reject("失败")
+  }, 1000)
+})
 
-// 使用 Promise
-fetchUser(1)
-  .then(user => console.log(user))
-  .catch(err => console.error(err))`,
+promise
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
+  .finally(() => console.log("完成"))
+
+// 链式调用
+fetch(url)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err))
+
+// 并行
+Promise.all([p1, p2, p3]).then(([r1, r2, r3]) => {...})
+Promise.race([p1, p2]).then(winner => {...})`,
         hints: [
           'return new Promise((resolve, reject) => {...})',
           '成功时 resolve(data)',
@@ -639,15 +734,28 @@ await 等待 Promise 完成，返回结果。
 
 步骤 3 — 错误处理
 用 try-catch 捕获异步错误。`,
-        contextCode: `// 用 async/await 重写以下代码
-fetchUser(1)
-  .then(user => fetchPosts(user.id))
-  .then(posts => console.log(posts))
-  .catch(err => console.error(err))
+        contextCode: `// async/await 语法参考
+async function fetchData() {
+  try {
+    const user = await fetchUser(1)     // 等待 Promise
+    const posts = await fetchPosts(user.id)
+    return { user, posts }
+  } catch (err) {
+    console.error("错误:", err)
+  }
+}
 
-async function loadUserPosts() {
-  // 在这里使用 await
-}`,
+// 调用异步函数
+fetchData().then(result => console.log(result))
+
+// 并行执行
+const [users, posts] = await Promise.all([
+  fetchUsers(),
+  fetchPosts()
+])
+
+// for await（异步迭代）
+for await (const chunk of readableStream) {...}`,
         hints: [
           'async function loadUserPosts() { ... }',
           'const user = await fetchUser(1)',
@@ -697,13 +805,34 @@ catch 块接收错误对象。
 
 步骤 3 — 清理资源
 finally 块用于释放资源。`,
-        contextCode: `function safeJsonParse(jsonStr) {
-  // 用 try-catch 包裹 JSON.parse
-  // 失败时返回 null
+        contextCode: `// try/catch 语法参考
+try {
+  const data = JSON.parse(invalidJson)
+  // 可能出错的代码
+} catch (err) {
+  console.error("错误:", err.message)
+} finally {
+  console.log("始终执行")
 }
 
-console.log(safeJsonParse('{"a":1}'))  // {a: 1}
-console.log(safeJsonParse('invalid'))   // null`,
+// 抛出错误
+throw new Error("自定义错误")
+
+// 自定义错误类
+class AppError extends Error {
+  constructor(message, code) {
+    super(message)
+    this.code = code
+  }
+}
+
+try {
+  throw new AppError("未登录", 401)
+} catch (err) {
+  if (err instanceof AppError) {
+    console.log(err.code)  // 401
+  }
+}`,
         hints: [
           'try { return JSON.parse(jsonStr) }',
           'catch (err) { return null }',
@@ -760,19 +889,28 @@ textContent 修改文本，style 修改样式。
 
 步骤 3 — 遍历多个元素
 querySelectorAll 返回可遍历的 NodeList。`,
-        contextCode: `<div id="app">
-  <h1 class="title">标题</h1>
-  <ul>
-    <li>项目1</li>
-    <li>项目2</li>
-    <li>项目3</li>
-  </ul>
-</div>
+        contextCode: `// querySelector 用法参考
+// 选择单个元素
+const el = document.querySelector('.my-class')
+const btn = document.querySelector('#submit-btn')
+const div = document.querySelector('div.container')
 
-<script>
-// 选择 .title 元素并修改文本
-// 选择所有 li 元素并添加序号
-</script>`,
+// 选择多个元素
+const items = document.querySelectorAll('li')
+const redItems = document.querySelectorAll('.item.active')
+
+// 修改元素
+el.textContent = "新文本"
+el.innerHTML = "<b>加粗</b>"
+el.style.color = "red"
+el.classList.add("active")
+el.classList.remove("hidden")
+el.setAttribute("data-id", "123")
+
+// 遍历
+items.forEach((item, index) => {
+  console.log(index, item.textContent)
+})`,
         hints: [
           'document.querySelector(".title").textContent = "新标题"',
           'document.querySelectorAll("li") 返回所有 li',
@@ -819,18 +957,29 @@ createElement 创建 DOM 元素。
 
 步骤 3 — 使用事件委托
 在父元素上监听，处理动态添加的子元素。`,
-        contextCode: `<ul id="todo-list"></ul>
-<input id="todo-input" />
-<button id="add-btn">添加</button>
+        contextCode: `// addEventListener 用法参考
+const btn = document.querySelector('#btn')
 
-<script>
-const input = document.getElementById('todo-input')
-const list = document.getElementById('todo-list')
+// 基本事件
+btn.addEventListener('click', (e) => {
+  console.log('点击了', e.target)
+})
 
-// 给添加按钮绑定点击事件
-// 点击时创建新的 li 添加到列表
-// 给列表添加事件委托，点击 li 切换完成状态
-</script>`,
+// 移除事件
+const handler = () => console.log('click')
+btn.addEventListener('click', handler)
+btn.removeEventListener('click', handler)
+
+// 事件委托
+list.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI') {
+    e.target.classList.toggle('done')
+  }
+})
+
+// 常用事件：click, input, submit, keydown, mouseenter
+// e.preventDefault() 阻止默认行为
+// e.stopPropagation() 阻止冒泡`,
         hints: [
           'document.getElementById("add-btn").addEventListener("click", ...)',
           'createElement("li") 创建元素',
@@ -891,17 +1040,32 @@ textContent、className、style 设置属性。
 
 步骤 3 — 添加到文档树
 appendChild 将元素添加到父元素。`,
-        contextCode: `const users = [
-  { name: "Alice", age: 25 },
-  { name: "Bob", age: 30 },
-  { name: "Charlie", age: 35 }
-]
+        contextCode: `// createElement/appendChild 用法参考
+// 创建元素
+const div = document.createElement('div')
+div.textContent = 'Hello'
+div.className = 'card'
+div.style.color = 'blue'
 
-const container = document.getElementById('container')
+// 添加到页面
+document.body.appendChild(div)
 
-// 为每个用户创建卡片 div
-// 卡片包含姓名和年龄
-// 添加到 container`,
+// 插入到指定位置
+parent.insertBefore(newChild, referenceChild)
+
+// 批量创建
+users.forEach(user => {
+  const card = document.createElement('div')
+  card.innerHTML = \`
+    <h3>\${user.name}</h3>
+    <p>年龄: \${user.age}</p>
+  \`
+  container.appendChild(card)
+})
+
+// 替换/删除
+parent.replaceChild(newChild, oldChild)
+parent.removeChild(child)`,
         hints: [
           'document.createElement("div") 创建 div',
           'div.className = "card" 设置类名',

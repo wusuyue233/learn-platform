@@ -30,7 +30,14 @@ export const phases = [
 
 步骤 3 — 运行代码
 Python 代码从上到下依次执行。`,
-        contextCode: `# 在这里输出 Hello, Python!`,
+        contextCode: `# print 函数用法参考
+print("Hello, Python!")           # 基本输出
+print("a", "b", "c")             # 多个值，空格分隔
+print("a", "b", sep="-")         # 自定义分隔符
+print("Hello", end="")            # 不换行
+print(f"Name: {name}")           # f-string 格式化
+print(type(42))                   # 查看类型
+print(1 + 2, "result")           # 混合输出`,
         hints: [
           'print("Hello, Python!")',
           '记得用引号包裹字符串',
@@ -69,11 +76,20 @@ is_student = True   # 布尔值
 
 步骤 3 — 使用 type() 查看类型
 [type()](查看变量类型的内置函数) 验证变量类型。`,
-        contextCode: `# 创建字符串变量 name
-# 创建整数变量 age
-# 创建浮点数变量 height
-# 创建布尔变量 is_student
-# 打印所有变量`,
+        contextCode: `# Python 变量类型表
+name = "Alice"           # str 字符串
+age = 25                 # int 整数
+height = 1.65            # float 浮点数
+is_student = True        # bool 布尔值（True/False）
+items = [1, 2, 3]        # list 列表
+info = {"key": "value"}  # dict 字典
+data = None              # NoneType 空值
+coords = (1, 2)          # tuple 元组
+unique = {1, 2, 3}       # set 集合
+
+# 类型检查
+type(age)        # <class 'int'>
+isinstance(age, int)  # True`,
         hints: [
           'name = "Alice"',
           'age = 25',
@@ -121,12 +137,28 @@ Python 用缩进（4个空格）表示代码块。
 
 步骤 3 — 返回结果
 [return](返回函数结果) 将计算结果返回给调用者。`,
-        contextCode: `# 定义 add 函数，接收两个参数
-# 返回两数之和
+        contextCode: `# def 函数定义语法参考
+def greet(name):
+    """文档字符串"""
+    return f"Hello, {name}!"
 
-# 调用函数并打印结果
-result = add(3, 5)
-print(result)  # 应该输出 8`,
+# 带默认值
+def add(a, b=0):
+    return a + b
+
+# 可变参数
+def func(*args):       # args 是元组
+    return sum(args)
+
+def func(**kwargs):    # kwargs 是字典
+    return kwargs
+
+# lambda 匿名函数
+square = lambda x: x ** 2
+
+# 调用
+result = add(3, 5)     # 8
+result = add(3)        # 3（b 使用默认值）`,
         hints: [
           'def add(a, b):',
           '函数体写 return a + b',
@@ -173,13 +205,27 @@ while condition:
 
 步骤 3 — 收集结果
 将偶数添加到列表中。`,
-        contextCode: `# 筛选 1-10 中的偶数
-evens = []
-for i in range(1, 11):
-    # 判断 i 是否为偶数
-    pass
+        contextCode: `# if/for/while 语法参考
+# 条件
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+else:
+    grade = "C"
 
-print(evens)  # [2, 4, 6, 8, 10]`,
+# for 循环
+for i in range(5):          # 0,1,2,3,4
+    print(i)
+for item in ["a", "b"]:     # 遍历列表
+    print(item)
+
+# while 循环
+while count > 0:
+    count -= 1
+
+# 列表推导式
+evens = [x for x in range(10) if x % 2 == 0]`,
         hints: [
           'range(1, 11) 生成 1 到 10',
           'if i % 2 == 0 判断偶数',
@@ -230,16 +276,25 @@ print(student["name"])  # Alice
 
 步骤 3 — 用字典存储详细信息
 字典用键值对存储结构化数据。`,
-        contextCode: `# 创建学生列表
-students = []
+        contextCode: `# list/dict 操作方法参考
+# 列表方法
+lst = [1, 2, 3]
+lst.append(4)        # 末尾添加
+lst.insert(0, 0)     # 指定位置插入
+lst.pop()            # 弹出末尾
+lst.remove(2)        # 删除指定值
+lst.index(3)         # 查找索引
+len(lst)             # 长度
+lst[1:3]             # 切片
 
-# 添加学生信息（字典）
-students.append({"name": "Alice", "age": 20})
-students.append({"name": "Bob", "age": 22})
-
-# 打印所有学生姓名
-for student in students:
-    print(student["name"])`,
+# 字典方法
+d = {"a": 1, "b": 2}
+d["c"] = 3           # 添加/修改
+d.get("a", 0)        # 安全获取
+d.keys()             # 所有键
+d.values()           # 所有值
+d.items()            # 键值对
+d.pop("a")           # 删除并返回`,
         hints: [
           'students = [] 创建空列表',
           'students.append({"name": "xxx"}) 添加字典',
@@ -293,11 +348,27 @@ async def hello():
 
 步骤 3 — 返回 JSON
 函数直接 return 字典，FastAPI 自动序列化为 JSON。`,
-        contextCode: `from fastapi import FastAPI
+        contextCode: `# FastAPI 路由注册参考
+from fastapi import FastAPI
 
 app = FastAPI()
 
-# 在这里添加你的路由`,
+# GET 请求
+@app.get("/items")
+async def list_items():
+    return {"items": []}
+
+# POST 请求
+@app.post("/items")
+async def create_item(item: dict):
+    return {"created": item}
+
+# 路径操作装饰器
+@app.get("/path")
+@app.post("/path")
+@app.put("/path/{id}")
+@app.delete("/path/{id}")
+async def handler(): ...`,
         hints: [
           '用 @app.get("/hello") 装饰一个 async def 函数',
           '函数体 return {"message": "Hello FastAPI"}',
@@ -341,14 +412,22 @@ async def get_user(user_id: int):
 
 步骤 3 — 在函数中使用参数
 参数值直接传递给处理函数。`,
-        contextCode: `from fastapi import FastAPI
+        contextCode: `# 路径参数语法参考
+from fastapi import FastAPI
 app = FastAPI()
 
-# 模拟用户数据
-users = {1: "Alice", 2: "Bob", 3: "Charlie"}
+# 单个参数
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):  # 类型提示自动验证
+    return {"user_id": user_id}
 
-# 创建接口 /users/{user_id}
-# 返回 {"user_id": xxx, "name": "xxx"}`,
+# 多个参数
+@app.get("/users/{user_id}/posts/{post_id}")
+async def get_post(user_id: int, post_id: int):
+    return {"user_id": user_id, "post_id": post_id}
+
+# 类型转换：FastAPI 自动将 "123" 转为 int
+# 路径参数必须有值，不能省略`,
         hints: [
           '路由写 @app.get("/users/{user_id}")',
           '函数参数写 user_id: int',
@@ -393,13 +472,18 @@ FastAPI 自动从 URL 的 ?key=value 解析。
 
 步骤 3 — 实现分页逻辑
 根据 page 和 size 计算偏移量。`,
-        contextCode: `from fastapi import FastAPI
+        contextCode: `# 查询参数语法参考
+from fastapi import FastAPI
 app = FastAPI()
 
-items = [f"商品{i}" for i in range(1, 51)]
+# 带默认值的参数自动变为查询参数
+@app.get("/items")
+async def list_items(page: int = 1, size: int = 10, q: str = None):
+    return {"page": page, "size": size, "q": q}
 
-# 创建接口 /items?page=1&size=10
-# 返回 {"page": 1, "size": 10, "items": [...]}`,
+# 使用：GET /items?page=2&size=20&q=phone
+# 必选参数（无默认值）会报错
+# 可选参数（有默认值）可省略`,
         hints: [
           '参数写 page: int = 1, size: int = 10',
           '用切片 items[start:end] 获取分页数据',
@@ -457,18 +541,25 @@ async def create_item(item: Item):
 
 步骤 3 — 访问模型属性
 通过对象属性访问验证后的数据。`,
-        contextCode: `from fastapi import FastAPI
-from pydantic import BaseModel
+        contextCode: `# Pydantic BaseModel 参考
+from pydantic import BaseModel, Field
+from typing import Optional
 
-app = FastAPI()
-
-# 定义 Product 模型
 class Product(BaseModel):
-    name: str
+    name: str                           # 必填字段
     price: float
-    description: str = ""
+    description: str = ""               # 可选（有默认值）
+    tags: list[str] = []                # 默认空列表
+    stock: Optional[int] = None         # 可为 None
 
-# 创建 POST /products 接口`,
+# 可用 Field 约束
+class Item(BaseModel):
+    name: str = Field(..., min_length=1)  # 不能为空
+    price: float = Field(gt=0)            # 大于 0
+
+# 创建实例
+product = Product(name="Phone", price=999)
+data = product.dict()  # 转为字典`,
         hints: [
           'class Product(BaseModel): 定义模型',
           'name: str 定义字符串字段',
@@ -525,17 +616,25 @@ async def get_user(id: int):
 
 步骤 3 — 测试过滤效果
 返回的数据只包含响应模型定义的字段。`,
-        contextCode: `from pydantic import BaseModel
+        contextCode: `# response_model 用法参考
+from pydantic import BaseModel
 
 class UserOut(BaseModel):
     id: int
     name: str
     # 不包含 password 字段
 
-@app.get("/users/{id}", response_model=UserOut)
-async def get_user(id: int):
-    # 返回的字典包含 password
-    # 但响应只会包含 id 和 name`,
+class UserIn(BaseModel):
+    name: str
+    password: str
+
+@app.post("/users", response_model=UserOut)
+async def create_user(user: UserIn):
+    # 虽然返回包含 password
+    # 但响应只包含 id 和 name
+    return {"id": 1, "name": user.name, "password": "secret"}
+
+# 响应模型自动过滤多余字段，隐藏敏感信息`,
         hints: [
           '定义 UserOut 模型只包含 id 和 name',
           '路由装饰器加 response_model=UserOut',
@@ -588,15 +687,26 @@ async def get_user(id: int):
 
 步骤 3 — 指定状态码和详情
 404 表示未找到，400 表示请求错误等。`,
-        contextCode: `from fastapi import FastAPI, HTTPException
+        contextCode: `# HTTPException 用法参考
+from fastapi import HTTPException
 
-app = FastAPI()
-items = {"1": "手机", "2": "电脑"}
+# 基本用法
+raise HTTPException(status_code=404, detail="用户不存在")
 
-@app.get("/items/{item_id}")
-async def get_item(item_id: str):
-    # 如果 item_id 不存在，返回 404
-    pass`,
+# 带自定义头
+raise HTTPException(
+    status_code=401,
+    detail="未授权",
+    headers={"WWW-Authenticate": "Bearer"}
+)
+
+# 常用状态码
+# 400 - 请求错误
+# 401 - 未授权
+# 403 - 禁止访问
+# 404 - 未找到
+# 422 - 验证错误
+# 500 - 服务器错误`,
         hints: [
           'if item_id not in items: 判断是否存在',
           'raise HTTPException(status_code=404, detail="未找到")',
@@ -649,19 +759,31 @@ async def add_process_time(request, call_next):
 
 步骤 3 — 计算耗时并添加到响应头
 处理完成后计算时间差，添加到响应头。`,
-        contextCode: `import time
+        contextCode: `# 中间件写法参考
+import time
 from fastapi import FastAPI, Request
+from starlette.middleware.base import BaseHTTPMiddleware
 
 app = FastAPI()
 
-# 添加中间件统计请求耗时
+# 方式一：装饰器
 @app.middleware("http")
-async def process_time(request: Request, call_next):
-    # 记录开始时间
-    # 调用下一个处理器
-    # 计算耗时
-    # 添加到响应头
-    pass`,
+async def add_process_time(request: Request, call_next):
+    start = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start
+    response.headers["X-Process-Time"] = str(process_time)
+    return response
+
+# 方式二：类继承
+class TimingMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request, call_next):
+        start = time.time()
+        response = await call_next(request)
+        response.headers["X-Time"] = str(time.time() - start)
+        return response
+
+app.add_middleware(TimingMiddleware)`,
         hints: [
           'start = time.time() 记录开始时间',
           'response = await call_next(request) 处理请求',
