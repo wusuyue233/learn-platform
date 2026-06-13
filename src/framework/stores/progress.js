@@ -123,6 +123,7 @@ export const useProgressStore = defineStore('progress', () => {
   return {
     completed,
     currentCourse,
+    save,
     getCourseCompleted,
     isLevelUnlocked,
     isPhaseUnlocked,
