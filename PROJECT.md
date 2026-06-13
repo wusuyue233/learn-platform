@@ -391,6 +391,7 @@ export default defineConfig({
 | `xxx is not a function` | 模板字符串未转义 | 检查 `${}` 和反引号 |
 | `变量名 is not defined` | `${变量名}` 被当作表达式 | 用 `${'{变量名}'}` 拼接 |
 | `store.save is not a function` | Pinia store 未暴露方法 | return 中添加缺失的方法 |
+| `编辑器直接显示答案` | loadFile 回退加载了 code | 改为加载 contextCode |
 | `Deploy failed` | workflow 配置错误 | 检查 Node.js 版本和步骤 |
 | `404 Not Found` | base path 错误 | 检查 vite.config.js 的 base |
 | `localStorage quota exceeded` | 存储空间满 | 清理旧数据或用导入导出 |
