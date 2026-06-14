@@ -48,6 +48,10 @@ if (true) {
   const y = 2         // 只在 if 块内有效
 }
 // console.log(x)     // 报错`,
+        starterCode: `// 用 const 声明一个字符串变量
+// 用 let 声明一个数字变量
+// 用 console.log 输出两个变量
+`,
         hints: [
           'const name = "你的名字"',
           'let age = 你的年龄',
@@ -107,6 +111,9 @@ typeof 123n          // "bigint"
 // 更准确的类型判断
 Array.isArray([])       // true
 Object.prototype.toString.call([])  // "[object Array]"`,
+        starterCode: `// 用 typeof 检测以下值的类型并打印结果：
+// "hello", 42, true, undefined, null, Symbol(), 123n
+`,
         hints: [
           'typeof "hello" 返回 "string"',
           'typeof 42 返回 "number"',
@@ -173,6 +180,19 @@ const multiply = function(a, b) {
 const subtract = (a, b) => a - b
 const square = x => x * x          // 单参数省略括号
 const fn = () => { return 1 }      // 多行需大括号`,
+        starterCode: `// 1. 用函数声明定义 add(a, b)
+function add(???) {
+  ???
+}
+
+// 2. 用函数表达式定义 multiply(a, b)
+const multiply = function(???) {
+  ???
+}
+
+// 3. 用箭头函数定义 subtract(a, b)
+const subtract = ???
+`,
         hints: [
           'function add(a, b) { return a + b }',
           'const multiply = function(a, b) { return a * b }',
@@ -245,6 +265,17 @@ const result = numbers
   .filter(n => n > 2)
   .map(n => n * 10)
   .reduce((a, b) => a + b, 0)  // 120`,
+        starterCode: `const numbers = [1, 2, 3, 4, 5]
+
+// 用 map 计算每个数的平方
+const squares = ???
+
+// 用 filter 筛选大于 3 的数
+const bigNumbers = ???
+
+// 用 reduce 计算所有数的乘积
+const product = ???
+`,
         hints: [
           'map: numbers.map(n => n * n)',
           'filter: numbers.filter(n => n > 3)',
@@ -315,6 +346,17 @@ const { address: { city } } = { address: { city: "BJ" } }
 
 // 剩余属性
 const { name: n, ...rest } = user  // rest={age:25, city:"BJ"}`,
+        starterCode: `const user = {
+  name: "Alice",
+  age: 25,
+  city: "Beijing",
+  hobby: "编程"
+}
+
+// 解构提取 name 和 age
+// 重命名 hobby 为 userHobby
+// 设置默认值 role = "user"
+`,
         hints: [
           'const { name, age } = user',
           'const { hobby: userHobby } = user',
@@ -401,6 +443,14 @@ arr.filter(n => n > 10)
 const obj = {
   name: "test",
   greet: () => this.name  // this 不指向 obj`,
+        starterCode: `const numbers = [1, 2, 3, 4, 5]
+
+// 用箭头函数的 map 将每个数乘以 2
+const doubled = ???
+
+// 用箭头函数的 filter 筛选偶数
+const evens = ???
+`,
         hints: [
           'map(n => n * 2) 单行箭头函数',
           'filter(n => n % 2 === 0)',
@@ -446,7 +496,7 @@ const html = \`
 模板字符串用反引号包裹。
 
 步骤 2 — 插入变量
-用 ${'{变量名}'} 插入变量值。
+用 ${'${变量名}'} 插入变量值。
 
 步骤 3 — 多行文本
 模板字符串可以跨越多行。`,
@@ -471,6 +521,15 @@ const list = \`<ul>\${items.map(i => \`<li>\${i}</li>\`).join("")}\`
 
 // 标签模板（高级）
 const result = String.raw\`C:\\Users\``,
+        starterCode: `const user = { name: "Alice", age: 25 }
+const items = ["苹果", "香蕉", "橙子"]
+
+// 用模板字符串构建用户信息字符串
+const userInfo = ???
+
+// 用模板字符串和 map 构建 HTML 列表
+const listHtml = ???
+`,
         hints: [
           '`用户：${user.name}，年龄：${user.age}`',
           'items.map(item => `<li>${item}</li>`).join("")',
@@ -538,6 +597,14 @@ sum(1, 2, 3)  // 6
 // 浅拷贝
 const arrCopy = [...original]
 const objCopy = { ...original }`,
+        starterCode: `const defaults = { color: "red", size: "medium", theme: "light" }
+const userPrefs = { color: "blue", theme: "dark" }
+
+// 用展开运算符合并 defaults 和 userPrefs
+const settings = ???
+console.log(settings)
+// { color: "blue", size: "medium", theme: "dark" }
+`,
         hints: [
           'const settings = { ...defaults, ...userPrefs }',
           '展开运算符合并对象属性',
@@ -603,6 +670,15 @@ greet({ name: "Alice", age: 25 })
 
 // 嵌套解构
 const { a: { b } } = { a: { b: 1 } }  // b=1`,
+        starterCode: `// 定义一个函数，参数用解构赋值提取 name, age, city
+function createUser({ ??? }) {
+  ???
+}
+
+const user = { name: "Alice", age: 25, city: "Beijing" }
+console.log(createUser(user))
+// "Alice, 25岁, 来自Beijing"
+`,
         hints: [
           'function createUser({ name, age, city })',
           '直接在参数中解构对象',
@@ -679,6 +755,20 @@ fetch(url)
 // 并行
 Promise.all([p1, p2, p3]).then(([r1, r2, r3]) => {...})
 Promise.race([p1, p2]).then(winner => {...})`,
+        starterCode: `// 定义 fetchUser 函数，返回 Promise
+function fetchUser(id) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // id > 0 时 resolve 用户对象
+      // 否则 reject 错误信息
+      ???
+    }, 500)
+  })
+}
+
+fetchUser(1).then(user => console.log(user))
+fetchUser(-1).catch(err => console.error(err))
+`,
         hints: [
           'return new Promise((resolve, reject) => {...})',
           '成功时 resolve(data)',
@@ -756,6 +846,19 @@ const [users, posts] = await Promise.all([
 
 // for await（异步迭代）
 for await (const chunk of readableStream) {...}`,
+        starterCode: `// 用 async/await 重写异步操作
+async function loadUserPosts() {
+  try {
+    // 用 await 调用 fetchUser(1)
+    ???
+    console.log("用户:", user)
+  } catch (err) {
+    console.error("错误:", err)
+  }
+}
+
+loadUserPosts()
+`,
         hints: [
           'async function loadUserPosts() { ... }',
           'const user = await fetchUser(1)',
@@ -833,6 +936,20 @@ try {
     console.log(err.code)  // 401
   }
 }`,
+        starterCode: `// 定义安全的 JSON 解析函数
+function safeJsonParse(jsonStr) {
+  try {
+    // 尝试解析 JSON
+    ???
+  } catch (err) {
+    console.error("解析错误:", err.message)
+    return null
+  }
+}
+
+console.log(safeJsonParse('{"a":1}'))  // {a: 1}
+console.log(safeJsonParse('invalid'))   // null
+`,
         hints: [
           'try { return JSON.parse(jsonStr) }',
           'catch (err) { return null }',
@@ -911,6 +1028,12 @@ el.setAttribute("data-id", "123")
 items.forEach((item, index) => {
   console.log(index, item.textContent)
 })`,
+        starterCode: `// 用 querySelector 获取 .title 元素并修改文本
+const title = ???
+
+// 用 querySelectorAll 获取所有 li 并遍历修改
+const items = ???
+`,
         hints: [
           'document.querySelector(".title").textContent = "新标题"',
           'document.querySelectorAll("li") 返回所有 li',
@@ -980,6 +1103,15 @@ list.addEventListener('click', (e) => {
 // 常用事件：click, input, submit, keydown, mouseenter
 // e.preventDefault() 阻止默认行为
 // e.stopPropagation() 阻止冒泡`,
+        starterCode: `const input = document.getElementById('todo-input')
+const list = document.getElementById('todo-list')
+
+// 给按钮添加点击事件，创建新的 li 添加到列表
+document.getElementById('add-btn').addEventListener(???)
+
+// 在 list 上使用事件委托，点击 li 切换 done 类
+list.addEventListener(???)
+`,
         hints: [
           'document.getElementById("add-btn").addEventListener("click", ...)',
           'createElement("li") 创建元素',
@@ -1066,6 +1198,17 @@ users.forEach(user => {
 // 替换/删除
 parent.replaceChild(newChild, oldChild)
 parent.removeChild(child)`,
+        starterCode: `const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 }
+]
+
+const container = document.getElementById('container')
+
+// 遍历 users，用 createElement 创建 div 卡片
+// 设置 className、innerHTML，用 appendChild 添加到 container
+`,
         hints: [
           'document.createElement("div") 创建 div',
           'div.className = "card" 设置类名',

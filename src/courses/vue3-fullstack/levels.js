@@ -455,6 +455,20 @@ const password = ref('')
 <!-- 作用域插槽 -->
 <slot :item="data"></slot>
 <!-- 使用：<template #default="{ item }">{{ item }}</template> -->`,
+        starterCode: `<!-- Card.vue -->
+<template>
+  <div class="card">
+    <!-- 在这里添加插槽 -->
+  </div>
+</template>
+
+<style scoped>
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+}
+</style>`,
         hints: [
           '在 Card.vue 的 div 内部加 <slot></slot>',
           '父组件在 <Card> 标签内写 HTML 内容',
@@ -624,6 +638,22 @@ watch([keyword, count], ([newK, newC], [oldK, oldC]) => {...})
 
 // watchEffect 自动追踪依赖
 watchEffect(() => { console.log(keyword.value) })`,
+        starterCode: `<template>
+  <div>
+    <input v-model="keyword" placeholder="输入搜索..." />
+    <p v-show="searching">搜索中...</p>
+    <p>当前搜索：{{ keyword }}</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, watch } from 'vue'
+const keyword = ref('')
+const searching = ref(false)
+let timer = null
+
+// 用 watch 监听 keyword 变化，实现防抖
+</script>`,
         hints: [
           '用 watch(keyword, (val) => {...}, { immediate: true }) 监听',
           '在回调中先设 searching = true，再 setTimeout 延迟',
@@ -703,6 +733,20 @@ onUnmounted(() => { /* 卸载后 */ })
 // 常用模式：onMounted 加载数据，onUnmounted 清理
 onMounted(async () => { const data = await fetch(...) })
 onUnmounted(() => { clearInterval(timer) })`,
+        starterCode: `<template>
+  <div>
+    <p v-show="loading">加载中...</p>
+    <p v-show="!loading">数据：{{ data }}</p>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+const loading = ref(true)
+const data = ref('')
+
+// 在这里用 onMounted 模拟数据加载（setTimeout 延迟 1 秒）
+</script>`,
         hints: [
           '从 vue 导入 onMounted',
           'onMounted(() => {...}) 内用 setTimeout 模拟加载',
@@ -777,6 +821,18 @@ const emit = defineEmits(['update', 'delete'])
 <template>
   <Child :title="msg" @update="handleUpdate" />
 </template>`,
+        starterCode: `<!-- Child.vue -->
+<template>
+  <div>
+    <p>标题：{{ title }}</p>
+    <button @click="???">修改标题</button>
+  </div>
+</template>
+
+<script setup>
+// 用 defineProps 接收 title 属性
+// 用 defineEmits 声明 update 事件
+</script>`,
         hints: [
           '子组件用 defineProps(["title"]) 接收属性',
           '子组件用 defineEmits(["update"]) 声明事件',
@@ -841,6 +897,16 @@ const app = inject('appName', '默认值')  // 带默认值
 
 // 响应式：provide 的是 ref，修改后后代自动更新
 theme.value = 'light'`,
+        starterCode: `<!-- GrandParent.vue -->
+<template>
+  <Parent />
+</template>
+
+<script setup>
+import { ref, provide } from 'vue'
+const theme = ref('light')
+// 用 provide 提供 theme 数据
+</script>`,
         hints: [
           '祖先用 provide("theme", theme) 提供数据',
           '后代用 const theme = inject("theme") 注入',
@@ -929,6 +995,17 @@ const router = createRouter({
 // App.vue 模板
 <router-link to="/">首页</router-link>
 <router-view />`,
+        starterCode: `<!-- router.js -->
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Home from './Home.vue'
+import About from './About.vue'
+
+const routes = [
+  // 在这里定义路由规则：path 和 component 的映射
+]
+
+// 用 createRouter 创建路由实例
+`,
         hints: [
           '从 vue-router 导入 createRouter 和 createWebHashHistory',
           'routes 数组定义路径和组件的映射',
@@ -1002,6 +1079,18 @@ route.fullPath         // 完整路径
 const router = useRouter()
 router.push('/user/123')
 router.push({ path: '/user', query: { page: 1 } })`,
+        starterCode: `<!-- UserDetail.vue -->
+<template>
+  <div>
+    <h2>用户详情</h2>
+    <p>用户 ID：{{ userId }}</p>
+  </div>
+</template>
+
+<script setup>
+import { useRoute } from 'vue-router'
+// 用 useRoute 获取路由对象，从 params 中获取用户 ID
+</script>`,
         hints: [
           '路由路径写 /user/:id',
           '组件中用 useRoute() 获取路由对象',
@@ -1074,6 +1163,15 @@ export const useUserStore = defineStore('user', () => {
 const store = useUserStore()
 store.name          // 读取状态
 store.login('Tom')  // 调用 action`,
+        starterCode: `<!-- stores/user.js -->
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const useUserStore = defineStore('user', () => {
+  // 用 ref 定义 name 状态
+  // 定义 login 方法修改 name
+  // return 暴露状态和方法
+})`,
         hints: [
           'defineStore 第二个参数是 setup 函数',
           '用 ref("Guest") 定义 name 状态',
@@ -1159,6 +1257,20 @@ const store = defineStore('app', () => {
   }
   load()
   return { data, save }
+})`,
+        starterCode: `<!-- stores/counter.js -->
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+
+  // 定义 load 函数：从 localStorage 读取并恢复 count
+  // 定义 save 函数：将 count 保存到 localStorage
+  // 定义 increment 函数：count++ 后调用 save()
+  // 调用 load() 初始化
+
+  return { count, increment }
 })`,
         hints: [
           '用 localStorage.getItem("counter") 读取',
@@ -1262,6 +1374,16 @@ app.directive('lazy', {
 
 // 指令钩子：created, mounted, updated, unmounted
 // binding: { value, oldValue, arg, modifiers }`,
+        starterCode: `<template>
+  <div>
+    <input v-focus placeholder="自动聚焦" />
+    <input placeholder="普通输入框" />
+  </div>
+</template>
+
+<script setup>
+// 定义 vFocus 指令对象，在 mounted 钩子中调用 el.focus()
+</script>`,
         hints: [
           '定义 const vFocus = { mounted(el) { el.focus() } }',
           '在 script setup 中直接定义，Vue 会自动识别',
@@ -1345,6 +1467,18 @@ export function useEventListener(target, event, handler) {
   onMounted(() => target.addEventListener(event, handler))
   onUnmounted(() => target.removeEventListener(event, handler))
 }`,
+        starterCode: `<!-- composables/useMousePosition.js -->
+import { ref, onMounted, onUnmounted } from 'vue'
+
+export function useMousePosition() {
+  const x = ref(0)
+  const y = ref(0)
+
+  // 定义 update 函数，从事件中获取 pageX/pageY
+  // onMounted 中添加 mousemove 事件监听
+  // onUnmounted 中移除事件监听
+  // return { x, y }
+}`,
         hints: [
           'onMounted 中 window.addEventListener("mousemove", update)',
           'onUnmounted 中 removeEventListener 清理',
@@ -1422,6 +1556,14 @@ const AsyncComp = defineAsyncComponent({
 
 // 路由懒加载
 { path: '/admin', component: () => import('./Admin.vue') }`,
+        starterCode: `import { defineAsyncComponent } from 'vue'
+
+const HeavyPage = defineAsyncComponent({
+  // loader: 定义动态导入函数
+  // loadingComponent: 加载中显示的组件
+  // delay: 延迟 200ms
+  // errorComponent: 加载失败显示的组件
+})`,
         hints: [
           'defineAsyncComponent(() => import("./Component.vue"))',
           '路由的 component 属性直接使用异步组件',
@@ -1488,6 +1630,20 @@ const state = shallowReactive({ nested: { val: 1 } })
 // 模板优化
 // <p v-once>只渲染一次：{{ expensive }}</p>
 // <div v-memo="[val1]">{{ val1 }} - {{ val2 }}</div>`,
+        starterCode: `<template>
+  <div>
+    <p v-once>计算结果：{{ expensiveValue }}</p>
+    <div>{{ largeData.name }}</div>
+    <button @click="???">更新</button>
+  </div>
+</template>
+
+<script setup>
+import { shallowRef } from 'vue'
+
+// 用 shallowRef 定义 largeData 大对象
+// 定义 updateData 函数替换 largeData.value
+</script>`,
         hints: [
           'import { shallowRef } from "vue"',
           'const data = shallowRef({...})',

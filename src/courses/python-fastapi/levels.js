@@ -38,6 +38,8 @@ print("Hello", end="")            # 不换行
 print(f"Name: {name}")           # f-string 格式化
 print(type(42))                   # 查看类型
 print(1 + 2, "result")           # 混合输出`,
+        starterCode: `# 用 print 输出 "Hello, Python!"
+`,
         hints: [
           'print("Hello, Python!")',
           '记得用引号包裹字符串',
@@ -90,6 +92,12 @@ unique = {1, 2, 3}       # set 集合
 # 类型检查
 type(age)        # <class 'int'>
 isinstance(age, int)  # True`,
+        starterCode: `# 创建不同类型的变量并打印它们的值和类型
+# name = ???
+# age = ???
+# height = ???
+# is_student = ???
+`,
         hints: [
           'name = "Alice"',
           'age = 25',
@@ -159,6 +167,13 @@ square = lambda x: x ** 2
 # 调用
 result = add(3, 5)     # 8
 result = add(3)        # 3（b 使用默认值）`,
+        starterCode: `# 定义一个计算两数之和的函数
+def add(???):
+    # 返回两数之和
+    ???
+
+result = add(3, 5)
+print(result)  # 应输出 8`,
         hints: [
           'def add(a, b):',
           '函数体写 return a + b',
@@ -226,6 +241,12 @@ while count > 0:
 
 # 列表推导式
 evens = [x for x in range(10) if x % 2 == 0]`,
+        starterCode: `evens = []
+for i in range(1, 11):
+    # 用 if 判断偶数并添加到列表
+    ???
+
+print(evens)  # 应输出 [2, 4, 6, 8, 10]`,
         hints: [
           'range(1, 11) 生成 1 到 10',
           'if i % 2 == 0 判断偶数',
@@ -295,6 +316,15 @@ d.keys()             # 所有键
 d.values()           # 所有值
 d.items()            # 键值对
 d.pop("a")           # 删除并返回`,
+        starterCode: `students = []
+# 用 append 添加学生字典（包含 name 和 age）
+???
+students.append({"name": "Bob", "age": 22})
+students.append({"name": "Charlie", "age": 21})
+
+# 用 for 循环遍历并打印每个学生信息
+for student in students:
+    ???`,
         hints: [
           'students = [] 创建空列表',
           'students.append({"name": "xxx"}) 添加字典',
@@ -369,6 +399,13 @@ async def create_item(item: dict):
 @app.put("/path/{id}")
 @app.delete("/path/{id}")
 async def handler(): ...`,
+        starterCode: `from fastapi import FastAPI
+
+app = FastAPI()
+
+# 用 @app.get 装饰器创建 /hello 接口
+# 函数返回 {"message": "Hello FastAPI"}
+`,
         hints: [
           '用 @app.get("/hello") 装饰一个 async def 函数',
           '函数体 return {"message": "Hello FastAPI"}',
@@ -428,6 +465,14 @@ async def get_post(user_id: int, post_id: int):
 
 # 类型转换：FastAPI 自动将 "123" 转为 int
 # 路径参数必须有值，不能省略`,
+        starterCode: `from fastapi import FastAPI
+app = FastAPI()
+
+users = {1: "Alice", 2: "Bob", 3: "Charlie"}
+
+# 创建路由 /users/{user_id}，参数类型为 int
+# 返回 {"user_id": user_id, "name": ???}
+`,
         hints: [
           '路由写 @app.get("/users/{user_id}")',
           '函数参数写 user_id: int',
@@ -484,6 +529,14 @@ async def list_items(page: int = 1, size: int = 10, q: str = None):
 # 使用：GET /items?page=2&size=20&q=phone
 # 必选参数（无默认值）会报错
 # 可选参数（有默认值）可省略`,
+        starterCode: `from fastapi import FastAPI
+app = FastAPI()
+
+items = [f"商品{i}" for i in range(1, 51)]
+
+# 创建路由 /items，参数 page=1, size=10（带默认值）
+# 实现分页逻辑：计算 start 和 end，返回切片结果
+`,
         hints: [
           '参数写 page: int = 1, size: int = 10',
           '用切片 items[start:end] 获取分页数据',
@@ -560,6 +613,17 @@ class Item(BaseModel):
 # 创建实例
 product = Product(name="Phone", price=999)
 data = product.dict()  # 转为字典`,
+        starterCode: `from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# 用 BaseModel 定义 Product 模型（name: str, price: float, description: str = ""）
+class Product(???):
+    ???
+
+# 创建 POST /products 路由，接收 Product 类型参数
+`,
         hints: [
           'class Product(BaseModel): 定义模型',
           'name: str 定义字符串字段',
@@ -635,6 +699,18 @@ async def create_user(user: UserIn):
     return {"id": 1, "name": user.name, "password": "secret"}
 
 # 响应模型自动过滤多余字段，隐藏敏感信息`,
+        starterCode: `from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# 定义 UserOut 模型，只包含 id: int 和 name: str
+class UserOut(???):
+    ???
+
+# 创建路由，用 response_model=UserOut 过滤返回字段
+# 返回包含 password 的数据，但响应中不应出现
+`,
         hints: [
           '定义 UserOut 模型只包含 id 和 name',
           '路由装饰器加 response_model=UserOut',
@@ -707,6 +783,15 @@ raise HTTPException(
 # 404 - 未找到
 # 422 - 验证错误
 # 500 - 服务器错误`,
+        starterCode: `from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+items = {"1": "手机", "2": "电脑"}
+
+# 创建 GET /items/{item_id} 路由
+# 判断 item_id 是否存在，不存在时抛出 HTTPException（404）
+# 存在时返回商品信息
+`,
         hints: [
           'if item_id not in items: 判断是否存在',
           'raise HTTPException(status_code=404, detail="未找到")',
@@ -784,6 +869,16 @@ class TimingMiddleware(BaseHTTPMiddleware):
         return response
 
 app.add_middleware(TimingMiddleware)`,
+        starterCode: `import time
+from fastapi import FastAPI, Request
+
+app = FastAPI()
+
+# 用 @app.middleware("http") 创建中间件
+# 记录请求开始时间
+# 调用 call_next(request) 处理请求
+# 计算耗时，添加到响应头 X-Process-Time
+`,
         hints: [
           'start = time.time() 记录开始时间',
           'response = await call_next(request) 处理请求',

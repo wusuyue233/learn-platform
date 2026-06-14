@@ -2,7 +2,7 @@ const PREFIX = 'learn-platform-file:'
 
 export function readFile(path) {
   try {
-    return localStorage.getItem(PREFIX + path) || null
+    return localStorage.getItem(PREFIX + path) ?? null
   } catch {
     return null
   }

@@ -81,7 +81,9 @@ export const useProgressStore = defineStore('progress', () => {
   function importProgress(json) {
     try {
       const data = JSON.parse(json)
-      if (data && typeof data === 'object' && data.completed) {
+      if (data && typeof data === 'object' && data.completed && typeof data.completed === 'object') {
+        const valid = Object.values(data.completed).every(v => Array.isArray(v))
+        if (!valid) return false
         completed.value = data.completed
         currentCourse.value = data.currentCourse || null
         save()

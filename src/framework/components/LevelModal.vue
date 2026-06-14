@@ -162,6 +162,7 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import { useProgressStore } from '../stores/progress'
 import { readFile, writeFile, deleteFile } from '../utils/fileStore'
 import { verify } from '../utils/verifier'
+import { courses } from '../../courses'
 import CodeEditor from './CodeEditor.vue'
 
 const props = defineProps({
@@ -176,7 +177,7 @@ const store = useProgressStore()
 const hintLevel = ref(0)
 const showPrereq = ref(true)
 const showConcept = ref(false)
-const showContext = ref(false)
+const showContext = ref(true)
 const showAnswer = ref(false)
 const showSolution = ref(false)
 const editorRef = ref(null)
@@ -395,6 +396,10 @@ function resetCode() {
   deleteFile(props.level.filePath)
   code.value = props.level.starterCode || props.level.contextCode || ''
   originalCode.value = code.value
+  hintLevel.value = 0
+  results.value = []
+  verifyDone.value = false
+  verifyPassed.value = false
   saveMsg.value = '✓ 已重置'
   saveOk.value = true
   setTimeout(() => { saveMsg.value = '' }, 2000)
@@ -440,7 +445,9 @@ function verifyFile() {
   try {
     const files = {}
     files[props.level.filePath] = code.value
-    const { passed, results: res } = verify(props.level.id, files)
+    const course = courses.find(c => c.id === props.courseId)
+    const courseVerifyFn = course?.verify || null
+    const { passed, results: res } = verify(props.level.id, files, courseVerifyFn)
     results.value = res
     verifyPassed.value = passed
     verifyDone.value = true
@@ -465,7 +472,10 @@ function handleComplete() {
 
 function handleClose() {
   if (dirty.value) {
-    saveFile()
+    const saved = saveFile()
+    if (!saved && !confirm('保存失败，确定要关闭吗？未保存的修改将丢失。')) {
+      return
+    }
   }
   emit('close')
 }
