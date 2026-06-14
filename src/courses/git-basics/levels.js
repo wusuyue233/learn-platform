@@ -1,0 +1,850 @@
+export const phases = [
+  {
+    id: 'git-basics',
+    name: '阶段一：基础操作',
+    description: '掌握 Git 初始化、暂存、提交等基础命令',
+    levels: [
+      {
+        id: 'git-1',
+        number: 1,
+        title: 'git init / add / commit',
+        concept: '初始化与提交',
+        difficulty: 'easy',
+        task: '初始化一个 Git 仓库，暂存文件并提交',
+        prerequisites: `<h4>🔀 Git 是什么</h4>
+<p>Git 是分布式版本控制系统，跟踪文件的每一次修改。</p>
+
+<h4>🔑 基本工作流</h4>
+<pre><code>git init              # 初始化仓库
+git add file.txt      # 暂存文件
+git commit -m "msg"   # 提交到本地仓库
+</code></pre>
+
+<ul>
+  <li><code>工作区</code> — 你编辑文件的地方</li>
+  <li><code>暂存区（Index）</code> — 准备提交的快照</li>
+  <li><code>本地仓库</code> — 提交历史记录</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 初始化仓库
+[git init](在当前目录创建 .git 隐藏文件夹) 把目录变成 Git 仓库。
+
+步骤 2 — 暂存文件
+[git add](将文件添加到暂存区) 准备提交快照。
+
+步骤 3 — 提交变更
+[git commit -m "message"](提交暂存区内容到本地仓库) 保存历史。`,
+        contextCode: `# Git 基本操作参考
+
+# 初始化仓库
+git init
+
+# 暂存单个文件
+git add index.html
+
+# 暂存所有文件
+git add .
+
+# 暂存指定类型的文件
+git add "*.js"
+
+# 提交
+git commit -m "feat: 初始化项目"
+git commit -am "msg"  # 暂存+提交（已跟踪文件）`,
+        starterCode: `# 记录以下 Git 操作的完整命令：
+
+# 1. 在当前目录初始化 Git 仓库
+
+
+# 2. 暂存所有文件
+
+
+# 3. 提交，消息为 "init: 初始化项目"
+
+`,
+        hints: [
+          'git init 初始化仓库',
+          'git add . 暂存所有文件',
+          'git commit -m "消息" 提交'
+        ],
+        code: `# 1. 初始化仓库
+git init
+
+# 2. 暂存所有文件
+git add .
+
+# 3. 提交
+git commit -m "init: 初始化项目"`,
+        verification: '包含了 init、add、commit 三个命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-2',
+        number: 2,
+        title: 'git status / log / diff',
+        concept: '查看状态与历史',
+        difficulty: 'easy',
+        task: '使用 Git 命令查看仓库状态、提交历史和文件差异',
+        prerequisites: `<h4>🔀 查看状态</h4>
+<pre><code>git status              # 查看工作区状态
+git status -s           # 简洁模式
+</code></pre>
+
+<h4>🔀 查看历史</h4>
+<pre><code>git log                 # 完整日志
+git log --oneline       # 简洁日志
+git log -5              # 最近 5 条
+</code></pre>
+
+<h4>🔀 查看差异</h4>
+<pre><code>git diff                # 工作区 vs 暂存区
+git diff --staged       # 暂存区 vs 最新提交
+</code></pre>`,
+        conceptDetail: `步骤 1 — git status 查看状态
+显示哪些文件已修改、已暂存、未跟踪。
+
+步骤 2 — git log 查看提交历史
+每次提交显示作者、时间、消息。
+
+步骤 3 — git diff 查看差异
+对比工作区、暂存区、仓库的文件变化。`,
+        contextCode: `# 查看状态
+git status
+git status -s            # 简洁模式：M=修改, A=新增, ??=未跟踪
+
+# 查看日志
+git log
+git log --oneline        # 一行显示
+git log --graph          # 图形化显示分支
+git log -5               # 最近 5 条
+git log --author="name"  # 按作者过滤
+
+# 查看差异
+git diff                 # 未暂存的修改
+git diff --staged        # 已暂存的修改
+git diff HEAD            # 与最新提交对比
+git diff main..feature   # 分支间差异`,
+        starterCode: `# 记录以下 Git 查看命令：
+
+# 1. 查看当前仓库状态
+
+
+# 2. 用简洁模式查看状态
+
+
+# 3. 查看最近 3 条提交日志
+
+
+# 4. 查看已暂存文件的差异
+
+`,
+        hints: [
+          'git status 查看状态',
+          'git status -s 简洁模式',
+          'git log -3 最近 3 条',
+          'git diff --staged 查看暂存差异'
+        ],
+        code: `# 1. 查看状态
+git status
+
+# 2. 简洁模式
+git status -s
+
+# 3. 最近日志
+git log -3
+
+# 4. 暂存区差异
+git diff --staged`,
+        verification: '包含了 status、log、diff 命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-3',
+        number: 3,
+        title: 'git restore / stash',
+        concept: '撤销与暂存',
+        difficulty: 'medium',
+        task: '撤销未暂存的修改，并临时保存工作进度',
+        prerequisites: `<h4>🔀 撤销修改</h4>
+<pre><code>git restore file.txt           # 撤销工作区修改
+git restore --staged file.txt  # 取消暂存
+</code></pre>
+
+<h4>🔀 暂存工作</h4>
+<pre><code>git stash                # 暂存所有修改
+git stash pop            # 恢复暂存
+git stash list           # 查看暂存列表
+</code></pre>
+
+<h4>🔑 使用场景</h4>
+<ul>
+  <li>改错代码想恢复 → git restore</li>
+  <li>写了一半要切换分支 → git stash</li>
+</ul>`,
+        conceptDetail: `步骤 1 — git restore 撤销修改
+[git restore](恢复文件到指定状态) 可以撤销工作区或暂存区的修改。
+
+步骤 2 — git stash 临时保存
+[git stash](将工作区修改压入栈中) 临时保存修改。
+
+步骤 3 — git stash pop 恢复
+[git stash pop](弹出最近一次暂存) 恢复之前保存的修改。`,
+        contextCode: `# 撤销修改
+git restore file.txt            # 丢弃工作区修改
+git restore --staged file.txt   # 取消暂存（保留修改）
+
+# 暂存工作
+git stash                       # 暂存所有修改
+git stash push -m "描述"        # 带描述的暂存
+git stash list                  # 查看暂存列表
+git stash pop                   # 恢复最近一次
+git stash apply stash@{1}       # 恢复指定暂存
+git stash drop                  # 删除最近一次暂存
+
+# 注意
+# git restore --staged 后文件仍在工作区
+# git restore 后修改直接丢失，不可恢复`,
+        starterCode: `# 记录以下撤销和暂存命令：
+
+# 1. 撤销 file.txt 的工作区修改
+
+
+# 2. 取消 file.txt 的暂存
+
+
+# 3. 暂存当前所有修改
+
+
+# 4. 查看暂存列表
+
+
+# 5. 恢复最近一次暂存
+
+`,
+        hints: [
+          'git restore file.txt 撤销修改',
+          'git restore --staged 取消暂存',
+          'git stash 暂存修改',
+          'git stash pop 恢复'
+        ],
+        code: `# 1. 撤销工作区修改
+git restore file.txt
+
+# 2. 取消暂存
+git restore --staged file.txt
+
+# 3. 暂存修改
+git stash
+
+# 4. 查看暂存列表
+git stash list
+
+# 5. 恢复暂存
+git stash pop`,
+        verification: '包含了 restore 和 stash 命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-4',
+        number: 4,
+        title: '.gitignore 忽略文件',
+        concept: '忽略规则',
+        difficulty: 'easy',
+        task: '编写 .gitignore 忽略 node_modules 和 .env 文件',
+        prerequisites: `<h4>🔀 .gitignore</h4>
+<p>.gitignore 告诉 Git 哪些文件不要跟踪：</p>
+<pre><code># 这是注释
+node_modules/
+.env
+*.log
+</code></pre>
+
+<h4>🔑 忽略规则</h4>
+<ul>
+  <li>写文件名或目录名</li>
+  <li><code>*</code> 通配符匹配任意字符</li>
+  <li><code>!</code> 取反，不忽略</li>
+  <li><code>/</code> 结尾忽略整个目录</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 创建 .gitignore 文件
+在项目根目录创建 .gitignore。
+
+步骤 2 — 写忽略规则
+每行一个规则，# 开头是注释。
+
+步骤 3 — 常见忽略项
+node_modules、.env、日志文件、IDE 配置等。`,
+        contextCode: `# .gitignore 常用规则
+
+# 依赖目录
+node_modules/
+vendor/
+__pycache__/
+
+# 环境变量
+.env
+.env.local
+
+# 构建产物
+dist/
+build/
+*.pyc
+
+# 日志
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 取反：不忽略 README
+!important/README.md`,
+        starterCode: `# 编写 .gitignore，忽略以下内容：
+# 1. node_modules 目录
+# 2. .env 文件
+# 3. 所有 .log 日志文件
+# 4. dist 构建目录
+
+`,
+        hints: [
+          'node_modules/ 忽略整个目录',
+          '.env 忽略特定文件',
+          '*.log 忽略所有 .log 文件',
+          'dist/ 忽略构建产物'
+        ],
+        code: `# 依赖目录
+node_modules/
+
+# 环境变量
+.env
+
+# 日志文件
+*.log
+
+# 构建产物
+dist/`,
+        verification: '编写了包含 node_modules 和 .env 的 .gitignore 规则',
+        filePath: 'git-commands.md'
+      }
+    ]
+  },
+  {
+    id: 'git-branch',
+    name: '阶段二：分支协作',
+    description: '掌握分支创建、合并、变基等协作操作',
+    levels: [
+      {
+        id: 'git-5',
+        number: 5,
+        title: 'branch / checkout / switch',
+        concept: '创建与切换分支',
+        difficulty: 'medium',
+        task: '创建一个新分支并切换到该分支进行开发',
+        prerequisites: `<h4>🔀 分支</h4>
+<p>分支让你在不影响主分支的情况下开发新功能：</p>
+<pre><code>git branch feature       # 创建分支
+git checkout feature     # 切换分支
+git switch feature       # 新语法切换
+git checkout -b feature  # 创建并切换
+</code></pre>
+
+<h4>🔑 分支模型</h4>
+<ul>
+  <li><code>main</code> / <code>master</code> — 主分支，保持可发布状态</li>
+  <li><code>feature/*</code> — 功能分支</li>
+  <li><code>bugfix/*</code> — 修复分支</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 创建分支
+[git branch feature-name](创建新分支) 不会切换。
+
+步骤 2 — 切换分支
+[git checkout](旧语法) 或 [git switch](新语法) 切换。
+
+步骤 3 — 创建并切换
+[git checkout -b](创建并切换到新分支) 一步完成。`,
+        contextCode: `# 分支操作参考
+
+# 查看分支
+git branch              # 本地分支
+git branch -a           # 所有分支（含远程）
+git branch -v           # 显示最后提交
+
+# 创建分支
+git branch feature      # 创建但不切换
+
+# 切换分支（旧语法）
+git checkout feature
+git checkout -b feature # 创建并切换
+
+# 切换分支（新语法）
+git switch feature
+git switch -c feature   # 创建并切换
+
+# 删除分支
+git branch -d feature   # 安全删除
+git branch -D feature   # 强制删除`,
+        starterCode: `# 记录以下分支操作命令：
+
+# 1. 创建一个名为 feature-login 的分支
+
+
+# 2. 切换到 feature-login 分支
+
+
+# 3. 一步完成：创建并切换到 feature-cart 分支
+
+
+# 4. 查看所有分支
+
+`,
+        hints: [
+          'git branch feature-login 创建分支',
+          'git checkout feature-login 切换',
+          'git checkout -b feature-cart 创建并切换',
+          'git branch -a 查看所有分支'
+        ],
+        code: `# 1. 创建分支
+git branch feature-login
+
+# 2. 切换分支
+git checkout feature-login
+
+# 3. 创建并切换
+git checkout -b feature-cart
+
+# 4. 查看所有分支
+git branch -a`,
+        verification: '包含了 branch、checkout/switch 命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-6',
+        number: 6,
+        title: 'merge 合并分支',
+        concept: '合并与冲突',
+        difficulty: 'medium',
+        task: '将功能分支合并回主分支，处理可能出现的冲突',
+        prerequisites: `<h4>🔀 合并</h4>
+<pre><code>git checkout main
+git merge feature
+</code></pre>
+
+<h4>🔑 合并类型</h4>
+<ul>
+  <li><code>Fast-forward</code> — 主分支无新提交，直接移动指针</li>
+  <li><code>Three-way merge</code> — 两边都有新提交，创建合并提交</li>
+  <li><code>冲突</code> — 同一行被修改，需要手动解决</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 切换到目标分支
+合并前先切换到接收合并的分支。
+
+步骤 2 — 执行合并
+[git merge feature](将 feature 合并到当前分支)。
+
+步骤 3 — 处理冲突
+如果有冲突，手动编辑文件后 add + commit。`,
+        contextCode: `# 合并分支参考
+
+# 基本合并
+git checkout main
+git merge feature
+
+# 合并后删除分支
+git branch -d feature
+
+# 取消合并
+git merge --abort
+
+# 冲突处理流程
+# 1. Git 标记冲突文件
+# 2. 手动编辑解决冲突
+# 3. git add 冲突文件
+# 4. git commit 完成合并
+
+# 冲突标记
+<<<<<<< HEAD
+当前分支的内容
+=======
+要合并分支的内容
+>>>>>>> feature`,
+        starterCode: `# 记录以下合并操作命令：
+
+# 1. 切换到 main 分支
+
+
+# 2. 将 feature-login 分支合并到 main
+
+
+# 3. 合并后删除 feature-login 分支
+
+
+# 4. 如果冲突，解决后提交
+
+`,
+        hints: [
+          'git checkout main 切换到主分支',
+          'git merge feature-login 合并',
+          'git branch -d feature-login 删除分支',
+          '冲突后 git add + git commit'
+        ],
+        code: `# 1. 切换到 main
+git checkout main
+
+# 2. 合并
+git merge feature-login
+
+# 3. 删除已合并分支
+git branch -d feature-login
+
+# 4. 如果有冲突
+# 编辑冲突文件 → git add . → git commit`,
+        verification: '包含了 merge 命令和冲突处理流程',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-7',
+        number: 7,
+        title: 'rebase 变基',
+        concept: '变基操作',
+        difficulty: 'hard',
+        task: '使用 rebase 将功能分支的提交移到主分支最新提交之后',
+        prerequisites: `<h4>🔀 rebase 变基</h4>
+<pre><code>git checkout feature
+git rebase main
+</code></pre>
+
+<h4>🔑 rebase vs merge</h4>
+<ul>
+  <li><code>merge</code> — 保留完整历史，产生合并提交</li>
+  <li><code>rebase</code> — 线性化历史，不产生合并提交</li>
+  <li>rebase 后需要 force push（已推送的分支）</li>
+</ul>
+
+<h4>⚠️ 注意</h4>
+<ul>
+  <li>不要对已推送到远程的分支 rebase</li>
+  <li>rebase 改写了提交历史</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 切换到功能分支
+rebase 在当前分支上执行。
+
+步骤 2 — 执行 rebase
+[git rebase main](将当前分支的提交移到 main 之后)。
+
+步骤 3 — 冲突处理
+rebase 冲突需要逐个提交解决。`,
+        contextCode: `# rebase 变基参考
+
+# 基本变基
+git checkout feature
+git rebase main
+
+# 变基后合并
+git checkout main
+git merge feature  # Fast-forward
+
+# 交互式变基（修改提交）
+git rebase -i HEAD~3
+
+# 取消变基
+git rebase --abort
+
+# rebase vs merge
+# merge:  A---B---C---M  (main)
+#              \---D---E  (feature)
+#
+# rebase: A---B---C---D'---E'  (feature)
+#                    (main)
+
+# rebase 后推送到远程
+git push --force-with-lease`,
+        starterCode: `# 记录以下 rebase 操作命令：
+
+# 1. 切换到 feature 分支
+
+
+# 2. 将 feature 分支变基到 main 之上
+
+
+# 3. 变基后切换到 main 并合并（Fast-forward）
+
+`,
+        hints: [
+          'git checkout feature 切换到功能分支',
+          'git rebase main 变基',
+          '变基后 main 合并会是 Fast-forward'
+        ],
+        code: `# 1. 切换到 feature
+git checkout feature
+
+# 2. 变基到 main 之上
+git rebase main
+
+# 3. 切换到 main 并合并
+git checkout main
+git merge feature  # Fast-forward 合并`,
+        verification: '使用了 rebase 命令进行变基操作',
+        filePath: 'git-commands.md'
+      }
+    ]
+  },
+  {
+    id: 'git-remote',
+    name: '阶段三：远程协作',
+    description: '掌握远程仓库操作和团队协作流程',
+    levels: [
+      {
+        id: 'git-8',
+        number: 8,
+        title: 'remote / push / pull',
+        concept: '远程仓库操作',
+        difficulty: 'medium',
+        task: '配置远程仓库并推拉代码',
+        prerequisites: `<h4>🔀 远程仓库</h4>
+<pre><code>git remote add origin URL   # 添加远程
+git push -u origin main     # 推送
+git pull origin main        # 拉取
+</code></pre>
+
+<h4>🔑 核心命令</h4>
+<ul>
+  <li><code>git remote</code> — 管理远程仓库</li>
+  <li><code>git push</code> — 推送到远程</li>
+  <li><code>git pull</code> — 从远程拉取（= fetch + merge）</li>
+  <li><code>git fetch</code> — 只下载，不合并</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 添加远程仓库
+[git remote add origin URL](添加远程仓库别名)。
+
+步骤 2 — 推送代码
+[git push -u origin main](推送并设置上游跟踪)。
+
+步骤 3 — 拉取更新
+[git pull origin main](拉取并合并远程更新)。`,
+        contextCode: `# 远程操作参考
+
+# 管理远程
+git remote -v                  # 查看远程列表
+git remote add origin URL     # 添加远程
+git remote remove origin      # 删除远程
+git remote rename old new     # 重命名
+
+# 推送
+git push origin main          # 推送到 main
+git push -u origin main       # 推送并设置跟踪
+git push --force-with-lease   # 安全强制推送
+
+# 拉取
+git pull origin main          # 拉取并合并
+git fetch origin              # 只下载
+git merge origin/main         # 手动合并
+
+# 首次推送
+git push -u origin main  # -u 设置上游，之后只需 git push`,
+        starterCode: `# 记录以下远程操作命令：
+
+# 1. 添加远程仓库（URL 替换为实际地址）
+
+
+# 2. 查看远程仓库列表
+
+
+# 3. 首次推送到 main 分支（设置上游）
+
+
+# 4. 从远程拉取最新代码
+
+`,
+        hints: [
+          'git remote add origin URL',
+          'git remote -v 查看远程',
+          'git push -u origin main 首次推送',
+          'git pull origin main 拉取更新'
+        ],
+        code: `# 1. 添加远程仓库
+git remote add origin https://github.com/user/repo.git
+
+# 2. 查看远程
+git remote -v
+
+# 3. 首次推送
+git push -u origin main
+
+# 4. 拉取更新
+git pull origin main`,
+        verification: '包含了 remote、push、pull 命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-9',
+        number: 9,
+        title: 'clone / fork',
+        concept: '克隆与分叉',
+        difficulty: 'easy',
+        task: '克隆一个远程仓库到本地',
+        prerequisites: `<h4>🔀 git clone</h4>
+<pre><code>git clone https://github.com/user/repo.git
+</code></pre>
+
+<h4>🔑 clone vs fork</h4>
+<ul>
+  <li><code>clone</code> — 下载仓库到本地</li>
+  <li><code>fork</code> — 在 GitHub/Gitee 上复制他人仓库到自己账户</li>
+  <li>fork 后 clone 到本地开发，提 PR 合回原仓库</li>
+</ul>`,
+        conceptDetail: `步骤 1 — clone 克隆
+[git clone URL](下载远程仓库及完整历史)。
+
+步骤 2 — fork 分叉（在平台上操作）
+Fork 按钮在 GitHub/Gitee 仓库页面。
+
+步骤 3 — 协作流程
+fork → clone → 开发 → push → PR。`,
+        contextCode: `# 克隆操作参考
+
+# 克隆仓库
+git clone https://github.com/user/repo.git
+git clone https://github.com/user/repo.git my-folder  # 指定目录名
+
+# 克隆指定分支
+git clone -b feature https://github.com/user/repo.git
+
+# fork 工作流
+# 1. 在 GitHub 上点击 Fork 按钮
+# 2. git clone 你 fork 的仓库
+# 3. git remote add upstream 原仓库地址
+# 4. 开发完成后 push 到你的 fork
+# 5. 在 GitHub 上创建 Pull Request`,
+        starterCode: `# 记录以下克隆和协作命令：
+
+# 1. 克隆仓库到本地
+
+
+# 2. 克隆并指定目录名
+
+
+# 3. Fork 工作流：添加原仓库为 upstream
+
+`,
+        hints: [
+          'git clone URL 克隆仓库',
+          'git clone URL folder 指定目录',
+          'git remote add upstream 原仓库地址'
+        ],
+        code: `# 1. 克隆仓库
+git clone https://github.com/user/repo.git
+
+# 2. 指定目录名
+git clone https://github.com/user/repo.git my-project
+
+# 3. 添加 upstream
+git remote add upstream https://github.com/original/repo.git`,
+        verification: '包含了 clone 和 fork 工作流命令',
+        filePath: 'git-commands.md'
+      },
+      {
+        id: 'git-10',
+        number: 10,
+        title: '实战 - 团队协作流程',
+        concept: 'Git Flow 工作流',
+        difficulty: 'hard',
+        task: '描述一个完整的团队 Git 协作流程',
+        prerequisites: `<h4>🔀 团队协作</h4>
+<p>团队开发需要统一的 Git 工作流：</p>
+
+<h4>🔑 Git Flow 模型</h4>
+<ul>
+  <li><code>main</code> — 生产环境代码</li>
+  <li><code>develop</code> — 开发集成分支</li>
+  <li><code>feature/*</code> — 功能开发分支</li>
+  <li><code>release/*</code> — 发布准备分支</li>
+  <li><code>hotfix/*</code> — 紧急修复分支</li>
+</ul>`,
+        conceptDetail: `步骤 1 — 从 develop 创建 feature 分支
+每个功能开发都在独立分支上进行。
+
+步骤 2 — 开发完成后提 PR
+通过 Pull Request 代码审查后合并到 develop。
+
+步骤 3 — 发布流程
+develop → release → main，打 tag 标记版本。`,
+        contextCode: `# 团队协作完整流程
+
+# 1. 克隆仓库
+git clone https://github.com/team/project.git
+
+# 2. 创建功能分支
+git checkout develop
+git checkout -b feature/user-auth
+
+# 3. 开发并提交
+git add .
+git commit -m "feat: 实现用户认证"
+git push -u origin feature/user-auth
+
+# 4. 创建 Pull Request（在 GitHub 上）
+# 等待 Code Review → 合并到 develop
+
+# 5. 发布
+git checkout main
+git merge develop
+git tag -a v1.0.0 -m "Release 1.0.0"
+git push origin main --tags
+
+# 6. 紧急修复
+git checkout main
+git checkout -b hotfix/fix-login
+# 修复后合并回 main 和 develop`,
+        starterCode: `# 描述团队协作流程，包含以下命令：
+
+# 1. 克隆团队仓库
+
+
+# 2. 从 develop 创建功能分支
+
+
+# 3. 开发完成后的提交和推送
+
+
+# 4. 合并到 develop 的流程（文字描述）
+
+
+# 5. 打发布标签
+
+`,
+        hints: [
+          'git clone 克隆仓库',
+          'git checkout -b feature/xxx 创建功能分支',
+          'git push -u origin feature/xxx 推送',
+          'git tag -a v1.0.0 打标签'
+        ],
+        code: `# 1. 克隆仓库
+git clone https://github.com/team/project.git
+
+# 2. 创建功能分支
+git checkout develop
+git checkout -b feature/user-auth
+
+# 3. 开发提交
+git add .
+git commit -m "feat: 用户认证功能"
+git push -u origin feature/user-auth
+
+# 4. 在 GitHub 创建 PR → Code Review → 合并
+
+# 5. 发布打标签
+git checkout main
+git merge develop
+git tag -a v1.0.0 -m "Release 1.0.0"
+git push origin main --tags`,
+        verification: '描述了包含分支策略的完整团队协作流程',
+        filePath: 'git-commands.md'
+      }
+    ]
+  }
+]
