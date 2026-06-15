@@ -44,7 +44,7 @@
             <div v-if="showConcept && level.conceptDetail" class="concept-detail">
               <template v-for="(seg, i) in parsedConcept" :key="i">
                 <span v-if="seg.t === 'text'" v-text="seg.v" style="white-space:pre-wrap"></span>
-                <span v-else class="concept-link" :class="[linkStatus[seg.s] || '', flashingIdx === i ? 'flash-fail' : '']" @mouseenter="seg.d && showTip($event, seg.d)" @mouseleave="hideTip" @click="handleConceptLink(seg, i)">{{ seg.l }}</span>
+                <span v-else class="concept-link" :class="linkStatus[seg.s] || ''" @mouseenter="seg.d && showTip($event, seg.d)" @mouseleave="hideTip" @click="handleConceptLink(seg, i, $event)">{{ seg.l }}</span>
               </template>
             </div>
           </div>
@@ -254,12 +254,10 @@ function loadMicroStepProgress() {
   }
 }
 
-const flashingIdx = ref(-1)
 const linkStatus = ref({})
 const tipState = ref({ show: false, text: '', x: 0, y: 0 })
 let tipTimer = null
 let linkDebounceTimer = null
-let flashingTimer = null
 let saveMsgTimer = null
 
 function showTip(e, text) {
@@ -322,7 +320,7 @@ const parsedConcept = computed(() => {
     if (pipeIdx !== -1) {
       tip = search.slice(pipeIdx + 1)
     }
-    parts.push({ t: 'link', l: label, s: pipeIdx !== -1 ? search.slice(0, pipeIdx) : search, d: tip })
+    parts.push({ t: 'link', l: label, s: pipeIdx !== -1 ? search.slice(0, pipeIdx) : label, d: pipeIdx !== -1 ? tip : search })
     i = se + 1
   }
   return parts.length ? parts : [{ t: 'text', v: text }]
@@ -430,12 +428,12 @@ function showNextHint() {
   hintLevel.value++
 }
 
-function handleConceptLink(seg, i) {
+function handleConceptLink(seg, i, e) {
   if (!seg.s) return
   if (code.value && !code.value.includes(seg.s)) {
-    flashingIdx.value = i
-    if (flashingTimer) clearTimeout(flashingTimer)
-    flashingTimer = setTimeout(() => { flashingIdx.value = -1 }, 600)
+    if (seg.d && e) {
+      showTip(e, seg.d)
+    }
     return
   }
   if (editorRef.value && editorRef.value.revealText) {
@@ -753,14 +751,6 @@ function handleClose() {
 }
 .concept-link.link-missing:hover {
   background: transparent;
-}
-.concept-link.flash-fail {
-  animation: flash-red 0.6s ease;
-}
-@keyframes flash-red {
-  0% { background: transparent; color: var(--primary); }
-  30% { background: #fecaca; color: #dc2626; }
-  100% { background: transparent; color: var(--primary); }
 }
 
 .floating-tip {
