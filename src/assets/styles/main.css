@@ -393,6 +393,13 @@ body {
 .btn-complete.primary:hover {
   background: var(--primary-hover);
 }
+.btn-complete.warning {
+  background: var(--warning);
+  color: white;
+}
+.btn-complete.warning:hover {
+  background: #d97706;
+}
 .btn-complete.success {
   background: var(--success);
   color: white;

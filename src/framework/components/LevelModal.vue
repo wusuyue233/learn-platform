@@ -197,16 +197,15 @@
       <div class="modal-footer">
         <button
           v-if="!completed"
-          class="btn-complete primary"
+          class="btn-complete"
+          :class="{ primary: !pendingComplete, warning: pendingComplete }"
           @click="handleComplete"
-          :disabled="!verifyPassed && verifyDone"
         >
-          ✅ 通关！标记为已完成
+          {{ pendingComplete ? '⚠️ 代码未通过验证，再次点击仍通关' : '✅ 通关！标记为已完成' }}
         </button>
         <button v-else class="btn-complete success" @click="handleClose">
           ✓ 已通关，关闭
         </button>
-        <span v-if="verifyDone && !verifyPassed" class="footer-hint">请先通过验证再通关</span>
       </div>
     </div>
     <div v-if="tipState.show" class="floating-tip" :style="{ top: tipState.y + 'px', left: tipState.x + 'px' }">{{ tipState.text }}</div>
@@ -250,6 +249,7 @@ const saveOk = ref(false)
 const results = ref([])
 const verifyDone = ref(false)
 const verifyPassed = ref(false)
+const pendingComplete = ref(false)
 
 const showProjectFiles = ref(false)
 const projectInfo = computed(() => {
@@ -413,6 +413,7 @@ watch([parsedConcept, code], () => {
 }, { immediate: true })
 
 watch(code, (val) => {
+  pendingComplete.value = false
   if (!microStepMode.value || !currentMicroStep.value) return
   const step = currentMicroStep.value
   if (!microStepDoneIds.value.includes(step.id) && val.includes(step.verification)) {
@@ -619,8 +620,21 @@ function revealResult(r) {
 }
 
 function handleComplete() {
-  store.completeLevel(props.courseId, props.level.id)
-  emit('complete')
+  if (pendingComplete.value) {
+    pendingComplete.value = false
+    store.completeLevel(props.courseId, props.level.id)
+    emit('complete')
+    return
+  }
+  if (!verifyDone.value) {
+    verifyFile()
+  }
+  if (verifyPassed.value) {
+    store.completeLevel(props.courseId, props.level.id)
+    emit('complete')
+  } else {
+    pendingComplete.value = true
+  }
 }
 
 function handleClose() {
