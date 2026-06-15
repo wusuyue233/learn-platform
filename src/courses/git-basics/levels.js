@@ -1287,4 +1287,167 @@ git push origin main --tags`,
       }
     ]
   }
+,
+{
+    id: 'git-workflow',
+    name: '阶段四：协作工作流实战',
+    description: '综合运用 Git 技能，实践团队协作的完整工作流',
+    levels: [
+            {
+              id: 'git-11',
+              number: 11,
+              type: 'project',
+              project: 'git-workflow',
+              projectModule: '分支策略',
+              title: 'Git Flow 分支策略',
+              concept: 'Git Flow',
+              difficulty: 'hard',
+              task: '在项目中配置 Git Flow 分支策略：main（生产）、develop（开发）、feature/*（功能）、release/*（发布）、hotfix/*（紧急修复）',
+              prerequisites: '<h4>📚 Git Flow 分支模型</h4><p>Git Flow 定义了 5 种分支：main（稳定版）、develop（开发版）、feature/*（新功能）、release/*（发布准备）、hotfix/*（紧急修复）。</p>',
+              conceptDetail: 'Git Flow 是经典分支模型。main 分支只接受 release 和 hotfix 合并。develop 是开发主分支。feature 分支从 develop 分叉。',
+              contextCode: '',
+              hints: [
+                'git flow init 初始化 Git Flow',
+                'feature/ 分支命名规范 feature/功能名称',
+                'release/1.0.0 创建发布分支'
+              ],
+              code: '# Git Flow 命令演示\n## 初始化\ngit flow init\n\n## 创建 feature 分支\ngit flow feature start user-auth\ngit flow feature finish user-auth\n## 等效于：\n## git checkout -b feature/user-auth develop\n## git checkout develop && git merge --no-ff feature/user-auth\n## git branch -d feature/user-auth\n\n## 创建 release 分支\ngit flow release start 1.0.0\ngit flow release finish 1.0.0\n## 自动合并到 main 和 develop\n\n## 紧急修复\ngit flow hotfix start critical-bug\ngit flow hotfix finish critical-bug',
+              verification: '理解 Git Flow 五种分支及各自用途，能创建 feature/release/hotfix 分支',
+              filePath: 'docs/git-flow.md',
+              projectFiles: {
+                'docs/git-flow.md': '',
+                'CHANGELOG.md': '# Changelog'
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'git-10'
+              ],
+              commonMistakes: [
+                {
+                  pattern: '--no-ff',
+                  explanation: '--no-ff 确保合并产生合并提交，保留分支历史'
+                },
+                {
+                  pattern: 'hotfix',
+                  explanation: 'hotfix 从 main 分叉，修复完后合并到 main 和 develop'
+                }
+              ],
+              variations: [
+                {
+                  name: 'GitHub Flow',
+                  description: '更简单的分支模型，只有 main 和 feature 分支'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '比较 Git Flow 和 GitHub Flow 的适用场景',
+                  target: '理解不同分支策略的权衡'
+                }
+              ],
+            },
+            {
+              id: 'git-12',
+              number: 12,
+              type: 'project',
+              project: 'git-workflow',
+              projectModule: '协作流程',
+              title: 'Pull Request 协作',
+              concept: 'PR 工作流',
+              difficulty: 'medium',
+              task: '模拟 PR 协作流程：Fork 仓库 → 创建 feature 分支 → 提交 → 创建 PR → Code Review → 合并',
+              prerequisites: '<h4>📚 PR 工作流</h4><p>Pull Request 是代码审查的机制。<code>git push origin feature/xxx</code> 推送后，在 GitHub/Gitee 上创建 PR。</p>',
+              conceptDetail: 'Pull Request 是代码审查请求。Code Review 审查代码质量。GitHub CLI (gh) 命令行创建 PR。',
+              contextCode: '',
+              hints: [
+                'git push origin feature/xxx 推送后网页创建 PR',
+                'PR 描述包含改动内容和测试方法',
+                'Reviewer 审查后 Approve 或 Request Changes'
+              ],
+              code: '# PR 协作流程\n\n## 1. Fork + Clone\n# 在 GitHub 上 Fork 主仓库\ngit clone https://github.com/你的用户名/项目名.git\ngit remote add upstream https://github.com/原仓库/项目名.git\n\n## 2. 创建功能分支\ngit checkout -b feature/new-feature\n# ... 开发代码 ...\ngit add .\ngit commit -m "feat: 添加新功能"\ngit push origin feature/new-feature\n\n## 3. 创建 PR\n# 在 GitHub 网页创建 Pull Request\n# 或使用 gh CLI：\ngh pr create --title "feat: 添加新功能" --body "改动说明"\n\n## 4. Code Review\n# 审查者在 PR 页面评论或 Approve\n# 需要修改则继续提交：\ngit add . && git commit -m "fix: 修复 review 问题"\ngit push origin feature/new-feature\n\n## 5. 合并\n# PR 通过后 Squash merge / Rebase merge / Merge commit\ngh pr merge --squash',
+              verification: '理解 Fork + PR 协作流程，从创建分支到合并的完整步骤',
+              filePath: 'docs/pr-workflow.md',
+              projectFiles: {
+                'docs/pr-workflow.md': '',
+                '.github/PULL_REQUEST_TEMPLATE.md': '## 改动说明\\n\\n## 测试方法\\n\\n## 相关 Issue'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'git-11'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'git push',
+                  explanation: '首次推送新分支需要 git push -u origin 分支名'
+                },
+                {
+                  pattern: 'upstream',
+                  explanation: 'upstream 指向原仓库，定期 git fetch upstream 同步'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Gerrit',
+                  description: '更严格的代码审查系统'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '配置 GitHub Actions 自动检查 PR 代码质量',
+                  target: '掌握 CI 集成'
+                }
+              ],
+            },
+            {
+              id: 'git-13',
+              number: 13,
+              type: 'project',
+              project: 'git-workflow',
+              projectModule: '冲突解决',
+              title: '合并冲突解决',
+              concept: '冲突处理',
+              difficulty: 'hard',
+              task: '模拟多人协作冲突场景：两个分支修改同一文件，手动解决冲突并正确合并',
+              prerequisites: '<h4>📚 冲突解决基础</h4><p>冲突文件包含 <<<<<<<（当前分支）、=======（分隔符）、>>>>>>>（传入分支）标记。手动编辑后 <code>git add</code> 标记已解决。</p>',
+              conceptDetail: '冲突标记 <<<<< ===== >>>>>。git merge 合并操作。git rebase 重新播放提交。',
+              contextCode: '',
+              hints: [
+                'git merge 产生冲突时用 git status 查看冲突文件',
+                '手动编辑移除冲突标记后 git add',
+                'git mergetool 打开可视化合并工具'
+              ],
+              code: '# 冲突场景模拟\n## 1. 创建两个分支修改同一文件\ngit checkout -b feature/login\necho \'function login() { return "v1" }\' > auth.js\ngit add . && git commit -m "feat: login v1"\n\ngit checkout main\ngit checkout -b feature/profile\necho \'function login() { return "v2" }\' > auth.js\ngit add . && git commit -m "feat: login v2"\n\n## 2. 合并产生冲突\ngit checkout feature/login\ngit merge feature/profile\n# 输出: CONFLICT in auth.js\n\n## 3. 查看冲突文件\ncat auth.js\n# <<<<<<< HEAD\n# function login() { return "v1" }\n# =======\n# function login() { return "v2" }\n# >>>>>>> feature/profile\n\n## 4. 解决冲突\n# 编辑 auth.js 保留需要的内容\n# git add auth.js\n# git commit -m "merge: 解决 login 冲突"',
+              verification: '理解冲突产生原因，能手动解决冲突标记并正确合并',
+              filePath: 'docs/conflict-resolution.md',
+              projectFiles: {
+                'docs/conflict-resolution.md': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'git-12'
+              ],
+              commonMistakes: [
+                {
+                  pattern: '<<<<<<<',
+                  explanation: '解决冲突后必须删除所有冲突标记，包括 <<<<< ===== >>>>>'
+                },
+                {
+                  pattern: 'git rebase',
+                  explanation: 'rebase 冲突比 merge 更复杂，每个提交都要解决冲突'
+                }
+              ],
+              variations: [
+                {
+                  name: 'git mergetool',
+                  description: '可视化合并工具：vimdiff、meld、Beyond Compare'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '配置 .gitattributes 处理换行符冲突',
+                  target: '掌握跨平台协作技巧'
+                }
+              ],
+            }
+    ]
+  }
 ]

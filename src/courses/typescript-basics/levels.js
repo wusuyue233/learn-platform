@@ -2535,4 +2535,263 @@ async function getProduct(id: number) {
       }
     ]
   }
+,
+{
+    id: 'type-tools',
+    name: '阶段四：工具库项目实战',
+    description: '综合运用 TypeScript 类型系统，从零搭建类型安全工具库',
+    levels: [
+            {
+              id: 'ts-16',
+              number: 16,
+              type: 'project',
+              project: 'type-tools',
+              projectModule: '项目搭建',
+              title: '工具库项目初始化',
+              concept: 'TS 项目配置',
+              difficulty: 'easy',
+              task: '用 Vite 创建 TypeScript 库项目，配置 tsconfig.json 严格模式，设置构建输出',
+              prerequisites: '<h4>📚 TypeScript 项目配置</h4><p><code>tsconfig.json</code> 配置 TS 编译选项。<code>strict: true</code> 启用所有严格检查。<code>declaration: true</code> 生成 .d.ts 类型声明文件。</p>',
+              conceptDetail: 'tsconfig.json 配置编译选项。strict 启用全部严格检查。declaration 生成 .d.ts 类型声明。',
+              contextCode: '',
+              hints: [
+                'npm create vite@latest type-tools -- --template vanilla-ts',
+                'tsconfig.json 设置 strict: true, declaration: true',
+                'package.json 配置 main/types/files 字段'
+              ],
+              code: '{\n  "compilerOptions": {\n    "target": "ES2020",\n    "module": "ESNext",\n    "strict": true,\n    "declaration": true,\n    "declarationMap": true,\n    "sourceMap": true,\n    "outDir": "dist",\n    "rootDir": "src"\n  },\n  "include": ["src"]\n}',
+              verification: 'tsconfig.json 配置严格模式和类型声明生成',
+              filePath: 'tsconfig.json',
+              projectFiles: {
+                'tsconfig.json': '',
+                'package.json': '',
+                'src/index.ts': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'tsup',
+                  description: '基于 esbuild 的 TS 打包工具'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 ESLint 和 Prettier 配置',
+                  target: '掌握代码质量工具配置'
+                }
+              ],
+            },
+            {
+              id: 'ts-17',
+              number: 17,
+              type: 'project',
+              project: 'type-tools',
+              projectModule: '类型工具',
+              title: '泛型工具函数',
+              concept: '泛型约束',
+              difficulty: 'medium',
+              task: '实现一组泛型工具函数：deepClone、pick、omit、debounce、throttle，带完整类型声明',
+              prerequisites: '<h4>📚 泛型约束</h4><p><code>&lt;T extends object&gt;</code> 泛型约束确保传入对象类型。<code>keyof T</code> 获取 T 的所有键。</p>',
+              conceptDetail: '泛型是类型参数。keyof 获取所有键的联合类型。Pick 选取属性。Omit 排除属性。',
+              contextCode: '',
+              hints: [
+                'T extends object 约束泛型为对象类型',
+                'K extends keyof T 约束为 T 的键',
+                'ReturnType<T> 提取函数返回类型'
+              ],
+              code: 'function deepClone<T>(obj: T): T {\n  return JSON.parse(JSON.stringify(obj))\n}\n\nfunction pick<T extends object, K extends keyof T>(\n  obj: T, keys: K[]\n): Pick<T, K> {\n  return keys.reduce((acc, key) => {\n    acc[key] = obj[key]\n    return acc\n  }, {} as Pick<T, K>)\n}\n\nfunction omit<T extends object, K extends keyof T>(\n  obj: T, keys: K[]\n): Omit<T, K> {\n  const result = { ...obj }\n  keys.forEach(key => delete result[key])\n  return result as Omit<T, K>\n}\n\nfunction debounce<T extends (...args: any[]) => any>(\n  fn: T, delay: number\n): (...args: Parameters<T>) => void {\n  let timer: ReturnType<typeof setTimeout>\n  return (...args) => {\n    clearTimeout(timer)\n    timer = setTimeout(() => fn(...args), delay)\n  }\n}',
+              verification: 'deepClone/pick/omit/debounce 带完整泛型类型声明',
+              filePath: 'src/utils/index.ts',
+              projectFiles: {
+                'src/utils/index.ts': '',
+                'src/index.ts': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'ts-16'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'as Pick<T, K>',
+                  explanation: 'reduce 累加器类型需断言为精确类型'
+                },
+                {
+                  pattern: 'Parameters<T>',
+                  explanation: '用 Parameters<T> 提取函数参数类型'
+                }
+              ],
+              variations: [
+                {
+                  name: 'lodash',
+                  description: '业界标准的工具库，功能更全面'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加深层 pick（支持 a.b.c 路径）',
+                  target: '掌握递归类型'
+                }
+              ],
+            },
+            {
+              id: 'ts-18',
+              number: 18,
+              type: 'project',
+              project: 'type-tools',
+              projectModule: '类型守卫',
+              title: '类型守卫与类型谓词',
+              concept: '类型保护',
+              difficulty: 'hard',
+              task: '实现 isString/isNumber/isArray/isObject 类型守卫，使用 is 类型谓词返回精确类型',
+              prerequisites: '<h4>📚 类型谓词</h4><p><code>paramName is Type</code> 是类型谓词语法，告诉 TS 编译器在 true 分支中参数是指定类型。</p>',
+              conceptDetail: '类型谓词 is Type 语法。typeof 获取值的类型。never 类型用于穷尽检查。',
+              contextCode: '',
+              hints: [
+                'function isString(value: unknown): value is string',
+                'typeof value === "string"',
+                'Array.isArray(value) 判断数组'
+              ],
+              code: 'function isString(value: unknown): value is string {\n  return typeof value === \'string\'\n}\n\nfunction isNumber(value: unknown): value is number {\n  return typeof value === \'number\' && !isNaN(value)\n}\n\nfunction isArray<T = unknown>(value: unknown): value is T[] {\n  return Array.isArray(value)\n}\n\nfunction isObject(value: unknown): value is Record<string, unknown> {\n  return typeof value === \'object\' && value !== null && !Array.isArray(value)\n}\n\nfunction processValue(value: unknown) {\n  if (isString(value)) {\n    console.log(value.toUpperCase())\n  } else if (isNumber(value)) {\n    console.log(value.toFixed(2))\n  }\n}',
+              verification: 'isString/isNumber/isArray/isObject 类型守卫使用 is 谓词',
+              filePath: 'src/guards/index.ts',
+              projectFiles: {
+                'src/guards/index.ts': '',
+                'src/index.ts': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'ts-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'value is string',
+                  explanation: '类型谓词 function fn(x: unknown): x is Type'
+                },
+                {
+                  pattern: 'typeof null',
+                  explanation: 'typeof null === "object"，需额外 null 检查'
+                }
+              ],
+              variations: [
+                {
+                  name: 'zod',
+                  description: '运行时类型校验 + 类型推断库'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现类型安全的深比较函数',
+                  target: '掌握递归类型守卫'
+                }
+              ],
+            },
+            {
+              id: 'ts-19',
+              number: 19,
+              type: 'project',
+              project: 'type-tools',
+              projectModule: '高级类型',
+              title: '高级工具类型',
+              concept: '条件类型 + 映射类型',
+              difficulty: 'hard',
+              task: '实现高级工具类型：DeepReadonly、DeepRequired、Nullable、ReturnPromiseType',
+              prerequisites: '<h4>📚 条件类型和映射类型</h4><p><code>T extends U ? X : Y</code> 条件类型。<code>{ [K in keyof T]: T[K] }</code> 映射类型。</p>',
+              conceptDetail: '条件类型 T extends U ? X : Y。映射类型 [K in keyof T] 遍历键。infer 在条件类型中推断类型变量。',
+              contextCode: '',
+              hints: [
+                '递归映射类型：{ [K in keyof T]: DeepReadonly<T[K]> }',
+                'infer R 提取 Promise 内部类型',
+                'keyof any = string | number | symbol'
+              ],
+              code: 'type DeepReadonly<T> = {\n  readonly [K in keyof T]: T[K] extends object\n    ? DeepReadonly<T[K]>\n    : T[K]\n}\n\ntype DeepRequired<T> = {\n  [K in keyof T]-?: T[K] extends object\n    ? DeepRequired<T[K]>\n    : T[K]\n}\n\ntype Nullable<T> = T | null | undefined\n\ntype ReturnPromiseType<T extends (...args: any) => any> =\n  T extends (...args: any) => Promise<infer R> ? R : never\n\ntype User = {\n  name?: string\n  address?: { city?: string }\n}\ntype RequiredUser = DeepRequired<User>',
+              verification: '实现 DeepReadonly/DeepRequired/Nullable/ReturnPromiseType 高级工具类型',
+              filePath: 'src/types/advanced.ts',
+              projectFiles: {
+                'src/types/advanced.ts': '',
+                'src/index.ts': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'ts-18'
+              ],
+              commonMistakes: [
+                {
+                  pattern: '-?',
+                  explanation: '-? 映射类型中移除可选标记，将所有 ? 变为必选'
+                },
+                {
+                  pattern: 'infer R',
+                  explanation: 'infer 只能在条件类型的 extends 子句中使用'
+                }
+              ],
+              variations: [
+                {
+                  name: 'type-fest',
+                  description: '社区高级工具类型集合库'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现 CamelCase 类型（下划线转驼峰）',
+                  target: '掌握模板字面量类型'
+                }
+              ],
+            },
+            {
+              id: 'ts-20',
+              number: 20,
+              type: 'project',
+              project: 'type-tools',
+              projectModule: '构建发布',
+              title: '库构建与发布配置',
+              concept: 'npm 包发布',
+              difficulty: 'medium',
+              task: '配置构建脚本、package.json 入口文件、类型声明导出，准备发布 npm',
+              prerequisites: '<h4>📚 npm 包配置</h4><p>package.json 中的 <code>main</code>（CJS 入口）、<code>module</code>（ESM 入口）、<code>types</code>（类型声明）字段。</p>',
+              conceptDetail: 'package.json 定义包入口。main 是 CommonJS 入口，module 是 ES Module 入口。types 指向类型声明。',
+              contextCode: '',
+              hints: [
+                '"main": "dist/index.js" CommonJS 入口',
+                '"module": "dist/index.mjs" ESM 入口',
+                '"types": "dist/index.d.ts" 类型声明入口'
+              ],
+              code: '{\n  "name": "@your-scope/type-tools",\n  "version": "0.1.0",\n  "main": "dist/index.js",\n  "module": "dist/index.mjs",\n  "types": "dist/index.d.ts",\n  "files": ["dist"],\n  "scripts": {\n    "build": "tsup src/index.ts --dts --format cjs,esm",\n    "test": "vitest run",\n    "lint": "tsc --noEmit"\n  }\n}',
+              verification: 'package.json 配置了 main/module/types 入口和构建脚本',
+              filePath: 'package.json',
+              projectFiles: {
+                'package.json': '',
+                'src/index.ts': '',
+                'README.md': '# type-tools\\n\\n类型安全工具库'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'ts-19'
+              ],
+              commonMistakes: [
+                {
+                  pattern: '"files"',
+                  explanation: 'files 字段限制发布到 npm 的文件，避免包含源码'
+                },
+                {
+                  pattern: 'types',
+                  explanation: 'types 字段指向生成的 .d.ts 文件'
+                }
+              ],
+              variations: [
+                {
+                  name: 'unpkg/cdn',
+                  description: 'UMD 格式 CDN 分发'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加语义化版本发布脚本',
+                  target: '掌握 npm version 命令'
+                }
+              ],
+            }
+    ]
+  }
 ]

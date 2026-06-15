@@ -10,6 +10,7 @@ export default {
   category: 'backend',
   tags: ['Python', 'FastAPI', 'REST API'],
   prerequisites: [],
+  project: 'ecommerce',
   phases,
   verify
 }

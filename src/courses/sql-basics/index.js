@@ -10,6 +10,7 @@ export default {
   category: 'infra',
   tags: ['SQL', '数据库', '查询'],
   prerequisites: [],
+  project: 'ecommerce',
   phases,
   verify
 }

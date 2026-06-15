@@ -2676,4 +2676,404 @@ server.listen(3000)`,
       }
     ]
   }
+,
+{
+    id: 'chat-server',
+    name: '阶段五：聊天室后端实战',
+    description: '综合运用 Node.js + Express 技能，构建实时聊天室后端服务',
+    levels: [
+            {
+              id: 'node-16',
+              number: 16,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '项目搭建',
+              title: '后端项目初始化',
+              concept: 'Express 项目结构',
+              difficulty: 'easy',
+              task: '搭建聊天室后端项目：Express + WebSocket 双服务，配置中间件和路由结构',
+              prerequisites: '<h4>📚 Express 项目结构</h4><p>Express 项目按功能分包：routes/（路由）、middleware/（中间件）、models/（数据模型）、services/（业务逻辑）。</p>',
+              conceptDetail: 'Express 使用 express() 创建应用。http.createServer 创建 HTTP 服务器。ws 是 Node.js 的 WebSocket 库。',
+              contextCode: '',
+              hints: [
+                'npm init -y && npm install express ws cors',
+                'app.use(express.json()) 解析 JSON 请求体',
+                'http.createServer(app) 创建通用 HTTP 服务'
+              ],
+              code: 'const express = require(\'express\')\nconst http = require(\'http\')\nconst { WebSocketServer } = require(\'ws\')\nconst cors = require(\'cors\')\n\nconst app = express()\napp.use(cors())\napp.use(express.json())\n\nconst server = http.createServer(app)\nconst wss = new WebSocketServer({ server })\n\nconst PORT = process.env.PORT || 3000\nserver.listen(PORT, () => {\n  console.log(\'Server running on port \' + PORT)\n})',
+              verification: 'Express 应用集成 cors/express.json/WebSocketServer',
+              filePath: 'src/index.js',
+              projectFiles: {
+                'src/index.js': '',
+                'src/routes/index.js': '',
+                'src/middleware/auth.js': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'Fastify',
+                  description: '比 Express 更快的 Node.js 框架'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加请求日志中间件',
+                  target: '掌握中间件模式'
+                }
+              ],
+            },
+            {
+              id: 'node-17',
+              number: 17,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: 'REST API',
+              title: '聊天 REST API',
+              concept: 'Express 路由',
+              difficulty: 'medium',
+              task: '实现聊天室 REST API：用户注册/登录、消息历史查询、在线用户列表',
+              prerequisites: '<h4>📚 Express 路由</h4><p><code>Router()</code> 创建模块化路由，<code>router.get/post/put/delete</code> 定义 HTTP 方法。</p>',
+              conceptDetail: 'Express Router 实现路由模块化。req.params 获取 URL 参数。req.query 获取查询字符串。res.json 发送 JSON 响应。',
+              contextCode: '',
+              hints: [
+                'router.get("/api/messages") 获取消息历史',
+                'router.post("/api/users") 用户注册',
+                'router.post("/api/auth/login") 用户登录'
+              ],
+              code: 'const express = require(\'express\')\nconst router = express.Router()\n\nlet messages = []\nlet users = []\n\nrouter.get(\'/messages\', (req, res) => {\n  const limit = parseInt(req.query.limit) || 50\n  res.json(messages.slice(-limit))\n})\n\nrouter.post(\'/messages\', (req, res) => {\n  const { userId, text } = req.body\n  const message = { id: Date.now(), userId, text, timestamp: new Date() }\n  messages.push(message)\n  res.status(201).json(message)\n})\n\nrouter.get(\'/users\', (req, res) => {\n  res.json(users)\n})\n\nmodule.exports = router',
+              verification: '实现 /api/messages 和 /api/users 路由端点',
+              filePath: 'src/routes/chat.js',
+              projectFiles: {
+                'src/routes/chat.js': '',
+                'src/routes/auth.js': '',
+                'src/middleware/auth.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'node-16'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'req.body',
+                  explanation: 'req.body 需要 express.json() 中间件解析'
+                },
+                {
+                  pattern: 'module.exports',
+                  explanation: 'Node.js 使用 module.exports 导出模块内容'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Koa',
+                  description: 'Koa 使用 async/await 处理路由'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加分页参数和消息搜索',
+                  target: '掌握 REST 最佳实践'
+                }
+              ],
+            },
+            {
+              id: 'node-18',
+              number: 18,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: 'WebSocket',
+              title: 'WebSocket 实时通信',
+              concept: 'ws 库',
+              difficulty: 'hard',
+              task: '实现 WebSocket 服务：连接管理、消息广播、心跳检测、断线重连处理',
+              prerequisites: '<h4>📚 ws 库 API</h4><p><code>wss.on("connection")</code> 处理新连接。<code>ws.send()</code> 发送消息。<code>ws.on("message")</code> 接收消息。</p>',
+              conceptDetail: 'WebSocketServer 创建 WebSocket 服务器。wss.clients 获取所有连接。心跳检测定期 ping/pong。广播向所有客户端发送消息。',
+              contextCode: '',
+              hints: [
+                'wss.on("connection", (ws, req) => {...})',
+                'wss.clients.forEach(client => client.send(data))',
+                '设置心跳定时器，30 秒无响应断开'
+              ],
+              code: 'wss.on(\'connection\', (ws, req) => {\n  ws.isAlive = true\n\n  ws.on(\'pong\', () => { ws.isAlive = true })\n\n  ws.on(\'message\', (data) => {\n    const msg = JSON.parse(data)\n    wss.clients.forEach(client => {\n      if (client.readyState === 1) {\n        client.send(JSON.stringify({\n          type: \'message\',\n          payload: msg\n        }))\n      }\n    })\n  })\n\n  ws.on(\'close\', () => {\n    console.log(\'Client disconnected\')\n  })\n})\n\nconst interval = setInterval(() => {\n  wss.clients.forEach(ws => {\n    if (!ws.isAlive) return ws.terminate()\n    ws.isAlive = false\n    ws.ping()\n  })\n}, 30000)',
+              verification: 'WebSocket 服务实现了消息广播和心跳检测',
+              filePath: 'src/websocket.js',
+              projectFiles: {
+                'src/websocket.js': '',
+                'src/index.js': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'node-16',
+                'node-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'readyState',
+                  explanation: 'WebSocket 状态码 1=OPEN, 2=CLOSING, 3=CLOSED'
+                },
+                {
+                  pattern: 'JSON.parse',
+                  explanation: 'WebSocket 收到的是 Buffer，需要 toString() 再 JSON.parse'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Socket.IO',
+                  description: '提供房间、命名空间、自动重连等高级功能'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现消息房间（多个聊天室隔离）',
+                  target: '掌握分组广播'
+                }
+              ],
+            },
+            {
+              id: 'node-19',
+              number: 19,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '数据持久化',
+              title: '消息持久化存储',
+              concept: 'SQLite + better-sqlite3',
+              difficulty: 'medium',
+              task: '用 SQLite 存储聊天消息，实现消息 CRUD 和历史查询',
+              prerequisites: '<h4>📚 SQLite + Node.js</h4><p><code>better-sqlite3</code> 是同步的 SQLite 驱动，性能好、API 简洁。<code>db.prepare()</code> 编译 SQL 语句。</p>',
+              conceptDetail: 'better-sqlite3 是同步 SQLite 驱动。db.prepare 预编译 SQL 防注入。db.transaction 事务函数批量操作。',
+              contextCode: '',
+              hints: [
+                'CREATE TABLE messages (id INTEGER PRIMARY KEY, userId, text, timestamp)',
+                'db.prepare("INSERT INTO messages VALUES ...").run(data)',
+                'SELECT * FROM messages ORDER BY timestamp DESC LIMIT 50'
+              ],
+              code: 'const Database = require(\'better-sqlite3\')\nconst db = new Database(\'chat.db\')\n\ndb.exec(\'CREATE TABLE IF NOT EXISTS messages (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  user_id TEXT NOT NULL,\n  username TEXT NOT NULL,\n  text TEXT NOT NULL,\n  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP\n)\')\n\nfunction saveMessage(userId, username, text) {\n  const stmt = db.prepare(\n    \'INSERT INTO messages (user_id, username, text) VALUES (?, ?, ?)\'\n  )\n  return stmt.run(userId, username, text)\n}\n\nfunction getMessages(limit = 50) {\n  const stmt = db.prepare(\n    \'SELECT * FROM messages ORDER BY timestamp DESC LIMIT ?\'\n  )\n  return stmt.all(limit)\n}\n\nmodule.exports = { saveMessage, getMessages }',
+              verification: '使用 better-sqlite3 创建消息表，实现 saveMessage/getMessages 方法',
+              filePath: 'src/models/message.js',
+              projectFiles: {
+                'src/models/message.js': '',
+                'src/models/user.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'node-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'prepare',
+                  explanation: 'prepare 编译 SQL 语句，用 ? 占位符传参防注入'
+                },
+                {
+                  pattern: 'run/all/get',
+                  explanation: 'run=插入/更新, all=多行, get=单行'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Prisma',
+                  description: 'Node.js ORM，支持多种数据库'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加消息索引优化查询性能',
+                  target: '掌握数据库性能优化'
+                }
+              ],
+            },
+            {
+              id: 'node-20',
+              number: 20,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '用户管理',
+              title: '用户管理与认证',
+              concept: 'JWT + 中间件',
+              difficulty: 'medium',
+              task: '实现用户管理 API 和 JWT 鉴权中间件，保护需要登录的接口',
+              prerequisites: '<h4>📚 Express 中间件</h4><p><code>app.use()</code> 注册全局中间件，路由级中间件作为路由第二个参数。<code>next()</code> 调用下一个中间件。</p>',
+              conceptDetail: 'jsonwebtoken 创建和验证 Token。中间件函数接收 (req, res, next)。req.headers 提取 Authorization 头中的 Bearer Token。',
+              contextCode: '',
+              hints: [
+                'jsonwebtoken.sign({ userId }, SECRET, { expiresIn })',
+                '中间件中提取 Bearer token -> jwt.verify',
+                '把解析后的用户信息挂到 req.user'
+              ],
+              code: 'const jwt = require(\'jsonwebtoken\')\nconst SECRET = process.env.JWT_SECRET || \'chat-secret-key\'\n\nfunction authMiddleware(req, res, next) {\n  const auth = req.headers.authorization\n  if (!auth || !auth.startsWith(\'Bearer \')) {\n    return res.status(401).json({ error: \'未登录\' })\n  }\n  try {\n    const token = auth.split(\' \')[1]\n    const decoded = jwt.verify(token, SECRET)\n    req.user = decoded\n    next()\n  } catch {\n    res.status(401).json({ error: \'Token 无效\' })\n  }\n}\n\nmodule.exports = authMiddleware',
+              verification: 'JWT 鉴权中间件正确验证 Token，保护需要登录的路由',
+              filePath: 'src/middleware/auth.js',
+              projectFiles: {
+                'src/middleware/auth.js': '',
+                'src/routes/auth.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'node-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'jwt.verify',
+                  explanation: 'jwt.verify(token, secret) 验证 Token 有效性'
+                },
+                {
+                  pattern: '401',
+                  explanation: '未授权应返回 401 状态码'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Passport.js',
+                  description: 'Express 认证中间件，支持多种策略'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现管理员角色和权限控制',
+                  target: '掌握 RBAC 模型'
+                }
+              ],
+            },
+            {
+              id: 'node-21',
+              number: 21,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '部署',
+              title: '项目整合与 WebSocket 安全',
+              concept: 'ws 升级校验',
+              difficulty: 'hard',
+              task: '整合 REST + WebSocket，WebSocket 连接时验证 Token，添加速率限制和日志',
+              prerequisites: '<h4>📚 WebSocket 安全</h4><p>WebSocket 连接时在 URL 中携带 Token 参数，服务端在 upgrade 事件中校验。</p>',
+              conceptDetail: 'WebSocket 通过 URL 参数传 Token。wss.handleUpgrade 处理连接升级。express-rate-limit 防止滥用。',
+              contextCode: '',
+              hints: [
+                'wss.on("upgrade") 中校验 token 参数',
+                'express-rate-limit 限制 /api/ 请求频率',
+                'morgan 日志中间件记录请求'
+              ],
+              code: 'const rateLimit = require(\'express-rate-limit\')\n\nconst apiLimiter = rateLimit({\n  windowMs: 60 * 1000,\n  max: 100,\n  message: { error: \'请求过于频繁\' }\n})\napp.use(\'/api\', apiLimiter)\n\nserver.on(\'upgrade\', (req, socket, head) => {\n  const token = new URL(req.url, \'http://localhost\').searchParams.get(\'token\')\n  if (!token) {\n    socket.destroy()\n    return\n  }\n  try {\n    jwt.verify(token, SECRET)\n    wss.handleUpgrade(req, socket, head, (ws) => {\n      wss.emit(\'connection\', ws, req)\n    })\n  } catch {\n    socket.destroy()\n  }\n})',
+              verification: 'REST + WebSocket 整合，WebSocket 连接进行 Token 校验，有速率限制',
+              filePath: 'src/index.js',
+              projectFiles: {
+                'src/index.js': '',
+                '.env.example': 'PORT=3000\nJWT_SECRET=your-secret-key'
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'node-18',
+                'node-19',
+                'node-20'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'gRPC',
+                  description: '性能更好的双向流通信方案'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加消息审核和敏感词过滤',
+                  target: '掌握内容安全策略'
+                }
+              ],
+            },
+            {
+              id: 'node-22',
+              number: 22,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '测试',
+              title: 'API 测试',
+              concept: 'Jest + Supertest',
+              difficulty: 'medium',
+              task: '用 Jest + Supertest 编写 API 测试，覆盖 REST 端点和 WebSocket 连接',
+              prerequisites: '<h4>📚 Jest + Supertest</h4><p>Jest 是测试框架，Supertest 用于 HTTP 测试。<code>describe/it/expect</code> 组织测试。</p>',
+              conceptDetail: 'Jest 提供 describe/it/expect 测试 API。Supertest 链式调用测试 API。beforeAll/afterAll 生命周期钩子。',
+              contextCode: '',
+              hints: [
+                'const request = require("supertest")',
+                'request(app).get("/api/messages").expect(200)',
+                'describe("Messages API", () => {...}) 分组测试'
+              ],
+              code: 'const request = require(\'supertest\')\nconst app = require(\'../src/index\')\n\ndescribe(\'Messages API\', () => {\n  test(\'GET /api/messages 返回消息列表\', async () => {\n    const res = await request(app).get(\'/api/messages\')\n    expect(res.status).toBe(200)\n    expect(Array.isArray(res.body)).toBe(true)\n  })\n\n  test(\'POST /api/messages 创建消息\', async () => {\n    const res = await request(app)\n      .post(\'/api/messages\')\n      .send({ userId: \'1\', text: \'Hello\' })\n    expect(res.status).toBe(201)\n    expect(res.body.text).toBe(\'Hello\')\n  })\n})',
+              verification: 'Jest + Supertest 测试消息列表和创建消息端点',
+              filePath: 'tests/api.test.js',
+              projectFiles: {
+                'tests/api.test.js': '',
+                'jest.config.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'node-21'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'supertest',
+                  explanation: 'supertest(app) 传入 Express 应用实例'
+                },
+                {
+                  pattern: 'async/await',
+                  explanation: 'Supertest 请求要 await 等待返回'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Mocha',
+                  description: '更灵活的测试框架'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 WebSocket 连接测试',
+                  target: '掌握异步事件测试'
+                }
+              ],
+            },
+            {
+              id: 'node-23',
+              number: 23,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '部署',
+              title: '部署与监控配置',
+              concept: 'Docker + PM2',
+              difficulty: 'medium',
+              task: '配置 Docker 部署、PM2 进程管理、健康检查端点',
+              prerequisites: '<h4>📚 PM2 和 Docker</h4><p>PM2 是 Node.js 进程管理器，支持自动重启、负载均衡。<code>pm2 start index.js -i max</code> 开启集群模式。</p>',
+              conceptDetail: 'PM2 是 Node.js 进程管理器。Docker 容器化部署。健康检查 GET /health 返回服务状态。',
+              contextCode: '',
+              hints: [
+                'ecosystem.config.js 配置 PM2',
+                'Dockerfile 多阶段构建减小镜像',
+                'app.get("/health") 返回 { status: "ok" }'
+              ],
+              code: '// PM2 ecosystem.config.js\nmodule.exports = {\n  apps: [{\n    name: \'chat-server\',\n    script: \'src/index.js\',\n    instances: \'max\',\n    exec_mode: \'cluster\',\n    env: { NODE_ENV: \'production\' },\n    max_memory_restart: \'500M\'\n  }]\n}\n\n// Health check endpoint\napp.get(\'/health\', (req, res) => {\n  res.json({\n    status: \'ok\',\n    uptime: process.uptime(),\n    connections: wss.clients.size,\n    timestamp: new Date()\n  })\n})',
+              verification: '配置了 PM2 进程管理和健康检查端点',
+              filePath: 'ecosystem.config.js',
+              projectFiles: {
+                'ecosystem.config.js': '',
+                Dockerfile: 'FROM node:18-alpine\nWORKDIR /app\nCOPY . .\nRUN npm install --production\nEXPOSE 3000\nCMD ["node", "src/index.js"]'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'node-21'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'Kubernetes',
+                  description: '基于 k8s 的容器编排部署方案'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '配置 Sentry 错误监控',
+                  target: '掌握生产环境监控'
+                }
+              ],
+            }
+    ]
+  }
 ]

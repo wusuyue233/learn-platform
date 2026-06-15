@@ -10,6 +10,7 @@ export default {
   category: 'language',
   tags: ['JavaScript', 'ES6+', '前端'],
   prerequisites: [],
+  project: 'blog',
   phases,
   verify
 }

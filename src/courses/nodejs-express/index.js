@@ -10,6 +10,7 @@ export default {
   category: 'backend',
   tags: ['Node.js', 'Express', '后端'],
   prerequisites: [],
+  project: 'chat-app',
   phases,
   verify
 }

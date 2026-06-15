@@ -1429,4 +1429,412 @@ async def process_time(request: Request, call_next):
       }
     ]
   }
+,
+{
+    id: 'ecommerce-api',
+    name: '阶段四：电商 API 开发',
+    description: '综合运用 FastAPI 技能，为电商系统构建完整的 REST API 后端',
+    levels: [
+            {
+              id: 'py-13',
+              number: 13,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '项目初始化',
+              title: 'FastAPI 项目结构',
+              concept: 'FastAPI 项目组织',
+              difficulty: 'easy',
+              task: '搭建电商后端项目结构：创建 main.py（应用入口）、routers/（路由模块）、models/（数据模型）、schemas/（校验模式）',
+              prerequisites: '<h4>📚 FastAPI 应用结构</h4><p>大型 FastAPI 项目按模块分包组织：<code>routers/</code>（路由）、<code>models/</code>（模型）、<code>schemas/</code>（模式）、<code>core/</code>（核心配置）。</p>',
+              conceptDetail: 'FastAPI 使用 APIRouter 实现模块化路由注册，通过 include_router 在 main.py 中聚合。',
+              contextCode: '',
+              hints: [
+                '创建 routers/products.py 等路由模块',
+                'APIRouter(prefix="/api/products") 加前缀',
+                'app.include_router(products.router, prefix="/api")'
+              ],
+              code: 'from fastapi import FastAPI\nfrom routers import products, orders, cart, auth\n\napp = FastAPI(title="电商系统 API", version="1.0.0")\n\napp.include_router(products.router, prefix="/api")\napp.include_router(cart.router, prefix="/api")\napp.include_router(orders.router, prefix="/api")\napp.include_router(auth.router, prefix="/api")\n\n@app.get("/")\ndef root():\n    return {"message": "电商系统 API 服务运行中"}',
+              verification: 'main.py 包含 APIRouter 导入和 include_router 挂载',
+              filePath: 'app/main.py',
+              projectFiles: {
+                'app/main.py': '',
+                'app/routers/__init__.py': '',
+                'app/models/__init__.py': '',
+                'app/schemas/__init__.py': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: '蓝本模式',
+                  description: 'Flask 中的 Blueprint 对应 FastAPI 的 APIRouter'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '对比 Flask 和 FastAPI 的路由组织方式',
+                  target: '理解不同框架的模块化设计'
+                }
+              ],
+            },
+            {
+              id: 'py-14',
+              number: 14,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '商品管理',
+              title: '商品模型与 CRUD',
+              concept: 'SQLAlchemy ORM',
+              difficulty: 'medium',
+              task: '定义 Product 模型（id/name/price/stock/description/image）并实现 CRUD API 端点',
+              prerequisites: '<h4>📚 SQLAlchemy 模型定义</h4><p><code>Column()</code> 定义字段类型，<code>relationship()</code> 定义关联关系，<code>Base</code> 是模型基类。</p>',
+              conceptDetail: 'SQLAlchemy 使用 declarative base 定义模型，通过 Session 执行查询。Pydantic 模式配合 FastAPI 自动生成文档。',
+              contextCode: '',
+              hints: [
+                'Column(Integer, primary_key=True, index=True) 主键',
+                '使用 Pydantic 的 BaseModel 定义请求/响应模式',
+                'GET /api/products 列表，GET /api/products/{id} 详情，POST /api/products 创建'
+              ],
+              code: 'from sqlalchemy import Column, Integer, String, Float\nfrom database import Base\n\nclass Product(Base):\n    __tablename__ = "products"\n    id = Column(Integer, primary_key=True, index=True)\n    name = Column(String(100), nullable=False)\n    price = Column(Float, nullable=False)\n    stock = Column(Integer, default=0)\n    description = Column(String(500))\n    image = Column(String(200))',
+              verification: 'Product 模型包含 id/name/price/stock 字段，定义了 CRUD API 路由',
+              filePath: 'app/models/product.py',
+              projectFiles: {
+                'app/models/product.py': '',
+                'app/schemas/product.py': '',
+                'app/routers/products.py': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'py-13'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'primary_key',
+                  explanation: '主键字段需要 primary_key=True 和 index=True'
+                },
+                {
+                  pattern: 'Base',
+                  explanation: '模型类需要继承 declarative_base() 返回的 Base'
+                }
+              ],
+              variations: [
+                {
+                  name: 'MongoEngine',
+                  description: 'MongoDB 的 ODM 类似 SQLAlchemy 的 ORM'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 Category 模型并与 Product 建立外键关联',
+                  target: '掌握模型关联'
+                }
+              ],
+            },
+            {
+              id: 'py-15',
+              number: 15,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '用户认证',
+              title: '用户注册与 JWT 认证',
+              concept: 'JWT 认证',
+              difficulty: 'medium',
+              task: '实现用户注册/登录 API，使用 JWT Token 鉴权保护商品管理接口',
+              prerequisites: '<h4>📚 JWT 结构</h4><p>JWT（JSON Web Token）由三部分组成：Header（头部）+ Payload（载荷）+ Signature（签名）。</p>',
+              conceptDetail: 'JWT 是无状态认证方案，使用 jose 库创建和验证。OAuth2PasswordBearer 是 FastAPI 内置的认证方案。依赖注入通过 Depends 实现。',
+              contextCode: '',
+              hints: [
+                'python-jose 库用于 JWT 创建和验证',
+                'OAuth2PasswordBearer(tokenUrl="/api/auth/login")',
+                '密码用 passlib 库的 bcrypt 哈希存储'
+              ],
+              code: 'from jose import jwt\nfrom datetime import datetime, timedelta\n\nSECRET_KEY = "your-secret-key"\nALGORITHM = "HS256"\nACCESS_TOKEN_EXPIRE = 30\n\ndef create_access_token(data: dict):\n    to_encode = data.copy()\n    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE)\n    to_encode.update({"exp": expire})\n    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n\ndef verify_token(token: str):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload\n    except:\n        return None',
+              verification: '实现 create_access_token 和 verify_token 函数，用户注册/登录端点使用 JWT',
+              filePath: 'app/core/security.py',
+              projectFiles: {
+                'app/core/security.py': '',
+                'app/core/__init__.py': '',
+                'app/routers/auth.py': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'py-13'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'SECRET_KEY',
+                  explanation: 'SECRET_KEY 必须在环境变量中配置，不能硬编码'
+                },
+                {
+                  pattern: 'jwt.decode',
+                  explanation: 'jwt.decode 需要指定 algorithms=[ALGORITHM] 参数'
+                }
+              ],
+              variations: [
+                {
+                  name: 'OAuth2 + Google',
+                  description: '集成 Google OAuth2 第三方登录'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现 Token 刷新和过期自动续期',
+                  target: '理解 refresh token 机制'
+                }
+              ],
+            },
+            {
+              id: 'py-16',
+              number: 16,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '购物车',
+              title: '购物车 API',
+              concept: '关联查询',
+              difficulty: 'medium',
+              task: '实现购物车功能：添加商品、更新数量、删除商品、查看购物车，涉及用户与商品的多对多关联',
+              prerequisites: '<h4>📚 多对多关联</h4><p>购物车是典型的多对多关系：一个用户有多个商品，一个商品可被多个用户加入购物车。</p>',
+              conceptDetail: 'SQLAlchemy 使用 relationship 建立关联，通过 ForeignKey 实现外键约束。CartItem 作为关联表记录用户与商品的关联和数量。',
+              contextCode: '',
+              hints: [
+                'CartItem 模型包含 user_id, product_id, quantity 字段',
+                'ForeignKey("products.id") 引用商品表',
+                '关联查询用 relationship + back_populates'
+              ],
+              code: 'from sqlalchemy import Column, Integer, ForeignKey\nfrom sqlalchemy.orm import relationship\nfrom database import Base\n\nclass CartItem(Base):\n    __tablename__ = "cart_items"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey("users.id"))\n    product_id = Column(Integer, ForeignKey("products.id"))\n    quantity = Column(Integer, default=1)\n\n    user = relationship("User", back_populates="cart_items")\n    product = relationship("Product")',
+              verification: 'CartItem 模型包含 user_id/product_id/quantity 字段，API 支持增删改查',
+              filePath: 'app/models/cart.py',
+              projectFiles: {
+                'app/models/cart.py': '',
+                'app/routers/cart.py': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'py-14',
+                'py-15'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'ForeignKey',
+                  explanation: 'ForeignKey 参数格式: "表名.字段名"'
+                },
+                {
+                  pattern: 'back_populates',
+                  explanation: '两端 relationship 要互相指定 back_populates'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Redis 缓存',
+                  description: '用 Redis 缓存购物车数据提高性能'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加购物车商品数量上限校验',
+                  target: '掌握请求校验和错误处理'
+                }
+              ],
+            },
+            {
+              id: 'py-17',
+              number: 17,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '订单系统',
+              title: '订单创建与查询',
+              concept: '事务处理',
+              difficulty: 'hard',
+              task: '实现订单创建（从购物车生成订单）、订单列表、订单详情 API，包含事务处理和库存扣减',
+              prerequisites: '<h4>📚 数据库事务</h4><p>事务保证一组操作要么全部成功要么全部回滚。<code>begin()</code> 开始事务，<code>commit()</code> 提交，<code>rollback()</code> 回滚。</p>',
+              conceptDetail: '事务使用 ACID 特性保证数据一致性。Session.begin() 上下文管理器自动管理事务。OrderItem 记录下单时商品信息快照。库存扣减必须在事务中完成。',
+              contextCode: '',
+              hints: [
+                'Order 模型包含 user_id, total_amount, status, created_at',
+                '事务中用 db.begin() 或 with db.begin()',
+                '扣减库存后检查是否出现负数（库存不足回滚）'
+              ],
+              code: 'from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey\nfrom sqlalchemy.orm import relationship\nfrom database import Base\nfrom datetime import datetime\n\nclass Order(Base):\n    __tablename__ = "orders"\n    id = Column(Integer, primary_key=True, index=True)\n    user_id = Column(Integer, ForeignKey("users.id"))\n    total_amount = Column(Float, nullable=False)\n    status = Column(String(20), default="pending")\n    created_at = Column(DateTime, default=datetime.utcnow)\n\n    items = relationship("OrderItem", back_populates="order")\n\nclass OrderItem(Base):\n    __tablename__ = "order_items"\n    id = Column(Integer, primary_key=True, index=True)\n    order_id = Column(Integer, ForeignKey("orders.id"))\n    product_id = Column(Integer, ForeignKey("products.id"))\n    product_name = Column(String(100))\n    price = Column(Float)\n    quantity = Column(Integer)\n\n    order = relationship("Order", back_populates="items")',
+              verification: 'Order 和 OrderItem 模型正确，订单创建使用事务并扣减库存',
+              filePath: 'app/models/order.py',
+              projectFiles: {
+                'app/models/order.py': '',
+                'app/routers/orders.py': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'py-15',
+                'py-16'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'Celery 异步',
+                  description: '大订单用 Celery 异步处理'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现订单状态机（待支付→已支付→已发货→已完成）',
+                  target: '掌握状态管理模式'
+                }
+              ],
+            },
+            {
+              id: 'py-18',
+              number: 18,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '数据校验',
+              title: 'Pydantic 数据校验',
+              concept: 'Pydantic 模式',
+              difficulty: 'medium',
+              task: '为所有 API 端点编写 Pydantic 请求/响应模式，包含字段校验和自定义验证器',
+              prerequisites: '<h4>📚 Pydantic 校验</h4><p>Pydantic 使用 Python 类型注解做数据校验。<code>Field()</code> 定义额外约束，<code>@validator</code> 自定义校验逻辑。</p>',
+              conceptDetail: 'Pydantic V2 使用 Field 定义校验规则，model_validator 做跨字段验证。Field 支持 gt/ge/lt/le 数值约束。',
+              contextCode: '',
+              hints: [
+                'Field(gt=0) 确保价格大于 0',
+                '@field_validator("name") 自定义 name 校验',
+                'model_config = ConfigDict(from_attributes=True) 支持 ORM 模式'
+              ],
+              code: 'from pydantic import BaseModel, Field\nfrom typing import Optional\n\nclass ProductCreate(BaseModel):\n    name: str = Field(..., min_length=1, max_length=100)\n    price: float = Field(..., gt=0, le=100000)\n    stock: int = Field(default=0, ge=0)\n    description: Optional[str] = Field(None, max_length=500)\n    image: Optional[str] = None\n\nclass ProductResponse(ProductCreate):\n    id: int\n\n    model_config = ConfigDict(from_attributes=True)',
+              verification: 'Pydantic 模式包含 Field 约束和 ConfigDict 配置',
+              filePath: 'app/schemas/product.py',
+              projectFiles: {
+                'app/schemas/product.py': '',
+                'app/schemas/order.py': '',
+                'app/schemas/cart.py': '',
+                'app/schemas/user.py': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'py-14',
+                'py-15'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'ConfigDict',
+                  explanation: 'Pydantic V2 用 ConfigDict 替代 class Config'
+                },
+                {
+                  pattern: 'from_attributes',
+                  explanation: 'from_attributes=True 允许从 ORM 模型创建 Pydantic 实例'
+                }
+              ],
+              variations: [
+                {
+                  name: 'marshmallow',
+                  description: 'Flask 生态的序列化库，功能类似 Pydantic'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加商品批量创建端点接收数组',
+                  target: '掌握列表校验'
+                }
+              ],
+            },
+            {
+              id: 'py-19',
+              number: 19,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '测试',
+              title: 'API 集成测试',
+              concept: 'pytest + httpx',
+              difficulty: 'hard',
+              task: '为商品/用户/购物车/订单 API 编写 pytest 集成测试，使用 httpx 的 AsyncClient',
+              prerequisites: '<h4>📚 pytest + FastAPI 测试</h4><p>FastAPI 提供 <code>TestClient</code> 基于 httpx，支持同步和异步测试。<code>fixture</code> 管理测试数据库和测试数据。</p>',
+              conceptDetail: 'FastAPI 的 TestClient 基于 httpx，使用 pytest fixture 管理测试数据库。依赖覆盖替换数据库连接为测试库。',
+              contextCode: '',
+              hints: [
+                'from fastapi.testclient import TestClient',
+                '用 fixture 创建测试数据库（SQLite 内存模式）',
+                '测试每个 API 的正常流程和异常流程'
+              ],
+              code: 'import pytest\nfrom fastapi.testclient import TestClient\nfrom main import app\n\nclient = TestClient(app)\n\ndef test_create_product():\n    response = client.post("/api/products", json={\n        "name": "测试商品",\n        "price": 99.9,\n        "stock": 100\n    })\n    assert response.status_code == 200\n    data = response.json()\n    assert data["name"] == "测试商品"\n\ndef test_get_products():\n    response = client.get("/api/products")\n    assert response.status_code == 200\n    assert isinstance(response.json(), list)\n\ndef test_product_not_found():\n    response = client.get("/api/products/9999")\n    assert response.status_code == 404',
+              verification: '包含商品创建/列表/不存在的测试用例，使用 TestClient 和 pytest',
+              filePath: 'tests/test_api.py',
+              projectFiles: {
+                'tests/test_api.py': '',
+                'tests/__init__.py': '',
+                'tests/conftest.py': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'py-18'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'TestClient',
+                  explanation: 'TestClient(app) 传入 FastAPI 应用实例'
+                },
+                {
+                  pattern: 'status_code',
+                  explanation: '测试响应状态码用 response.status_code 获取'
+                }
+              ],
+              variations: [
+                {
+                  name: 'unittest',
+                  description: 'Python 标准库测试框架'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加鉴权测试（需要 Token 的端点）',
+                  target: '掌握认证测试技巧'
+                }
+              ],
+            },
+            {
+              id: 'py-20',
+              number: 20,
+              type: 'project',
+              project: 'ecommerce',
+              projectModule: '部署配置',
+              title: '项目整合与部署配置',
+              concept: '项目部署',
+              difficulty: 'medium',
+              task: '整合所有模块，配置 CORS 中间件、环境变量管理、数据库迁移脚本，准备部署',
+              prerequisites: '<h4>📚 FastAPI 部署</h4><p>生产部署需要配置 CORS（跨域）、环境变量管理、数据库迁移。<code>uvicorn</code> 作为 ASGI 服务器运行应用。</p>',
+              conceptDetail: 'CORS 跨域配置通过 add_middleware 注册。python-dotenv 管理环境变量。Alembic 管理数据库迁移脚本。',
+              contextCode: '',
+              hints: [
+                'CORSMiddleware 配置 allow_origins=["http://localhost:5173"]',
+                'python-dotenv 加载 .env 文件',
+                'alembic init alembic 初始化迁移环境'
+              ],
+              code: 'from fastapi.middleware.cors import CORSMiddleware\n\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=["http://localhost:5173"],\n    allow_credentials=True,\n    allow_methods=["*"],\n    allow_headers=["*"],\n)\n\n# 启动命令：uvicorn app.main:app --host 0.0.0.0 --port 8000',
+              verification: '配置了 CORS 中间件和环境变量管理，启动脚本正确',
+              filePath: 'app/main.py',
+              projectFiles: {
+                '.env.example': '# DATABASE_URL=sqlite:///./ecommerce.db\n# SECRET_KEY=your-secret-key',
+                Dockerfile: 'FROM python:3.11\nWORKDIR /app\nCOPY . .\nRUN pip install -r requirements.txt\nCMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'py-13',
+                'py-14',
+                'py-15',
+                'py-18'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'Docker Compose',
+                  description: '用 docker-compose 编排前后端+数据库'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '配置 GitHub Actions 自动测试和部署',
+                  target: '掌握 CI/CD 流程'
+                }
+              ],
+            }
+    ]
+  }
 ]

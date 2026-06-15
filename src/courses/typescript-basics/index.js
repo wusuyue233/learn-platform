@@ -10,6 +10,7 @@ export default {
   category: 'language',
   tags: ['TypeScript', '类型系统', '前端'],
   prerequisites: [],
+  project: 'type-tools',
   phases,
   verify
 }

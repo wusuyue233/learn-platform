@@ -1893,4 +1893,415 @@ users.forEach(user => {
       }
     ]
   }
+,
+{
+    id: 'blog-project',
+    name: '阶段五：博客项目实战',
+    description: '综合运用 JavaScript 技能，从零搭建纯前端博客应用',
+    levels: [
+            {
+              id: 'js-16',
+              number: 16,
+              type: 'project',
+              project: 'blog',
+              projectModule: '项目搭建',
+              title: '博客项目结构',
+              concept: 'HTML/CSS/JS 项目组织',
+              difficulty: 'easy',
+              task: '搭建博客项目结构：index.html（入口）、styles/（样式）、js/（模块）、articles/（文章数据）',
+              prerequisites: '<h4>📚 纯前端项目结构</h4><p>模块化 JS 用 <code>&lt;script type="module"&gt;</code> 引入，CSS 按组件拆分文件。</p>',
+              conceptDetail: 'ES Module 使用 import/export 语法。type="module" 启用模块模式。DOMContentLoaded 事件确保 DOM 就绪。',
+              contextCode: '',
+              hints: [
+                'index.html 引入 <script type="module" src="js/app.js">',
+                'js/ 目录下创建 components/ 和 utils/ 子目录',
+                'articles.js 定义博客文章数据数组'
+              ],
+              code: '<!DOCTYPE html>\n<html lang="zh-CN">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>我的博客</title>\n  <link rel="stylesheet" href="styles/main.css">\n</head>\n<body>\n  <header id="header"></header>\n  <main id="content"></main>\n  <footer id="footer"></footer>\n  <script type="module" src="js/app.js"></script>\n</body>\n</html>',
+              verification: '项目结构清晰，使用 ES Module 组织 JS 代码',
+              filePath: 'index.html',
+              projectFiles: {
+                'index.html': '',
+                'styles/main.css': '',
+                'js/app.js': '',
+                'js/components/header.js': '',
+                'js/components/footer.js': '',
+                'js/data/articles.js': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'SPA 框架',
+                  description: 'Vue/React 更适合大型博客'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 RSS Feed 支持',
+                  target: '了解博客生态标准'
+                }
+              ],
+            },
+            {
+              id: 'js-17',
+              number: 17,
+              type: 'project',
+              project: 'blog',
+              projectModule: '文章渲染',
+              title: '文章列表渲染',
+              concept: 'DOM 操作',
+              difficulty: 'medium',
+              task: '从数据数组渲染文章列表：标题、摘要、日期、标签，支持点击进入详情',
+              prerequisites: '<h4>📚 DOM 创建元素</h4><p><code>document.createElement()</code> 创建元素，<code>element.textContent</code> 设置文本，<code>element.addEventListener()</code> 绑定事件。</p>',
+              conceptDetail: 'createElement 创建新元素。appendChild 添加子节点。textContent 比 innerHTML 更安全。事件委托利用事件冒泡。',
+              contextCode: '',
+              hints: [
+                'articles.map(a => createArticleCard(a)) 生成卡片数组',
+                'forEach(card => container.appendChild(card)) 添加到容器',
+                '点击卡片用 location.hash = "#/article/"+id 实现路由'
+              ],
+              code: 'import { articles } from \'../data/articles.js\'\n\nexport function renderArticleList(container) {\n  container.innerHTML = \'\'\n  articles.forEach(article => {\n    const card = document.createElement(\'article\')\n    card.className = \'article-card\'\n    card.innerHTML = `\n      <h2>${article.title}</h2>\n      <p class="meta">${article.date} · ${article.tags.join(\', \')}</p>\n      <p>${article.summary}</p>\n    `\n    card.addEventListener(\'click\', () => {\n      window.location.hash = `#/article/${article.id}`\n    })\n    container.appendChild(card)\n  })\n}',
+              verification: '从数据数组渲染文章列表，点击跳转详情页',
+              filePath: 'js/components/articleList.js',
+              projectFiles: {
+                'js/components/articleList.js': '',
+                'js/components/articleDetail.js': '',
+                'js/data/articles.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-16'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'innerHTML',
+                  explanation: '使用 innerHTML 赋值用户输入有 XSS 风险'
+                },
+                {
+                  pattern: 'addEventListener',
+                  explanation: '每个事件绑定都需要独立的 addEventListener 调用'
+                }
+              ],
+              variations: [
+                {
+                  name: '模板引擎',
+                  description: 'Handlebars/Mustache 模板渲染'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加文章分类筛选功能',
+                  target: '掌握数组过滤方法'
+                }
+              ],
+            },
+            {
+              id: 'js-18',
+              number: 18,
+              type: 'project',
+              project: 'blog',
+              projectModule: '文章详情',
+              title: '文章详情与路由',
+              concept: 'Hash 路由',
+              difficulty: 'medium',
+              task: '实现 Hash 路由：文章列表页和详情页切换，URL 变化时渲染对应内容',
+              prerequisites: '<h4>📚 Hash 路由原理</h4><p><code>window.location.hash</code> 获取 URL 中 # 后面的部分。<code>hashchange</code> 事件监听 hash 变化。</p>',
+              conceptDetail: 'Hash 路由使用 hashchange 事件监听 URL 变化。location.hash 获取当前路由。SPA 路由不刷新切换内容。',
+              contextCode: '',
+              hints: [
+                'window.addEventListener("hashchange", router)',
+                'parseHash() 解析 hash 为路由对象 { page, id }',
+                '根据路由调用不同渲染函数'
+              ],
+              code: 'function parseHash() {\n  const hash = window.location.hash.slice(1) || \'/\'\n  const parts = hash.split(\'/\')\n  if (parts[1] === \'article\') {\n    return { page: \'detail\', id: parts[2] }\n  }\n  return { page: \'list\' }\n}\n\nfunction router() {\n  const route = parseHash()\n  const container = document.getElementById(\'content\')\n\n  if (route.page === \'detail\') {\n    renderArticleDetail(container, route.id)\n  } else {\n    renderArticleList(container)\n  }\n}\n\nwindow.addEventListener(\'hashchange\', router)\nwindow.addEventListener(\'DOMContentLoaded\', router)',
+              verification: 'Hash 路由监听 hashchange 事件，根据路由渲染不同页面',
+              filePath: 'js/router.js',
+              projectFiles: {
+                'js/router.js': '',
+                'js/app.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'location.hash',
+                  explanation: 'location.hash 包含 # 前缀，需要用 slice(1) 移除'
+                },
+                {
+                  pattern: 'hashchange',
+                  explanation: '页面首次加载不会触发 hashchange，需要手动调用一次'
+                }
+              ],
+              variations: [
+                {
+                  name: 'History API',
+                  description: 'pushState/replaceState 实现无 # 路由'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 404 页面',
+                  target: '掌握路由兜底策略'
+                }
+              ],
+            },
+            {
+              id: 'js-19',
+              number: 19,
+              type: 'project',
+              project: 'blog',
+              projectModule: '数据持久化',
+              title: 'localStorage 评论系统',
+              concept: 'localStorage API',
+              difficulty: 'medium',
+              task: '实现文章评论功能：用 localStorage 存储评论数据，支持添加和删除评论',
+              prerequisites: '<h4>📚 localStorage 基础</h4><p><code>localStorage.setItem(key, value)</code> 存储，<code>getItem(key)</code> 读取，<code>removeItem(key)</code> 删除。值必须是字符串。</p>',
+              conceptDetail: 'localStorage 键值对存储，同源共享。JSON.stringify/parse 对象序列化/反序列化。storage 事件监听其他标签页的变化。',
+              contextCode: '',
+              hints: [
+                'key: "comments_"+articleId 区分不同文章的评论',
+                '评论对象包含 id, author, text, date',
+                '删除用 filter 过滤后重新保存'
+              ],
+              code: 'const STORAGE_PREFIX = \'blog_comments_\'\n\nexport function getComments(articleId) {\n  try {\n    const data = localStorage.getItem(STORAGE_PREFIX + articleId)\n    return data ? JSON.parse(data) : []\n  } catch {\n    return []\n  }\n}\n\nexport function addComment(articleId, author, text) {\n  const comments = getComments(articleId)\n  comments.push({\n    id: Date.now(),\n    author,\n    text,\n    date: new Date().toISOString()\n  })\n  localStorage.setItem(STORAGE_PREFIX + articleId, JSON.stringify(comments))\n  return comments\n}\n\nexport function deleteComment(articleId, commentId) {\n  const comments = getComments(articleId)\n    .filter(c => c.id !== commentId)\n  localStorage.setItem(STORAGE_PREFIX + articleId, JSON.stringify(comments))\n  return comments\n}',
+              verification: 'localStorage 存储评论数据，支持添加和删除',
+              filePath: 'js/utils/storage.js',
+              projectFiles: {
+                'js/utils/storage.js': '',
+                'js/components/commentSection.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-18'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'JSON.stringify',
+                  explanation: 'localStorage 只能存字符串，对象需要 JSON.stringify'
+                },
+                {
+                  pattern: 'try/catch',
+                  explanation: 'localStorage 可能被用户禁用或存储满，需要 try/catch'
+                }
+              ],
+              variations: [
+                {
+                  name: 'IndexedDB',
+                  description: '存储容量更大，支持索引查询'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加评论分页加载',
+                  target: '掌握数据分页模式'
+                }
+              ],
+            },
+            {
+              id: 'js-20',
+              number: 20,
+              type: 'project',
+              project: 'blog',
+              projectModule: '主题切换',
+              title: '深色模式与主题切换',
+              concept: 'CSS 变量 + 类切换',
+              difficulty: 'easy',
+              task: '实现深色/浅色主题切换：CSS 变量定义主题色，JS 切换 body class，localStorage 保存偏好',
+              prerequisites: '<h4>📚 CSS 变量</h4><p><code>--variable-name</code> 定义 CSS 变量，<code>var(--variable-name)</code> 引用。<code>prefers-color-scheme</code> 检测系统主题。</p>',
+              conceptDetail: 'CSS 变量通过 var() 引用。prefers-color-scheme 媒体查询检测系统主题。body 的 data-theme 属性控制主题。',
+              contextCode: '',
+              hints: [
+                'CSS 变量在 :root 和 [data-theme="dark"] 中定义',
+                '切换 body.dataset.theme = "light"|"dark"',
+                'localStorage 保存主题偏好'
+              ],
+              code: ':root {\n  --bg: #ffffff;\n  --text: #1e293b;\n  --card: #f8fafc;\n  --border: #e2e8f0;\n  --primary: #6366f1;\n}\n\n[data-theme="dark"] {\n  --bg: #0f172a;\n  --text: #e2e8f0;\n  --card: #1e293b;\n  --border: #334155;\n  --primary: #818cf8;\n}\n\nbody {\n  background: var(--bg);\n  color: var(--text);\n  transition: background 0.3s, color 0.3s;\n}',
+              verification: 'CSS 变量定义两套主题，JS 切换 body data-theme 属性，偏好持久化',
+              filePath: 'styles/main.css',
+              projectFiles: {
+                'styles/main.css': '',
+                'js/components/themeToggle.js': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [
+                'js-16'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'var(--bg)',
+                  explanation: 'CSS 变量用 var() 引用，需确保变量已定义'
+                },
+                {
+                  pattern: 'prefers-color-scheme',
+                  explanation: '优先用系统偏好，用户手动切换后覆盖'
+                }
+              ],
+              variations: [
+                {
+                  name: 'CSS 自定义属性',
+                  description: '@property 注册类型化的 CSS 变量'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加主题过渡动画',
+                  target: '掌握 CSS transition 动画'
+                }
+              ],
+            },
+            {
+              id: 'js-21',
+              number: 21,
+              type: 'project',
+              project: 'blog',
+              projectModule: '状态管理',
+              title: '状态管理与搜索',
+              concept: '观察者模式',
+              difficulty: 'medium',
+              task: '实现简单的状态管理（发布-订阅模式），基于状态实现文章搜索功能',
+              prerequisites: '<h4>📚 发布-订阅模式</h4><p>Store 维护状态，组件订阅状态变化，通过 dispatch 更新状态触发所有订阅回调。</p>',
+              conceptDetail: '观察者模式一对多依赖。subscribe 注册回调返回取消函数。notify 遍历执行所有监听回调。',
+              contextCode: '',
+              hints: [
+                'createStore(initialState) 返回 { getState, dispatch, subscribe }',
+                '搜索时 dispatch({ type: "SEARCH", keyword })',
+                '列表组件 subscribe 并在回调中重新渲染'
+              ],
+              code: 'export function createStore(reducer, initialState) {\n  let state = initialState\n  const listeners = []\n\n  return {\n    getState() { return state },\n    dispatch(action) {\n      state = reducer(state, action)\n      listeners.forEach(fn => fn())\n    },\n    subscribe(fn) {\n      listeners.push(fn)\n      return () => {\n        const idx = listeners.indexOf(fn)\n        if (idx !== -1) listeners.splice(idx, 1)\n      }\n    }\n  }\n}\n\nfunction searchReducer(state, action) {\n  switch (action.type) {\n    case \'SEARCH\':\n      return { ...state, keyword: action.payload }\n    default:\n      return state\n  }\n}\nconst store = createStore(searchReducer, { keyword: \'\' })',
+              verification: '实现发布-订阅 Store，基于关键词过滤文章',
+              filePath: 'js/utils/store.js',
+              projectFiles: {
+                'js/utils/store.js': '',
+                'js/components/searchBar.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-18'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'subscribe',
+                  explanation: 'subscribe 返回取消函数，组件销毁时执行防止内存泄漏'
+                },
+                {
+                  pattern: 'reducer',
+                  explanation: 'reducer 是纯函数，不能修改原 state，要返回新对象'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Redux',
+                  description: '工业级状态管理库，中间件支持异步'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加文章标签筛选与搜索组合过滤',
+                  target: '掌握多条件筛选模式'
+                }
+              ],
+            },
+            {
+              id: 'js-22',
+              number: 22,
+              type: 'project',
+              project: 'blog',
+              projectModule: '性能优化',
+              title: '性能优化与加载体验',
+              concept: '懒加载 + 骨架屏',
+              difficulty: 'medium',
+              task: '实现图片懒加载（IntersectionObserver）和文章列表骨架屏加载状态',
+              prerequisites: '<h4>📚 IntersectionObserver</h4><p>观察元素是否进入可视区域。<code>new IntersectionObserver(callback, options)</code> 创建，<code>observe()</code> 开始观察。</p>',
+              conceptDetail: 'IntersectionObserver 异步观察元素可见性。骨架屏用灰色占位块模拟加载。data-src 存储真实图片 URL。',
+              contextCode: '',
+              hints: [
+                'img 标签用 data-src 存真实 URL',
+                'observer 回调中 entry.isIntersecting 判断是否可见',
+                '可见时将 data-src 赋给 src 并取消观察'
+              ],
+              code: 'export function lazyLoadImages(container) {\n  const images = container.querySelectorAll(\'img[data-src]\')\n  if (!images.length) return\n\n  const observer = new IntersectionObserver((entries) => {\n    entries.forEach(entry => {\n      if (entry.isIntersecting) {\n        const img = entry.target\n        img.src = img.dataset.src\n        img.removeAttribute(\'data-src\')\n        observer.unobserve(img)\n      }\n    })\n  }, { rootMargin: \'200px\' })\n\n  images.forEach(img => observer.observe(img))\n  return () => observer.disconnect()\n}',
+              verification: '使用 IntersectionObserver 实现图片懒加载',
+              filePath: 'js/utils/lazyLoad.js',
+              projectFiles: {
+                'js/utils/lazyLoad.js': '',
+                'js/components/skeleton.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-17'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'IntersectionObserver',
+                  explanation: '浏览器兼容性检查，旧浏览器需要 polyfill'
+                },
+                {
+                  pattern: 'rootMargin',
+                  explanation: 'rootMargin 提前加载阈值，设为 200px 提前加载避免闪烁'
+                }
+              ],
+              variations: [
+                {
+                  name: 'loading="lazy"',
+                  description: '原生 img 懒加载属性，更简单'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '实现虚拟列表优化大量文章渲染',
+                  target: '掌握长列表性能优化'
+                }
+              ],
+            },
+            {
+              id: 'js-23',
+              number: 23,
+              type: 'project',
+              project: 'blog',
+              projectModule: '项目整合',
+              title: '项目整合与发布',
+              concept: '构建发布流程',
+              difficulty: 'medium',
+              task: '整合所有功能：文章列表/详情/搜索/评论/主题切换，配置构建和发布',
+              prerequisites: '<h4>📚 纯前端部署</h4><p>纯静态站点可直接部署到 GitHub Pages 或 Vercel。</p>',
+              conceptDetail: 'Vite 适合现代 JS 项目构建。GitHub Pages 静态站点托管。',
+              contextCode: '',
+              hints: [
+                'vite.config.js 配置 base 为仓库名',
+                'npm run build 输出到 dist/',
+                'dist/ 目录部署到 GitHub Pages'
+              ],
+              code: '// vite.config.js\nimport { defineConfig } from \'vite\'\n\nexport default defineConfig({\n  base: \'/blog/\',\n  build: {\n    outDir: \'dist\',\n    assetsDir: \'assets\'\n  }\n})',
+              verification: '所有功能整合，Vite 构建配置正确',
+              filePath: 'vite.config.js',
+              projectFiles: {
+                'vite.config.js': '',
+                'js/app.js': '',
+                'package.json': '{"name":"blog","scripts":{"dev":"vite","build":"vite build","preview":"vite preview"}}'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'js-21',
+                'js-22'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'SSG',
+                  description: 'Astro/Next.js 静态生成更快的博客'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 RSS 订阅和 SEO 优化',
+                  target: '了解前端 SEO 基础'
+                }
+              ],
+            }
+    ]
+  }
 ]

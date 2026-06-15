@@ -3489,4 +3489,415 @@ export default ChatRoom`,
       }
     ]
   }
+,
+{
+    id: 'chat-app',
+    name: '阶段五：聊天室项目实战',
+    description: '综合运用 React 技能，从零搭建实时聊天室前端应用',
+    levels: [
+            {
+              id: 'react-21',
+              number: 21,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '项目搭建',
+              title: '聊天室项目初始化',
+              concept: 'Vite + React 项目结构',
+              difficulty: 'easy',
+              task: '用 Vite 创建 React 聊天室项目，安装依赖，配置路由和样式方案',
+              prerequisites: '<h4>📚 Vite + React 项目</h4><p>Vite 创建 React 项目后，src/ 目录包含组件、样式和入口文件。</p>',
+              conceptDetail: 'Vite 创建 React 项目支持 JSX 语法。react-router-dom 管理页面路由。CSS Modules 提供样式隔离方案。',
+              contextCode: '',
+              hints: [
+                'npm create vite@latest chat-app -- --template react',
+                '安装 react-router-dom@6',
+                'src/ 目录下创建 components/ 和 pages/ 子目录'
+              ],
+              code: 'import { createBrowserRouter, RouterProvider } from \'react-router-dom\'\nimport ChatRoom from \'./pages/ChatRoom\'\nimport Login from \'./pages/Login\'\n\nconst router = createBrowserRouter([\n  { path: \'/\', element: <Login /> },\n  { path: \'/chat\', element: <ChatRoom /> }\n])\n\nfunction App() {\n  return <RouterProvider router={router} />\n}\n\nexport default App',
+              verification: '使用 Vite 创建项目，配置 react-router-dom 路由',
+              filePath: 'src/App.jsx',
+              projectFiles: {
+                'vite.config.js': '',
+                'src/App.jsx': '',
+                'src/main.jsx': ''
+              },
+              cognitiveLoad: 'low',
+              dependsOn: [],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: 'Next.js',
+                  description: 'Next.js 提供文件系统路由'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加 404 页面和路由守卫',
+                  target: '掌握路由进阶用法'
+                }
+              ],
+            },
+            {
+              id: 'react-22',
+              number: 22,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '组件设计',
+              title: '聊天室组件树',
+              concept: '组件拆分',
+              difficulty: 'medium',
+              task: '设计聊天室组件树：ChatRoom（容器）、MessageList（消息列表）、MessageItem（单条消息）、ChatInput（输入框）、UserList（在线用户）',
+              prerequisites: '<h4>📚 组件设计原则</h4><p>单一职责原则：每个组件只做一件事。容器组件负责数据，展示组件负责渲染。<code>props</code> 父子组件通信。</p>',
+              conceptDetail: 'React 组件分为容器组件（负责数据获取）和展示组件（仅根据 props 渲染）。组合模式用 children 实现灵活布局。',
+              contextCode: '',
+              hints: [
+                'ChatRoom 管理消息和用户状态',
+                'MessageList 接收 messages 数组 prop',
+                'ChatInput 通过 onChange 回调传递消息内容'
+              ],
+              code: 'function ChatInput({ onSend }) {\n  const [text, setText] = useState(\'\')\n\n  function handleSubmit(e) {\n    e.preventDefault()\n    if (text.trim()) {\n      onSend(text)\n      setText(\'\')\n    }\n  }\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input value={text} onChange={e => setText(e.target.value)} />\n      <button type="submit">发送</button>\n    </form>\n  )\n}',
+              verification: '组件树结构合理，ChatRoom/MessageList/MessageItem/ChatInput/UserList 组件分离',
+              filePath: 'src/components/ChatInput.jsx',
+              projectFiles: {
+                'src/components/ChatRoom.jsx': '',
+                'src/components/MessageList.jsx': '',
+                'src/components/MessageItem.jsx': '',
+                'src/components/ChatInput.jsx': '',
+                'src/components/UserList.jsx': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'react-21'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'props',
+                  explanation: '组件接收的 props 是只读的，不能直接修改'
+                },
+                {
+                  pattern: 'useState',
+                  explanation: 'useState 返回 [值, 设置函数] 数组'
+                }
+              ],
+              variations: [
+                {
+                  name: '组件库',
+                  description: 'Ant Design 提供现成的聊天 UI 组件'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加消息类型（文本/图片/文件）支持',
+                  target: '掌握条件渲染'
+                }
+              ],
+            },
+            {
+              id: 'react-23',
+              number: 23,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '状态管理',
+              title: 'useReducer 消息管理',
+              concept: 'useReducer',
+              difficulty: 'medium',
+              task: '用 useReducer 替代 useState 管理消息状态，定义 ADD_MESSAGE/SET_MESSAGES/DELETE_MESSAGE 操作类型',
+              prerequisites: '<h4>📚 useReducer vs useState</h4><p>当状态逻辑复杂（多种更新类型、依赖关系）时，useReducer 比 useState 更合适。<code>reducer</code> 是纯函数，接收 (state, action) 返回 newState。</p>',
+              conceptDetail: 'useReducer 接收 reducer 函数和初始状态。action 是包含 type 和 payload 的对象。dispatch 发送 action 触发状态更新。Reducer 必须是纯函数。',
+              contextCode: '',
+              hints: [
+                'reducer 函数 switch(action.type) 处理不同操作',
+                '消息对象包含 id, userId, text, timestamp',
+                'dispatch({ type: "ADD_MESSAGE", payload: msg })'
+              ],
+              code: 'const initialState = { messages: [] }\n\nfunction messageReducer(state, action) {\n  switch (action.type) {\n    case \'ADD_MESSAGE\':\n      return { messages: [...state.messages, action.payload] }\n    case \'SET_MESSAGES\':\n      return { messages: action.payload }\n    case \'DELETE_MESSAGE\':\n      return {\n        messages: state.messages.filter(m => m.id !== action.payload)\n      }\n    default:\n      return state\n  }\n}\n\nconst [state, dispatch] = useReducer(messageReducer, initialState)',
+              verification: '使用 useReducer 管理消息状态，定义了 ADD/SET/DELETE 三种操作',
+              filePath: 'src/hooks/useMessageReducer.js',
+              projectFiles: {
+                'src/hooks/useMessageReducer.js': '',
+                'src/hooks/useChat.js': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'react-22'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'action.type',
+                  explanation: '每个 action 必须有 type 字段'
+                },
+                {
+                  pattern: '...state',
+                  explanation: 'reducer 返回新对象，不要直接修改 state'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Zustand',
+                  description: '轻量状态管理库，比 Redux 更简洁'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加消息编辑功能（UPDATE_MESSAGE action）',
+                  target: '掌握 reducer 模式扩展'
+                }
+              ],
+            },
+            {
+              id: 'react-24',
+              number: 24,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '消息组件',
+              title: '消息列表与自动滚动',
+              concept: 'useRef + useEffect',
+              difficulty: 'medium',
+              task: '实现消息列表组件，新消息自动滚动到底部，使用 useRef 获取 DOM 引用',
+              prerequisites: '<h4>📚 useRef 和 DOM 操作</h4><p><code>useRef</code> 创建可变的引用对象，<code>.current</code> 访问 DOM 节点。配合 <code>useEffect</code> 在渲染后操作 DOM。</p>',
+              conceptDetail: 'useRef 用于访问 DOM 节点。useEffect 在渲染后执行副作用。scrollIntoView 滚动到可视区域。IntersectionObserver 可实现虚拟列表优化。',
+              contextCode: '',
+              hints: [
+                'const bottomRef = useRef(null) 创建 ref',
+                'useEffect(() => { bottomRef.current?.scrollIntoView() }, [messages])',
+                'messages 变化时自动滚到底部'
+              ],
+              code: 'import { useRef, useEffect } from \'react\'\n\nfunction MessageList({ messages }) {\n  const bottomRef = useRef(null)\n\n  useEffect(() => {\n    bottomRef.current?.scrollIntoView({ behavior: \'smooth\' })\n  }, [messages])\n\n  return (\n    <div className="message-list">\n      {messages.map(msg => (\n        <MessageItem key={msg.id} message={msg} />\n      ))}\n      <div ref={bottomRef} />\n    </div>\n  )\n}',
+              verification: 'MessageList 使用 useRef + useEffect 实现自动滚动到底部',
+              filePath: 'src/components/MessageList.jsx',
+              projectFiles: {
+                'src/components/MessageList.jsx': '',
+                'src/components/MessageItem.jsx': '',
+                'src/styles/chat.css': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'react-23'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'useRef(null)',
+                  explanation: 'useRef 初始值传 null，DOM ref 在挂载后设置'
+                },
+                {
+                  pattern: 'scrollIntoView',
+                  explanation: 'scrollIntoView 是 DOM 方法，需要在 ref.current 上调用'
+                }
+              ],
+              variations: [
+                {
+                  name: '虚拟列表',
+                  description: 'react-window 处理大量消息滚动性能'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加消息加载更多（分页加载历史消息）',
+                  target: '掌握无限滚动模式'
+                }
+              ],
+            },
+            {
+              id: 'react-25',
+              number: 25,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: 'WebSocket',
+              title: 'WebSocket 连接管理',
+              concept: '自定义 Hook',
+              difficulty: 'hard',
+              task: '封装 useWebSocket 自定义 Hook，管理 WebSocket 连接生命周期，处理重连和心跳',
+              prerequisites: '<h4>📚 WebSocket 基础</h4><p>WebSocket 是全双工通信协议。<code>new WebSocket(url)</code> 创建连接，<code>onmessage</code> 接收消息，<code>send()</code> 发送消息。</p>',
+              conceptDetail: '自定义 Hook 以 use 开头命名，内部可调用其他 Hook。WebSocket 连接有 onopen/onmessage/onclose/onerror 事件。心跳机制用 setInterval 定期发送 ping。',
+              contextCode: '',
+              hints: [
+                'useEffect 中创建连接，return 清理函数关闭连接',
+                'onopen 时开始心跳，onclose 时实现自动重连',
+                '接收消息 JSON.parse 后通过回调传给父组件'
+              ],
+              code: 'import { useEffect, useRef, useCallback } from \'react\'\n\nfunction useWebSocket(url, onMessage) {\n  const ws = useRef(null)\n  const reconnectTimer = useRef(null)\n\n  function connect() {\n    ws.current = new WebSocket(url)\n    ws.current.onmessage = (e) => {\n      const data = JSON.parse(e.data)\n      onMessage(data)\n    }\n    ws.current.onclose = () => {\n      reconnectTimer.current = setTimeout(connect, 3000)\n    }\n  }\n\n  useEffect(() => {\n    connect()\n    return () => {\n      ws.current?.close()\n      clearTimeout(reconnectTimer.current)\n    }\n  }, [url])\n\n  const send = useCallback((data) => {\n    ws.current?.send(JSON.stringify(data))\n  }, [])\n\n  return { send }\n}',
+              verification: 'useWebSocket 管理连接/重连/清理生命周期，返回 send 方法',
+              filePath: 'src/hooks/useWebSocket.js',
+              projectFiles: {
+                'src/hooks/useWebSocket.js': '',
+                'src/hooks/useChat.js': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'react-23'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'new WebSocket',
+                  explanation: 'WebSocket 构造函数接收完整 URL（ws:// 或 wss://）'
+                },
+                {
+                  pattern: 'useEffect cleanup',
+                  explanation: 'useEffect 返回的清理函数在组件卸载时执行'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Socket.IO',
+                  description: '提供了自动重连和房间管理的封装'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加连接状态显示（连接中/已连接/断开）',
+                  target: '掌握 UI 与状态同步'
+                }
+              ],
+            },
+            {
+              id: 'react-26',
+              number: 26,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '用户管理',
+              title: '用户登录与在线状态',
+              concept: 'Context API',
+              difficulty: 'medium',
+              task: '实现用户登录页面，用 Context API 管理全局用户状态，显示在线用户列表',
+              prerequisites: '<h4>📚 Context API</h4><p>Context 提供跨组件传递数据的方式，避免 props drilling。<code>createContext</code> 创建上下文，<code>useContext</code> 消费上下文。</p>',
+              conceptDetail: 'createContext 创建全局上下文。Context.Provider 提供数据到组件树。useContext 读取上下文的值。localStorage 持久化用户登录信息。',
+              contextCode: '',
+              hints: [
+                'const UserContext = createContext(null)',
+                'UserProvider 组件包裹 App，管理 user 状态',
+                'localStorage 保存 token，页面刷新后自动恢复登录'
+              ],
+              code: 'import { createContext, useContext, useState } from \'react\'\n\nconst UserContext = createContext(null)\n\nexport function UserProvider({ children }) {\n  const [user, setUser] = useState(() => {\n    const saved = localStorage.getItem(\'user\')\n    return saved ? JSON.parse(saved) : null\n  })\n\n  function login(userData) {\n    setUser(userData)\n    localStorage.setItem(\'user\', JSON.stringify(userData))\n  }\n\n  function logout() {\n    setUser(null)\n    localStorage.removeItem(\'user\')\n  }\n\n  return (\n    <UserContext.Provider value={{ user, login, logout }}>\n      {children}\n    </UserContext.Provider>\n  )\n}\n\nexport function useUser() {\n  return useContext(UserContext)\n}',
+              verification: 'Context Provider 管理全局用户状态，包含 login/logout 和 localStorage 持久化',
+              filePath: 'src/contexts/UserContext.jsx',
+              projectFiles: {
+                'src/contexts/UserContext.jsx': '',
+                'src/pages/Login.jsx': '',
+                'src/pages/ChatRoom.jsx': ''
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'react-24',
+                'react-25'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'createContext',
+                  explanation: 'createContext 的参数是默认值，Provider 不包裹时使用'
+                },
+                {
+                  pattern: 'useContext',
+                  explanation: 'useContext 必须在 Provider 的子树中调用'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Zustand',
+                  description: '比 Context 性能更好的全局状态方案'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加用户头像和在线状态指示器',
+                  target: '掌握派生状态计算'
+                }
+              ],
+            },
+            {
+              id: 'react-27',
+              number: 27,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '项目整合',
+              title: '聊天室项目整合',
+              concept: '组件集成',
+              difficulty: 'hard',
+              task: '将所有功能整合到 ChatRoom 页面：WebSocket 消息收发、消息列表、输入框、在线用户列表',
+              prerequisites: '<h4>📚 组件集成策略</h4><p>整合多个模块时，注意数据流方向：状态放顶层容器，通过 props 和回调向下传递。</p>',
+              conceptDetail: '数据流从父到子通过 props，子到父通过回调。状态提升将共享状态放到共同父组件。React 推荐组合而非继承。',
+              contextCode: '',
+              hints: [
+                'ChatRoom 是状态管理中心',
+                'useWebSocket 接收消息后 dispatch 到 reducer',
+                'ChatInput 调用 useWebSocket.send 发送消息'
+              ],
+              code: 'function ChatRoom() {\n  const { user } = useUser()\n  const [state, dispatch] = useReducer(messageReducer, initialState)\n\n  const { send } = useWebSocket(\'ws://localhost:3000/ws\', (data) => {\n    if (data.type === \'message\') {\n      dispatch({ type: \'ADD_MESSAGE\', payload: data.payload })\n    }\n  })\n\n  function handleSend(text) {\n    send({ type: \'message\', payload: { userId: user.id, text } })\n  }\n\n  return (\n    <div className="chat-layout">\n      <UserList users={onlineUsers} />\n      <div className="chat-main">\n        <MessageList messages={state.messages} />\n        <ChatInput onSend={handleSend} />\n      </div>\n    </div>\n  )\n}',
+              verification: 'ChatRoom 整合 useReducer/useWebSocket/useUser，功能完整可运行',
+              filePath: 'src/components/ChatRoom.jsx',
+              projectFiles: {
+                'src/components/ChatRoom.jsx': '',
+                'src/styles/chat.css': ''
+              },
+              cognitiveLoad: 'high',
+              dependsOn: [
+                'react-26'
+              ],
+              commonMistakes: [],
+              variations: [
+                {
+                  name: '状态管理升级',
+                  description: '用 Zustand 替代 useReducer + Context'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '添加表情选择器和消息撤回功能',
+                  target: '掌握功能扩展流程'
+                }
+              ],
+            },
+            {
+              id: 'react-28',
+              number: 28,
+              type: 'project',
+              project: 'chat-app',
+              projectModule: '部署',
+              title: '构建与部署配置',
+              concept: '项目构建',
+              difficulty: 'medium',
+              task: '配置构建脚本，优化打包，配置 API 代理和 WebSocket 代理',
+              prerequisites: '<h4>📚 Vite 构建配置</h4><p><code>vite build</code> 构建生产包到 dist/ 目录。<code>vite.config.js</code> 配置代理和环境变量。</p>',
+              conceptDetail: 'Vite 的 proxy 配置解决开发跨域。Vite 用 import.meta.env.VITE_* 暴露环境变量。build.rollupOptions 优化打包。',
+              contextCode: '',
+              hints: [
+                'proxy 配置 /api -> 后端，/ws -> WebSocket',
+                'VITE_API_URL 环境变量区分开发/生产',
+                'build.outDir 指定输出目录'
+              ],
+              code: 'import { defineConfig } from \'vite\'\nimport react from \'@vitejs/plugin-react\'\n\nexport default defineConfig({\n  plugins: [react()],\n  server: {\n    port: 5173,\n    proxy: {\n      \'/api\': { target: \'http://localhost:3000\', changeOrigin: true },\n      \'/ws\': { target: \'ws://localhost:3000\', ws: true }\n    }\n  },\n  build: {\n    outDir: \'dist\',\n    sourcemap: false\n  }\n})',
+              verification: 'vite.config.js 包含 API 和 WebSocket 代理配置',
+              filePath: 'vite.config.js',
+              projectFiles: {
+                'vite.config.js': '',
+                '.env.example': 'VITE_API_URL=http://localhost:3000\nVITE_WS_URL=ws://localhost:3000'
+              },
+              cognitiveLoad: 'medium',
+              dependsOn: [
+                'react-27'
+              ],
+              commonMistakes: [
+                {
+                  pattern: 'ws: true',
+                  explanation: 'WebSocket 代理需要额外设置 ws: true'
+                },
+                {
+                  pattern: 'changeOrigin',
+                  explanation: '跨域代理必须设置 changeOrigin: true'
+                }
+              ],
+              variations: [
+                {
+                  name: 'Docker 部署',
+                  description: '用 Dockerfile 多阶段构建部署'
+                }
+              ],
+              transferTasks: [
+                {
+                  task: '配置 GitHub Actions 自动构建部署',
+                  target: '掌握 CI/CD 配置'
+                }
+              ],
+            }
+    ]
+  }
 ]

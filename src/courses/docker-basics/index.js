@@ -10,6 +10,7 @@ export default {
   category: 'infra',
   tags: ['Docker', '容器', 'DevOps'],
   prerequisites: [],
+  project: 'ecommerce',
   phases,
   verify
 }

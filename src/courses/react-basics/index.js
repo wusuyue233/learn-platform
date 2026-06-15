@@ -10,6 +10,7 @@ export default {
   category: 'frontend',
   tags: ['React', 'Hooks', '前端'],
   prerequisites: [],
+  project: 'chat-app',
   phases,
   verify
 }

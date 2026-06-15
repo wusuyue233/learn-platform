@@ -10,6 +10,7 @@ export default {
   category: 'infra',
   tags: ['Git', '版本控制', '协作'],
   prerequisites: [],
+  project: 'git-workflow',
   phases,
   verify
 }
