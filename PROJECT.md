@@ -39,15 +39,22 @@
 | 课程 | 关卡数 | 阶段 | 难度分布 | 注册 |
 |------|--------|------|----------|------|
 | Vue3 全栈 | 29 | 5 | easy 7 / medium 16 / hard 6 | ✅ |
-| Python + FastAPI | 12 | 3 | easy 5 / medium 5 / hard 2 | ✅ |
-| JavaScript 基础 | 15 | 4 | easy 6 / medium 8 / hard 1 | ✅ |
+| Python + FastAPI | 20 | 4 | — | ✅ |
+| JavaScript 基础 | 19 | 5 | — | ✅ |
 | React 基础 | 20 | 4 | — | ✅ |
 | TypeScript 基础 | 15 | 3 | — | ✅ |
+| Java + Spring | 10 | 2 | — | ✅ |
+| UniApp | 8 | 2 | — | ✅ |
+| OpenCV | 8 | 2 | — | ✅ |
+| PyTorch | 8 | 2 | — | ✅ |
+| YOLO | 6 | 2 | — | ✅ |
+| Nginx | 6 | 2 | — | ✅ |
+| CI/CD | 6 | 2 | — | ✅ |
 | Docker 容器化 | 10 | 3 | — | ✅ |
 | Git 版本控制 | 10 | 3 | — | ✅ |
 | Node.js + Express | 15 | 4 | — | ✅ |
 | SQL 数据库 | 15 | 3 | — | ✅ |
-| **合计** | **141** | **32** | | **9/9 ✅** |
+| **合计** | **205+** | **48** | | **16/16 ✅** |
 
 ---
 
@@ -336,6 +343,86 @@ Level schema 扩展，**现有关卡完全不受影响**：
 
 ---
 
+## 关卡一致性审计 (2026-06-15)
+
+全量审计 16 门课程共 200+ 关卡，检查 `code`/`starterCode`/`microSteps`/`verification`/`prerequisites`/`conceptDetail` 间的一致性。
+
+### 严重问题
+
+| # | 课程 | 关卡 | 问题 |
+|---|------|------|------|
+| S1 | **docker-basics** | Lv1-10 | `microSteps` 模板是 JS 的 `const`/`function`/`console.log`，与 Dockerfile/YAML 完全不相关（10 关全部） |
+| S2 | **python-fastapi** | Lv1-12 | `microSteps` 模板是 JS 模式，与 Python 代码不匹配（全部非项目关） |
+| S3 | **python-fastapi** | Lv3,6 | `commonMistakes`/`variations`/`transferTasks` 残留 JS/Express/Vue Router 内容（箭头函数、`req.body`、`Hash vs History`） |
+| S4 | **javascript-basics** | Lv13 | `commonMistakes`/`variations` 是 SQL 概念（`SELECT *`、`WHERE`、子查询），完全不属于 JS DOM 关卡 |
+| S5 | **yolo** | Lv4 | 混淆矩阵逻辑 bug——`all_preds` 和 `all_targets` 都来自 `r.boxes`，永远 100% 准确 |
+| S6 | **vue3-fullstack** | Lv11 | `code` 包含两个组件（GrandParent + Child）但 `filePath` 只有一个 `Child.vue` |
+| S7 | **OpenCV** | Lv3 | 代码缺少 `import cv2` |
+| S8 | **PyTorch** | Lv4 | 代码缺少 `import torch.nn.functional as F`（直接使用 `F.relu`） |
+
+### 共性问题
+
+| # | 课程 | 关卡 | 问题 |
+|---|------|------|------|
+| C1 | **javascript-basics** | 13 关 | `microSteps` 是统一模板（`const`/`function`/`console.log`），与各关具体内容无关 |
+| C2 | **docker-basics** | Lv1-10 | 全部缺少 `type` 字段（默认无 type），其余课程有关卡标注 |
+| C3 | **python-fastapi** | Lv6-12 | 全部使用 `filePath: 'main.py'`（6 关卡共享同一文件路径，会互相覆盖） |
+| C4 | **python-fastapi** | Lv15 | `code` 中写死 `SECRET_KEY = "your-secret-key"`，缺少环境变量说明 |
+| C5 | **所有课程** | 全部 | `variations`、`transferTasks`、`cognitiveLoad`、`dependsOn` 定义在关卡上但框架未消费 |
+
+### 概念缺口（code 用了但未在 conceptDetail/prerequisites 中解释）
+
+| # | 课程 | 关卡 | 未解释概念 |
+|---|------|------|-----------|
+| G1 | **vue3-fullstack** | Lv4 (列表渲染) | `(item, index)` 带索引用法未在概念中区分 |
+| G2 | **vue3-fullstack** | Lv12 (Vue Router) | `app.use(router)` 注册步骤未提及 |
+| G3 | **uniapp** | Lv2 | `defineEmits` 未解释 |
+| G4 | **uniapp** | Lv4 | `onLoad`/`onPullDownRefresh` vs `onShow`/`onReachBottom` 周期不匹配 |
+| G5 | **uniapp** | Lv6 | `onShow` 未从 `vue` import |
+| G6 | **opencv** | Lv1 | `destroyAllWindows()`/`imwrite()` 未解释 |
+| G7 | **opencv** | Lv4 | `COLOR_GRAY2BGR` 未解释 |
+| G8 | **opencv** | Lv5 | `putText`/`FONT_HERSHEY_SIMPLEX` 未解释 |
+| G9 | **opencv** | Lv8 | `THRESH_BINARY_INV+THRESH_OTSU`、`DIST_L2`、`connectedComponents` 未解释 |
+| G10 | **pytorch** | Lv1 | `.T` 转置未解释 |
+| G11 | **pytorch** | Lv3 | `.item()` 未解释 |
+| G12 | **pytorch** | Lv5 | `torch.flatten` 未解释 |
+| G13 | **pytorch** | Lv7 | `weights_only`（安全参数）未解释 |
+| G14 | **pytorch** | Lv8 | `model.fc.in_features`、`model.train()` 未解释 |
+| G15 | **nginx** | Lv1 | `$uri` 变量未解释 |
+| G16 | **nginx** | Lv2 | `$host`、`$remote_addr`、`$proxy_add_x_forwarded_for` 等未解释 |
+| G17 | **nginx** | Lv4 | `ssl_prefer_server_ciphers`、`ssl_session_cache` 等未解释 |
+| G18 | **nginx** | Lv5 | `$scheme`、`$request_method`、`$upstream_cache_status`、`proxy_cache_use_stale` 等未解释 |
+| G19 | **nginx** | Lv6 | `$binary_remote_addr`、`limit_rate` 未解释 |
+
+### 验证不匹配
+
+| # | 课程 | 关卡 | 问题 |
+|---|------|------|------|
+| V1 | **ci-cd** | Lv2 | `verification` 说"测试→构建→部署"但 code 只有构建步骤，无测试 |
+| V2 | **docker-basics** | Lv10 | `verification` 说"完整 docker-compose.yml"但 code 只有 Dockerfile |
+
+### 按严重等级统计
+
+| 等级 | 数量 | 说明 |
+|------|------|------|
+| 🔴 严重 | 8 | 功能缺陷 / 错误领域 / 崩溃级 |
+| 🟡 重要 | 5 | 共性问题 / 跨关卡模板错误 |
+| 🔵 一般 | 21 | 概念缺口 / 验证不匹配 |
+
+### 后续行动
+
+1. **S1-S2**: 重写 docker-basics 和 python-fastapi 的 microSteps（最影响用户体验）
+2. **S3-S4**: 清理 python-fastapi 和 js-basics 中的错误领域残留
+3. **S5**: 修复 yolo Lv4 混淆矩阵逻辑（自己比较自己的 bug）
+4. **S6**: 拆分 vue3 Lv11 为两个独立代码文件
+5. **S7-S8**: 补全缺失的 Python import
+6. **C1-C2**: 重写 js-basics 和 docker-basics 的 microSteps
+7. **C3**: 统一 python-fastapi 各关的 filePath
+8. **G1-G19**: 逐关补全概念缺口
+9. 新增 `docLinks` 字段，指向菜鸟教程等外部文档，减少概念缺口的影响
+
+---
+
 ## 开发指南
 
 ### 添加新课程
@@ -514,17 +601,36 @@ export default defineConfig({
 - [x] 课程选择页 Grid 布局 + 项目关视觉区分 + 5列网格
 - [x] 构建验证 + commit + push + GitHub Actions 自动部署
 
-### Phase 3 项目内容填充（进行中）
+### Phase 3 已完成 ✅
 
-- [ ] Python + FastAPI 课程新增"电商 API 开发"阶段（8 关）
-- [ ] React 课程新增"聊天室项目实战"阶段（8 关）
-- [ ] Node.js 课程新增"聊天室后端实战"阶段（8 关）
-- [ ] JavaScript 课程新增"博客项目实战"阶段（8 关）
-- [ ] TypeScript 课程新增"工具库项目实战"阶段（5 关）
-- [ ] Git 课程新增"协作工作流实战"阶段（3 关）
+- [x] 8 课程填充 project 字段（commit 03f8720）
+- [x] 6 课程追加 40 项目关（commit 03f8720）
+- [x] 7 新课 27 概念关（commit b7047f0）
+- [x] 7 新课 Phase 2 追加 25 概念关（commit b0380cf）
+- [x] 通关验证二次确认（commit c3fb41a）
 
-### 后续计划
+### 关卡一致性修复（审计后）
 
-- [ ] 添加更多课程（Java/Spring、UniApp、OpenCV、PyTorch、YOLO、Nginx、CI/CD）
-- [ ] 优化移动端适配
-- [ ] 添加代码运行预览（iframe sandbox）
+🟡 **全课程 microSteps 重写**（高优先级，影响 Step-by-Step 功能）
+- [ ] docker-basics Lv1-10: 从 JS 模板改为 Docker/YAML 内容
+- [ ] python-fastapi Lv1-12: 从 JS 模板改为 Python 内容
+- [ ] javascript-basics Lv2-15: 从通用模板改为各关专属内容
+
+🔴 **严重 bug 修复**
+- [ ] python-fastapi Lv3,6: 清理 JS/Express 残留（`req.body`, `res.send`, 箭头函数）
+- [ ] javascript-basics Lv13: 将 SQL commonMistakes 改为 DOM 操作
+- [ ] yolo Lv4: 修复混淆矩阵（自己比较自己的 bug）
+- [ ] vue3-fullstack Lv11: 拆分双组件文件路径
+- [ ] opencv Lv3: 补 `import cv2`
+- [ ] pytorch Lv4: 补 `import torch.nn.functional as F`
+
+🔵 **概念缺口与验证修复**
+- [ ] vue3 Lv4: 补充 v-for 带索引 / 不带索引的区分说明
+- [ ] ci-cd Lv2: verification 改为"构建→部署"（去掉测试）
+- [ ] docker Lv10: verification 改为只检查 Dockerfile
+- [ ] uniapp/opencv/pytorch/nginx: 补全 19 处概念缺口（见审计表 G3-G19）
+- [ ] python-fastapi Lv6-12: 统一 filePath 避免覆盖
+
+🆕 **新功能**
+- [ ] 添加 `docLinks` 字段 + LevelModal UI（关联菜鸟教程等外部文档）
+- [ ] 框架消费 `dependsOn`/`cognitiveLoad` 等止定义字段
