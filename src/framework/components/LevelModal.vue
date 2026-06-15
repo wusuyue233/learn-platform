@@ -649,6 +649,7 @@ function handleClose() {
   overflow-y: auto;
   padding-right: 8px;
   scrollbar-gutter: stable;
+  min-width: 300px;
 }
 .modal-right {
   flex: 1;
@@ -1146,6 +1147,11 @@ function handleClose() {
 }
 .btn-action.run:hover {
   background: #059669;
+}
+
+@media (max-width: 1280px) {
+  .modal-wide { max-width: 1100px; }
+  .modal-left { flex: 0 0 35%; }
 }
 
 @media (max-width: 768px) {
