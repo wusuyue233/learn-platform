@@ -141,6 +141,9 @@
               <button class="btn-action primary" @click="verifyFile" :disabled="verifying">
                 {{ verifying ? '验证中...' : '▶ 验证' }}
               </button>
+              <button v-if="canPreview" class="btn-action run" @click="togglePreview">
+                {{ showPreview ? '✕ 关闭' : '▶ 运行' }}
+              </button>
             </div>
           </div>
           <div v-if="level.microSteps?.length" class="microstep-section">
@@ -177,6 +180,16 @@
           />
           <div v-if="saveMsg" class="save-toast" :class="{ success: saveOk, error: !saveOk }">
             {{ saveMsg }}
+          </div>
+          <div v-if="showPreview && previewUrl" class="preview-container">
+            <div class="preview-toolbar">
+              <span>{{ previewLabel }}</span>
+              <button class="preview-refresh" @click="refreshPreview">⟳ 刷新</button>
+            </div>
+            <iframe class="preview-iframe" :src="previewUrl" sandbox="allow-scripts" @load="previewLoading=false"></iframe>
+          </div>
+          <div v-else-if="showPreview && !canPreview" class="preview-container preview-na">
+            <p>该类型的代码不支持实时预览</p>
           </div>
         </div>
       </div>
@@ -431,6 +444,43 @@ const editorLang = computed(() => {
   if (fp.endsWith('.yml') || fp.endsWith('.yaml')) return 'yaml'
   return 'plaintext'
 })
+
+const showPreview = ref(false)
+const previewUrl = ref('')
+const previewLoading = ref(false)
+
+const canPreview = computed(() => {
+  const fp = props.level.filePath || ''
+  return fp.endsWith('.html') || fp.endsWith('.htm')
+})
+
+const previewLabel = computed(() => {
+  const fp = props.level.filePath || ''
+  return '▶ ' + (fp.split('/').pop() || fp)
+})
+
+function buildPreviewHtml() {
+  const userCode = code.value || ''
+  if (/<html[\s>]/i.test(userCode) && /<\/html>/i.test(userCode)) {
+    return userCode
+  }
+  return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:sans-serif;padding:16px;margin:0}</style></head><body>${userCode}</body></html>`
+}
+
+function togglePreview() {
+  showPreview.value = !showPreview.value
+  if (showPreview.value && canPreview.value) {
+    refreshPreview()
+  }
+}
+
+function refreshPreview() {
+  if (!canPreview.value) return
+  previewLoading.value = true
+  const blob = new Blob([buildPreviewHtml()], { type: 'text/html' })
+  if (previewUrl.value) URL.revokeObjectURL(previewUrl.value)
+  previewUrl.value = URL.createObjectURL(blob)
+}
 
 function onKeydown(e) {
   if (e.key === 'Escape') {
@@ -1047,6 +1097,55 @@ function handleClose() {
 }
 .project-file-preview code {
   font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+}
+
+.preview-container {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.preview-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: #f1f5f9;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+[data-theme="dark"] .preview-toolbar {
+  background: #1e293b;
+  color: #94a3b8;
+}
+.preview-refresh {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.preview-iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  background: white;
+}
+.preview-na {
+  padding: 32px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+}
+.btn-action.run {
+  background: #10b981;
+  color: white;
+  border-color: #059669;
+}
+.btn-action.run:hover {
+  background: #059669;
 }
 
 @media (max-width: 768px) {

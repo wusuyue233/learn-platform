@@ -503,7 +503,7 @@ export default defineConfig({
 
 ## 待办事项
 
-### Phase 2 实现中
+### Phase 2 已完成 ✅
 
 - [x] 就绪度系统关卡级化（getLevelReadiness + LevelCard 改造）
 - [x] 创建 `src/projects/index.js` 项目定义系统
@@ -511,8 +511,17 @@ export default defineConfig({
 - [x] `LevelModal.vue` 项目型关卡 UI（项目标签 + 文件列表）
 - [x] 修复 `courses/index.js` 注册全部 9 个课程
 - [x] 试点：Vue3 课程新增"电商项目实战"阶段（10 关）
-- [ ] 构建验证 + commit + push + 部署验证
-- [ ] Python + FastAPI 课程新增"电商 API 开发"阶段（试点扩展）
+- [x] 课程选择页 Grid 布局 + 项目关视觉区分 + 5列网格
+- [x] 构建验证 + commit + push + GitHub Actions 自动部署
+
+### Phase 3 项目内容填充（进行中）
+
+- [ ] Python + FastAPI 课程新增"电商 API 开发"阶段（8 关）
+- [ ] React 课程新增"聊天室项目实战"阶段（8 关）
+- [ ] Node.js 课程新增"聊天室后端实战"阶段（8 关）
+- [ ] JavaScript 课程新增"博客项目实战"阶段（8 关）
+- [ ] TypeScript 课程新增"工具库项目实战"阶段（5 关）
+- [ ] Git 课程新增"协作工作流实战"阶段（3 关）
 
 ### 后续计划
 
