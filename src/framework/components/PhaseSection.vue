@@ -12,7 +12,7 @@
       </div>
       <div class="phase-header-right">
         <span class="readiness-badge" :class="readiness.level">{{ readiness.label }}</span>
-        <span class="phase-progress">{{ doneCount }}/{{ phase.levels.length }} 关</span>
+        <span class="phase-progress">{{ doneCount }}/{{ phase.levels.length }}</span>
         <span class="phase-arrow" :class="{ open }">▼</span>
       </div>
     </div>

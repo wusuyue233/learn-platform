@@ -7,6 +7,7 @@ export default {
   description: '用 Python 构建高性能 REST API',
   icon: '🐍',
   difficulty: 'intermediate',
+  category: 'backend',
   tags: ['Python', 'FastAPI', 'REST API'],
   prerequisites: [],
   phases,

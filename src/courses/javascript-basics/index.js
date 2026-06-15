@@ -7,6 +7,7 @@ export default {
   description: '掌握 JavaScript 核心语法和现代特性',
   icon: '🟨',
   difficulty: 'beginner',
+  category: 'language',
   tags: ['JavaScript', 'ES6+', '前端'],
   prerequisites: [],
   phases,

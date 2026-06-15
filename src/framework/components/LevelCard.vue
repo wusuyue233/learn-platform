@@ -1,18 +1,19 @@
 <template>
   <div
     class="level-card"
-    :class="{ available: unlocked && !completed, completed, locked: !unlocked && !isPreview, preview: !unlocked && isPreview }"
+    :class="{ available: unlocked && !completed, completed, locked: !unlocked && !isPreview, preview: !unlocked && isPreview, 'is-project': level.type === 'project' }"
     @click="(unlocked || isPreview) && $emit('select', level)"
   >
     <div v-if="completed" class="level-status-icon complete">✓</div>
     <div v-if="!unlocked && !isPreview" class="level-status-icon lock">🔒</div>
     <div v-if="!unlocked && isPreview" class="level-status-icon preview-eye">👁</div>
-    <div class="level-number">{{ level.number }}</div>
+    <div class="level-number">{{ level.type === 'project' ? '🛒' : level.number }}</div>
     <div class="level-title">{{ level.title }}</div>
     <div class="level-meta">
       <span class="difficulty-label">{{ level.concept }}</span>
       <span class="difficulty-badge" :class="level.difficulty">{{ diffLabel }}</span>
     </div>
+    <div v-if="level.type === 'project'" class="project-tag">项目</div>
     <div v-if="!unlocked && isPreview" class="preview-badge">预览</div>
   </div>
 </template>
@@ -69,5 +70,29 @@ const diffLabel = computed(() => {
 }
 .preview-eye {
   font-size: 16px;
+}
+.project-tag {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  font-weight: 600;
+}
+.level-card.is-project {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+.level-card.is-project.available {
+  border-color: #059669;
+  background: #f0fdf4;
+}
+.level-card.is-project.completed {
+  border-color: #059669;
+}
+.level-card.is-project .level-number {
+  font-size: 22px;
 }
 </style>

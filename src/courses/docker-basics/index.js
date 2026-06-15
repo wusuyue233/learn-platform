@@ -7,6 +7,7 @@ export default {
   description: '从零掌握 Docker，实战部署电商系统到容器',
   icon: '🐳',
   difficulty: 'intermediate',
+  category: 'infra',
   tags: ['Docker', '容器', 'DevOps'],
   prerequisites: [],
   phases,

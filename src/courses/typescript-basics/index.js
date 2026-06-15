@@ -7,6 +7,7 @@ export default {
   description: '掌握 TypeScript 类型系统，从基础类型到高级泛型',
   icon: '🔷',
   difficulty: 'intermediate',
+  category: 'language',
   tags: ['TypeScript', '类型系统', '前端'],
   prerequisites: [],
   phases,

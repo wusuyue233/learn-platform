@@ -16,28 +16,40 @@
       </div>
     </div>
 
-    <div class="course-grid">
-      <div
-        v-for="course in courses"
-        :key="course.id"
-        class="course-card"
-        @click="enterCourse(course.id)"
-      >
-        <div class="course-icon">{{ course.icon }}</div>
-        <div class="course-info">
-          <h3>{{ course.name }}</h3>
-          <p>{{ course.description }}</p>
-          <div class="course-meta">
-            <span class="course-tag" v-for="tag in course.tags" :key="tag">{{ tag }}</span>
-          </div>
-          <div class="course-progress" v-if="getStats(course.id).total > 0">
-            <div class="mini-progress-track">
-              <div class="mini-progress-fill" :style="{ width: getStats(course.id).progress + '%' }"></div>
+    <div class="selector-body">
+      <div v-for="group in courseGroups" :key="group.key" class="category-group">
+        <div class="category-header">
+          <span class="category-icon">{{ group.icon }}</span>
+          <h2>{{ group.label }}</h2>
+        </div>
+        <div class="course-grid">
+          <div
+            v-for="course in group.courses"
+            :key="course.id"
+            class="course-card"
+            :class="{ completed: getStats(course.id).progress >= 100 }"
+            @click="enterCourse(course.id)"
+          >
+            <div class="course-icon">{{ course.icon }}</div>
+            <div class="course-info">
+              <h3>{{ course.name }}</h3>
+              <p>{{ course.description }}</p>
+              <div class="course-meta">
+                <span class="course-tag" v-for="tag in course.tags" :key="tag">{{ tag }}</span>
+                <span class="diff-tag" :class="course.difficulty">{{ diffLabel(course.difficulty) }}</span>
+              </div>
             </div>
-            <span>{{ getStats(course.id).completed }}/{{ getStats(course.id).total }}</span>
+            <div class="course-footer">
+              <div class="course-progress" v-if="getStats(course.id).total > 0">
+                <div class="mini-progress-track">
+                  <div class="mini-progress-fill" :style="{ width: getStats(course.id).progress + '%' }"></div>
+                </div>
+                <span>{{ getStats(course.id).completed }}/{{ getStats(course.id).total }}</span>
+              </div>
+              <div v-if="getStats(course.id).progress >= 100" class="completed-badge">✓ 已通关</div>
+            </div>
           </div>
         </div>
-        <div class="course-arrow">→</div>
       </div>
     </div>
   </div>
@@ -54,9 +66,33 @@ const store = useProgressStore()
 
 const allStats = computed(() => store.getAllCoursesStats(courses))
 
+const categoryMap = {
+  frontend: { key: 'frontend', icon: '🖥️', label: '前端框架' },
+  backend: { key: 'backend', icon: '⚙️', label: '后端开发' },
+  language: { key: 'language', icon: '📝', label: '编程语言' },
+  infra: { key: 'infra', icon: '🔧', label: '基础设施' }
+}
+
+const courseGroups = computed(() => {
+  const groups = {}
+  for (const cat of Object.values(categoryMap)) {
+    groups[cat.key] = { ...cat, courses: [] }
+  }
+  for (const c of courses) {
+    const key = c.category || 'frontend'
+    if (groups[key]) groups[key].courses.push(c)
+  }
+  return Object.values(groups).filter(g => g.courses.length > 0)
+})
+
 function getStats(courseId) {
   const course = courses.find(c => c.id === courseId)
   return store.getCourseStats(courseId, course?.phases || [])
+}
+
+function diffLabel(d) {
+  const map = { beginner: '入门', intermediate: '中级', advanced: '高级' }
+  return map[d] || d
 }
 
 function enterCourse(courseId) {
@@ -84,11 +120,8 @@ function importProgress() {
     if (!file) return
     const reader = new FileReader()
     reader.onload = () => {
-      if (store.importProgress(reader.result)) {
-        alert('导入成功！')
-      } else {
-        alert('导入失败，请检查文件格式')
-      }
+      if (store.importProgress(reader.result)) alert('导入成功！')
+      else alert('导入失败，请检查文件格式')
     }
     reader.readAsText(file)
   }
@@ -96,9 +129,7 @@ function importProgress() {
 }
 
 function resetAll() {
-  if (confirm('确定要重置所有课程的通关进度吗？此操作不可撤销。')) {
-    store.resetAll()
-  }
+  if (confirm('确定要重置所有课程的通关进度吗？此操作不可撤销。')) store.resetAll()
 }
 </script>
 
@@ -164,69 +195,97 @@ function resetAll() {
   cursor: pointer;
   transition: all 0.2s;
 }
-.btn-sm:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.4);
+.btn-sm:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+.btn-sm.danger:hover { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #fca5a5; }
+
+.selector-body {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 32px 20px;
 }
-.btn-sm.danger:hover {
-  background: rgba(239,68,68,0.2);
-  border-color: #ef4444;
-  color: #fca5a5;
+.category-group {
+  margin-bottom: 36px;
 }
-.course-grid {
-  max-width: 900px;
-  margin: 32px auto;
-  padding: 0 20px;
+.category-header {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+}
+.category-icon { font-size: 20px; }
+.category-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .course-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
   background: var(--card);
+  border: 2px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 24px;
+  padding: 20px;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .course-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
-.course-icon {
-  font-size: 40px;
-  flex-shrink: 0;
+.course-card.completed {
+  border-color: var(--success);
+  opacity: 0.85;
 }
-.course-info {
-  flex: 1;
-  min-width: 0;
+.course-card.completed:hover {
+  opacity: 1;
 }
-.course-info h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
+.course-icon { font-size: 36px; line-height: 1; }
+.course-info h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
 .course-info p {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-secondary);
   margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .course-meta {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
 }
 .course-tag {
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 4px;
-  font-size: 11px;
+  font-size: 10px;
   background: var(--primary-light);
   color: var(--primary);
   font-weight: 500;
+}
+.diff-tag {
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+}
+.diff-tag.beginner { background: #dcfce7; color: #166534; }
+.diff-tag.intermediate { background: #fef3c7; color: #92400e; }
+.diff-tag.advanced { background: #fecaca; color: #991b1b; }
+.course-footer {
+  margin-top: auto;
 }
 .course-progress {
   display: flex;
@@ -236,7 +295,7 @@ function resetAll() {
   color: var(--text-secondary);
 }
 .mini-progress-track {
-  width: 120px;
+  flex: 1;
   height: 4px;
   background: var(--border);
   border-radius: 2px;
@@ -248,16 +307,18 @@ function resetAll() {
   border-radius: 2px;
   transition: width 0.3s;
 }
-.course-arrow {
-  font-size: 20px;
-  color: var(--text-secondary);
-  flex-shrink: 0;
+.completed-badge {
+  font-size: 11px;
+  color: var(--success);
+  font-weight: 600;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 800px) {
+  .course-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .course-grid { grid-template-columns: 1fr; }
   .selector-header { padding: 24px 16px; }
   .selector-header h1 { font-size: 24px; }
-  .course-card { padding: 16px; gap: 12px; }
-  .course-icon { font-size: 32px; }
 }
 </style>

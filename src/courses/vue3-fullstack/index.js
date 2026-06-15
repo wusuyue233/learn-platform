@@ -7,6 +7,7 @@ export default {
   description: '从零搭建电商系统，掌握 Vue3 + FastAPI 全栈开发',
   icon: '💚',
   difficulty: 'intermediate',
+  category: 'frontend',
   tags: ['Vue3', 'FastAPI', '全栈'],
   prerequisites: [],
   project: 'ecommerce',

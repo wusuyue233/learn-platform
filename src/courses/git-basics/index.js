@@ -7,6 +7,7 @@ export default {
   description: '掌握 Git 版本控制：从基础操作到团队协作流程',
   icon: '🔀',
   difficulty: 'beginner',
+  category: 'infra',
   tags: ['Git', '版本控制', '协作'],
   prerequisites: [],
   phases,
