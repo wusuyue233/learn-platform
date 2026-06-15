@@ -4,7 +4,7 @@
 
 ## 在线演示
 
-🔗 [https://your-username.github.io/learn-platform/](https://your-username.github.io/learn-platform/)
+🔗 [https://wusuyue233.github.io/learn-platform/](https://wusuyue233.github.io/learn-platform/)
 
 ## 功能特性
 
@@ -19,15 +19,28 @@
 
 | 课程 | 关卡数 | 难度 |
 |------|--------|------|
-| Vue3 全栈 | 19 | ⭐⭐⭐ |
-| Python + FastAPI | 12 | ⭐⭐ |
-| JavaScript 基础 | 15 | ⭐ |
+| Vue3 全栈 | 29 | ⭐⭐⭐ |
+| Python + FastAPI | 20 | ⭐⭐ |
+| JavaScript 基础 | 19 | ⭐⭐ |
+| React 基础 | 20 | ⭐⭐⭐ |
+| TypeScript 基础 | 15 | ⭐⭐ |
+| Java + Spring | 10 | ⭐⭐ |
+| UniApp | 8 | ⭐⭐ |
+| OpenCV | 8 | ⭐⭐ |
+| PyTorch | 8 | ⭐⭐⭐ |
+| YOLO | 6 | ⭐⭐ |
+| Nginx | 6 | ⭐⭐ |
+| CI/CD | 6 | ⭐⭐ |
+| Docker 容器化 | 10 | ⭐⭐ |
+| Git 版本控制 | 10 | ⭐ |
+| Node.js + Express | 15 | ⭐⭐ |
+| SQL 数据库 | 15 | ⭐⭐ |
 
 ## 本地开发
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/learn-platform.git
+git clone https://github.com/wusuyue233/learn-platform.git
 cd learn-platform
 
 # 安装依赖
