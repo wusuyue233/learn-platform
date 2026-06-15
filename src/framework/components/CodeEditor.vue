@@ -9,7 +9,8 @@ const props = defineProps({
   modelValue: String,
   language: { type: String, default: 'python' },
   readonly: { type: Boolean, default: false },
-  theme: { type: String, default: 'vs-dark' }
+  theme: { type: String, default: 'vs-dark' },
+  commonMistakes: { type: Array, default: () => [] }
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -19,6 +20,7 @@ let editor = null
 let monaco = null
 let highlightDecoration = null
 let highlightTimer = null
+let mistakeDecoIds = []
 
 function langMap(l) {
   const map = { py: 'python', js: 'javascript', vue: 'html', css: 'css', json: 'json', md: 'markdown', ts: 'typescript', jsx: 'javascript', tsx: 'typescript', sql: 'sql', sh: 'shell', dockerfile: 'dockerfile', yml: 'yaml', yaml: 'yaml' }
@@ -43,6 +45,7 @@ onMounted(async () => {
   })
   editor.onDidChangeModelContent(() => {
     emit('update:modelValue', editor.getValue())
+    updateMistakeDecorations()
   })
 })
 
@@ -58,6 +61,10 @@ watch(() => props.theme, (val) => {
   }
 })
 
+watch(() => props.commonMistakes, () => {
+  updateMistakeDecorations()
+}, { deep: true })
+
 onBeforeUnmount(() => {
   if (highlightTimer) clearTimeout(highlightTimer)
   if (editor) {
@@ -66,6 +73,40 @@ onBeforeUnmount(() => {
     if (model) model.dispose()
   }
 })
+
+function updateMistakeDecorations() {
+  if (!editor || !monaco) return
+  if (!props.commonMistakes.length) {
+    mistakeDecoIds = editor.deltaDecorations(mistakeDecoIds, [])
+    return
+  }
+  const text = editor.getValue()
+  const model = editor.getModel()
+  const decorations = []
+  for (const m of props.commonMistakes) {
+    if (!m.pattern) continue
+    let idx = 0
+    while ((idx = text.indexOf(m.pattern, idx)) !== -1) {
+      const startPos = model.getPositionAt(idx)
+      const endPos = model.getPositionAt(idx + m.pattern.length)
+      decorations.push({
+        range: new monaco.Range(startPos.lineNumber, startPos.column, endPos.lineNumber, endPos.column),
+        options: {
+          inlineClassName: 'mistake-underline',
+          hoverMessage: { value: m.explanation }
+        }
+      })
+      idx += m.pattern.length
+    }
+  }
+  mistakeDecoIds = editor.deltaDecorations(mistakeDecoIds, decorations)
+}
+
+function getMistakes() {
+  if (!editor) return []
+  const text = editor.getValue()
+  return props.commonMistakes.filter(m => text.includes(m.pattern))
+}
 
 function revealText(text) {
   if (!editor || !monaco) return
@@ -96,7 +137,7 @@ function revealText(text) {
   }, 1500)
 }
 
-defineExpose({ revealText })
+defineExpose({ revealText, getMistakes })
 
 let monacoPromise = null
 function loadMonaco() {
@@ -136,6 +177,10 @@ function loadMonaco() {
 .code-highlight-line {
   background: rgba(250, 204, 21, 0.25) !important;
   transition: background 0.3s;
+}
+.mistake-underline {
+  background: rgba(239, 68, 68, 0.15);
+  border-bottom: 2px wavy #ef4444;
 }
 .code-editor {
   width: 100%;

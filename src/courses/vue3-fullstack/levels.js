@@ -16,23 +16,19 @@ export const phases = [
 <pre><code>&lt;template&gt;
   &lt;div&gt;{{ message }}&lt;/div&gt;
 &lt;/template&gt;
-
 &lt;script setup&gt;
 import { ref } from 'vue'
 const message = ref('Hello Vue3')
 &lt;/script&gt;
-
 &lt;style scoped&gt;
 div { color: blue; }
 &lt;/style&gt;
 </code></pre>
-
 <h4>🔑 核心概念：ref 响应式</h4>
 <p><code>ref()</code> 创建一个响应式变量，当值变化时视图自动更新：</p>
 <pre><code>const count = ref(0)  // 初始值 0
 count.value++         // 修改必须用 .value
 </code></pre>
-
 <h4>⚠️ 常见错误</h4>
 <ul>
   <li>模板中直接用 <code>count</code> 而不是 <code>count.value</code></li>
@@ -41,21 +37,17 @@ count.value++         // 修改必须用 .value
 </ul>`,
         conceptDetail: `步骤 1 — 理解组件结构
 Vue3 单文件组件（SFC）由三部分组成：[template](模板定义组件的 HTML 结构)、[script setup](脚本使用 Composition API)、[style scoped](样式只作用于当前组件)。
-
 步骤 2 — 使用 ref 创建响应式数据
 [ref()](Vue3 的响应式 API，创建一个可观察的变量) 创建响应式变量，在模板中直接用变量名，在 JS 中用 .value 访问。
-
 步骤 3 — 在模板中渲染
 模板中用 [Mustache 语法](双花括号 {{}} 插值表达式，将 JS 变量渲染到 HTML) 显示数据。`,
         contextCode: `// App.vue - 你的组件会被这个文件导入
 <template>
   <Hello />
 </template>
-
 <script setup>
 import Hello from './components/Hello.vue'
 </script>
-
 // main.js - 应用入口
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -65,11 +57,9 @@ createApp(App).mount('#app')`,
     <!-- 在这里显示 Hello Vue3 -->
   </div>
 </template>
-
 <script setup>
 // 导入 Vue3 的响应式 API
 </script>
-
 <style scoped>
 /* 组件样式 */
 </style>`,
@@ -81,12 +71,10 @@ createApp(App).mount('#app')`,
         code: `<template>
   <div>{{ message }}</div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const message = ref('Hello Vue3')
 </script>
-
 <style scoped>
 div { color: blue; }
 </style>`,
@@ -96,7 +84,20 @@ div { color: blue; }
 2. 创建响应式变量：const message = ref('Hello Vue3')
 3. 在 <template> 中用 {{ message }} 显示内容
 4. 可选：添加 <style scoped> 设置样式`,
-        filePath: 'src/components/Hello.vue'
+        filePath: 'src/components/Hello.vue',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+          { pattern: 'message.value', explanation: '模板中用 {{ message }} 而不是 .value，ref 在模板中自动解包' },
+          { pattern: 'const message', explanation: '记得从 vue 导入 ref：import { ref } from "vue"' }
+        ],
+        microSteps: [
+          { id: 'step-1', title: '导入 ref', verification: 'import { ref } from \'vue\'', hint: '在 script setup 中导入 ref' },
+          { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' },
+          { id: 'step-3', title: '模板插值', verification: '{{ message }}', hint: '双花括号显示变量值' }
+        ],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-2',
@@ -109,7 +110,6 @@ div { color: blue; }
 <p>Vue3 用 <code>@事件名</code> 或 <code>v-on:事件名</code> 绑定事件处理函数：</p>
 <pre><code>&lt;button @click="handleClick"&gt;点击&lt;/button&gt;
 </code></pre>
-
 <h4>🔑 核心概念：事件修饰符</h4>
 <ul>
   <li><code>@click.stop</code> — 阻止事件冒泡</li>
@@ -118,20 +118,16 @@ div { color: blue; }
 </ul>`,
         conceptDetail: `步骤 1 — 创建响应式计数变量
 用 [ref(0)](创建初始值为 0 的响应式变量) 定义 count。
-
 步骤 2 — 绑定点击事件
 按钮用 [@click](Vue3 的事件绑定语法，简写形式) 绑定一个函数，函数体内执行 count.value++。
-
 步骤 3 — 显示当前值
 模板中用 {{ count }} 显示当前计数值。`,
         contextCode: `// 这是一个 Vue3 事件处理的例子
 // 你可以在按钮上用 @click 绑定事件
-
 // 常用事件修饰符：
 // @click.stop   - 阻止冒泡
 // @submit.prevent - 阻止默认行为
 // @keyup.enter  - 按键修饰符
-
 // 事件对象自动传递
 <button @click="handleClick($event)">点击</button>`,
         starterCode: `<template>
@@ -140,7 +136,6 @@ div { color: blue; }
     <button>点击 +1</button>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 </script>`,
@@ -155,7 +150,6 @@ import { ref } from 'vue'
     <button @click="count++">点击 +1</button>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const count = ref(0)
@@ -166,7 +160,19 @@ const count = ref(0)
 2. 按钮上绑定 @click="count++"
 3. 模板中用 {{ count }} 显示当前值
 4. 注意：JS 中修改要用 count.value++，模板中直接用 count`,
-        filePath: 'src/components/Counter.vue'
+        filePath: 'src/components/Counter.vue',
+        cognitiveLoad: 'low',
+        dependsOn: ['vue3-1'],
+        commonMistakes: [
+          { pattern: 'count++', explanation: '模板中 {{ count }} 直接显示，JS 中才用 count.value++' }
+        ],
+        microSteps: [
+          { id: 'step-1', title: '创建 count', verification: 'ref(0)', hint: 'ref(0) 创建初始值 0 的响应式变量' },
+          { id: 'step-2', title: '绑定点击事件', verification: '@click', hint: '在 button 上写 @click' },
+          { id: 'step-3', title: '显示计数值', verification: '{{ count }}', hint: '模板中用 {{ 变量名 }} 显示' }
+        ],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-3',
@@ -184,7 +190,6 @@ const count = ref(0)
 <pre><code>&lt;div v-if="show"&gt;可见内容&lt;/div&gt;
 &lt;div v-else&gt;隐藏时显示的内容&lt;/div&gt;
 </code></pre>
-
 <h4>🔑 v-if vs v-show</h4>
 <ul>
   <li><code>v-if</code> — 懒渲染，切换开销大，适合不频繁切换</li>
@@ -192,22 +197,17 @@ const count = ref(0)
 </ul>`,
         conceptDetail: `步骤 1 — 创建布尔状态
 用 [ref(true)](创建布尔类型的响应式变量) 定义 visible，控制显示/隐藏。
-
 步骤 2 — 用 v-if 条件渲染
 [v-if](条件渲染指令，为 true 时渲染元素，false 时销毁) 绑定 visible 变量。
-
 步骤 3 — 切换状态
 按钮点击时执行 visible.value = !visible.value 切换布尔值。`,
         contextCode: `// 条件渲染：根据条件决定是否显示元素
 // v-if 为 true 时渲染，false 时销毁 DOM
-
 // 基本用法
 <div v-if="show">可见内容</div>
 <div v-else>隐藏时显示</div>
-
 // v-show 只是切换 display 属性
 <div v-show="show">始终渲染，只是隐藏</div>
-
 // v-if vs v-show：
 // - v-if：切换开销大，适合不频繁切换
 // - v-show：初始开销大，适合频繁切换`,
@@ -217,7 +217,6 @@ const count = ref(0)
     <button>切换</button>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 </script>`,
@@ -232,13 +231,24 @@ import { ref } from 'vue'
     <button @click="visible = !visible">切换</button>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const visible = ref(true)
 </script>`,
         verification: '使用了 v-if 指令控制元素显示/隐藏',
-        filePath: 'src/components/Toggle.vue'
+        filePath: 'src/components/Toggle.vue',
+        cognitiveLoad: 'low',
+        dependsOn: ['vue3-1'],
+        commonMistakes: [
+          { pattern: 'v-if="visible == true"', explanation: 'v-if 直接写变量名即可，无需 == true 比较' }
+        ],
+        microSteps: [
+          { id: 'step-1', title: '创建布尔状态', verification: 'ref(true)', hint: 'ref(true) 创建初始为 true 的变量' },
+          { id: 'step-2', title: '条件渲染', verification: 'v-if="visible"', hint: 'p 标签上加 v-if' },
+          { id: 'step-3', title: '切换状态', verification: '@click="visible =', hint: '按钮绑定 @click 切换 visible 值' }
+        ],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-4',
@@ -253,30 +263,24 @@ const visible = ref(true)
   {{ index + 1 }}. {{ item.text }}
 &lt;/li&gt;
 </code></pre>
-
 <h4>🔑 核心概念：:key 属性</h4>
 <p>每个列表项必须有唯一的 <code>:key</code>，帮助 Vue 高效更新 DOM。</p>`,
         conceptDetail: `步骤 1 — 定义待办事项数组
 用 [ref([])](创建数组类型的响应式变量) 定义 todos 数组，每项包含 id 和 text。
-
 步骤 2 — 用 v-for 循环渲染
 [v-for](列表渲染指令，遍历数组生成多个元素) 遍历数组，用 :key 绑定唯一标识。
-
 步骤 3 — 显示列表内容
 模板中用 {{ item.text }} 显示每项内容。`,
         contextCode: `// 列表渲染：用 v-for 遍历数组生成多个元素
 // 必须绑定 :key 帮助 Vue 高效更新 DOM
-
 // 基本用法
 <li v-for="item in items" :key="item.id">
   {{ item.text }}
 </li>
-
 // 带索引
 <li v-for="(item, index) in items" :key="item.id">
   {{ index }}. {{ item.text }}
 </li>
-
 // 注意：:key 必须唯一，通常用 id
 // 避免用 index 作为 key（数据变化时可能出错）`,
         starterCode: `<template>
@@ -287,7 +291,6 @@ const visible = ref(true)
     </ul>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const todos = ref([
@@ -311,7 +314,6 @@ const todos = ref([
     </ul>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const todos = ref([
@@ -321,7 +323,19 @@ const todos = ref([
 ])
 </script>`,
         verification: '使用了 v-for 指令循环渲染列表，绑定了 :key',
-        filePath: 'src/components/TodoList.vue'
+        filePath: 'src/components/TodoList.vue',
+        cognitiveLoad: 'low',
+        dependsOn: ['vue3-1'],
+        commonMistakes: [
+          { pattern: ':key="index"', explanation: '避免用 index 作 key，用数据的唯一 id 更可靠' }
+        ],
+        microSteps: [
+          { id: 'step-1', title: '定义数组', verification: 'ref([', hint: 'ref([]) 创建待办事项数组' },
+          { id: 'step-2', title: 'v-for 渲染', verification: 'v-for="item in todos"', hint: 'li 标签上加 v-for' },
+          { id: 'step-3', title: '绑定 :key', verification: ':key="item.id"', hint: '每项绑定唯一的 :key' }
+        ],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-5',
@@ -338,7 +352,6 @@ const todos = ref([
   &lt;option value="A"&gt;选项A&lt;/option&gt;
 &lt;/select&gt;
 </code></pre>
-
 <h4>🔑 核心概念：修饰符</h4>
 <ul>
   <li><code>.lazy</code> — 在 change 事件后同步（而非 input）</li>
@@ -347,10 +360,8 @@ const todos = ref([
 </ul>`,
         conceptDetail: `步骤 1 — 定义表单数据
 用 [ref('')](创建空字符串的响应式变量) 分别定义 username 和 password。
-
 步骤 2 — 用 v-model 绑定输入框
 [v-model](双向绑定指令，输入框值变化时变量自动更新) 绑定到对应的 ref 变量。
-
 步骤 3 — 显示绑定结果
 模板中用 {{ username }} 和 {{ password }} 实时显示输入内容。`,
         contextCode: `<template>
@@ -362,7 +373,6 @@ const todos = ref([
     <p>用户名：{{ username }}  密码：{{ password }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const username = ref('')
@@ -377,7 +387,6 @@ const password = ref('')
     <p>用户名：???  密码：???</p>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 </script>`,
@@ -395,14 +404,25 @@ import { ref } from 'vue'
     <p>用户名：{{ username }}  密码：{{ password }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref } from 'vue'
 const username = ref('')
 const password = ref('')
 </script>`,
         verification: '使用了 v-model 双向绑定，输入时实时显示',
-        filePath: 'src/components/LoginForm.vue'
+        filePath: 'src/components/LoginForm.vue',
+        cognitiveLoad: 'low',
+        dependsOn: ['vue3-1'],
+        commonMistakes: [
+          { pattern: 'v-model="username.value"', explanation: 'v-model 直接绑定 ref 变量名，不需要 .value' }
+        ],
+        microSteps: [
+          { id: 'step-1', title: '定义表单变量', verification: 'ref(\'\')', hint: 'ref("") 创建空字符串变量' },
+          { id: 'step-2', title: 'v-model 绑定', verification: 'v-model="username"', hint: 'input 上加 v-model' },
+          { id: 'step-3', title: '显示输入内容', verification: '{{ username }}', hint: '用 {{}} 显示变量值' }
+        ],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-6',
@@ -417,13 +437,11 @@ const password = ref('')
 &lt;div class="card"&gt;
   &lt;slot&gt;&lt;/slot&gt;  &lt;!-- 插槽占位符 --&gt;
 &lt;/div&gt;
-
 &lt;!-- 父组件使用 --&gt;
 &lt;Card&gt;
   &lt;p&gt;这是卡片内容&lt;/p&gt;
 &lt;/Card&gt;
 </code></pre>
-
 <h4>🔑 具名插槽</h4>
 <p>可以定义多个插槽，用 name 属性区分：</p>
 <pre><code>&lt;slot name="header"&gt;&lt;/slot&gt;
@@ -432,10 +450,8 @@ const password = ref('')
 </code></pre>`,
         conceptDetail: `步骤 1 — 在子组件中定义插槽
 用 [<slot>](插槽占位符，父组件内容会填充到这里) 标记内容插入点。
-
 步骤 2 — 在父组件中传递内容
 父组件在子组件标签内写 HTML，自动填充到插槽位置。
-
 步骤 3 — 添加默认内容
 [slot 标签内可以写默认内容](当父组件没有传递内容时显示)。`,
         contextCode: `<!-- 插槽语法参考 -->
@@ -444,14 +460,12 @@ const password = ref('')
   <div class="wrapper"><slot></slot></div>
 </template>
 <!-- 使用：传入的内容会填充到 slot 位置 -->
-
 <!-- 具名插槽 -->
 <template>
   <slot name="header"></slot>
   <slot name="default"></slot>
 </template>
 <!-- 使用：<template #header>标题</template> -->
-
 <!-- 作用域插槽 -->
 <slot :item="data"></slot>
 <!-- 使用：<template #default="{ item }">{{ item }}</template> -->`,
@@ -461,7 +475,6 @@ const password = ref('')
     <!-- 在这里添加插槽 -->
   </div>
 </template>
-
 <style scoped>
 .card {
   border: 1px solid #ccc;
@@ -480,7 +493,6 @@ const password = ref('')
     <slot></slot>
   </div>
 </template>
-
 <style scoped>
 .card {
   border: 1px solid #ccc;
@@ -489,7 +501,13 @@ const password = ref('')
 }
 </style>`,
         verification: '创建了带插槽的 Card 组件，父组件内容正确显示',
-        filePath: 'src/components/Card.vue'
+        filePath: 'src/components/Card.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       }
     ]
   },
@@ -511,15 +529,12 @@ const password = ref('')
 const quantity = ref(2)
 const total = computed(() => price.value * quantity.value)
 </code></pre>
-
 <h4>🔑 核心概念：缓存特性</h4>
 <p>computed 会缓存结果，只有依赖变化时才重新计算，比 methods 更高效。</p>`,
         conceptDetail: `步骤 1 — 定义商品数据
 用 [ref([])](创建数组类型的响应式变量) 定义 items 数组，包含商品名和单价。
-
 步骤 2 — 用 computed 计算总价
 [computed](计算属性，自动追踪依赖并缓存结果) 遍历 items 数组，累加 price * quantity。
-
 步骤 3 — 在模板中显示
 模板中用 {{ totalPrice }} 显示计算结果。`,
         contextCode: `<template>
@@ -530,7 +545,6 @@ const total = computed(() => price.value * quantity.value)
     <p>总价：¥{{ totalPrice }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue'
 const items = ref([
@@ -549,7 +563,6 @@ const totalPrice = computed(() =>
     <p>总价：¥???</p>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue'
 const items = ref([
@@ -570,7 +583,6 @@ const items = ref([
     <p>总价：¥{{ totalPrice }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, computed } from 'vue'
 const items = ref([
@@ -588,7 +600,13 @@ const totalPrice = computed(() =>
 3. 在回调中用 items.value.reduce() 累加
 4. 累加公式：sum + item.price * item.quantity
 5. 初始值设为 0`,
-        filePath: 'src/components/CartTotal.vue'
+        filePath: 'src/components/CartTotal.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-8',
@@ -603,7 +621,6 @@ const totalPrice = computed(() =>
   console.log('变化了', oldVal, '->', newVal)
 })
 </code></pre>
-
 <h4>🔑 核心概念：deep 和 immediate</h4>
 <ul>
   <li><code>{ deep: true }</code> — 深度监听对象内部变化</li>
@@ -611,31 +628,23 @@ const totalPrice = computed(() =>
 </ul>`,
         conceptDetail: `步骤 1 — 创建搜索关键词状态
 用 [ref('')](创建空字符串的响应式变量) 定义 keyword。
-
 步骤 2 — 用 watch 监听变化
 [keyword](侦听器，在数据变化时执行回调) 监听 keyword 变化，使用 setTimeout 实现防抖。
-
 步骤 3 — 显示搜索结果
 模板中用 v-show 控制"搜索中..."提示的显示。`,
         contextCode: `<!-- watch 语法参考 -->
 import { ref, watch, watchEffect } from 'vue'
-
 const keyword = ref('')
-
 // 基本用法
 watch(keyword, (newVal, oldVal) => {
   console.log('变化了', oldVal, '->', newVal)
 })
-
 // 深度监听
 watch(obj, (val) => {...}, { deep: true })
-
 // 立即执行
 watch(keyword, (val) => {...}, { immediate: true })
-
 // 多源监听
 watch([keyword, count], ([newK, newC], [oldK, oldC]) => {...})
-
 // watchEffect 自动追踪依赖
 watchEffect(() => { console.log(keyword.value) })`,
         starterCode: `<template>
@@ -645,13 +654,11 @@ watchEffect(() => { console.log(keyword.value) })`,
     <p>当前搜索：{{ keyword }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, watch } from 'vue'
 const keyword = ref('')
 const searching = ref(false)
 let timer = null
-
 // 用 watch 监听 keyword 变化，实现防抖
 </script>`,
         hints: [
@@ -666,13 +673,11 @@ let timer = null
     <p>当前搜索：{{ keyword }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, watch } from 'vue'
 const keyword = ref('')
 const searching = ref(false)
 let timer = null
-
 watch(keyword, (val) => {
   searching.value = true
   if (timer) clearTimeout(timer)
@@ -682,7 +687,13 @@ watch(keyword, (val) => {
 }, { immediate: true })
 </script>`,
         verification: '使用了 watch 侦听器，实现了防抖效果',
-        filePath: 'src/components/SearchDebounce.vue'
+        filePath: 'src/components/SearchDebounce.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-9',
@@ -694,16 +705,13 @@ watch(keyword, (val) => {
         prerequisites: `<h4>🐍 生命周期钩子</h4>
 <p>Vue3 组件有多个生命周期阶段，每个阶段都有对应的钩子函数：</p>
 <pre><code>import { onMounted, onUnmounted } from 'vue'
-
 onMounted(() => {
   console.log('组件已挂载，可以操作 DOM')
 })
-
 onUnmounted(() => {
   console.log('组件已销毁，清理资源')
 })
 </code></pre>
-
 <h4>🔑 常用钩子</h4>
 <ul>
   <li><code>onBeforeMount</code> — 挂载前</li>
@@ -715,21 +723,17 @@ onUnmounted(() => {
 </ul>`,
         conceptDetail: `步骤 1 — 导入 onMounted
 [onMounted](生命周期钩子，组件挂载完成后执行) 从 vue 导入。
-
 步骤 2 — 在 onMounted 中加载数据
 在钩子函数内模拟异步数据加载（用 setTimeout）。
-
 步骤 3 — 显示加载状态
 用 ref 控制 loading 状态，模板中用 v-show 显示加载提示。`,
         contextCode: `<!-- 生命周期钩子参考 -->
 import { ref, onMounted, onUnmounted, onBeforeMount, onUpdated } from 'vue'
-
 onBeforeMount(() => { /* 挂载前 */ })
 onMounted(() => { /* 挂载后，可操作 DOM */ })
 onUpdated(() => { /* 数据更新后 */ })
 onBeforeUnmount(() => { /* 卸载前，清理资源 */ })
 onUnmounted(() => { /* 卸载后 */ })
-
 // 常用模式：onMounted 加载数据，onUnmounted 清理
 onMounted(async () => { const data = await fetch(...) })
 onUnmounted(() => { clearInterval(timer) })`,
@@ -739,12 +743,10 @@ onUnmounted(() => { clearInterval(timer) })`,
     <p v-show="!loading">数据：{{ data }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 const loading = ref(true)
 const data = ref('')
-
 // 在这里用 onMounted 模拟数据加载（setTimeout 延迟 1 秒）
 </script>`,
         hints: [
@@ -758,12 +760,10 @@ const data = ref('')
     <p v-show="!loading">数据：{{ data }}</p>
   </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 const loading = ref(true)
 const data = ref('')
-
 onMounted(() => {
   setTimeout(() => {
     data.value = '加载完成！'
@@ -772,7 +772,13 @@ onMounted(() => {
 })
 </script>`,
         verification: '使用了 onMounted 钩子，组件挂载后执行数据加载',
-        filePath: 'src/components/DataLoader.vue'
+        filePath: 'src/components/DataLoader.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-10',
@@ -786,12 +792,10 @@ onMounted(() => {
 <pre><code>&lt;!-- 子组件 --&gt;
 const props = defineProps(['title'])
 const emit = defineEmits(['update'])
-
 // 使用
 props.title
 emit('update', newValue)
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>defineProps</code> — 声明接收的 props</li>
@@ -801,10 +805,8 @@ emit('update', newValue)
 </ul>`,
         conceptDetail: `步骤 1 — 在子组件中定义 props
 [defineProps](声明组件接收的属性) 定义 title 属性。
-
 步骤 2 — 在子组件中定义 emit
 [defineEmits](声明组件可触发的事件) 定义 update 事件。
-
 步骤 3 — 父组件绑定 props 和事件
 父组件传 :title="xxx"，监听 @update="handleUpdate"。`,
         contextCode: `<!-- props/emit 语法参考 -->
@@ -812,11 +814,9 @@ emit('update', newValue)
 <script setup>
 const props = defineProps(['title'])
 // 或带类型：defineProps({ title: String, count: Number })
-
 const emit = defineEmits(['update', 'delete'])
 // 触发事件：emit('update', newValue)
 </script>
-
 // 父组件
 <template>
   <Child :title="msg" @update="handleUpdate" />
@@ -828,7 +828,6 @@ const emit = defineEmits(['update', 'delete'])
     <button @click="???">修改标题</button>
   </div>
 </template>
-
 <script setup>
 // 用 defineProps 接收 title 属性
 // 用 defineEmits 声明 update 事件
@@ -845,13 +844,18 @@ const emit = defineEmits(['update', 'delete'])
     <button @click="emit('update', '新标题')">修改标题</button>
   </div>
 </template>
-
 <script setup>
 const props = defineProps(['title'])
 const emit = defineEmits(['update'])
 </script>`,
         verification: '子组件正确使用 props 和 emit，父子通信正常',
-        filePath: 'src/components/Child.vue'
+        filePath: 'src/components/Child.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2', 'vue3-3'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-11',
@@ -864,11 +868,9 @@ const emit = defineEmits(['update'])
 <p>provide/inject 允许祖先组件向所有后代组件传递数据，无需逐层 props：</p>
 <pre><code>// 祖先组件
 provide('theme', ref('dark'))
-
 // 任意后代组件
 const theme = inject('theme')
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>provide</code> — 向后代提供数据</li>
@@ -877,10 +879,8 @@ const theme = inject('theme')
 </ul>`,
         conceptDetail: `步骤 1 — 祖先组件 provide 数据
 [provide](向所有后代组件提供数据) 传递 theme 变量。
-
 步骤 2 — 后代组件 inject 注入
 [inject](从祖先组件注入数据) 获取 theme 值。
-
 步骤 3 — 响应式更新
 provide 的是 ref，修改后所有后代都会更新。`,
         contextCode: `<!-- provide/inject 语法参考 -->
@@ -889,19 +889,16 @@ import { ref, provide } from 'vue'
 const theme = ref('dark')
 provide('theme', theme)
 provide('appName', 'MyApp')  // 可提供普通值
-
 // 后代组件（任意层级）
 import { inject } from 'vue'
 const theme = inject('theme')  // 获取值
 const app = inject('appName', '默认值')  // 带默认值
-
 // 响应式：provide 的是 ref，修改后后代自动更新
 theme.value = 'light'`,
         starterCode: `<!-- GrandParent.vue -->
 <template>
   <Parent />
 </template>
-
 <script setup>
 import { ref, provide } from 'vue'
 const theme = ref('light')
@@ -916,24 +913,27 @@ const theme = ref('light')
 <template>
   <Parent />
 </template>
-
 <script setup>
 import { ref, provide } from 'vue'
 const theme = ref('light')
 provide('theme', theme)
 </script>
-
 <!-- Child.vue -->
 <template>
   <p>当前主题：{{ theme }}</p>
 </template>
-
 <script setup>
 import { inject } from 'vue'
 const theme = inject('theme')
 </script>`,
         verification: '使用了 provide/inject 实现跨层级通信',
-        filePath: 'src/components/Child.vue'
+        filePath: 'src/components/Child.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-10'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       }
     ]
   },
@@ -952,18 +952,15 @@ const theme = inject('theme')
         prerequisites: `<h4>🐍 Vue Router 是什么</h4>
 <p>Vue Router 是 Vue.js 的官方路由管理器，实现单页应用的页面切换：</p>
 <pre><code>import { createRouter, createWebHashHistory } from 'vue-router'
-
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About }
 ]
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>&lt;router-view&gt;</code> — 路由出口，显示当前页面</li>
@@ -972,26 +969,21 @@ const router = createRouter({
 </ul>`,
         conceptDetail: `步骤 1 — 定义路由规则
 [createRouter](创建路由实例) 配置路径和组件的映射关系。
-
 步骤 2 — 在模板中使用
 [<router-view>](路由出口组件) 显示匹配的页面组件。
-
 步骤 3 — 创建导航链接
 [<router-link>](导航链接组件) 实现页面切换。`,
         contextCode: `<!-- Vue Router 配置参考 -->
 import { createRouter, createWebHashHistory } from 'vue-router'
-
 const routes = [
   { path: '/', component: () => import('./Home.vue') },
   { path: '/about', component: About },
   { path: '/user/:id', component: UserDetail }
 ]
-
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
-
 // App.vue 模板
 <router-link to="/">首页</router-link>
 <router-view />`,
@@ -999,11 +991,9 @@ const router = createRouter({
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './Home.vue'
 import About from './About.vue'
-
 const routes = [
   // 在这里定义路由规则：path 和 component 的映射
 ]
-
 // 用 createRouter 创建路由实例
 `,
         hints: [
@@ -1015,18 +1005,22 @@ const routes = [
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './Home.vue'
 import About from './About.vue'
-
 const routes = [
   { path: '/', component: Home },
   { path: '/about', component: About }
 ]
-
 export default createRouter({
   history: createWebHashHistory(),
   routes
 })`,
         verification: '配置了 Vue Router，实现了页面路由切换',
-        filePath: 'src/router.js'
+        filePath: 'src/router.js',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-13',
@@ -1041,13 +1035,11 @@ export default createRouter({
   { path: '/user/:id', component: UserDetail }
 ]
 </code></pre>
-
 <p>在组件中获取参数：</p>
 <pre><code>import { useRoute } from 'vue-router'
 const route = useRoute()
 const userId = route.params.id
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>:id</code> — 动态路径参数</li>
@@ -1056,25 +1048,20 @@ const userId = route.params.id
 </ul>`,
         conceptDetail: `步骤 1 — 定义动态路由
 路由路径中用 [:id](动态路径参数，匹配 URL 中的可变部分) 定义动态段。
-
 步骤 2 — 在组件中获取参数
 [useRoute()](获取当前路由信息) 获取 route 对象，通过 route.params.id 获取参数。
-
 步骤 3 — 根据参数加载数据
 根据 ID 获取对应用户数据并显示。`,
         contextCode: `<!-- 动态路由参数参考 -->
 // 路由配置
 { path: '/user/:id', component: UserDetail }
 { path: '/post/:category/:slug', component: PostDetail }
-
 // 组件中获取参数
 import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
-
 route.params.id        // 路径参数
 route.query.page       // 查询参数 ?page=1
 route.fullPath         // 完整路径
-
 // 编程式导航
 const router = useRouter()
 router.push('/user/123')
@@ -1086,7 +1073,6 @@ router.push({ path: '/user', query: { page: 1 } })`,
     <p>用户 ID：{{ userId }}</p>
   </div>
 </template>
-
 <script setup>
 import { useRoute } from 'vue-router'
 // 用 useRoute 获取路由对象，从 params 中获取用户 ID
@@ -1103,14 +1089,19 @@ import { useRoute } from 'vue-router'
     <p>用户 ID：{{ userId }}</p>
   </div>
 </template>
-
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const userId = route.params.id
 </script>`,
         verification: '使用了动态路由参数，能正确获取 URL 中的 ID',
-        filePath: 'src/views/UserDetail.vue'
+        filePath: 'src/views/UserDetail.vue',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-12'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-14',
@@ -1122,14 +1113,12 @@ const userId = route.params.id
         prerequisites: `<h4>🐍 Pinia 是什么</h4>
 <p>Pinia 是 Vue 官方推荐的状态管理库，替代 Vuex：</p>
 <pre><code>import { defineStore } from 'pinia'
-
 export const useUserStore = defineStore('user', () => {
   const name = ref('Guest')
   const login = (newName) => { name.value = newName }
   return { name, login }
 })
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>defineStore</code> — 定义状态仓库</li>
@@ -1139,16 +1128,13 @@ export const useUserStore = defineStore('user', () => {
 </ul>`,
         conceptDetail: `步骤 1 — 定义 Store
 [defineStore](定义 Pinia 状态仓库) 创建 user store，包含 name 状态和 login 方法。
-
 步骤 2 — 在组件中使用
 [useUserStore()](获取 Pinia store 实例) 获取 store，直接访问状态和方法。
-
 步骤 3 — 修改状态
 调用 store 的方法修改状态，所有组件自动更新。`,
         contextCode: `<!-- Pinia defineStore 语法参考 -->
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-
 export const useUserStore = defineStore('user', () => {
   // state（用 ref）
   const name = ref('Guest')
@@ -1158,7 +1144,6 @@ export const useUserStore = defineStore('user', () => {
   function login(newName) { name.value = newName }
   return { name, greeting, login }
 })
-
 // 组件中使用
 const store = useUserStore()
 store.name          // 读取状态
@@ -1166,7 +1151,6 @@ store.login('Tom')  // 调用 action`,
         starterCode: `<!-- stores/user.js -->
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
 export const useUserStore = defineStore('user', () => {
   // 用 ref 定义 name 状态
   // 定义 login 方法修改 name
@@ -1180,7 +1164,6 @@ export const useUserStore = defineStore('user', () => {
         code: `<!-- stores/user.js -->
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
 export const useUserStore = defineStore('user', () => {
   const name = ref('Guest')
   function login(newName) {
@@ -1189,7 +1172,13 @@ export const useUserStore = defineStore('user', () => {
   return { name, login }
 })`,
         verification: '创建了 Pinia store，能正确管理全局状态',
-        filePath: 'src/stores/user.js'
+        filePath: 'src/stores/user.js',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-15',
@@ -1216,7 +1205,6 @@ export const useUserStore = defineStore('user', () => {
   return { data, save }
 })
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>localStorage.getItem</code> — 读取本地存储</li>
@@ -1225,26 +1213,20 @@ export const useUserStore = defineStore('user', () => {
 </ul>`,
         conceptDetail: `步骤 1 — 在 store 初始化时加载
 [load()](从 localStorage 加载数据) 在 store 创建时自动调用。
-
 步骤 2 — 在状态修改时保存
 [save()](将数据保存到 localStorage) 在每次修改后调用。
-
 步骤 3 — 处理存储异常
 用 try-catch 包裹 localStorage 操作，防止存储空间满。`,
         contextCode: `<!-- localStorage 用法参考 -->
 // 读取
 const saved = localStorage.getItem('key')
 const data = saved ? JSON.parse(saved) : null
-
 // 写入
 localStorage.setItem('key', JSON.stringify(value))
-
 // 删除
 localStorage.removeItem('key')
-
 // 清空所有
 localStorage.clear()
-
 // Pinia 中持久化
 const store = defineStore('app', () => {
   const data = ref([])
@@ -1261,15 +1243,12 @@ const store = defineStore('app', () => {
         starterCode: `<!-- stores/counter.js -->
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
-
   // 定义 load 函数：从 localStorage 读取并恢复 count
   // 定义 save 函数：将 count 保存到 localStorage
   // 定义 increment 函数：count++ 后调用 save()
   // 调用 load() 初始化
-
   return { count, increment }
 })`,
         hints: [
@@ -1280,7 +1259,6 @@ export const useCounterStore = defineStore('counter', () => {
         code: `<!-- stores/counter.js -->
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
   
@@ -1310,7 +1288,13 @@ export const useCounterStore = defineStore('counter', () => {
   return { count, increment }
 })`,
         verification: '实现了 localStorage 持久化，刷新页面后状态保持',
-        filePath: 'src/stores/counter.js'
+        filePath: 'src/stores/counter.js',
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-14'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       }
     ]
   },
@@ -1334,7 +1318,6 @@ app.directive('focus', {
     el.focus()
   }
 })
-
 // 局部指令
 const vFocus = {
   mounted(el) {
@@ -1342,7 +1325,6 @@ const vFocus = {
   }
 }
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>mounted</code> — 元素插入 DOM 后调用</li>
@@ -1351,10 +1333,8 @@ const vFocus = {
 </ul>`,
         conceptDetail: `步骤 1 — 定义指令对象
 [v-focus](自定义指令，以 v- 前缀使用) 对象包含 mounted 钩子。
-
 步骤 2 — 在钩子中操作 DOM
 [el.focus()](原生 DOM 方法，使元素获得焦点) 在元素挂载后自动聚焦。
-
 步骤 3 — 在模板中使用
 标签上加 [v-focus](使用自定义指令) 属性即可。`,
         contextCode: `<!-- 自定义指令语法参考 -->
@@ -1364,14 +1344,12 @@ const vFocus = {
   updated(el, binding) { /* binding.value 是新值 */ }
 }
 // 模板使用：<input v-focus />
-
 // 全局指令（main.js）
 app.directive('lazy', {
   mounted(el, binding) {
     el.src = binding.value
   }
 })
-
 // 指令钩子：created, mounted, updated, unmounted
 // binding: { value, oldValue, arg, modifiers }`,
         starterCode: `<template>
@@ -1380,7 +1358,6 @@ app.directive('lazy', {
     <input placeholder="普通输入框" />
   </div>
 </template>
-
 <script setup>
 // 定义 vFocus 指令对象，在 mounted 钩子中调用 el.focus()
 </script>`,
@@ -1395,7 +1372,6 @@ app.directive('lazy', {
     <input placeholder="普通输入框" />
   </div>
 </template>
-
 <script setup>
 const vFocus = {
   mounted(el) {
@@ -1404,7 +1380,13 @@ const vFocus = {
 }
 </script>`,
         verification: '创建了 v-focus 自定义指令，页面加载后输入框自动聚焦',
-        filePath: 'src/components/AutoFocus.vue'
+        filePath: 'src/components/AutoFocus.vue',
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-1', 'vue3-2'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-17',
@@ -1417,7 +1399,6 @@ const vFocus = {
 <p>组合式函数（Composable）是利用 Vue 组合式 API 封装的可复用逻辑：</p>
 <pre><code>// useMousePosition.js
 import { ref, onMounted, onUnmounted } from 'vue'
-
 export function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
@@ -1433,7 +1414,6 @@ export function useMousePosition() {
   return { x, y }
 }
 </code></pre>
-
 <h4>🔑 命名约定</h4>
 <ul>
   <li>函数名以 <code>use</code> 开头</li>
@@ -1442,26 +1422,21 @@ export function useMousePosition() {
 </ul>`,
         conceptDetail: `步骤 1 — 创建 composable 函数
 [useMousePosition](组合式函数，封装可复用的逻辑) 返回响应式的 x, y。
-
 步骤 2 — 在函数中处理生命周期
 [onMounted](监听 mousemove 事件) 添加事件监听，[onUnmounted](移除事件监听) 清理。
-
 步骤 3 — 在组件中使用
 组件调用 useMousePosition() 获取鼠标坐标。`,
         contextCode: `<!-- 组合式函数模式参考 -->
 // 命名约定：use 开头
 import { ref, onMounted, onUnmounted } from 'vue'
-
 export function useCounter(initial = 0) {
   const count = ref(initial)
   function increment() { count.value++ }
   function reset() { count.value = initial }
   return { count, increment, reset }
 }
-
 // 组件中使用
 const { count, increment } = useCounter(10)
-
 // 带生命周期
 export function useEventListener(target, event, handler) {
   onMounted(() => target.addEventListener(event, handler))
@@ -1469,11 +1444,9 @@ export function useEventListener(target, event, handler) {
 }`,
         starterCode: `<!-- composables/useMousePosition.js -->
 import { ref, onMounted, onUnmounted } from 'vue'
-
 export function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
-
   // 定义 update 函数，从事件中获取 pageX/pageY
   // onMounted 中添加 mousemove 事件监听
   // onUnmounted 中移除事件监听
@@ -1486,7 +1459,6 @@ export function useMousePosition() {
         ],
         code: `<!-- composables/useMousePosition.js -->
 import { ref, onMounted, onUnmounted } from 'vue'
-
 export function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
@@ -1502,7 +1474,13 @@ export function useMousePosition() {
   return { x, y }
 }`,
         verification: '创建了 useMousePosition 组合式函数，能追踪鼠标位置',
-        filePath: 'src/composables/useMousePosition.js'
+        filePath: 'src/composables/useMousePosition.js',
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-1', 'vue3-2', 'vue3-9'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-18',
@@ -1514,12 +1492,10 @@ export function useMousePosition() {
         prerequisites: `<h4>🐍 异步组件</h4>
 <p>异步组件在需要时才加载，减小初始包体积：</p>
 <pre><code>import { defineAsyncComponent } from 'vue'
-
 const AsyncComponent = defineAsyncComponent(() =>
   import('./HeavyComponent.vue')
 )
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>defineAsyncComponent</code> — 定义异步组件</li>
@@ -1528,20 +1504,16 @@ const AsyncComponent = defineAsyncComponent(() =>
 </ul>`,
         conceptDetail: `步骤 1 — 使用 defineAsyncComponent
 [defineAsyncComponent](定义异步加载的组件) 包装动态 import。
-
 步骤 2 — 配置加载状态
 可以传入 loadingComponent 和 errorComponent。
-
 步骤 3 — 在路由中使用
 路由的 component 用异步组件实现懒加载。`,
         contextCode: `<!-- defineAsyncComponent 参考 -->
 import { defineAsyncComponent } from 'vue'
-
 // 基本用法
 const AsyncComp = defineAsyncComponent(() =>
   import('./HeavyComponent.vue')
 )
-
 // 带配置
 const AsyncComp = defineAsyncComponent({
   loader: () => import('./HeavyComponent.vue'),
@@ -1553,11 +1525,9 @@ const AsyncComp = defineAsyncComponent({
     else fail()
   }
 })
-
 // 路由懒加载
 { path: '/admin', component: () => import('./Admin.vue') }`,
         starterCode: `import { defineAsyncComponent } from 'vue'
-
 const HeavyPage = defineAsyncComponent({
   // loader: 定义动态导入函数
   // loadingComponent: 加载中显示的组件
@@ -1570,7 +1540,6 @@ const HeavyPage = defineAsyncComponent({
           '页面访问时才会加载组件代码'
         ],
         code: `import { defineAsyncComponent } from 'vue'
-
 const HeavyPage = defineAsyncComponent({
   loader: () => import('./pages/HeavyPage.vue'),
   loadingComponent: () => import('./Loading.vue'),
@@ -1578,7 +1547,13 @@ const HeavyPage = defineAsyncComponent({
   errorComponent: () => import('./Error.vue')
 })`,
         verification: '使用了异步组件，实现了路由懒加载',
-        filePath: 'src/router.js'
+        filePath: 'src/router.js',
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-1', 'vue3-12'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       },
       {
         id: 'vue3-19',
@@ -1591,14 +1566,11 @@ const HeavyPage = defineAsyncComponent({
 <p>Vue3 提供多种优化手段：</p>
 <pre><code>// shallowRef - 只跟踪 .value 的变化，不深度响应
 const data = shallowRef({ list: [...] })
-
 // v-once - 只渲染一次，后续不再更新
 &lt;p v-once&gt;{{ expensive computation }}&lt;/p&gt;
-
 // v-memo - 缓存虚拟 DOM 节点
 &lt;div v-memo="[val1, val2]"&gt;...&lt;/div&gt;
 </code></pre>
-
 <h4>🔑 核心概念</h4>
 <ul>
   <li><code>shallowRef</code> — 浅层响应式</li>
@@ -1607,26 +1579,20 @@ const data = shallowRef({ list: [...] })
 </ul>`,
         conceptDetail: `步骤 1 — 使用 shallowRef
 [shallowRef](浅层响应式，不深度追踪对象内部变化) 优化大对象。
-
 步骤 2 — 使用 v-once
 [v-once](一次性渲染指令，元素只渲染一次) 缓存静态内容。
-
 步骤 3 — 理解性能权衡
 根据场景选择合适的优化策略。`,
         contextCode: `<!-- 性能优化参考 -->
 import { shallowRef, shallowReactive, triggerRef } from 'vue'
-
 // shallowRef：只追踪 .value 整体变化
 const data = shallowRef({ list: [] })
 data.value = { list: [1, 2, 3] }  // 触发更新
 data.value.list.push(4)           // 不触发！需整体替换
-
 // triggerRef：手动触发更新
 triggerRef(data)
-
 // shallowReactive：浅层响应式
 const state = shallowReactive({ nested: { val: 1 } })
-
 // 模板优化
 // <p v-once>只渲染一次：{{ expensive }}</p>
 // <div v-memo="[val1]">{{ val1 }} - {{ val2 }}</div>`,
@@ -1637,10 +1603,8 @@ const state = shallowReactive({ nested: { val: 1 } })
     <button @click="???">更新</button>
   </div>
 </template>
-
 <script setup>
 import { shallowRef } from 'vue'
-
 // 用 shallowRef 定义 largeData 大对象
 // 定义 updateData 函数替换 largeData.value
 </script>`,
@@ -1656,22 +1620,25 @@ import { shallowRef } from 'vue'
     <button @click="updateData">更新</button>
   </div>
 </template>
-
 <script setup>
 import { shallowRef } from 'vue'
-
 const expensiveValue = '10000'
 const largeData = shallowRef({
   name: '大对象',
   list: Array.from({ length: 1000 }, (_, i) => i)
 })
-
 function updateData() {
   largeData.value = { ...largeData.value, name: '已更新' }
 }
 </script>`,
         verification: '使用了 shallowRef 和 v-once 优化渲染性能',
-        filePath: 'src/components/Optimized.vue'
+        filePath: 'src/components/Optimized.vue',
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-1', 'vue3-2', 'vue3-7'],
+        commonMistakes: [],
+        microSteps: [],
+        variations: [],
+        transferTasks: []
       }
     ]
   }

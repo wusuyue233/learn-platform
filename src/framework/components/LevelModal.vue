@@ -123,6 +123,28 @@
               </button>
             </div>
           </div>
+          <div v-if="level.microSteps?.length" class="microstep-section">
+            <button class="btn-microstep" @click="toggleMicroStepMode">
+              {{ microStepMode ? '✕ 退出分步模式' : '📝 Step by Step 分步引导' }}
+            </button>
+            <div v-if="microStepMode" class="microstep-content">
+              <div class="microstep-dots">
+                <div v-for="(step, i) in level.microSteps" :key="step.id"
+                  class="microstep-dot"
+                  :class="{ done: microStepDoneIds.includes(step.id), current: currentMicroStepIdx === i && !microStepDoneIds.includes(step.id), pending: currentMicroStepIdx < i }"
+                  :title="`${i+1}. ${step.title}`">
+                </div>
+              </div>
+              <div class="microstep-current" v-if="currentMicroStep">
+                <div class="microstep-current-header">
+                  <span class="microstep-step-label">步骤 {{ currentMicroStepIdx + 1 }}/{{ level.microSteps.length }}</span>
+                  <span v-if="allMicroStepsDone" class="microstep-all-done">🎉 全部完成</span>
+                </div>
+                <strong>{{ currentMicroStep.title }}</strong>
+                <p class="microstep-hint">{{ currentMicroStep.hint }}</p>
+              </div>
+            </div>
+          </div>
           <div v-if="loadError" class="editor-error">{{ loadError }}</div>
           <div v-else-if="loadingFile" class="editor-loading">加载文件中...</div>
           <CodeEditor
@@ -131,6 +153,7 @@
             :key="level.id"
             v-model="code"
             :language="editorLang"
+            :commonMistakes="level.commonMistakes"
           />
           <div v-if="saveMsg" class="save-toast" :class="{ success: saveOk, error: !saveOk }">
             {{ saveMsg }}
@@ -193,6 +216,43 @@ const saveOk = ref(false)
 const results = ref([])
 const verifyDone = ref(false)
 const verifyPassed = ref(false)
+
+const microStepMode = ref(false)
+const currentMicroStepIdx = ref(0)
+const microStepDoneIds = ref([])
+
+const currentMicroStep = computed(() => {
+  return props.level.microSteps?.[currentMicroStepIdx.value] || null
+})
+
+const allMicroStepsDone = computed(() => {
+  const steps = props.level.microSteps || []
+  return steps.length > 0 && steps.every(s => microStepDoneIds.value.includes(s.id))
+})
+
+function toggleMicroStepMode() {
+  microStepMode.value = !microStepMode.value
+  if (microStepMode.value) {
+    loadMicroStepProgress()
+  }
+}
+
+function loadMicroStepProgress() {
+  const progress = store.getMicroStepProgress(props.courseId, props.level.id)
+  const steps = props.level.microSteps || []
+  microStepDoneIds.value = Object.keys(progress)
+  let found = false
+  for (let i = 0; i < steps.length; i++) {
+    if (!progress[steps[i].id]) {
+      currentMicroStepIdx.value = i
+      found = true
+      break
+    }
+  }
+  if (!found && steps.length > 0) {
+    currentMicroStepIdx.value = steps.length - 1
+  }
+}
 
 const flashingIdx = ref(-1)
 const linkStatus = ref({})
@@ -307,6 +367,18 @@ watch([parsedConcept, code], () => {
     linkStatus.value = st
   }, 150)
 }, { immediate: true })
+
+watch(code, (val) => {
+  if (!microStepMode.value || !currentMicroStep.value) return
+  const step = currentMicroStep.value
+  if (!microStepDoneIds.value.includes(step.id) && val.includes(step.verification)) {
+    store.completeMicroStep(props.courseId, props.level.id, step.id)
+    microStepDoneIds.value.push(step.id)
+    if (currentMicroStepIdx.value < props.level.microSteps.length - 1) {
+      currentMicroStepIdx.value++
+    }
+  }
+})
 
 const hintBtnText = computed(() => {
   const total = props.level.hints.length + 1
@@ -811,6 +883,91 @@ function handleClose() {
 }
 .prereq-block-body ul, .prereq-block-body ol { margin: 4px 0; padding-left: 20px; }
 .prereq-block-body li { margin: 3px 0; }
+
+.microstep-section {
+  margin-bottom: 8px;
+}
+.btn-microstep {
+  padding: 6px 14px;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  background: var(--primary-light);
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  width: 100%;
+  font-weight: 500;
+}
+.btn-microstep:hover {
+  background: var(--primary);
+  color: white;
+}
+.microstep-content {
+  margin-top: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+.microstep-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.microstep-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--card);
+  transition: all 0.2s;
+}
+.microstep-dot.done {
+  background: var(--success-light);
+  border-color: var(--success);
+  color: var(--success);
+}
+.microstep-dot.current {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.microstep-dot.pending {
+  opacity: 0.4;
+}
+.microstep-current {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.microstep-current-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.microstep-step-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.microstep-all-done {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--success);
+}
+.microstep-hint {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
 
 @media (max-width: 768px) {
   .modal-body {

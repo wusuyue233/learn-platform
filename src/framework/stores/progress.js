@@ -6,6 +6,7 @@ const STORAGE_KEY = 'learn-platform-progress'
 export const useProgressStore = defineStore('progress', () => {
   const completed = ref({})
   const currentCourse = ref(null)
+  const microSteps = ref({})
 
   function load() {
     try {
@@ -15,6 +16,7 @@ export const useProgressStore = defineStore('progress', () => {
         if (parsed && typeof parsed === 'object') {
           completed.value = parsed.completed || {}
           currentCourse.value = parsed.currentCourse || null
+          microSteps.value = parsed.microSteps || {}
         }
       }
     } catch (e) {
@@ -26,7 +28,8 @@ export const useProgressStore = defineStore('progress', () => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         completed: completed.value,
-        currentCourse: currentCourse.value
+        currentCourse: currentCourse.value,
+        microSteps: microSteps.value
       }))
     } catch (e) {
       console.warn('进度保存失败:', e.message)
@@ -69,13 +72,38 @@ export const useProgressStore = defineStore('progress', () => {
     save()
   }
 
+  function checkDependsOn(courseId, dependsOnList) {
+    if (!dependsOnList || dependsOnList.length === 0) return true
+    const courseCompleted = getCourseCompleted(courseId)
+    return dependsOnList.every(id => courseCompleted.includes(id))
+  }
+
+  function completeMicroStep(courseId, levelId, stepId) {
+    if (!microSteps.value[courseId]) microSteps.value[courseId] = {}
+    if (!microSteps.value[courseId][levelId]) microSteps.value[courseId][levelId] = {}
+    microSteps.value[courseId][levelId][stepId] = true
+    save()
+  }
+
+  function getMicroStepProgress(courseId, levelId) {
+    return microSteps.value[courseId]?.[levelId] || {}
+  }
+
+  function resetLevelProgress(courseId, levelId) {
+    if (microSteps.value[courseId]) {
+      delete microSteps.value[courseId][levelId]
+      save()
+    }
+  }
+
   function resetAll() {
     completed.value = {}
+    microSteps.value = {}
     save()
   }
 
   function exportProgress() {
-    return JSON.stringify({ completed: completed.value, currentCourse: currentCourse.value }, null, 2)
+    return JSON.stringify({ completed: completed.value, currentCourse: currentCourse.value, microSteps: microSteps.value }, null, 2)
   }
 
   function importProgress(json) {
@@ -86,6 +114,7 @@ export const useProgressStore = defineStore('progress', () => {
         if (!valid) return false
         completed.value = data.completed
         currentCourse.value = data.currentCourse || null
+        microSteps.value = data.microSteps || {}
         save()
         return true
       }
@@ -125,12 +154,17 @@ export const useProgressStore = defineStore('progress', () => {
   return {
     completed,
     currentCourse,
+    microSteps,
     save,
     getCourseCompleted,
     isLevelUnlocked,
     isPhaseUnlocked,
+    checkDependsOn,
     completeLevel,
+    completeMicroStep,
+    getMicroStepProgress,
     resetCourse,
+    resetLevelProgress,
     resetAll,
     exportProgress,
     importProgress,
