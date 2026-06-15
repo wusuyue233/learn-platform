@@ -176,32 +176,32 @@ console.log(typeof 123n)      // "bigint"`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'typeof null',
+          'explanation': 'typeof null 返回 "object"（历史 bug）'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '===',
+          'explanation': '类型比较推荐 === 避免隐式转换'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '用 typeof 检测',
+          'verification': 'typeof',
+          'hint': 'typeof 返回类型字符串'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '检测多种类型',
+          'verification': 'typeof null',
+          'hint': '检测 null 等特殊类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
+          'title': '打印结果',
           'verification': 'console.log',
-          'hint': '输出验证'
+          'hint': '打印每种类型的结果'
          }
         ],
         variations: [
@@ -558,32 +558,32 @@ console.log(role)        // "user"`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'const { name } = user',
+          'explanation': '解构不存在的属性得到 undefined'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'const { name: userName }',
+          'explanation': '冒号用于重命名，非类型标注'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '解构对象',
+          'verification': 'const {',
+          'hint': '从 user 对象提取 name 和 age'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '重命名变量',
+          'verification': 'hobby:',
+          'hint': '用冒号重命名 hobby→userHobby'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
+          'title': '默认值',
           'verification': 'console.log',
-          'hint': '输出验证'
+          'hint': '打印结果验证'
          }
         ],
         variations: [
@@ -700,21 +700,21 @@ console.log(evens)  // [2, 4]`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '定义函数',
-          'verification': 'function',
-          'hint': '用 function 关键字'
+          'title': '箭头函数',
+          'verification': '=>',
+          'hint': '用 => 定义箭头函数'
          },
          {
           'id': 'step-2',
-          'title': '添加参数',
-          'verification': 'return',
-          'hint': '函数体返回值'
+          'title': '回调中使用',
+          'verification': '.map(',
+          'hint': '数组方法回调中使用箭头函数'
          },
          {
           'id': 'step-3',
-          'title': '调用测试',
+          'title': '验证输出',
           'verification': 'console.log',
-          'hint': '调用函数测试'
+          'hint': '打印结果验证'
          }
         ],
         variations: [
@@ -813,32 +813,32 @@ console.log(listHtml)`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '用引号代替',
+          'explanation': '拼接字符串用模板字符串更清晰'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '忘记转义',
+          'explanation': '模板字符串中特殊字符需转义'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '使用反引号',
+          'verification': 'userInfo =',
+          'hint': '用模板字符串构建用户信息'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '插入变量',
+          'verification': '.map(',
+          'hint': '用 map 和模板字符串渲染列表'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '构建 HTML',
+          'verification': '.map(',
+          'hint': '结合 map 渲染列表'
          }
         ],
         variations: [
@@ -930,32 +930,32 @@ console.log(settings)
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '浅拷贝',
+          'explanation': '展开运算符是浅拷贝，嵌套对象仍共享引用'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '修改原对象',
+          'explanation': '展开运算符不修改原对象，返回新对象'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '数组展开',
+          'verification': '...',
+          'hint': '用 ... 展开数组'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '对象展开',
+          'verification': '...defaults',
+          'hint': '展开对象合并到新对象'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
+          'title': '验证合并',
           'verification': 'console.log',
-          'hint': '输出验证'
+          'hint': '打印合并结果'
          }
         ],
         variations: [
@@ -1049,32 +1049,32 @@ console.log(createUser(user))
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '默认值',
+          'explanation': '解构可以给不存在的属性设置默认值'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '嵌套解构',
+          'explanation': '深层嵌套的解构可读性差，建议拆开'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '参数解构',
+          'verification': 'function createUser({',
+          'hint': '在参数位置直接解构对象'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '构建返回',
+          'verification': '`${',
+          'hint': '用模板字符串拼接结果'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
+          'title': '调用测试',
           'verification': 'console.log',
-          'hint': '输出验证'
+          'hint': '调用函数验证输出'
          }
         ],
         variations: [
@@ -1201,21 +1201,21 @@ fetchUser(-1).catch(err => console.error(err))`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 Promise',
+          'verification': 'return new Promise(',
+          'hint': '用 new Promise 创建异步容器'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '处理结果',
+          'verification': 'resolve(',
+          'hint': '成功时 resolve，失败时 reject'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '链式调用',
+          'verification': '.then(',
+          'hint': 'then 接收成功结果'
          }
         ],
         variations: [
@@ -1331,21 +1331,21 @@ loadUserPosts()`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明 async',
+          'verification': 'async function',
+          'hint': 'async 声明异步函数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '使用 await',
+          'verification': 'await',
+          'hint': 'await 等待 Promise 完成'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '错误处理',
+          'verification': 'catch',
+          'hint': 'try-catch 捕获异步错误'
          }
         ],
         variations: [
@@ -1456,32 +1456,32 @@ console.log(safeJsonParse('invalid'))   // null`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'catch 不处理',
+          'explanation': 'catch 块不能为空，至少 console.error 记录错误'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'finally',
+          'explanation': 'finally 确保无论是否出错都执行清理代码'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'try 包裹',
+          'verification': 'try {',
+          'hint': '将可能出错的代码放入 try 块'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '捕获错误',
+          'verification': 'catch',
+          'hint': 'catch 捕获错误对象'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '安全返回',
+          'verification': 'return null',
+          'hint': '失败时返回默认值'
          }
         ],
         variations: [
@@ -1581,44 +1581,44 @@ items.forEach((item, i) => {
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'SELECT *',
-          'explanation': '明确指定列名优于 SELECT *'
+          'pattern': '.querySelector',
+          'explanation': 'querySelector 选择器需加 . 或 # 前缀'
          },
          {
-          'pattern': 'WHERE',
-          'explanation': 'UPDATE/DELETE 加 WHERE'
+          'pattern': 'querySelectorAll',
+          'explanation': 'querySelectorAll 返回 NodeList，可用 forEach 遍历'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '获取元素',
+          'verification': 'document.querySelector',
+          'hint': '用 querySelector 获取元素'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '修改内容',
+          'verification': 'textContent',
+          'hint': '用 textContent 或 innerHTML 修改'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '批量遍历',
+          'verification': 'querySelectorAll',
+          'hint': '用 querySelectorAll 获取批量元素'
          }
         ],
         variations: [
          {
-          'name': '子查询',
-          'description': '子查询嵌套在 WHERE/FROM/SELECT 中'
+          'name': 'getElementById',
+          'description': 'getElementById 用 id 选择，比 querySelector 稍快'
          }
         ],
         transferTasks: [
          {
-          'task': '多表 JOIN + GROUP BY + HAVING 聚合',
-          'target': '掌握复杂查询'
+          'task': '实现一个可折叠的手风琴组件，用 querySelector/classList 切换显隐',
+          'target': '掌握 DOM 操作综合应用'
          }
         ]
       },
@@ -1713,32 +1713,32 @@ list.addEventListener('click', (e) => {
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'addEventListener',
+          'explanation': 'addEventListener 第三个参数可传 { passive: true } 优化滚动'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '事件委托',
+          'explanation': '用事件委托代替逐个绑定，适合动态列表'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '绑定事件',
+          'verification': "addEventListener('click'",
+          'hint': '给按钮添加 click 事件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建元素',
+          'verification': 'createElement(',
+          'hint': '创建 li 添加到列表'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '事件委托',
+          'verification': 'e.target',
+          'hint': '用事件委托处理子元素点击'
          }
         ],
         variations: [
@@ -1850,32 +1850,32 @@ users.forEach(user => {
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'innerHTML',
+          'explanation': 'innerHTML 有 XSS 风险，textContent 优先'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'appendChild',
+          'explanation': '频繁 appendChild 可用 DocumentFragment 优化'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建元素',
+          'verification': 'createElement(',
+          'hint': '用 createElement 创建 div'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '设置内容',
+          'verification': '.className',
+          'hint': '用 className 和 innerHTML 设置'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加到 DOM',
+          'verification': 'appendChild(',
+          'hint': '用 appendChild 添加到容器'
          }
         ],
         variations: [

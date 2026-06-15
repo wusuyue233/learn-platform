@@ -56,7 +56,9 @@ print(f"w={model.weight.item():.3f}, b={model.bias.item():.3f}")`,
       { id: 'pytorch-4', number: 4, type: 'concept', title: 'MNIST 分类', concept: '多层感知机', difficulty: 'hard',
         prerequisites: `<h4>神经网络</h4><p>nn.Module 定义网络。forward 前向传播。</p>`,
         conceptDetail: `F.relu 激活函数。view 展平图像。`,
-        code: `class MLP(nn.Module):
+        code: `import torch.nn.functional as F
+
+class MLP(nn.Module):
   def __init__(self):
     super().__init__()
     self.fc1 = nn.Linear(784, 256)

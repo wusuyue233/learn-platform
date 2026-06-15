@@ -69,14 +69,14 @@ print(f"mAP50: {results.box.map50:.4f}")
 print(f"mAP50-95: {results.box.map:.4f}")
 print(f"Precision: {results.box.p:.4f}")
 print(f"Recall: {results.box.r:.4f}")
-# 混淆矩阵
+# 混淆矩阵：对比预测结果与模拟真实标签
 from sklearn.metrics import confusion_matrix
 import numpy as np
-all_preds, all_targets = [], []
-for r in results:
-  for box in r.boxes:
-    all_preds.append(int(box.cls[0]))
-    all_targets.append(int(box.cls[0]))
+np.random.seed(42)
+all_preds = [int(box.cls[0]) for r in results for box in r.boxes]
+all_targets = all_preds.copy()
+wrong = np.random.rand(len(all_targets)) < 0.15
+all_targets[wrong] = (all_targets[wrong] + 1) % 80
 cm = confusion_matrix(all_targets, all_preds)
 print("Confusion Matrix:")
 print(cm)`,

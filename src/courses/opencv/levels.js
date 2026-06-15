@@ -38,7 +38,8 @@ cv2.waitKey(0)`,
       { id: 'opencv-3', number: 3, type: 'concept', title: '图像滤波', concept: '高斯/中值/双边滤波', difficulty: 'medium',
         prerequisites: `<h4>图像滤波</h4><p>GaussianBlur 去高斯噪声。medianBlur 去椒盐噪声。bilateralFilter 保边去噪。</p>`,
         conceptDetail: `核大小需奇数。双边滤波同时考虑空间和像素值差异。`,
-        code: `img = cv2.imread("noisy.jpg")
+        code: `import cv2
+img = cv2.imread("noisy.jpg")
 gauss = cv2.GaussianBlur(img, (5,5), 1.5)
 median = cv2.medianBlur(img, 5)
 bilateral = cv2.bilateralFilter(img, 9, 75, 75)

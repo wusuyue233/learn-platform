@@ -909,16 +909,7 @@ const theme = ref('light')
           '后代用 const theme = inject("theme") 注入',
           'provide 的是 ref，修改会响应式更新'
         ],
-        code: `<!-- GrandParent.vue -->
-<template>
-  <Parent />
-</template>
-<script setup>
-import { ref, provide } from 'vue'
-const theme = ref('light')
-provide('theme', theme)
-</script>
-<!-- Child.vue -->
+        code: `<!-- Child.vue -->
 <template>
   <p>当前主题：{{ theme }}</p>
 </template>

@@ -10,6 +10,7 @@ export const phases = [
         title: 'Docker 是什么',
         concept: '镜像与容器',
         difficulty: 'easy',
+        type: 'concept',
         task: '编写一个简单的 Dockerfile，基于 Alpine Linux 打印 Hello Docker',
         prerequisites: `<h4>🐳 什么是 Docker</h4>
 <p>Docker 是一个容器化平台，让应用及其依赖打包到一个轻量级、可移植的容器中运行。</p>
@@ -70,33 +71,33 @@ CMD ["echo", "Hello Docker"]`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'COPY package*.json',
+          'explanation': '先复制 package.json 再安装依赖，利用 Docker 缓存层'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
-         }
+          'pattern': 'WORKDIR',
+          'explanation': 'WORKDIR /app 后所有路径都相对 /app，不要用绝对路径'
+         },
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选定基础镜像',
+          'verification': 'FROM alpine',
+          'hint': 'FROM alpine:latest 指定基础镜像'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '添加打印命令',
+          'verification': 'echo "Hello Docker"',
+          'hint': 'RUN echo "Hello Docker" 执行打印命令'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '设置启动命令',
+          'verification': 'CMD',
+          'hint': 'CMD ["echo", "Hello Docker"] 容器启动时打印'
+         },
         ],
         variations: [
          {
@@ -117,6 +118,7 @@ CMD ["echo", "Hello Docker"]`,
         title: 'Dockerfile 基础',
         concept: '指令编写',
         difficulty: 'easy',
+        type: 'concept',
         task: '为 Node.js 应用编写 Dockerfile，包含依赖安装和启动命令',
         prerequisites: `<h4>🐳 Dockerfile 常用指令</h4>
 <pre><code>FROM      基础镜像
@@ -204,33 +206,39 @@ CMD ["node", "server.js"]`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'FROM',
+          'explanation': 'FROM 必须指定有效的基础镜像，如 alpine:latest'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'CMD',
+          'explanation': 'CMD 用 JSON 数组格式 ["echo", "Hello Docker"]'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择基础镜像',
+          'verification': 'FROM node:20-alpine',
+          'hint': 'FROM node:20-alpine 选择 Node.js 基础镜像'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '设置工作目录',
+          'verification': 'WORKDIR',
+          'hint': 'WORKDIR /app 设置容器内工作目录'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '复制依赖并安装',
+          'verification': 'npm install',
+          'hint': '先 COPY package*.json 再 npm install 利用缓存'
+         },
+         {
+          'id': 'step-4',
+          'title': '设置启动命令',
+          'verification': 'CMD',
+          'hint': 'CMD ["node", "server.js"] 启动应用'
+         },
         ],
         variations: [
          {
@@ -251,6 +259,7 @@ CMD ["node", "server.js"]`,
         title: '构建镜像',
         concept: 'docker build',
         difficulty: 'easy',
+        type: 'concept',
         task: '编写 .dockerignore 文件并理解镜像构建过程',
         prerequisites: `<h4>🐳 docker build 命令</h4>
 <pre><code>docker build -t my-app:1.0 .
@@ -322,33 +331,33 @@ docker-compose*.yml`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'docker run',
-          'explanation': '每次 docker run 创建新容器'
+          'pattern': '.env',
+          'explanation': '一定要排除 .env，防止 API 密钥泄露到镜像中'
          },
          {
-          'pattern': 'Dockerfile',
-          'explanation': 'Dockerfile 文件名必须大写 D'
+          'pattern': 'node_modules',
+          'explanation': 'node_modules 应排除，在镜像内重建更干净'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '排除 node_modules',
+          'verification': 'node_modules',
+          'hint': '排除依赖目录，避免构建上下文过大'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '排除 .git',
+          'verification': '.git',
+          'hint': '排除版本控制文件'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '排除 .env',
+          'verification': '.env',
+          'hint': '排除环境变量文件，防泄露密钥'
+         },
         ],
         variations: [
          {
@@ -376,6 +385,7 @@ docker-compose*.yml`,
         title: '运行容器',
         concept: 'docker run',
         difficulty: 'easy',
+        type: 'concept',
         task: '编写 docker run 命令启动一个 Nginx 容器',
         prerequisites: `<h4>🐳 docker run 常用参数</h4>
 <pre><code>docker run -d --name web nginx        # 后台运行
@@ -447,33 +457,33 @@ docker rm web-server`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'docker run',
-          'explanation': '每次 docker run 创建新容器'
+          'pattern': '-p',
+          'explanation': '-p 宿主机端口:容器端口，注意顺序不要反了'
          },
          {
-          'pattern': 'Dockerfile',
-          'explanation': 'Dockerfile 文件名必须大写 D'
-         }
+          'pattern': 'EXPOSE',
+          'explanation': 'Dockerfile 的 EXPOSE 只是声明，真正的映射要靠 -p 运行时指定'
+         },
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '后台运行容器',
+          'verification': 'docker run -d',
+          'hint': '-d 后台运行不阻塞终端'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '命名容器',
+          'verification': '--name',
+          'hint': '--name web-server 给容器命名，便于管理'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '查看运行状态',
+          'verification': 'docker ps',
+          'hint': 'docker ps 查看运行中的容器'
+         },
         ],
         variations: [
          {
@@ -494,6 +504,7 @@ docker rm web-server`,
         title: '端口映射',
         concept: '-p 参数',
         difficulty: 'medium',
+        type: 'concept',
         task: '将容器端口映射到宿主机，实现外部访问',
         prerequisites: `<h4>🐳 端口映射</h4>
 <pre><code>docker run -p 8080:80 nginx    # 宿主机8080 → 容器80
@@ -552,33 +563,33 @@ docker port web-server`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '-p',
+          'explanation': '-p 宿主机端口:容器端口，顺序不要反了'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'EXPOSE',
+          'explanation': 'EXPOSE 只是声明，真正映射靠 -p 运行时指定'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '使用 -p 映射端口',
+          'verification': '-p',
+          'hint': '-p 8000:3000 宿主机 8000 → 容器 3000'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '限定绑定地址',
+          'verification': '127.0.0.1:3306',
+          'hint': '127.0.0.1:3306:3306 只允许本机访问数据库'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '查看端口映射',
+          'verification': 'docker port',
+          'hint': 'docker port web-server 查看当前容器的端口映射'
+         },
         ],
         variations: [
          {
@@ -599,6 +610,7 @@ docker port web-server`,
         title: '数据卷挂载',
         concept: '-v / --mount',
         difficulty: 'medium',
+        type: 'concept',
         task: '挂载数据卷实现数据持久化和热更新',
         prerequisites: `<h4>🐳 数据卷</h4>
 <pre><code>docker run -v /host/path:/container/path app   # 绑定挂载
@@ -664,33 +676,33 @@ docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '-v',
+          'explanation': '-v 宿主机路径:容器路径，Windows 需用绝对路径'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': ':ro',
+          'explanation': ':ro 只读挂载防止容器修改宿主机文件'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '绑定挂载源码',
+          'verification': '-v $(pwd)/src:/app/src',
+          'hint': '-v $(pwd)/src:/app/src 源码目录挂载到容器实现热更新'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '命名卷持久化数据',
+          'verification': 'shop-db-data',
+          'hint': '-v shop-db-data:/var/lib/mysql 使用命名卷持久化数据库'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '只读挂载配置',
+          'verification': ':ro',
+          'hint': '-v $(pwd)/.env:/app/.env:ro 只读挂载配置文件'
+         },
         ],
         variations: [
          {
@@ -711,6 +723,7 @@ docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
         title: '环境变量',
         concept: '-e / ENV',
         difficulty: 'medium',
+        type: 'concept',
         task: '通过环境变量配置应用的不同环境',
         prerequisites: `<h4>🐳 环境变量</h4>
 <pre><code># docker run 传入
@@ -793,33 +806,33 @@ docker run -d --env-file .env shop-api`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': '-e',
+          'explanation': '-e 传入的环境变量覆盖 Dockerfile 的 ENV 默认值'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': '--env-file',
+          'explanation': '--env-file 每行 KEY=value，不要引号包裹值'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '传入环境变量',
+          'verification': '-e NODE_ENV',
+          'hint': '-e NODE_ENV=production 设置运行环境'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '配置数据库连接',
+          'verification': '-e DB_HOST',
+          'hint': '-e DB_HOST=mysql 指定数据库地址'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '从文件加载配置',
+          'verification': '--env-file',
+          'hint': '--env-file .env 从文件批量加载变量'
+         },
         ],
         variations: [
          {
@@ -847,6 +860,7 @@ docker run -d --env-file .env shop-api`,
         title: 'docker-compose.yml',
         concept: 'Compose 语法',
         difficulty: 'medium',
+        type: 'concept',
         task: '编写 docker-compose.yml 定义一个 Web 服务',
         prerequisites: `<h4>🐳 Docker Compose</h4>
 <pre><code>version: '3.8'
@@ -943,33 +957,33 @@ services:
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'version:',
+          'explanation': '新版 Docker 已弃用 version 字段，直接识别 services'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'build:',
+          'explanation': 'build: . 和 image: 不能同时用'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 services',
+          'verification': 'services:',
+          'hint': 'services 下列出所有服务，web 是服务名'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '配置构建方式',
+          'verification': 'build:',
+          'hint': 'build: . 从当前目录的 Dockerfile 构建'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '配置端口映射',
+          'verification': '3000:3000',
+          'hint': 'ports 下的 "3000:3000" 映射应用端口'
+         },
         ],
         variations: [
          {
@@ -990,6 +1004,7 @@ services:
         title: '多服务编排',
         concept: '服务依赖',
         difficulty: 'medium',
+        type: 'concept',
         task: '编排 API、MySQL、Redis 三个服务的依赖关系',
         prerequisites: `<h4>🐳 多服务编排</h4>
 <pre><code>services:
@@ -1127,33 +1142,33 @@ volumes:
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'depends_on',
+          'explanation': 'depends_on 只控制启动顺序，需要 healthcheck 确保就绪'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'volumes',
+          'explanation': '命名卷需在顶层 volumes: 声明，避免匿名卷无法管理'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 API 服务',
+          'verification': 'depends_on',
+          'hint': 'depends_on 控制服务启动顺序，api 依赖 db 和 redis'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '配置 MySQL',
+          'verification': 'mysql:8',
+          'hint': 'MySQL 8 镜像，设置 root 密码和数据卷'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '配置 Redis',
+          'verification': 'redis:7-alpine',
+          'hint': 'Redis 7 Alpine 镜像，redis-server 加密码启动'
+         },
         ],
         variations: [
          {
@@ -1174,6 +1189,7 @@ volumes:
         title: '实战 - 电商系统 Docker 部署',
         concept: '生产部署',
         difficulty: 'hard',
+        type: 'concept',
         task: '完成电商系统的完整 Docker 部署配置',
         prerequisites: `<h4>🐳 生产部署要点</h4>
 <pre><code># 多阶段构建减小镜像体积
@@ -1313,33 +1329,33 @@ CMD ["node", "dist/index.js"]`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'error',
-          'explanation': '处理边界情况和错误'
+          'pattern': 'AS builder',
+          'explanation': '多阶段构建用 AS 命名阶段，COPY --from=builder 引用'
          },
          {
-          'pattern': '类型',
-          'explanation': '注意变量类型正确性'
+          'pattern': 'HEALTHCHECK',
+          'explanation': 'HEALTHCHECK CMD 返回非 0 即不健康'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '多阶段构建',
+          'verification': 'AS builder',
+          'hint': 'builder 阶段安装依赖构建，生产阶段只复制产物减小体积'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '健康检查',
+          'verification': 'HEALTHCHECK',
+          'hint': 'HEALTHCHECK 让 Docker 自动检测服务是否健康'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '配置文件',
+          'verification': 'healthcheck',
+          'hint': 'Compose 文件中配置 healthcheck 和 restart 策略'
+         },
         ],
         variations: [
          {

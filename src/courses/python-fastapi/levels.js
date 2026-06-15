@@ -63,22 +63,22 @@ print(1 + 2, "result")           # 混合输出`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '调用 print 函数',
+          'verification': 'print(',
+          'hint': 'print() 是 Python 内置输出函数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '输出字符串',
+          'verification': '"Hello, Python!"',
+          'hint': '字符串用引号包裹，双引号单引号均可'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '闭合括号',
+          'verification': ')',
+          'hint': 'print 函数括号闭合表示函数调用结束'
+         },
         ],
         variations: [
          {
@@ -173,22 +173,22 @@ print(is_student, type(is_student))`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建字符串变量',
+          'verification': 'name = "Alice"',
+          'hint': 'name = "Alice" 字符串变量赋值'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建数字变量',
+          'verification': 'age = 25',
+          'hint': '整数和浮点数直接赋值，不需要引号'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '查看变量类型',
+          'verification': 'type(',
+          'hint': 'type() 查看变量类型，验证赋值结果'
+         },
         ],
         variations: [
          {
@@ -278,33 +278,33 @@ print(result)  # 8`,
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': '() =>',
-          'explanation': '箭头函数没有自己的 this'
+          'pattern': 'def',
+          'explanation': '定义函数用 def 关键字，不需要 function'
          },
          {
           'pattern': 'return',
-          'explanation': '箭头函数返回对象需要 ({})'
+          'explanation': 'return 后不需要分号，缩进用 4 个空格'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
           'title': '定义函数',
-          'verification': 'function',
-          'hint': '用 function 关键字'
+          'verification': 'def add(a, b):',
+          'hint': 'def 关键字定义函数，参数放在括号中'
          },
          {
           'id': 'step-2',
-          'title': '添加参数',
-          'verification': 'return',
-          'hint': '函数体返回值'
+          'title': '返回结果',
+          'verification': 'return a + b',
+          'hint': 'return 语句返回计算结果'
          },
          {
           'id': 'step-3',
-          'title': '调用测试',
-          'verification': 'console.log',
-          'hint': '调用函数测试'
-         }
+          'title': '调用并打印',
+          'verification': 'print(result)',
+          'hint': '调用函数后 print 输出结果到控制台'
+         },
         ],
         variations: [
          {
@@ -314,8 +314,8 @@ print(result)  # 8`,
         ],
         transferTasks: [
          {
-          'task': '将普通函数改箭头函数，对比 this 指向',
-          'target': '理解函数与箭头函数区别'
+          'task': '为函数添加默认参数和关键字参数 **kwargs',
+          'target': '理解参数灵活性'
          }
         ]
       },
@@ -407,22 +407,22 @@ print(evens)  # [2, 4, 6, 8, 10]`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '用 for 循环遍历',
+          'verification': 'for i in range(1, 11):',
+          'hint': 'range(1, 11) 生成 1 到 10 的整数序列'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '用 if 判断偶数',
+          'verification': 'if i % 2 == 0:',
+          'hint': '% 取模运算符，i % 2 == 0 表示偶数'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '收集结果',
+          'verification': 'even_numbers.append',
+          'hint': '列表的 append 方法添加符合条件的元素'
+         },
         ],
         variations: [
          {
@@ -530,22 +530,22 @@ for student in students:
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建列表',
+          'verification': '\'[',
+          'hint': '列表用方括号 []，元素用逗号分隔'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建字典',
+          'verification': '\':',
+          'hint': '字典用花括号 {}，键值对用冒号分隔'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '增删改查',
+          'verification': '.append(',
+          'hint': '列表的 append/remove 方法操作数据'
+         },
         ],
         variations: [
          {
@@ -644,44 +644,44 @@ async def hello():
         dependsOn: [],
         commonMistakes: [
          {
-          'pattern': 'req.body',
-          'explanation': 'POST 需 body-parser 中间件解析'
+          'pattern': 'from fastapi',
+          'explanation': 'FastAPI 导入 from fastapi import FastAPI，不需要 require'
          },
          {
-          'pattern': 'res.send',
-          'explanation': '一个请求只调一次 res.send'
+          'pattern': 'app.get',
+          'explanation': 'FastAPI 用装饰器 @app.get() 注册路由，不用 app.get()'
          }
         ],
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 FastAPI',
+          'verification': 'from fastapi import FastAPI',
+          'hint': 'FastAPI() 创建应用实例'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '注册路由',
+          'verification': '@app.get(',
+          'hint': '@app.get("/hello") 装饰器注册 GET 端点'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '返回 JSON',
+          'verification': 'return {',
+          'hint': '直接 return 字典，FastAPI 自动转 JSON'
+         },
         ],
         variations: [
          {
-          'name': 'Hash vs History',
-          'description': 'Hash 模式用 #，History 需要服务端配合'
+          'name': '异步 async def',
+          'description': 'FastAPI 路由函数用 async def 支持并发'
          }
         ],
         transferTasks: [
          {
-          'task': '完成关卡后用不同方法实现相同功能',
-          'target': '巩固概念理解'
+          'task': '添加一个 POST 端点接收 JSON 请求体',
+          'target': '理解不同 HTTP 方法'
          }
         ]
       },
@@ -767,22 +767,22 @@ async def get_user(user_id: int):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义路径参数',
+          'verification': '{user_id}',
+          'hint': '{user_id} 路径中的动态参数段'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '类型提示',
+          'verification': 'user_id: int',
+          'hint': 'user_id: int 声明参数类型，FastAPI 自动转换'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '返回参数值',
+          'verification': 'return {"user_id": user_id}',
+          'hint': 'return 字典形式的响应数据'
+         },
         ],
         variations: [
          {
@@ -881,22 +881,22 @@ async def list_items(page: int = 1, size: int = 10):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明查询参数',
+          'verification': 'page: int',
+          'hint': '函数参数自动成为查询参数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '设置默认值',
+          'verification': 'skip: int = 0',
+          'hint': '默认值为 0，客户端可省略'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '分页返回',
+          'verification': 'return {"items"',
+          'hint': '返回 items 列表和 total 总数'
+         },
         ],
         variations: [
          {
@@ -1011,22 +1011,22 @@ async def create_product(product: Product):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 Pydantic 模型',
+          'verification': 'class Item(BaseModel):',
+          'hint': '继承 BaseModel 定义请求体结构'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '声明字段类型',
+          'verification': 'name: str',
+          'hint': '类型注解声明必填字段类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '请求体参数',
+          'verification': 'item: Item',
+          'hint': '函数参数声明为 Pydantic 模型'
+         },
         ],
         variations: [
          {
@@ -1141,22 +1141,22 @@ async def get_user(id: int):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明 response_model',
+          'verification': 'response_model',
+          'hint': 'response_model 过滤敏感字段'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义输出模型',
+          'verification': 'class ItemOut(BaseModel):',
+          'hint': '只包含需要返回的字段'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '返回实体',
+          'verification': 'return item',
+          'hint': '实际返回的数据会被 response_model 过滤'
+         },
         ],
         variations: [
          {
@@ -1264,22 +1264,22 @@ async def get_item(item_id: str):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 HTTPException',
+          'verification': 'from fastapi import HTTPException',
+          'hint': 'HTTPException 用于返回 HTTP 错误'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '抛出异常',
+          'verification': 'raise HTTPException',
+          'hint': 'raise 抛出错误，中断请求处理'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '设置状态码',
+          'verification': 'status_code=404',
+          'hint': '404 表示资源不存在，400 表示参数错误'
+         },
         ],
         variations: [
          {
@@ -1397,22 +1397,22 @@ async def process_time(request: Request, call_next):
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '注册中间件',
+          'verification': '@app.middleware("http")',
+          'hint': '"http" 中间件拦截所有 HTTP 请求'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '调用下一个处理器',
+          'verification': 'await call_next(request)',
+          'hint': 'call_next 将请求转发给下一个中间件或路由'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
-         }
+          'title': '统计耗时',
+          'verification': 'process_time',
+          'hint': '处理前后记录时间，计算差值'
+         },
         ],
         variations: [
          {
