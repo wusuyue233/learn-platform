@@ -22,7 +22,7 @@
       :key="phase.id"
       :phase="{ ...phase, number: index + 1, _phases: course.phases }"
       :courseId="courseId"
-      :unlocked="store.isPhaseUnlocked(courseId, index, course.phases)"
+      :readiness="store.getPhaseReadiness(courseId, index, course.phases)"
       @selectLevel="openLevel"
     />
 

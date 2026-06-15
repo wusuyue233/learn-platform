@@ -1,17 +1,19 @@
 <template>
   <div
     class="level-card"
-    :class="{ available: unlocked && !completed, completed, locked: !unlocked }"
-    @click="unlocked && $emit('select', level)"
+    :class="{ available: unlocked && !completed, completed, locked: !unlocked && !preview, preview: !unlocked && preview }"
+    @click="(unlocked || preview) && $emit('select', level)"
   >
     <div v-if="completed" class="level-status-icon complete">✓</div>
-    <div v-if="!unlocked" class="level-status-icon lock">🔒</div>
+    <div v-if="!unlocked && !preview" class="level-status-icon lock">🔒</div>
+    <div v-if="!unlocked && preview" class="level-status-icon preview-eye">👁</div>
     <div class="level-number">{{ level.number }}</div>
     <div class="level-title">{{ level.title }}</div>
     <div class="level-meta">
       <span class="difficulty-label">{{ level.concept }}</span>
       <span class="difficulty-badge" :class="level.difficulty">{{ diffLabel }}</span>
     </div>
+    <div v-if="!unlocked && preview" class="preview-badge">预览</div>
   </div>
 </template>
 
@@ -21,7 +23,8 @@ import { computed } from 'vue'
 const props = defineProps({
   level: Object,
   unlocked: Boolean,
-  completed: Boolean
+  completed: Boolean,
+  preview: Boolean
 })
 
 defineEmits(['select'])
@@ -42,4 +45,27 @@ const diffLabel = computed(() => {
 .difficulty-badge.easy { background: #dcfce7; color: #166534; }
 .difficulty-badge.medium { background: #fef3c7; color: #92400e; }
 .difficulty-badge.hard { background: #fecaca; color: #991b1b; }
+.preview-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  font-weight: 500;
+}
+.level-card.preview {
+  border-color: rgba(99, 102, 241, 0.3);
+  cursor: pointer;
+  opacity: 0.85;
+}
+.level-card.preview:hover {
+  border-color: rgba(99, 102, 241, 0.6);
+  opacity: 1;
+}
+.preview-eye {
+  font-size: 16px;
+}
 </style>

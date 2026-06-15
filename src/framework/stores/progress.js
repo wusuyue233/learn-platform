@@ -57,6 +57,21 @@ export const useProgressStore = defineStore('progress', () => {
     return (prevCompleted / prevPhase.levels.length) >= 0.6
   }
 
+  function getPhaseReadiness(courseId, phaseIndex, phases) {
+    if (phaseIndex === 0) return { level: 'ready', label: '当前阶段', detail: '' }
+    const prevPhase = phases[phaseIndex - 1]
+    if (!prevPhase) return { level: 'ready', label: '可进入', detail: '' }
+    const courseCompleted = getCourseCompleted(courseId)
+    const prevCompleted = prevPhase.levels.filter(l => courseCompleted.includes(l.id)).length
+    const total = prevPhase.levels.length
+    const ratio = prevCompleted / total
+    const need = Math.ceil(total * 0.6)
+
+    if (ratio >= 0.6) return { level: 'ready', label: '已满足条件', detail: '' }
+    if (prevCompleted > 0) return { level: 'recommended', label: `建议完成 ${need}/${total} 关`, detail: `当前通关 ${prevCompleted}/${total} 关，掌握基础概念后再进入体验更佳` }
+    return { level: 'early', label: '提前预览', detail: `推荐先完成上一阶段 ${need}/${total} 关后正式进入本阶段` }
+  }
+
   function completeLevel(courseId, levelId) {
     if (!completed.value[courseId]) {
       completed.value[courseId] = []
@@ -159,6 +174,7 @@ export const useProgressStore = defineStore('progress', () => {
     getCourseCompleted,
     isLevelUnlocked,
     isPhaseUnlocked,
+    getPhaseReadiness,
     checkDependsOn,
     completeLevel,
     completeMicroStep,
