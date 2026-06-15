@@ -7,6 +7,13 @@ import dockerBasics from './docker-basics/index.js'
 import gitBasics from './git-basics/index.js'
 import nodejsExpress from './nodejs-express/index.js'
 import sqlBasics from './sql-basics/index.js'
+import cicd from './ci-cd/index.js'
+import nginx from './nginx/index.js'
+import yolo from './yolo/index.js'
+import pytorch from './pytorch/index.js'
+import opencv from './opencv/index.js'
+import uniapp from './uniapp/index.js'
+import javaspring from './java-spring/index.js'
 
 export const courses = [
   vue3Fullstack,
