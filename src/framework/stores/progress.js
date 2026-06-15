@@ -7,6 +7,7 @@ export const useProgressStore = defineStore('progress', () => {
   const completed = ref({})
   const currentCourse = ref(null)
   const microSteps = ref({})
+  const projectProgress = ref({})
 
   function load() {
     try {
@@ -17,6 +18,7 @@ export const useProgressStore = defineStore('progress', () => {
           completed.value = parsed.completed || {}
           currentCourse.value = parsed.currentCourse || null
           microSteps.value = parsed.microSteps || {}
+          projectProgress.value = parsed.projectProgress || {}
         }
       }
     } catch (e) {
@@ -29,7 +31,8 @@ export const useProgressStore = defineStore('progress', () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         completed: completed.value,
         currentCourse: currentCourse.value,
-        microSteps: microSteps.value
+        microSteps: microSteps.value,
+        projectProgress: projectProgress.value
       }))
     } catch (e) {
       console.warn('进度保存失败:', e.message)
@@ -72,6 +75,17 @@ export const useProgressStore = defineStore('progress', () => {
     return { level: 'early', label: '提前预览', detail: `推荐先完成上一阶段 ${need}/${total} 关后正式进入本阶段` }
   }
 
+  function getLevelReadiness(courseId, levelId, phaseLevels) {
+    const courseCompleted = getCourseCompleted(courseId)
+    const idx = phaseLevels.findIndex(l => l.id === levelId)
+    if (idx === -1) return { level: 'ready', unlocked: true, detail: '' }
+    if (idx === 0) return { level: 'ready', unlocked: true, detail: '' }
+    if (courseCompleted.includes(phaseLevels[idx - 1].id)) return { level: 'ready', unlocked: true, detail: '' }
+    const anyDone = phaseLevels.slice(0, idx).some(l => courseCompleted.includes(l.id))
+    if (anyDone) return { level: 'recommended', unlocked: false, detail: '建议先完成前置关卡' }
+    return { level: 'early', unlocked: false, detail: '建议按顺序学习' }
+  }
+
   function completeLevel(courseId, levelId) {
     if (!completed.value[courseId]) {
       completed.value[courseId] = []
@@ -111,14 +125,32 @@ export const useProgressStore = defineStore('progress', () => {
     }
   }
 
+  function mergeProjectFiles(courseId, files) {
+    if (!projectProgress.value[courseId]) {
+      projectProgress.value[courseId] = { files: {} }
+    }
+    Object.assign(projectProgress.value[courseId].files, files)
+    save()
+  }
+
+  function getProjectFiles(courseId) {
+    return projectProgress.value[courseId]?.files || {}
+  }
+
+  function resetProject(courseId) {
+    delete projectProgress.value[courseId]
+    save()
+  }
+
   function resetAll() {
     completed.value = {}
     microSteps.value = {}
+    projectProgress.value = {}
     save()
   }
 
   function exportProgress() {
-    return JSON.stringify({ completed: completed.value, currentCourse: currentCourse.value, microSteps: microSteps.value }, null, 2)
+    return JSON.stringify({ completed: completed.value, currentCourse: currentCourse.value, microSteps: microSteps.value, projectProgress: projectProgress.value }, null, 2)
   }
 
   function importProgress(json) {
@@ -130,6 +162,7 @@ export const useProgressStore = defineStore('progress', () => {
         completed.value = data.completed
         currentCourse.value = data.currentCourse || null
         microSteps.value = data.microSteps || {}
+        projectProgress.value = data.projectProgress || {}
         save()
         return true
       }
@@ -170,15 +203,20 @@ export const useProgressStore = defineStore('progress', () => {
     completed,
     currentCourse,
     microSteps,
+    projectProgress,
     save,
     getCourseCompleted,
     isLevelUnlocked,
     isPhaseUnlocked,
     getPhaseReadiness,
+    getLevelReadiness,
     checkDependsOn,
     completeLevel,
     completeMicroStep,
     getMicroStepProgress,
+    mergeProjectFiles,
+    getProjectFiles,
+    resetProject,
     resetCourse,
     resetLevelProgress,
     resetAll,

@@ -1,19 +1,19 @@
 <template>
   <div
     class="level-card"
-    :class="{ available: unlocked && !completed, completed, locked: !unlocked && !preview, preview: !unlocked && preview }"
-    @click="(unlocked || preview) && $emit('select', level)"
+    :class="{ available: unlocked && !completed, completed, locked: !unlocked && !isPreview, preview: !unlocked && isPreview }"
+    @click="(unlocked || isPreview) && $emit('select', level)"
   >
     <div v-if="completed" class="level-status-icon complete">✓</div>
-    <div v-if="!unlocked && !preview" class="level-status-icon lock">🔒</div>
-    <div v-if="!unlocked && preview" class="level-status-icon preview-eye">👁</div>
+    <div v-if="!unlocked && !isPreview" class="level-status-icon lock">🔒</div>
+    <div v-if="!unlocked && isPreview" class="level-status-icon preview-eye">👁</div>
     <div class="level-number">{{ level.number }}</div>
     <div class="level-title">{{ level.title }}</div>
     <div class="level-meta">
       <span class="difficulty-label">{{ level.concept }}</span>
       <span class="difficulty-badge" :class="level.difficulty">{{ diffLabel }}</span>
     </div>
-    <div v-if="!unlocked && preview" class="preview-badge">预览</div>
+    <div v-if="!unlocked && isPreview" class="preview-badge">预览</div>
   </div>
 </template>
 
@@ -24,10 +24,12 @@ const props = defineProps({
   level: Object,
   unlocked: Boolean,
   completed: Boolean,
-  preview: Boolean
+  readiness: Object
 })
 
 defineEmits(['select'])
+
+const isPreview = computed(() => props.readiness?.level === 'early' && !props.unlocked)
 
 const diffLabel = computed(() => {
   const map = { easy: '简单', medium: '中等', hard: '困难' }

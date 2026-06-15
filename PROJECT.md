@@ -20,17 +20,34 @@
 | 2 | 迁移 CodeEditor/LevelModal 等组件 | ✅ |
 | 3 | 实现浏览器端验证引擎 | ✅ |
 | 4 | 打包 workspace 为 JSON 模块 | ⏭ 跳过（纯前端用 localStorage） |
-| 5 | 迁移/创建关卡 | ✅ 46 个关卡 |
+| 5 | 迁移/创建关卡 | ✅ 131 个关卡（9 课程） |
 | 6 | 课程选择页 | ✅ |
+
+### Phase 1: 学习增强 ✅ 已完成（2026-06-15）
+
+| 功能 | 文件 | 状态 |
+|------|------|------|
+| verifier 增强（explanation/fixHint/conceptLink + partialCheck + feedback） | `verifier.js` | ✅ |
+| 关卡 Phase 1 字段（cognitiveLoad/dependsOn/commonMistakes/microSteps/variations/transferTasks） | 全部 9 课程 `levels.js` | ✅ |
+| commonMistakes 实时红线检测 | `CodeEditor.vue` | ✅ |
+| 微步模式（step-by-step toggle + progress dots + auto-verify） | `LevelModal.vue` + `progress.js` | ✅ |
+| prereqs 检查 + microStep 追踪 | `progress.js` | ✅ |
+| 阶段硬锁→软推荐（就绪度系统） | `CourseView.vue` + `PhaseSection.vue` + `LevelCard.vue` | ✅ |
 
 ### 关卡统计
 
-| 课程 | 关卡数 | 阶段 | 难度分布 |
-|------|--------|------|----------|
-| Vue3 全栈 | 19 | 4 | easy 6 / medium 9 / hard 4 |
-| Python + FastAPI | 12 | 3 | easy 5 / medium 5 / hard 2 |
-| JavaScript 基础 | 15 | 4 | easy 6 / medium 8 / hard 1 |
-| **合计** | **46** | **11** | |
+| 课程 | 关卡数 | 阶段 | 难度分布 | 注册 |
+|------|--------|------|----------|------|
+| Vue3 全栈 | 29 | 5 | easy 7 / medium 16 / hard 6 | ✅ |
+| Python + FastAPI | 12 | 3 | easy 5 / medium 5 / hard 2 | ✅ |
+| JavaScript 基础 | 15 | 4 | easy 6 / medium 8 / hard 1 | ✅ |
+| React 基础 | 20 | 4 | — | ✅ |
+| TypeScript 基础 | 15 | 3 | — | ✅ |
+| Docker 容器化 | 10 | 3 | — | ✅ |
+| Git 版本控制 | 10 | 3 | — | ✅ |
+| Node.js + Express | 15 | 4 | — | ✅ |
+| SQL 数据库 | 15 | 3 | — | ✅ |
+| **合计** | **141** | **32** | | **9/9 ✅** |
 
 ---
 
@@ -53,20 +70,19 @@ learn-platform/
 │   │   │   ├── fileStore.js          # localStorage 文件读写
 │   │   │   └── verifier.js           # 浏览器端验证引擎
 │   │   └── router.js                 # Vue Router 配置
-│   ├── courses/                      # 课程包目录（可扩展）
-│   │   ├── index.js                  # 课程注册入口
-│   │   ├── vue3-fullstack/           # Vue3 全栈（19 关卡）
-│   │   │   ├── index.js
-│   │   │   ├── levels.js
-│   │   │   └── verify.js
-│   │   ├── python-fastapi/           # Python + FastAPI（12 关卡）
-│   │   │   ├── index.js
-│   │   │   ├── levels.js
-│   │   │   └── verify.js
-│   │   └── javascript-basics/        # JavaScript 基础（15 关卡）
-│   │       ├── index.js
-│   │       ├── levels.js
-│   │       └── verify.js
+│   ├── courses/                      # 课程包目录（9 个课程）
+│   │   ├── index.js                  # 项目定义（Phase 2）
+│   │   └── projects/
+│   │   # 课程注册入口
+│   │   ├── vue3-fullstack/           # Vue3 全栈（19+? 关卡）
+│   │   ├── python-fastapi/           # Python + FastAPI（12 关）
+│   │   ├── javascript-basics/        # JavaScript 基础（15 关）
+│   │   ├── react-basics/             # React 基础（20 关）
+│   │   ├── typescript-basics/        # TypeScript 基础（15 关）
+│   │   ├── docker-basics/            # Docker 容器化（10 关）
+│   │   ├── git-basics/               # Git 版本控制（10 关）
+│   │   ├── nodejs-express/           # Node.js + Express（15 关）
+│   │   └── sql-basics/               # SQL 数据库（15 关）
 │   ├── assets/
 │   │   └── styles/
 │   │       └── main.css              # 全局样式
@@ -119,11 +135,33 @@ export function verify(levelId, { check, results }) {
 }
 ```
 
+### 关卡类型
+- `type: 'concept'`（默认）— 概念式关卡，以知识点为中心组织
+- `type: 'project'` — 项目式关卡，以真实项目代码片段为学习内容
+
+### 就绪度系统（软推荐）
+替代硬锁机制，三档推荐度：
+| 等级 | 含义 | 行为 |
+|------|------|------|
+| `ready` | 已满足条件 | 正常解锁 |
+| `recommended` | 建议先完成前置 | 可进入，显示推荐提示 |
+| `early` | 提前预览 | 可点击预览（👁 + 预览标签） |
+
+- 阶段级：`getPhaseReadiness()` — 基于前一阶段完成度
+- 关卡级：`getLevelReadiness()` — 基于前一关完成度
+
 ### 进度管理
 - 多课程独立进度存储
 - localStorage 持久化
 - 支持导入/导出 JSON
-- 阶段解锁：前一阶段完成 60% 解锁下一阶段
+- 阶段解锁：前一阶段完成 60% 解锁下一阶段（软推荐）
+- 关卡解锁：前一关完成后解锁下一关（软推荐）
+
+### 项目系统
+- 每个课程可关联一个或多个真实项目
+- 项目型关卡的代码直接来自真实项目源码
+- 完成项目关卡后，`projectFiles` 自动合入项目文件树
+- 支持多课程组合成一个完整全栈项目
 
 ### Monaco Editor
 - CDN 加载（jsdelivr + unpkg 备用）
@@ -133,103 +171,168 @@ export function verify(levelId, { check, results }) {
 
 ---
 
-## 关卡清单
+## Phase 2 修改计划
 
-### Vue3 全栈（19 关卡）
+### 动机
 
-**阶段一：Vue3 基础（6 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| vue3-1 | 第一个组件 | Vue3 组件 | easy |
-| vue3-2 | 按钮计数器 | 事件处理 | easy |
-| vue3-3 | 条件渲染 | v-if / v-show | easy |
-| vue3-4 | 列表渲染 | v-for 循环 | easy |
-| vue3-5 | 表单绑定 | v-model 双向绑定 | easy |
-| vue3-6 | 插槽入门 | slot 插槽 | medium |
+两个核心方向：
+1. **项目驱动学习** — 现有关卡以孤立知识点为中心，新增项目型关卡让用户直接接触真实项目代码
+2. **软推荐全面化** — 阶段级已实现就绪度推荐，关卡级仍是硬锁，需对齐
 
-**阶段二：组合式 API（5 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| vue3-7 | 计算属性 | computed | medium |
-| vue3-8 | 侦听器 | watch | medium |
-| vue3-9 | 生命周期钩子 | onMounted / onUnmounted | medium |
-| vue3-10 | 组件通信 | props / emit | medium |
-| vue3-11 | provide/inject | 依赖注入 | medium |
+### 一、就绪度系统关卡级化（软推荐→关卡级）
 
-**阶段三：路由与状态管理（4 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| vue3-12 | Vue Router 基础 | 路由配置 | medium |
-| vue3-13 | 动态路由 | 路由参数 | medium |
-| vue3-14 | Pinia 状态管理 | Pinia Store | medium |
-| vue3-15 | 状态持久化 | localStorage 持久化 | medium |
+**现状**：阶段级已有就绪度推荐（ready/recommended/early），但关卡级 `isLevelUnlocked()` 仍是硬锁
 
-**阶段四：进阶特性（4 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| vue3-16 | 自定义指令 | v-directive | hard |
-| vue3-17 | 组合式函数 | composable | hard |
-| vue3-18 | 异步组件 | defineAsyncComponent | hard |
-| vue3-19 | 性能优化 | shallowRef / v-once | hard |
+**改动文件**：
+| 文件 | 改动 |
+|------|------|
+| `progress.js` | 新增 `getLevelReadiness()` 返回 `{level, unlocked, detail}` |
+| `PhaseSection.vue` | 替换 `isLevelUnlocked` 为 `getLevelReadiness`，传入 `readiness` 替代 `unlocked` |
+| `LevelCard.vue` | 接收 `readiness` prop，根据 `level` 显示对应状态和交互 |
+| `main.css` | 补充关卡级 readiness 样式 |
 
-### Python + FastAPI（12 关卡）
+**`getLevelReadiness()` 逻辑**：
+```js
+getLevelReadiness(courseId, levelId, phaseLevels) {
+  const idx = phaseLevels.findIndex(l => l.id === levelId)
+  if (idx <= 0) return { level: 'ready', unlocked: true }
+  const prevDone = getCourseCompleted(courseId).includes(phaseLevels[idx-1].id)
+  if (prevDone) return { level: 'ready', unlocked: true }
+  // 前面有关卡完成 → recommended，全都未完成 → early
+  const anyDone = phaseLevels.slice(0, idx).some(l => getCourseCompleted(courseId).includes(l.id))
+  return anyDone
+    ? { level: 'recommended', unlocked: false, detail: '建议先完成前置关卡' }
+    : { level: 'early', unlocked: false, detail: '建议按顺序学习' }
+}
+```
 
-**阶段一：Python 基础（5 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| py-1 | Hello Python | print 输出 | easy |
-| py-2 | 变量与类型 | 变量赋值 | easy |
-| py-3 | 函数定义 | def 函数 | easy |
-| py-4 | 条件与循环 | if / for | easy |
-| py-5 | 列表与字典 | 数据结构 | easy |
+### 二、项目定义系统
 
-**阶段二：FastAPI 路由（4 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| py-6 | Hello FastAPI | 路由注册 | easy |
-| py-7 | 路径参数 | URL 参数 | medium |
-| py-8 | 查询参数 | Query Parameters | medium |
-| py-9 | 请求体 | Pydantic 模型 | medium |
+**新增 `src/projects/index.js`** — 定义所有真实项目和课程关联：
 
-**阶段三：FastAPI 进阶（3 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| py-10 | 响应模型 | response_model | medium |
-| py-11 | 错误处理 | HTTPException | medium |
-| py-12 | 中间件 | Middleware | hard |
+```js
+export const projects = {
+  ecommerce: {
+    id: 'ecommerce',
+    name: '电商系统',
+    icon: '🛒',
+    description: '完整全栈电商系统（Vue3 前端 + FastAPI 后端 + Docker 部署）',
+    courses: ['vue3-fullstack', 'python-fastapi', 'docker-basics']
+  },
+  'chat-app': {
+    id: 'chat-app',
+    name: '实时聊天室',
+    icon: '💬',
+    description: '全栈实时聊天（React 前端 + Node.js/Express 后端）',
+    courses: ['react-basics', 'nodejs-express']
+  }
+}
+```
 
-### JavaScript 基础（15 关卡）
+### 三、新关卡类型：`type: 'project'`
 
-**阶段一：基础语法（5 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| js-1 | 变量声明 | let / const | easy |
-| js-2 | 数据类型 | 原始类型 | easy |
-| js-3 | 函数声明 | 函数定义 | easy |
-| js-4 | 数组方法 | map / filter / reduce | medium |
-| js-5 | 对象操作 | 对象解构 | medium |
+Level schema 扩展，**现有关卡完全不受影响**：
 
-**阶段二：ES6+ 特性（4 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| js-6 | 箭头函数 | Arrow Functions | medium |
-| js-7 | 模板字符串 | Template Literals | easy |
-| js-8 | 展开运算符 | Spread Operator | medium |
-| js-9 | 解构赋值 | Destructuring | medium |
+```js
+// 现有关卡（默认 type: 'concept'）
+{ id: 'vue3-1', number: 1, title: '第一个组件', ... }
 
-**阶段三：异步编程（3 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| js-10 | Promise 基础 | Promise | medium |
-| js-11 | async/await | Async/Await | medium |
-| js-12 | 错误处理 | try/catch | medium |
+// 新增项目型关卡
+{
+  id: 'vue3-proj-1', number: 1, type: 'project',
+  project: 'ecommerce',           // 关联项目 ID
+  projectModule: '商品模块',       // 项目模块名
+  projectFiles: {                  // 本关贡献的文件
+    'src/components/ProductCard.vue': `<template>...`
+  },
+  ... // 其余字段同 concept 关卡
+}
+```
 
-**阶段四：DOM 操作（3 关）**
-| ID | 标题 | 概念 | 难度 |
-|----|------|------|------|
-| js-13 | 元素选择 | querySelector | easy |
-| js-14 | 事件监听 | addEventListener | medium |
-| js-15 | 动态创建元素 | createElement / appendChild | medium |
+### 四、代码累加系统
+
+**`progress.js`** 改动：
+
+| 新增内容 | 说明 |
+|---------|------|
+| `projectProgress` ref | `{ [courseId]: { files: {...}, lastLevel: '...' } }` |
+| `mergeProjectFiles(courseId, levelId, files)` | 合并关卡文件到累加树 |
+| `getProjectFiles(courseId)` | 获取课程累加的文件树 |
+| `resetProject(courseId)` | 重置项目文件 |
+| save/load/export/import | 全部包含 `projectProgress` |
+
+**合并规则**：
+- 新文件直接加入
+- 已有文件被新版本覆盖（后续关卡的代码比前面的完整）
+
+### 五、UI 改动
+
+**`LevelModal.vue`**：
+
+| 改动 | 说明 |
+|------|------|
+| 项目标签 | 项目型关卡顶部显示 🛒 电商系统 · 商品模块 |
+| 项目文件 Tab | 新增「项目文件」Tab，显示文件树 |
+| 文件查看器 | 点击文件名显示语法高亮代码 |
+| 当前文件高亮 | 标记本关贡献的文件 |
+
+### 六、修复课程注册
+
+`courses/index.js` 补充 4 个缺失课程：docker-basics, git-basics, nodejs-express, sql-basics
+
+### 七、试点：Vue3 电商项目实战阶段
+
+在 Vue3 课程新增 Phase 5 "电商项目实战"，约 10 个 `type: 'project'` 关卡：
+1. 项目脚手架搭建
+2. 路由配置与布局
+3. Pinia Store 状态管理
+4. 商品列表页
+5. 商品详情页
+6. 购物车功能
+7. 用户登录
+8. 订单创建
+9. 订单列表
+10. 完整项目整合
+
+### 八、项目设计方案
+
+共 5 个项目，60 个 `type: 'project'` 关卡，原有 131 个 `type: 'concept'` 关卡完全不变。
+
+#### 1. 🛒 电商系统（28 关，跨 4 课）
+
+| 课程 | 项目关卡数 | 模块 |
+|------|-----------|------|
+| Vue3 全栈 | 10 | 前端搭建、路由布局、Store、商品列表/详情、购物车、登录、订单、整合 |
+| Python + FastAPI | 8 | 项目初始化、商品/用户/购物车/订单 API、JWT 认证、集成测试 |
+| SQL 数据库 | 5 | 表设计、CRUD、联表查询、索引优化、事务 |
+| Docker 容器化 | 5 | Dockerfile、docker-compose（前后端+数据库）、多阶段构建、部署 |
+
+#### 2. 💬 实时聊天室（16 关，跨 2 课）
+
+| 课程 | 项目关卡数 | 模块 |
+|------|-----------|------|
+| React 基础 | 8 | 项目搭建、组件树、Hook 状态管理、消息列表、输入框、WebSocket 集成、登录、部署 |
+| Node.js + Express | 8 | 项目初始化、REST API、WebSocket 服务、消息持久化、用户管理、JWT 认证、部署 |
+
+#### 3. 📝 个人博客（8 关，单课）
+
+| 课程 | 项目关卡数 | 模块 |
+|------|-----------|------|
+| JavaScript 基础 | 8 | DOM 操作、事件处理、动态渲染、数据存储、路由、评论功能、主题切换、本地持久化 |
+
+#### 4. 🔷 类型安全工具库（5 关，单课）
+
+| 课程 | 项目关卡数 | 模块 |
+|------|-----------|------|
+| TypeScript 基础 | 5 | 泛型工具库、接口定义、类型守卫、装饰器、发布配置 |
+
+#### 5. 🔀 Git 协作工作流（3 关，单课）
+
+| 课程 | 项目关卡数 | 模块 |
+|------|-----------|------|
+| Git 版本控制 | 3 | 分支策略、协作流程、PR 规范 |
+
+**总计：60 项目关 + 131 概念关 = 191 关**
 
 ---
 
@@ -400,9 +503,19 @@ export default defineConfig({
 
 ## 待办事项
 
-- [ ] 添加更多课程（React、TypeScript、SQL、Node.js、Git 等）
-- [ ] 添加联合项目系统
+### Phase 2 实现中
+
+- [x] 就绪度系统关卡级化（getLevelReadiness + LevelCard 改造）
+- [x] 创建 `src/projects/index.js` 项目定义系统
+- [x] `progress.js` 项目文件累加（projectProgress + merge/get/reset）
+- [x] `LevelModal.vue` 项目型关卡 UI（项目标签 + 文件列表）
+- [x] 修复 `courses/index.js` 注册全部 9 个课程
+- [x] 试点：Vue3 课程新增"电商项目实战"阶段（10 关）
+- [ ] 构建验证 + commit + push + 部署验证
+- [ ] Python + FastAPI 课程新增"电商 API 开发"阶段（试点扩展）
+
+### 后续计划
+
+- [ ] 添加更多课程（Java/Spring、UniApp、OpenCV、PyTorch、YOLO、Nginx、CI/CD）
 - [ ] 优化移动端适配
-- [ ] 添加暗色主题
 - [ ] 添加代码运行预览（iframe sandbox）
-- [ ] 配置 GitHub Actions 自动部署

@@ -1641,5 +1641,761 @@ function updateData() {
         transferTasks: [{task: '创建计数器 + 待办列管理多 ref', target: '掌握多状态管理'}]
       }
     ]
+  },
+  {
+    id: 'ecommerce-project',
+    name: '阶段五：电商项目实战',
+    description: '综合运用 Vue3 全栈技能，从零搭建完整电商系统前端',
+    levels: [
+      {
+        id: 'vue3-proj-1',
+        number: 20,
+        title: '项目脚手架搭建',
+        concept: 'Vite 项目初始化',
+        difficulty: 'easy',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '项目初始化',
+        task: '用 Vite 创建 Vue3 电商项目脚手架，配置路由和构建工具',
+        prerequisites: '<h4>📚 Vite 项目结构</h4><p>Vite 项目包含 vite.config.js（构建配置）、index.html（入口 HTML）、src/main.js（应用入口）等核心文件。</p><h4>🔑 package.json 关键字段</h4><p>dependencies（运行时依赖）、devDependencies（开发依赖）、scripts（npm 命令）。</p>',
+        conceptDetail: 'Vite 是一个[轻量构建工具](轻量构建工具)，基于 ES Module 实现[快速热更新](快速热更新|HMR，修改代码后自动刷新页面)。[package.json](package.json|项目的核心配置文件，管理依赖和脚本)定义了项目元数据和依赖。',
+        contextCode: '',
+        hints: [
+          'npm create vite@latest ecommerce-front -- --template vue',
+          '安装依赖：vue-router@4, pinia, axios',
+          '配置 vite.config.js 设置代理解决跨域'
+        ],
+        code: `import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true
+      }
+    }
+  }
+})`,
+        verification: 'package.json 包含 vue-router 和 pinia 依赖，vite.config.js 配置了 API 代理',
+        filePath: 'vite.config.js',
+        projectFiles: {
+          'package.json': JSON.stringify({
+            name: 'ecommerce-front',
+            scripts: { dev: 'vite', build: 'vite build' },
+            dependencies: { vue: '^3.4', 'vue-router': '^4.3', pinia: '^2.1', axios: '^1.6' }
+          }, null, 2)
+        },
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+          { pattern: 'target:', explanation: '代理 target 需要写完整 URL（含协议和端口）' },
+          { pattern: 'changeOrigin: true', explanation: '跨域代理必须设置 changeOrigin 为 true' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-2',
+        number: 21,
+        title: '路由配置与布局',
+        concept: 'Vue Router + 布局组件',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '项目初始化',
+        task: '配置路由系统，搭建主布局组件（顶部导航 + 侧边栏 + 内容区）',
+        prerequisites: '<h4>📚 Vue Router 基础</h4><p>createRouter 创建路由实例，routes 数组定义路由规则，router-view 渲染匹配的组件。lazy loading 通过动态 import() 实现。</p>',
+        conceptDetail: '使用[createRouter](createRouter|创建 Vue Router 实例的函数)创建路由，通过[routes](routes|路由配置数组)定义页面路径映射。[动态 import](动态 import|() => import() 实现懒加载)实现懒加载提升性能。',
+        contextCode: '',
+        hints: [
+          'createRouter 接收 history: createWebHistory() 和 routes 数组',
+          'routes 每个对象包含 path, name, component',
+          '用 () => import() 实现路由懒加载'
+        ],
+        code: `import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('../views/ProductList.vue')
+  },
+  {
+    path: '/product/:id',
+    name: 'ProductDetail',
+    component: () => import('../views/ProductDetail.vue')
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/Cart.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: () => import('../views/Checkout.vue')
+  },
+  {
+    path: '/orders',
+    name: 'OrderList',
+    component: () => import('../views/OrderList.vue')
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+export default router`,
+        verification: '路由使用 createWebHistory，pages 使用动态 import 懒加载',
+        filePath: 'src/router/index.js',
+        projectFiles: {
+          'src/router/index.js': `import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [
+  { path: '/', name: 'Home', component: () => import('../views/ProductList.vue') },
+  { path: '/product/:id', name: 'ProductDetail', component: () => import('../views/ProductDetail.vue') },
+  { path: '/cart', name: 'Cart', component: () => import('../views/Cart.vue') },
+  { path: '/login', name: 'Login', component: () => import('../views/Login.vue') },
+  { path: '/checkout', name: 'Checkout', component: () => import('../views/Checkout.vue') },
+  { path: '/orders', name: 'OrderList', component: () => import('../views/OrderList.vue') }
+]
+
+const router = createRouter({ history: createWebHistory(), routes })
+export default router`
+        },
+        cognitiveLoad: 'low',
+        dependsOn: ['vue3-proj-1'],
+        commonMistakes: [
+          { pattern: 'createWebHashHistory', explanation: '电商项目用 createWebHistory 更标准，hash 模式不利于 SEO' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-3',
+        number: 22,
+        title: 'Pinia Store 状态管理',
+        concept: 'Pinia 模块化状态管理',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '状态管理',
+        task: '创建商品、购物车、用户三个 Pinia store，管理全局状态',
+        prerequisites: '<h4>📚 Pinia 核心概念</h4><p>defineStore 定义 store，state 定义状态，getters 派生状态，actions 修改状态。组合式 store 用 setup() 函数写法。</p>',
+        conceptDetail: '使用[defineStore](defineStore|Pinia 定义 store 的函数)创建模块化 store。[state](state|store 中的响应式数据)定义初始数据，[actions](actions|修改 state 的方法)封装业务逻辑。',
+        contextCode: '',
+        hints: [
+          'defineStore 第一个参数是唯一 ID，第二个参数是选项对象或 setup 函数',
+          'state 用函数返回初始值，actions 里用 this 访问 state',
+          '组合式 store 用 ref/reactive 定义状态，函数定义操作'
+        ],
+        code: `import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import api from '../api/product'
+
+export const useProductStore = defineStore('product', () => {
+  const products = ref([])
+  const currentProduct = ref(null)
+  const loading = ref(false)
+
+  const productCount = computed(() => products.value.length)
+
+  async function fetchProducts() {
+    loading.value = true
+    try {
+      const res = await api.getProducts()
+      products.value = res.data
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function fetchProduct(id) {
+    const res = await api.getProduct(id)
+    currentProduct.value = res.data
+  }
+
+  return { products, currentProduct, loading, productCount, fetchProducts, fetchProduct }
+})`,
+        verification: 'store 使用 defineStore 定义，包含 state、getters 和 actions',
+        filePath: 'src/stores/product.js',
+        projectFiles: {
+          'src/stores/product.js': `import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const useProductStore = defineStore('product', () => {
+  const products = ref([])
+  const currentProduct = ref(null)
+  const loading = ref(false)
+  const productCount = computed(() => products.value.length)
+
+  async function fetchProducts() { /* API call */ }
+  async function fetchProduct(id) { /* API call */ }
+
+  return { products, currentProduct, loading, productCount, fetchProducts, fetchProduct }
+})`,
+          'src/stores/cart.js': `import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const useCartStore = defineStore('cart', () => {
+  const items = ref([])
+  const total = computed(() => items.value.reduce((s, i) => s + i.price * i.quantity, 0))
+  const count = computed(() => items.value.reduce((s, i) => s + i.quantity, 0))
+
+  function addItem(product) { /* add logic */ }
+  function removeItem(id) { /* remove logic */ }
+  function clearCart() { items.value = [] }
+
+  return { items, total, count, addItem, removeItem, clearCart }
+})`,
+          'src/stores/user.js': `import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const useUserStore = defineStore('user', () => {
+  const token = ref(localStorage.getItem('token') || '')
+  const userInfo = ref(null)
+
+  const isLoggedIn = computed(() => !!token.value)
+
+  function setToken(t) { token.value = t; localStorage.setItem('token', t) }
+  function logout() { token.value = ''; localStorage.removeItem('token'); userInfo.value = null }
+
+  return { token, userInfo, isLoggedIn, setToken, logout }
+})`
+        },
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-1'],
+        commonMistakes: [
+          { pattern: 'defineStore("product", {', explanation: '选项式 API 的 state 必须是函数返回对象，不是直接对象' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-4',
+        number: 23,
+        title: '商品列表页',
+        concept: '商品列表 + API 集成',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '商品模块',
+        task: '实现商品列表页，从后端 API 获取数据并渲染商品卡片网格',
+        prerequisites: '<h4>📚 生命周期与 API 调用</h4><p>onMounted 钩子在组件挂载后执行 API 请求。axios 封装 HTTP 请求，async/await 处理异步操作。</p>',
+        conceptDetail: '[axios](axios|基于 Promise 的 HTTP 客户端)发起 API 请求，[onMounted](onMounted|组件挂载后执行的生命周期钩子)生命周期触发数据加载。[v-for](v-for|Vue 模板中循环渲染列表的指令)遍历商品列表渲染卡片。',
+        contextCode: '',
+        hints: [
+          'onMounted 中调用 store.fetchProducts()',
+          'v-for="product in products" 遍历展示',
+          '计算属性过滤和排序'
+        ],
+        code: `<template>
+  <div class="product-list">
+    <div class="filters">
+      <input v-model="search" placeholder="搜索商品..." />
+      <select v-model="sortBy">
+        <option value="">默认排序</option>
+        <option value="price">按价格</option>
+      </select>
+    </div>
+    <div v-if="loading" class="loading">加载中...</div>
+    <div v-else class="product-grid">
+      <div v-for="p in filteredProducts" :key="p.id" class="product-card" @click="$router.push('/product/' + p.id)">
+        <img :src="p.image" :alt="p.name" />
+        <h3>{{ p.name }}</h3>
+        <p class="price">¥{{ p.price }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useProductStore } from '../stores/product'
+
+const store = useProductStore()
+const search = ref('')
+const sortBy = ref('')
+
+const filteredProducts = computed(() => {
+  let list = store.products.filter(p => p.name.includes(search.value))
+  if (sortBy.value === 'price') list.sort((a, b) => a.price - b.price)
+  return list
+})
+
+onMounted(() => store.fetchProducts())
+</script>`,
+        verification: 'onMounted 触发 API 请求，v-for 渲染商品卡片，包含搜索和排序功能',
+        filePath: 'src/views/ProductList.vue',
+        projectFiles: {
+          'src/views/ProductList.vue': `<template>
+  <div class="product-list">
+    <div class="filters">
+      <input v-model="search" placeholder="搜索..." />
+      <select v-model="sortBy"><option value="">默认</option><option value="price">按价格</option></select>
+    </div>
+    <div class="product-grid">
+      <div v-for="p in filteredProducts" :key="p.id" class="product-card" @click="$router.push('/product/' + p.id)">
+        <img :src="p.image" /><h3>{{ p.name }}</h3><p>¥{{ p.price }}</p>
+      </div>
+    </div>
+  </div>
+</template>`
+        },
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-3'],
+        commonMistakes: [
+          { pattern: 'product-list', explanation: 'CSS class 用 kebab-case 命名' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-5',
+        number: 24,
+        title: '商品详情页',
+        concept: '商品详情 + 加入购物车',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '商品模块',
+        task: '实现商品详情页，展示商品信息并通过路由参数加载',
+        prerequisites: '<h4>📚 路由参数</h4><p>this.$route.params 或 useRoute() 获取 URL 参数。watch 监听参数变化重新加载数据。</p>',
+        conceptDetail: '通过[useRoute](useRoute|Vue Router 的组合式 API，获取当前路由信息)获取路由参数，[watch](watch|监听响应式数据变化并执行回调)监听参数变化重新加载数据。',
+        contextCode: '',
+        hints: [
+          'const route = useRoute() 获取路由参数',
+          'route.params.id 获取商品 ID',
+          'watch(() => route.params.id, loadProduct)'
+        ],
+        code: `<template>
+  <div class="product-detail" v-if="product">
+    <img :src="product.image" :alt="product.name" />
+    <div class="info">
+      <h1>{{ product.name }}</h1>
+      <p class="price">¥{{ product.price }}</p>
+      <p>{{ product.description }}</p>
+      <button @click="addToCart" :disabled="!user.isLoggedIn">加入购物车</button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, watch, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useProductStore } from '../stores/product'
+import { useCartStore } from '../stores/cart'
+import { useUserStore } from '../stores/user'
+
+const route = useRoute()
+const productStore = useProductStore()
+const cart = useCartStore()
+const user = useUserStore()
+const product = ref(null)
+
+async function loadProduct() {
+  await productStore.fetchProduct(route.params.id)
+  product.value = productStore.currentProduct
+}
+
+function addToCart() {
+  if (product.value) cart.addItem(product.value)
+}
+
+watch(() => route.params.id, loadProduct)
+onMounted(loadProduct)
+</script>`,
+        verification: '使用 useRoute 获取商品 ID，watch 监听路由参数变化',
+        filePath: 'src/views/ProductDetail.vue',
+        projectFiles: {},
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-3', 'vue3-proj-4'],
+        commonMistakes: [],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-6',
+        number: 25,
+        title: '购物车功能',
+        concept: '购物车 CRUD + 计算属性',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '购物车模块',
+        task: '实现购物车页面，显示商品列表、数量增减、总价计算',
+        prerequisites: '<h4>📚 计算属性进阶</h4><p>computed 可依赖多个响应式源，setter 可写计算属性支持双向绑定。</p>',
+        conceptDetail: '使用[computed](computed|基于响应式依赖缓存的计算值)计算购物车总价和数量。[v-model](v-model|双向绑定指令)与输入框绑定修改数量。[watchEffect](watchEffect|自动追踪依赖的副作用函数)同步 localStorage。',
+        contextCode: '',
+        hints: [
+          'store 的 total 和 count 计算属性直接使用',
+          'v-model.number 绑定数量输入框',
+          '空购物车显示占位提示'
+        ],
+        code: `<template>
+  <div class="cart">
+    <h1>购物车</h1>
+    <div v-if="cart.items.length === 0" class="empty">购物车是空的</div>
+    <div v-else>
+      <div v-for="item in cart.items" :key="item.id" class="cart-item">
+        <img :src="item.image" />
+        <div class="item-info">
+          <h3>{{ item.name }}</h3>
+          <p>¥{{ item.price }}</p>
+        </div>
+        <input type="number" v-model.number="item.quantity" min="1" />
+        <span>¥{{ item.price * item.quantity }}</span>
+        <button @click="cart.removeItem(item.id)">删除</button>
+      </div>
+      <div class="cart-summary">
+        <p>合计：<strong>¥{{ cart.total }}</strong></p>
+        <button @click="$router.push('/checkout')" :disabled="!user.isLoggedIn">去结算</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { useCartStore } from '../stores/cart'
+import { useUserStore } from '../stores/user'
+
+const cart = useCartStore()
+const user = useUserStore()
+</script>`,
+        verification: '购物车列表使用 v-for 渲染，总价使用 computed 计算，支持数量修改',
+        filePath: 'src/views/Cart.vue',
+        projectFiles: {},
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-3'],
+        commonMistakes: [
+          { pattern: 'v-model="item.quantity"', explanation: '数字输入框用 v-model.number 修饰符确保类型正确' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-7',
+        number: 26,
+        title: '用户登录',
+        concept: 'JWT 认证 + 表单处理',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '用户模块',
+        task: '实现登录页面，集成 JWT 认证流程，登录后跳转回来源页',
+        prerequisites: '<h4>📚 JWT 认证流程</h4><p>用户提交用户名密码 → 后端验证返回 token → 前端存储 token → 后续请求携带 Authorization 头。</p>',
+        conceptDetail: '[v-model](v-model|Vue 双向绑定指令)绑定表单数据。[axios 拦截器](axios 拦截器|在请求/响应被处理前拦截并修改)自动携带 token。[localStorage](localStorage|浏览器持久化存储)持久化 token。',
+        contextCode: '',
+        hints: [
+          '表单用 v-model 双向绑定用户名和密码',
+          '登录成功后调用 store.setToken(res.data.token)',
+          '登录后跳转回来源页：router.push(route.query.redirect || "/")'
+        ],
+        code: `<template>
+  <div class="login">
+    <h1>用户登录</h1>
+    <form @submit.prevent="handleLogin">
+      <input v-model="username" placeholder="用户名" required />
+      <input v-model="password" type="password" placeholder="密码" required />
+      <p v-if="error" class="error">{{ error }}</p>
+      <button type="submit" :disabled="loading">{{ loading ? '登录中...' : '登录' }}</button>
+    </form>
+    <p class="hint">测试账号：admin / admin123</p>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useUserStore } from '../stores/user'
+import axios from 'axios'
+
+const router = useRouter()
+const route = useRoute()
+const userStore = useUserStore()
+
+const username = ref('')
+const password = ref('')
+const loading = ref(false)
+const error = ref('')
+
+async function handleLogin() {
+  loading.value = true
+  error.value = ''
+  try {
+    const res = await axios.post('/api/auth/login', {
+      username: username.value,
+      password: password.value
+    })
+    userStore.setToken(res.data.token)
+    router.push(route.query.redirect || '/')
+  } catch (e) {
+    error.value = e.response?.data?.detail || '登录失败'
+  } finally {
+    loading.value = false
+  }
+}
+</script>`,
+        verification: '表单使用 v-model 双向绑定，@submit.prevent 阻止默认提交，登录失败显示错误',
+        filePath: 'src/views/Login.vue',
+        projectFiles: {},
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-3'],
+        commonMistakes: [
+          { pattern: '@submit="handleLogin"', explanation: '表单提交要用 @submit.prevent 阻止页面刷新' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-8',
+        number: 27,
+        title: '订单创建',
+        concept: '表单验证 + 订单提交',
+        difficulty: 'hard',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '订单模块',
+        task: '实现结算页面，收集收货地址信息，提交订单并清空购物车',
+        prerequisites: '<h4>📚 表单验证模式</h4><p>前端验证提升用户体验，后端验证保证数据安全。address、phone 等字段需校验格式。</p>',
+        conceptDetail: '使用[axios POST](axios POST|发送 POST 请求创建资源)提交订单。[Promise.all](Promise.all|等待多个 Promise 全部完成)同时处理多项异步操作。[template ref](template ref|通过 ref 属性获取 DOM 或组件引用)获取表单引用。',
+        contextCode: '',
+        hints: [
+          '收货地址表单包含 name, phone, address, city 字段',
+          '提交前验证必填字段',
+          '提交成功后跳转到订单列表页'
+        ],
+        code: `<template>
+  <div class="checkout">
+    <h1>确认订单</h1>
+    <div class="order-items">
+      <div v-for="item in cart.items" :key="item.id" class="order-item">
+        <span>{{ item.name }} x {{ item.quantity }}</span>
+        <span>¥{{ item.price * item.quantity }}</span>
+      </div>
+    </div>
+    <div class="total">总计：¥{{ cart.total }}</div>
+    <form @submit.prevent="submitOrder">
+      <input v-model="address.name" placeholder="收货人" required />
+      <input v-model="address.phone" placeholder="手机号" required />
+      <input v-model="address.city" placeholder="城市" required />
+      <input v-model="address.detail" placeholder="详细地址" required />
+      <p v-if="error" class="error">{{ error }}</p>
+      <button type="submit" :disabled="submitting">{{ submitting ? '提交中...' : '提交订单' }}</button>
+    </form>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { useCartStore } from '../stores/cart'
+import { useUserStore } from '../stores/user'
+import axios from 'axios'
+
+const router = useRouter()
+const cart = useCartStore()
+const user = useUserStore()
+const submitting = ref(false)
+const error = ref('')
+const address = reactive({ name: '', phone: '', city: '', detail: '' })
+
+async function submitOrder() {
+  if (!user.isLoggedIn) { router.push('/login?redirect=/checkout'); return }
+  submitting.value = true
+  error.value = ''
+  try {
+    await axios.post('/api/orders', {
+      items: cart.items,
+      address: { ...address }
+    }, { headers: { Authorization: 'Bearer ' + user.token } })
+    cart.clearCart()
+    router.push('/orders')
+  } catch (e) {
+    error.value = e.response?.data?.detail || '提交失败'
+  } finally {
+    submitting.value = false
+  }
+}
+</script>`,
+        verification: 'axios POST 提交订单，提交成功后清空购物车并跳转',
+        filePath: 'src/views/Checkout.vue',
+        projectFiles: {},
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-proj-6', 'vue3-proj-7'],
+        commonMistakes: [
+          { pattern: 'cart.items', explanation: '提交前确认购物车不为空' }
+        ],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-9',
+        number: 28,
+        title: '订单列表',
+        concept: '订单管理 + 状态展示',
+        difficulty: 'medium',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '订单模块',
+        task: '实现订单列表页和订单详情页，按状态筛选订单',
+        prerequisites: '<h4>📚 条件渲染与筛选</h4><p>v-if/v-else 条件渲染，计算属性实现筛选逻辑。v-for 与 v-if 不建议同时使用。</p>',
+        conceptDetail: '[条件渲染](条件渲染|v-if/v-else/v-show)根据数据状态展示不同 UI。[计算属性筛选](计算属性筛选|用 computed 实现订单状态过滤)避免在模板中写复杂表达式。',
+        contextCode: '',
+        hints: [
+          '订单包含 pending/paid/shipped/delivered/cancelled 等状态',
+          '用 tab 切换不同状态筛选',
+          '每个订单项显示商品快照、总价、状态标签'
+        ],
+        code: `<template>
+  <div class="orders">
+    <h1>我的订单</h1>
+    <div class="tabs">
+      <button v-for="t in tabs" :key="t.key" @click="activeTab = t.key" :class="{ active: activeTab === t.key }">{{ t.label }}</button>
+    </div>
+    <div v-if="filteredOrders.length === 0" class="empty">暂无订单</div>
+    <div v-for="order in filteredOrders" :key="order.id" class="order-card" @click="goDetail(order.id)">
+      <div class="order-header">
+        <span>订单号：{{ order.id }}</span>
+        <span class="status" :class="order.status">{{ statusLabel(order.status) }}</span>
+      </div>
+      <div v-for="item in order.items" :key="item.id" class="order-item">
+        {{ item.name }} x {{ item.quantity }}
+      </div>
+      <div class="order-footer">
+        <span>{{ order.created_at }}</span>
+        <strong>共计：¥{{ order.total }}</strong>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import axios from 'axios'
+import { useUserStore } from '../stores/user'
+
+const router = useRouter()
+const user = useUserStore()
+const orders = ref([])
+const activeTab = ref('all')
+
+const tabs = [
+  { key: 'all', label: '全部' },
+  { key: 'pending', label: '待付款' },
+  { key: 'paid', label: '已付款' },
+  { key: 'shipped', label: '已发货' }
+]
+
+const filteredOrders = computed(() => {
+  if (activeTab.value === 'all') return orders.value
+  return orders.value.filter(o => o.status === activeTab.value)
+})
+
+function statusLabel(s) {
+  const map = { pending: '待付款', paid: '已付款', shipped: '已发货', delivered: '已完成', cancelled: '已取消' }
+  return map[s] || s
+}
+
+function goDetail(id) { router.push('/orders/' + id) }
+
+onMounted(async () => {
+  const res = await axios.get('/api/orders', { headers: { Authorization: 'Bearer ' + user.token } })
+  orders.value = res.data
+})
+</script>`,
+        verification: '订单列表从 API 获取，使用计算属性按状态筛选，支持 tab 切换',
+        filePath: 'src/views/OrderList.vue',
+        projectFiles: {},
+        cognitiveLoad: 'medium',
+        dependsOn: ['vue3-proj-8'],
+        commonMistakes: [],
+        variations: [],
+        transferTasks: []
+      },
+      {
+        id: 'vue3-proj-10',
+        number: 29,
+        title: '完整项目整合',
+        concept: '项目整合与部署',
+        difficulty: 'hard',
+        type: 'project',
+        project: 'ecommerce',
+        projectModule: '项目整合',
+        task: '整合 App.vue 入口组件，配置 axios 拦截器，完成端到端联调',
+        prerequisites: '<h4>📚 axios 拦截器</h4><p>请求拦截器在发送前添加 Authorization 头，响应拦截器统一处理 401 错误跳转登录页。</p>',
+        conceptDetail: '[axios 拦截器](axios 拦截器|在请求/响应被处理前拦截并修改)统一管理 token 和错误处理。[provide/inject](provide/inject|祖先组件向后代组件注入依赖)跨层级传递全局配置。[环境变量](环境变量|Vite 通过 import.meta.env 暴露环境配置)区分开发/生产环境。',
+        contextCode: '',
+        hints: [
+          '请求拦截器添加 Authorization header',
+          '响应拦截器处理 401 跳转登录',
+          'App.vue 中注册路由和 Pinia'
+        ],
+        code: `<template>
+  <div id="app">
+    <nav v-if="user.isLoggedIn">
+      <router-link to="/">首页</router-link>
+      <router-link to="/cart">购物车({{ cart.count }})</router-link>
+      <router-link to="/orders">订单</router-link>
+      <span class="user-info">{{ user.userInfo?.username }}</span>
+      <button @click="user.logout()">退出</button>
+    </nav>
+    <nav v-else>
+      <router-link to="/">首页</router-link>
+      <router-link to="/login">登录</router-link>
+    </nav>
+    <main>
+      <router-view />
+    </main>
+  </div>
+</template>
+
+<script setup>
+import { onMounted } from 'vue'
+import axios from 'axios'
+import { useUserStore } from './stores/user'
+import { useCartStore } from './stores/cart'
+
+const user = useUserStore()
+const cart = useCartStore()
+
+onMounted(() => {
+  axios.interceptors.request.use(config => {
+    if (user.token) config.headers.Authorization = 'Bearer ' + user.token
+    return config
+  })
+  axios.interceptors.response.use(
+    res => res,
+    err => {
+      if (err.response?.status === 401) user.logout()
+      return Promise.reject(err)
+    }
+  )
+})
+</script>`,
+        verification: 'axios 拦截器配置完成，导航栏条件渲染登录/登出状态，购物车数量徽标',
+        filePath: 'src/App.vue',
+        projectFiles: {},
+        cognitiveLoad: 'high',
+        dependsOn: ['vue3-proj-1', 'vue3-proj-2', 'vue3-proj-3'],
+        commonMistakes: [
+          { pattern: 'Bearer', explanation: 'Authorization header 格式为 "Bearer <token>"，注意 Bearer 后有一个空格' }
+        ],
+        variations: [],
+        transferTasks: []
+      }
+    ]
   }
 ]

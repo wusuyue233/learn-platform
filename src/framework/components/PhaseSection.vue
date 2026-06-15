@@ -26,9 +26,9 @@
           v-for="level in phase.levels"
           :key="level.id"
           :level="level"
-          :unlocked="store.isLevelUnlocked(courseId, level.id, phase.levels)"
+          :readiness="store.getLevelReadiness(courseId, level.id, phase.levels)"
+          :unlocked="store.getLevelReadiness(courseId, level.id, phase.levels).unlocked"
           :completed="store.getCourseCompleted(courseId).includes(level.id)"
-          :preview="isEarly"
           @select="openModal"
         />
       </div>

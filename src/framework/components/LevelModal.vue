@@ -6,6 +6,7 @@
           <h2>Lv.{{ level.number }} {{ level.title }}</h2>
           <div class="modal-tags" style="margin-top:8px">
             <span class="tag tag-concept">{{ level.concept }}</span>
+            <span v-if="level.type === 'project' && projectInfo" class="tag tag-project">{{ projectInfo.icon }} {{ projectInfo.name }}</span>
             <span class="tag tag-difficulty" :class="level.difficulty">{{ diffLabel }}</span>
           </div>
         </div>
@@ -17,6 +18,25 @@
           <div class="modal-section">
             <h3>📖 任务</h3>
             <div class="modal-task">{{ level.task }}</div>
+          </div>
+
+          <div v-if="level.type === 'project' && projectFilesEntries.length" class="modal-section">
+            <div class="section-collapse" @click="showProjectFiles = !showProjectFiles">
+              <h3>📁 项目文件</h3>
+              <span class="collapse-arrow" :class="{ open: showProjectFiles }">▼</span>
+            </div>
+            <div v-if="showProjectFiles" class="project-files-list">
+              <div v-for="(file, i) in projectFilesEntries" :key="i" class="project-file-item" :class="{ current: file.current }">
+                <div class="project-file-path" @click="file.open = !file.open">
+                  <span class="project-file-icon">{{ file.current ? '📄' : '📁' }}</span>
+                  <span>{{ file.path }}</span>
+                  <span v-if="file.current" class="project-file-tag">本关</span>
+                </div>
+                <div v-if="file.open" class="project-file-preview">
+                  <pre><code>{{ file.content }}</code></pre>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="modal-section">
@@ -186,6 +206,7 @@ import { useProgressStore } from '../stores/progress'
 import { readFile, writeFile, deleteFile } from '../utils/fileStore'
 import { verify } from '../utils/verifier'
 import { courses } from '../../courses'
+import { projects } from '../../projects'
 import CodeEditor from './CodeEditor.vue'
 
 const props = defineProps({
@@ -216,6 +237,18 @@ const saveOk = ref(false)
 const results = ref([])
 const verifyDone = ref(false)
 const verifyPassed = ref(false)
+
+const showProjectFiles = ref(false)
+const projectInfo = computed(() => {
+  if (props.level.type !== 'project' || !props.level.project) return null
+  return projects[props.level.project] || null
+})
+const projectFilesEntries = computed(() => {
+  const files = props.level.projectFiles || {}
+  return Object.entries(files).map(([path, content]) => ({
+    path, content, current: true, open: false
+  }))
+})
 
 const microStepMode = ref(false)
 const currentMicroStepIdx = ref(0)
@@ -957,6 +990,63 @@ function handleClose() {
   margin: 4px 0 0;
   color: var(--text-secondary);
   font-size: 12px;
+}
+
+.tag-project {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.project-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.project-file-item {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.project-file-item.current {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.project-file-path {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  cursor: pointer;
+  user-select: none;
+}
+.project-file-path:hover {
+  background: rgba(0,0,0,0.02);
+}
+.project-file-tag {
+  margin-left: auto;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+.project-file-preview pre {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 10px 14px;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.project-file-preview code {
+  font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
 }
 
 @media (max-width: 768px) {
