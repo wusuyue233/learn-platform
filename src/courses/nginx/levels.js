@@ -6,7 +6,7 @@ export const phases = [
     levels: [
       { id: 'nginx-1', number: 1, type: 'concept', title: '静态文件服务', concept: 'root / index', difficulty: 'easy',
         prerequisites: `<h4>Nginx 静态服务</h4><p>root 指定根目录。index 指定默认文件。</p>`,
-        conceptDetail: `server 块定义虚拟主机。location 匹配 URL 路径。`,
+        conceptDetail: `server 块定义虚拟主机。location 匹配 URL 路径。$uri 请求 URI。try_files 依次尝试文件路径。`,
         code: `server {
   listen 80;
   server_name static.example.com;
@@ -23,7 +23,7 @@ export const phases = [
       },
       { id: 'nginx-2', number: 2, type: 'concept', title: '反向代理', concept: 'proxy_pass', difficulty: 'medium',
         prerequisites: `<h4>反向代理</h4><p>proxy_pass 转发请求。proxy_set_header 传递请求头。</p>`,
-        conceptDetail: `proxy_pass 加 / 去除匹配前缀。WebSocket 需 upgrade 配置。`,
+        conceptDetail: `proxy_pass 加 / 去除前缀。proxy_set_header 传递请求头。$host/$remote_addr 客户端信息。WebSocket 需 upgrade 配置。`,
         code: `server {
   listen 80;
   server_name api.example.com;
@@ -76,7 +76,7 @@ server {
     levels: [
       { id: 'nginx-4', number: 4, type: 'concept', title: 'HTTPS 配置', concept: 'SSL/TLS', difficulty: 'medium',
         prerequisites: `<h4>HTTPS</h4><p>ssl_certificate 证书路径。ssl_certificate_key 私钥。Let's Encrypt 免费证书。</p>`,
-        conceptDetail: 'ssl_protocols TLSv1.2/TLSv1.3。ssl_ciphers 加密套件。HTTP/2 需 HTTPS。',
+        conceptDetail: 'ssl_protocols TLSv1.2/TLSv1.3。ssl_ciphers 加密套件。ssl_session_cache 会话缓存。ssl_prefer_server_ciphers 服务端算法优先。$server_name/$request_uri 跳转变量。HTTP/2 需 HTTPS。',
         code: `server {
   listen 443 ssl http2;
   server_name example.com;
@@ -104,7 +104,7 @@ server {
       },
       { id: 'nginx-5', number: 5, type: 'concept', title: '缓存策略', concept: 'proxy_cache', difficulty: 'medium',
         prerequisites: `<h4>缓存</h4><p>proxy_cache_path 定义缓存区。proxy_cache 启用缓存。Cache-Control 控制缓存时间。</p>`,
-        conceptDetail: 'proxy_cache_valid 按状态码设置缓存时间。proxy_cache_key 缓存键。purger 缓存清理。',
+        conceptDetail: 'proxy_cache_valid 按状态码设置时间。proxy_cache_key 缓存键。$upstream_cache_status 缓存命中状态。proxy_cache_use_stale 过期使用降级缓存。proxy_no_cache/bypass 跳过/绕过缓存。',
         code: `proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mycache:10m max_size=1g inactive=60m;
 server {
   listen 80;
@@ -131,7 +131,7 @@ server {
       },
       { id: 'nginx-6', number: 6, type: 'concept', title: '限流与安全', concept: 'limit_req', difficulty: 'hard',
         prerequisites: `<h4>限流</h4><p>limit_req_zone 定义限流区。limit_req 应用限流。burst 突发缓冲。</p>`,
-        conceptDetail: 'nodelay 无延迟处理突发。limit_conn 连接数限制。allow/deny IP 黑白名单。',
+        conceptDetail: '$binary_remote_addr 客户端 IP。nodelay 无延迟处理突发。limit_conn 连接数限制。limit_rate 带宽限速。allow/deny IP 黑白名单。',
         code: `limit_req_zone $binary_remote_addr zone=api:10m rate=30r/m;
 limit_conn_zone $binary_remote_addr zone=conn:10m;
 server {

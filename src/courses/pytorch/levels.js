@@ -6,7 +6,7 @@ export const phases = [
     levels: [
       { id: 'pytorch-1', number: 1, type: 'concept', title: '张量基础', concept: 'Tensor', difficulty: 'easy',
         prerequisites: `<h4>PyTorch 张量</h4><p>torch.tensor 创建张量。@ 是矩阵乘法。</p>`,
-        conceptDetail: `.shape 和 .dtype 获取属性。torch.randn 随机正态分布。`,
+        conceptDetail: `.shape 和 .dtype 获取属性。.T 转置。torch.randn 随机正态分布。`,
         code: `import torch
 x = torch.tensor([[1,2],[3,4]])
 y = torch.randn(3, 3)
@@ -34,7 +34,7 @@ print(f"dy/dx at x=3: {x.grad}")  # 6.0`,
       },
       { id: 'pytorch-3', number: 3, type: 'concept', title: '线性回归', concept: 'nn.Linear', difficulty: 'medium',
         prerequisites: `<h4>线性回归</h4><p>nn.Linear 全连接层。MSELoss 均方误差。SGD 优化器。</p>`,
-        conceptDetail: `zero_grad() 清零。backward() 反向传播。step() 更新参数。`,
+        conceptDetail: `zero_grad() 清零。backward() 反向传播。step() 更新参数。item() 提取标量值。`,
         code: `import torch, torch.nn as nn
 x = torch.randn(100,1)
 y = 2*x + 1 + torch.randn(100,1)*0.1
@@ -84,7 +84,7 @@ class MLP(nn.Module):
     levels: [
       { id: 'pytorch-5', number: 5, type: 'concept', title: 'CNN 卷积网络', concept: 'nn.Conv2d', difficulty: 'hard',
         prerequisites: `<h4>CNN</h4><p>nn.Conv2d 卷积层。nn.MaxPool2d 池化层。nn.Dropout 防过拟合。</p>`,
-        conceptDetail: 'kernel_size 卷积核大小。stride 步长。padding 填充。',
+        conceptDetail: 'kernel_size 卷积核大小。stride 步长。padding 填充。torch.flatten 展平。',
         code: `import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -138,7 +138,7 @@ for batch_idx, (data, target) in enumerate(train_loader):
       },
       { id: 'pytorch-7', number: 7, type: 'concept', title: '模型保存与加载', concept: 'state_dict', difficulty: 'medium',
         prerequisites: `<h4>保存加载</h4><p>torch.save(model.state_dict()) 保存参数。torch.load 加载。model.eval() 切换到评估模式。</p>`,
-        conceptDetail: 'model.eval() 关闭 dropout 和 batch_norm。torch.no_grad() 禁用梯度计算。',
+        conceptDetail: 'model.eval() 关闭 dropout/batch_norm。torch.no_grad() 禁用梯度。weights_only 安全加载。',
         code: `import torch
 import torch.nn as nn
 model = CNN()
@@ -164,7 +164,7 @@ full_model.eval()`,
       },
       { id: 'pytorch-8', number: 8, type: 'concept', title: '迁移学习', concept: 'Transfer Learning', difficulty: 'hard',
         prerequisites: `<h4>迁移学习</h4><p>torchvision.models 预训练模型。requires_grad=False 冻结层。</p>`,
-        conceptDetail: 'num_classes 替换分类头。只训练最后一层可大幅减少训练时间。',
+        conceptDetail: 'num_classes 替换分类头。model.fc.in_features 获取原分类层输入维度。model.train() 开启训练模式。只训练最后一层可大幅减少训练时间。',
         code: `import torch
 import torch.nn as nn
 import torchvision.models as models

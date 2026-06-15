@@ -1549,7 +1549,7 @@ async def process_time(request: Request, call_next):
                 'OAuth2PasswordBearer(tokenUrl="/api/auth/login")',
                 '密码用 passlib 库的 bcrypt 哈希存储'
               ],
-              code: 'from jose import jwt\nfrom datetime import datetime, timedelta\n\nSECRET_KEY = "your-secret-key"\nALGORITHM = "HS256"\nACCESS_TOKEN_EXPIRE = 30\n\ndef create_access_token(data: dict):\n    to_encode = data.copy()\n    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE)\n    to_encode.update({"exp": expire})\n    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n\ndef verify_token(token: str):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload\n    except:\n        return None',
+              code: 'from jose import jwt\nfrom datetime import datetime, timedelta\nimport os\n\nSECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key")\nALGORITHM = "HS256"\nACCESS_TOKEN_EXPIRE = 30\n\ndef create_access_token(data: dict):\n    to_encode = data.copy()\n    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE)\n    to_encode.update({"exp": expire})\n    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)\n\ndef verify_token(token: str):\n    try:\n        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])\n        return payload\n    except:\n        return None',
               verification: '实现 create_access_token 和 verify_token 函数，用户注册/登录端点使用 JWT',
               filePath: 'app/core/security.py',
               projectFiles: {

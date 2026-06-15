@@ -6,7 +6,7 @@ export const phases = [
     levels: [
       { id: 'opencv-1', number: 1, type: 'concept', title: '图像读写', concept: 'imread/imshow', difficulty: 'easy',
         prerequisites: `<h4>OpenCV 基础</h4><p>cv2.imread 读取为 numpy 数组。BGR 是默认颜色空间。</p>`,
-        conceptDetail: `img.shape 返回 (高, 宽, 通道)。waitKey(0) 无限等待按键。`,
+        conceptDetail: `img.shape 返回 (高, 宽, 通道)。waitKey(0) 无限等待按键。destroyAllWindows 关闭窗口。imwrite 保存图像。`,
         code: `import cv2
 img = cv2.imread("input.jpg")
 print(f"尺寸: {img.shape}")
@@ -54,7 +54,7 @@ cv2.waitKey(0)`,
       },
       { id: 'opencv-4', number: 4, type: 'concept', title: '边缘检测', concept: 'Canny', difficulty: 'medium',
         prerequisites: `<h4>Canny 边缘检测</h4><p>Canny 步骤：高斯滤波 → 计算梯度 → 非极大值抑制 → 双阈值检测。</p>`,
-        conceptDetail: `高阈值定强边缘，低阈值保留弱边缘。addWeighted 叠加效果。`,
+        conceptDetail: `高阈值定强边缘，低阈值保留弱边缘。COLOR_GRAY2BGR 灰度转BGR三通道。addWeighted 叠加效果。`,
         code: `img = cv2.imread("input.jpg")
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blur = cv2.GaussianBlur(gray, (5,5), 1.0)
@@ -78,7 +78,7 @@ cv2.waitKey(0)`,
     levels: [
       { id: 'opencv-5', number: 5, type: 'concept', title: '轮廓检测', concept: 'findContours', difficulty: 'medium',
         prerequisites: `<h4>轮廓</h4><p>findContours 检测轮廓。drawContours 绘制轮廓。RETR_EXTERNAL 只检测外轮廓。</p>`,
-        conceptDetail: 'contourArea 计算面积。arcLength 计算周长。approxPolyDP 多边形逼近。',
+        conceptDetail: 'contourArea 面积。arcLength 周长。approxPolyDP 多边形逼近。putText 绘制文字。FONT_HERSHEY_SIMPLEX 字体。',
         code: `import cv2
 import numpy as np
 img = cv2.imread("shapes.jpg")
@@ -146,7 +146,7 @@ cv2.waitKey(0)`,
       },
       { id: 'opencv-8', number: 8, type: 'concept', title: '图像分割', concept: '分水岭算法', difficulty: 'hard',
         prerequisites: `<h4>分水岭分割</h4><p>watershed 基于标记的分割。distanceTransform 距离变换。</p>`,
-        conceptDetail: 'connectedComponents 连通域标记。findContours 获取分割边界。',
+        conceptDetail: 'THRESH_BINARY_INV 二值反转。THRESH_OTSU 自动阈值。DIST_L2 欧氏距离变换。connectedComponents 连通域标记。subtract 图像减法。',
         code: `import cv2
 import numpy as np
 img = cv2.imread("coins.jpg")

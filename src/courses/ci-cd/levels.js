@@ -51,7 +51,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/deploy-pages@v4`,
-        verification: '测试→构建→部署 GitHub Pages',
+        verification: '构建→部署 GitHub Pages',
         filePath: '.github/workflows/deploy.yml',
         hints: ["needs: build 依赖前置任务","actions/deploy-pages@v4 部署"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []

@@ -15,7 +15,7 @@ export const phases = [
       },
       { id: 'uniapp-2', number: 2, type: 'concept', title: '商品卡片组件', concept: 'uni-app 组件', difficulty: 'easy',
         prerequisites: `<h4>组件</h4><p>UniApp 用 view/text/image 替代 div/span/img。rpx 是响应式单位。</p>`,
-        conceptDetail: `defineProps 声明 props。@tap 替代 click。`,
+        conceptDetail: `defineProps 声明 props。defineEmits 定义自定义事件。@tap 替代 click。`,
         code: `<template><view class="card" @tap="emit('click',product)"><image :src="product.image"/><view><text>{{product.name}}</text><text>¥{{product.price}}</text></view></view></template>
 <script setup>
 defineProps({product:{type:Object,required:true}})
@@ -51,7 +51,7 @@ export function request(config){
       },
       { id: 'uniapp-4', number: 4, type: 'concept', title: '商品列表页', concept: '列表渲染', difficulty: 'medium',
         prerequisites: `<h4>生命周期</h4><p>onLoad 页面加载触发。onPullDownRefresh 下拉刷新。</p>`,
-        conceptDetail: `onShow 每次显示触发。onReachBottom 触底加载。`,
+        conceptDetail: `onLoad 页面加载触发。onPullDownRefresh 下拉刷新。`,
         code: `<template><view><ProductCard v-for="item in products" :key="item.id" :product="item" @click="goDetail"/><view v-if="loading">加载中...</view></view></template>
 <script setup>
 import {ref} from "vue"
@@ -76,7 +76,7 @@ function goDetail(p){uni.navigateTo({url:"/pages/product/detail?id="+p.id})}
     levels: [
       { id: 'uniapp-5', number: 5, type: 'concept', title: '购物车页面', concept: '本地存储', difficulty: 'medium',
         prerequisites: `<h4>本地存储</h4><p>uni.getStorageSync/uni.setStorageSync 读写本地数据。</p>`,
-        conceptDetail: 'checkbox 多选。uni.showModal 确认删除。',
+        conceptDetail: 'checkbox 多选。computed 计算总价。',
         code: `<template><view><view v-for="item in cart" :key="item.id" class="cart-item">
 <checkbox :checked="item.checked" @tap="toggleCheck(item)"/>
 <image :src="item.image"/><view><text>{{item.name}}</text><text>¥{{item.price}}</text></view>
@@ -98,7 +98,7 @@ const total=computed(()=>cart.value.filter(x=>x.checked).reduce((s,x)=>s+x.price
       },
       { id: 'uniapp-6', number: 6, type: 'concept', title: '用户个人中心', concept: '页面生命周期', difficulty: 'easy',
         prerequisites: `<h4>生命周期</h4><p>onShow 页面显示时触发。onLoad 页面首次加载。</p>`,
-        conceptDetail: 'uni.getStorageSync 读取用户信息。条件渲染 v-if。',
+        conceptDetail: 'onShow 页面显示刷新数据。uni.getStorageSync 读取用户信息。条件渲染 v-if。',
         code: `<template><view class="profile">
 <view class="user-info"><image :src="user.avatar||'/static/default-avatar.png'"/><text>{{user.nickname||'未登录'}}</text></view>
 <view class="menu-list"><view class="menu-item" @tap="toOrders"><text>我的订单</text><text>></text></view>
@@ -123,7 +123,7 @@ function toLogin(){uni.navigateTo({url:"/pages/login/login"})}
       },
       { id: 'uniapp-7', number: 7, type: 'concept', title: '地址管理', concept: '表单与验证', difficulty: 'medium',
         prerequisites: `<h4>表单</h4><p>uni.request 提交数据。v-model 双向绑定。</p>`,
-        conceptDetail: 'picker 省市区选择器。switch 默认地址开关。',
+        conceptDetail: 'input 表单输入。switch 默认地址开关。uni.showToast 提示信息。uni.navigateBack 返回上一页。',
         code: `<template><view class="address-form">
 <view><text>收货人</text><input v-model="form.name" placeholder="请输入姓名"/></view>
 <view><text>手机号</text><input v-model="form.phone" placeholder="请输入手机号" type="number" maxlength="11"/></view>
@@ -143,7 +143,7 @@ function submit(){if(!validate())return;uni.showToast({title:'保存成功',icon
       },
       { id: 'uniapp-8', number: 8, type: 'concept', title: '订单确认页', concept: '多页面传参', difficulty: 'hard',
         prerequisites: `<h4>传参</h4><p>uni.navigateTo 的 url 参数。events 事件通信。</p>`,
-        conceptDetail: 'onLoad options 接收参数。批量提交订单。',
+        conceptDetail: 'onLoad options 接收参数。computed 计算总价。提交订单。',
         code: `<template><view class="confirm-order">
 <view class="addr" @tap="selectAddr"><text>{{addr?addr.name+' '+addr.phone:'请选择地址'}}</text><text>></text></view>
 <view v-for="item in items" :key="item.id" class="order-item">
