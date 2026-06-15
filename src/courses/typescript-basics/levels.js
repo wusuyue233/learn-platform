@@ -97,7 +97,51 @@ console.log(typeof name, typeof age, typeof isActive, typeof city)`,
 2. let age: number = 25 — 数字类型
 3. let isActive: boolean = true — 布尔类型
 4. let city = "Beijing" — 类型推断`,
-        filePath: 'src/basic-types.ts'
+        filePath: 'src/basic-types.ts',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-2',
@@ -221,7 +265,51 @@ console.log(user, product)`,
 1. interface User { id: number; name: string; email?: string }
 2. type Product = { name: string; price: number; inStock: boolean }
 3. 创建符合接口/类型的对象`,
-        filePath: 'src/interfaces.ts'
+        filePath: 'src/interfaces.ts',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-3',
@@ -329,7 +417,51 @@ doSomething(msg => console.log(msg))`,
 1. 参数后加 : number 指定类型
 2. 函数名后加 : number 指定返回类型
 3. 回调参数类型为 (msg: string) => void`,
-        filePath: 'src/function-types.ts'
+        filePath: 'src/function-types.ts',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-4',
@@ -442,7 +574,51 @@ console.log(person)`,
 1. type ID = string | number 定义联合类型
 2. 用 typeof 做类型缩窄
 3. type Person = HasName & HasAge 定义交叉类型`,
-        filePath: 'src/union-intersect.ts'
+        filePath: 'src/union-intersect.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-5',
@@ -582,7 +758,51 @@ console.log(getErrorMessage("简单错误"))`,
 1. typeof value === "string" 缩窄为字符串
 2. typeof value === "number" 缩窄为数字
 3. err instanceof Error 缩窄为 Error 实例`,
-        filePath: 'src/type-guards.ts'
+        filePath: 'src/type-guards.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -718,7 +938,51 @@ console.log(num, str, nums, container.getValue())`,
 1. 函数名后加 <T> 声明泛型参数
 2. 参数和返回值中使用 T
 3. 接口名后加 <T> 声明泛型参数`,
-        filePath: 'src/generics.ts'
+        filePath: 'src/generics.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-7',
@@ -825,7 +1089,51 @@ console.log(getProp(user, "name"))`,
 1. T extends { length: number } 约束有 length
 2. T extends { id: number; name: string } 约束有 id 和 name
 3. K extends keyof T 约束属性名`,
-        filePath: 'src/generic-constraints.ts'
+        filePath: 'src/generic-constraints.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-8',
@@ -952,7 +1260,51 @@ console.log(user1, user2)`,
         solution: `解题步骤：
 1. [K in keyof T]?: T[K] — 遍历所有属性并变为可选
 2. [P in K]: T[P] — 遍历指定属性并保持类型`,
-        filePath: 'src/mapped-types.ts'
+        filePath: 'src/mapped-types.ts',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-9',
@@ -1047,7 +1399,51 @@ console.log(arr)`,
 1. T extends any[] ? true : false — 判断是否是数组
 2. T extends (infer E)[] ? E : never — 用 infer 提取元素
 3. T extends Promise<infer V> ? V : T — 解包 Promise`,
-        filePath: 'src/conditional-types.ts'
+        filePath: 'src/conditional-types.ts',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'v-show',
+          'description': 'v-show 只切换 display，频繁切换性能更好'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-10',
@@ -1144,7 +1540,51 @@ console.log(size1, size2, handler)`,
 1. \`\${Color}-\${Size}\` 组合两个联合类型
 2. \`on\${Capitalize<EventName>}\` 用内置工具类型
 3. 模板字面量会自动产生笛卡尔积`,
-        filePath: 'src/template-literal.ts'
+        filePath: 'src/template-literal.ts',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -1300,7 +1740,51 @@ console.log(dog.bark())`,
 1. class Animal 定义基类和构造函数
 2. extends Animal 继承，super() 调用父构造
 3. 子类重写 getInfo 和新增 bark 方法`,
-        filePath: 'src/classes.ts'
+        filePath: 'src/classes.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-12',
@@ -1433,7 +1917,51 @@ console.log(getStatus(HttpStatus.NotFound))`,
 1. enum 定义数字枚举：OK = 200, NotFound = 404, Error = 500
 2. enum 定义字符串枚举：Red = "RED" 等
 3. switch 语句根据枚举值返回描述`,
-        filePath: 'src/enums.ts'
+        filePath: 'src/enums.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-13',
@@ -1555,7 +2083,51 @@ declare global {
 1. declare module "name" { ... } 声明模块类型
 2. declare global { ... } 扩展全局类型
 3. .d.ts 文件只写类型声明，不写实现`,
-        filePath: 'src/declarations.d.ts'
+        filePath: 'src/declarations.d.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-14',
@@ -1689,7 +2261,51 @@ console.log(basic, compact)`,
 2. Pick<Product, "id" | "name"> — 选取基本字段
 3. Omit<Product, "description"> — 排除描述
 4. Required<Product> — 确保完整数据`,
-        filePath: 'src/utility-types.ts'
+        filePath: 'src/utility-types.ts',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'ts-15',
@@ -1871,7 +2487,51 @@ async function getProduct(id: number) {
 2. apiRequest<T> 泛型函数，调用时指定类型
 3. isError 类型谓词判断错误
 4. result.ok 判断成功后安全访问 data`,
-        filePath: 'src/api-client.ts'
+        filePath: 'src/api-client.ts',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   }

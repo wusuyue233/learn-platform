@@ -75,7 +75,51 @@ git add .
 # 3. 提交
 git commit -m "init: 初始化项目"`,
         verification: '包含了 init、add、commit 三个命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-2',
@@ -155,7 +199,51 @@ git log -3
 # 4. 暂存区差异
 git diff --staged`,
         verification: '包含了 status、log、diff 命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-3',
@@ -241,7 +329,51 @@ git stash list
 # 5. 恢复暂存
 git stash pop`,
         verification: '包含了 restore 和 stash 命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-4',
@@ -329,7 +461,51 @@ node_modules/
 # 构建产物
 dist/`,
         verification: '编写了包含 node_modules 和 .env 的 .gitignore 规则',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -420,7 +596,51 @@ git checkout -b feature-cart
 # 4. 查看所有分支
 git branch -a`,
         verification: '包含了 branch、checkout/switch 命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-6',
@@ -504,7 +724,51 @@ git branch -d feature-login
 # 4. 如果有冲突
 # 编辑冲突文件 → git add . → git commit`,
         verification: '包含了 merge 命令和冲突处理流程',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-7',
@@ -589,7 +853,51 @@ git rebase main
 git checkout main
 git merge feature  # Fast-forward 合并`,
         verification: '使用了 rebase 命令进行变基操作',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -678,7 +986,51 @@ git push -u origin main
 # 4. 拉取更新
 git pull origin main`,
         verification: '包含了 remote、push、pull 命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-9',
@@ -745,7 +1097,51 @@ git clone https://github.com/user/repo.git my-project
 # 3. 添加 upstream
 git remote add upstream https://github.com/original/repo.git`,
         verification: '包含了 clone 和 fork 工作流命令',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'git-10',
@@ -843,7 +1239,51 @@ git merge develop
 git tag -a v1.0.0 -m "Release 1.0.0"
 git push origin main --tags`,
         verification: '描述了包含分支策略的完整团队协作流程',
-        filePath: 'git-commands.md'
+        filePath: 'git-commands.md',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'git commit',
+          'explanation': 'commit 前先用 git status'
+         },
+         {
+          'pattern': 'git push',
+          'explanation': '推送前先 git pull'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'git restore',
+          'description': 'git restore 撤销工作区修改'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '创建分支→修改→合并→解决冲突',
+          'target': '掌握 Git 分支协作'
+         }
+        ]
       }
     ]
   }

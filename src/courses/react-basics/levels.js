@@ -78,7 +78,51 @@ export default HelloWorld`,
 1. 定义一个大写开头的函数 HelloWorld
 2. 在函数中 return 一个包含 "Hello React!" 的 JSX 元素
 3. 用 export default 导出组件`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'useState',
+          'explanation': 'useState 更新是异步的'
+         },
+         {
+          'pattern': 'useEffect',
+          'explanation': 'useEffect 依赖数组不能省略'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'Class 组件',
+          'description': 'class 组件用 this.state 管理状态'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '封装可复用表单组件含验证逻辑',
+          'target': '掌握组件化开发'
+         }
+        ]
       },
       {
         id: 'react-2',
@@ -153,7 +197,51 @@ export default UserCard`,
 1. 在函数参数中接收 props（可用解构 { name, age }）
 2. 返回包含 props 值的 JSX
 3. 导出组件供父组件使用`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-3',
@@ -241,7 +329,51 @@ export default Counter`,
 2. 声明状态：const [count, setCount] = useState(0)
 3. 在 JSX 中显示 {count}
 4. 按钮绑定 onClick={() => setCount(count + 1)}`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-4',
@@ -336,7 +468,51 @@ export default FruitList`,
 1. 在 JSX 中用 {fruits.map(...)} 遍历数组
 2. map 回调函数返回 <li> 元素
 3. 每个 <li> 添加 key={fruit} 属性`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'filter',
+          'explanation': 'filter 返回新数组不修改原数组'
+         },
+         {
+          'pattern': 'map',
+          'explanation': 'map 必须有 return'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '准备数据',
+          'verification': 'const',
+          'hint': '定义数组'
+         },
+         {
+          'id': 'step-2',
+          'title': '链式操作',
+          'verification': '.filter',
+          'hint': '用 filter'
+         },
+         {
+          'id': 'step-3',
+          'title': '转换数据',
+          'verification': '.map',
+          'hint': '用 map 转换'
+         }
+        ],
+        variations: [
+         {
+          'name': 'forEach',
+          'description': 'forEach 遍历但不返回新数组'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '用 filter + map + reduce 组合处理数据',
+          'target': '掌握数组链式操作'
+         }
+        ]
       },
       {
         id: 'react-5',
@@ -435,7 +611,51 @@ export default LoginStatus`,
 1. 用 useState 管理 isLoggedIn 状态
 2. 用三元表达式 {isLoggedIn ? <p>欢迎</p> : <p>请登录</p>}
 3. 按钮点击时切换 isLoggedIn`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -554,7 +774,51 @@ export default Timer`,
 2. 在 useEffect 中用 setInterval 每秒更新 seconds
 3. 返回清理函数 () => clearInterval(id)
 4. 依赖数组传空 [] 只执行一次`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-7',
@@ -663,7 +927,51 @@ export default AutoFocusInput`,
 1. 创建 ref：const inputRef = useRef(null)
 2. 在 input 元素上绑定 ref={inputRef}
 3. 点击按钮时调用 inputRef.current.focus()`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'innerHTML',
+          'explanation': 'innerHTML 有 XSS 风险，优先用 textContent'
+         },
+         {
+          'pattern': 'addEventListener',
+          'explanation': '及时移除事件监听防内存泄漏'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '创建动态列表，增删改查 DOM 元素',
+          'target': '掌握 DOM 操作'
+         }
+        ]
       },
       {
         id: 'react-8',
@@ -790,7 +1098,51 @@ export default App`,
 2. Provider value={theme} 提供当前主题
 3. 子组件用 useContext(ThemeContext) 获取主题
 4. 按钮切换 theme 状态`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-9',
@@ -940,7 +1292,51 @@ export default TodoApp`,
 2. add: 展开原数组并追加新项
 3. remove: filter 过滤掉指定索引
 4. dispatch 触发对应的 action`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '用 filter + map + reduce 组合处理数据',
+          'target': '掌握数组链式操作'
+         }
+        ]
       },
       {
         id: 'react-10',
@@ -1071,7 +1467,51 @@ export default App`,
 2. 内部用 useState 声明 count
 3. 定义 increment/decrement/reset 方法
 4. 返回 { count, increment, decrement, reset }`,
-        filePath: 'src/hooks/useCounter.js'
+        filePath: 'src/hooks/useCounter.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -1210,7 +1650,51 @@ export default App`,
 1. 用 BrowserRouter 包裹
 2. 在 Routes 中定义 Route 规则
 3. 用 Link 实现导航`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'req.body',
+          'explanation': 'POST 需 body-parser 中间件解析'
+         },
+         {
+          'pattern': 'res.send',
+          'explanation': '一个请求只调一次 res.send'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'Hash vs History',
+          'description': 'Hash 模式用 #，History 需要服务端配合'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-12',
@@ -1348,7 +1832,51 @@ export default App`,
 1. Dashboard 组件中添加 <Outlet /> 作为子路由出口
 2. 在父 Route 内定义子 Route，path 不以 / 开头
 3. Link 路径为 /dashboard/profile 形式`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'const',
+          'explanation': 'const 变量不能重新赋值'
+         },
+         {
+          'pattern': 'let',
+          'explanation': 'let 有块级作用域'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '用 const 声明',
+          'verification': 'const',
+          'hint': '尝试 const 声明'
+         },
+         {
+          'id': 'step-2',
+          'title': '用 let 声明',
+          'verification': 'let',
+          'hint': '尝试 let 声明'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证输出',
+          'verification': 'console.log',
+          'hint': '打印变量值'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '用 const/let 声明不同类型的变量，观察作用域差异',
+          'target': '掌握变量声明'
+         }
+        ]
       },
       {
         id: 'react-13',
@@ -1490,7 +2018,51 @@ export default App`,
 1. 用 create((set) => ({...})) 创建 store
 2. 定义 count 状态和 increment 方法
 3. 组件中用 useCounterStore(state => state.count) 读取`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-14',
@@ -1649,7 +2221,51 @@ export default RegisterForm`,
 1. useState 管理 formData 对象
 2. handleChange 用 [e.target.name]: e.target.value 更新
 3. 每个 input 绑定 value 和 onChange`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-15',
@@ -1816,7 +2432,51 @@ export default App`,
 2. constructor 初始化 hasError: false
 3. getDerivedStateFromError 返回 { hasError: true }
 4. render 中根据 hasError 条件渲染`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -1960,7 +2620,51 @@ export default App`,
 1. 用 React.memo(函数组件) 包裹子组件
 2. props 不变时 memo 组件不会重渲染
 3. 通过 console.log 验证渲染次数`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-17',
@@ -2097,7 +2801,51 @@ export default App`,
 1. useMemo(() => compute, [deps]) 缓存计算结果
 2. useCallback(fn, [deps]) 缓存函数引用
 3. 配合 React.memo 避免子组件不必要的重渲染`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-18',
@@ -2266,7 +3014,51 @@ export default App`,
 2. slice 截取可见范围内的数据
 3. 用 translateY 定位渲染区域
 4. 容器高度 = 总项数 × 每项高度`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-19',
@@ -2406,7 +3198,51 @@ export default App`,
 1. 用 lazy(() => import('./Comp')) 懒加载组件
 2. 用 Suspense fallback={...} 包裹路由
 3. 每个路由的 component 改用 lazy 组件`,
-        filePath: 'src/App.jsx'
+        filePath: 'src/App.jsx',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'react-20',
@@ -2605,7 +3441,51 @@ export default ChatRoom`,
 3. useEffect 监听 messages 变化自动滚动
 4. handleSend 添加新消息并清空输入
 5. useMemo 计算消息统计`,
-        filePath: 'src/ChatRoom.jsx'
+        filePath: 'src/ChatRoom.jsx',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   }

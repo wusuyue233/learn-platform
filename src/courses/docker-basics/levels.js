@@ -65,7 +65,51 @@ CMD ???
 RUN echo "Hello Docker"
 CMD ["echo", "Hello Docker"]`,
         verification: '编写了正确的 Dockerfile，包含 FROM、RUN、CMD 指令',
-        filePath: 'Dockerfile'
+        filePath: 'Dockerfile',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-2',
@@ -155,7 +199,51 @@ COPY . .
 EXPOSE 3000
 CMD ["node", "server.js"]`,
         verification: '包含 FROM、WORKDIR、COPY、RUN、EXPOSE、CMD 指令',
-        filePath: 'Dockerfile'
+        filePath: 'Dockerfile',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-3',
@@ -229,7 +317,51 @@ coverage
 *.md
 docker-compose*.yml`,
         verification: '创建了 .dockerignore 文件，排除了敏感和无用文件',
-        filePath: '.dockerignore'
+        filePath: '.dockerignore',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'docker run',
+          'explanation': '每次 docker run 创建新容器'
+         },
+         {
+          'pattern': 'Dockerfile',
+          'explanation': 'Dockerfile 文件名必须大写 D'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'docker-compose',
+          'description': '多容器用 docker-compose 管理'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '编写 Dockerfile + docker-compose 启动',
+          'target': '掌握容器化部署'
+         }
+        ]
       }
     ]
   },
@@ -310,7 +442,51 @@ docker logs web-server
 docker stop web-server
 docker rm web-server`,
         verification: '使用了 docker run -d --name 启动后台容器',
-        filePath: 'commands.sh'
+        filePath: 'commands.sh',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'docker run',
+          'explanation': '每次 docker run 创建新容器'
+         },
+         {
+          'pattern': 'Dockerfile',
+          'explanation': 'Dockerfile 文件名必须大写 D'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': 'docker-compose',
+          'description': '多容器用 docker-compose 管理'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '编写 Dockerfile + docker-compose 启动',
+          'target': '掌握容器化部署'
+         }
+        ]
       },
       {
         id: 'docker-5',
@@ -371,7 +547,51 @@ docker port ???
 docker run -d -p 127.0.0.1:3306:3306 -e MYSQL_ROOT_PASSWORD=secret mysql:8
 docker port web-server`,
         verification: '使用了 -p 参数进行端口映射',
-        filePath: 'commands.sh'
+        filePath: 'commands.sh',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-6',
@@ -439,7 +659,51 @@ docker run -d -v ??? shop-api
 docker run -d -p 3306:3306 -v shop-db-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=secret mysql:8
 docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
         verification: '使用了 -v 参数进行数据卷挂载',
-        filePath: 'commands.sh'
+        filePath: 'commands.sh',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-7',
@@ -524,7 +788,51 @@ ENV ???
 
 docker run -d --env-file .env shop-api`,
         verification: '使用了 -e 参数或 --env-file 传递环境变量',
-        filePath: 'commands.sh'
+        filePath: 'commands.sh',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -630,7 +938,51 @@ services:
       - ./src:/app/src
     restart: unless-stopped`,
         verification: '编写了 docker-compose.yml，包含 services、build、ports 等配置',
-        filePath: 'docker-compose.yml'
+        filePath: 'docker-compose.yml',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-9',
@@ -770,7 +1122,51 @@ services:
 volumes:
   db-data:`,
         verification: '编排了三个服务并配置了 depends_on 依赖关系',
-        filePath: 'docker-compose.yml'
+        filePath: 'docker-compose.yml',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'docker-10',
@@ -912,7 +1308,51 @@ HEALTHCHECK --interval=30s --timeout=3s \\
   CMD curl -f http://localhost:3000/health || exit 1
 CMD ["node", "dist/index.js"]`,
         verification: '编写了多阶段构建的 Dockerfile 和完整的 docker-compose.yml',
-        filePath: 'Dockerfile'
+        filePath: 'Dockerfile',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   }

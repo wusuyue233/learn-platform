@@ -57,7 +57,51 @@ FROM ???;`,
         code: `SELECT name, price
 FROM products;`,
         verification: '使用 SELECT 查询了 name 和 price 列',
-        filePath: 'queries/sql-1.sql'
+        filePath: 'queries/sql-1.sql',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'SELECT *',
+          'explanation': '明确指定列名优于 SELECT *'
+         },
+         {
+          'pattern': 'WHERE',
+          'explanation': 'UPDATE/DELETE 加 WHERE'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '子查询',
+          'description': '子查询嵌套在 WHERE/FROM/SELECT 中'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '多表 JOIN + GROUP BY + HAVING 聚合',
+          'target': '掌握复杂查询'
+         }
+        ]
       },
       {
         id: 'sql-2',
@@ -120,7 +164,51 @@ WHERE ???;`,
 FROM products
 WHERE price > 100;`,
         verification: '使用 WHERE 过滤了 price > 100 的记录',
-        filePath: 'queries/sql-2.sql'
+        filePath: 'queries/sql-2.sql',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'SELECT *',
+          'explanation': '明确指定列名优于 SELECT *'
+         },
+         {
+          'pattern': 'WHERE',
+          'explanation': 'UPDATE/DELETE 加 WHERE'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-3',
@@ -178,7 +266,51 @@ ORDER BY ??? ???;`,
 FROM products
 ORDER BY price DESC;`,
         verification: '使用 ORDER BY DESC 按价格降序排列',
-        filePath: 'queries/sql-3.sql'
+        filePath: 'queries/sql-3.sql',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-4',
@@ -240,7 +372,51 @@ LIMIT ??? OFFSET ???;`,
 FROM products
 LIMIT 5 OFFSET 5;`,
         verification: '使用 LIMIT 和 OFFSET 实现了分页查询',
-        filePath: 'queries/sql-4.sql'
+        filePath: 'queries/sql-4.sql',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-5',
@@ -322,7 +498,51 @@ WHERE name = '测试商品';
 DELETE FROM products
 WHERE name = '测试商品';`,
         verification: '依次执行了 INSERT、UPDATE、DELETE 三种操作',
-        filePath: 'queries/sql-5.sql'
+        filePath: 'queries/sql-5.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -393,7 +613,51 @@ FROM orders o
 INNER JOIN users u ON o.user_id = u.id
 INNER JOIN products p ON o.product_id = p.id;`,
         verification: '使用 JOIN 关联了 orders、users、products 三张表',
-        filePath: 'queries/sql-6.sql'
+        filePath: 'queries/sql-6.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-7',
@@ -460,7 +724,51 @@ GROUP BY ???;`,
 FROM products
 GROUP BY category;`,
         verification: '使用 GROUP BY 和聚合函数统计了分组数据',
-        filePath: 'queries/sql-7.sql'
+        filePath: 'queries/sql-7.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': '() =>',
+          'explanation': '箭头函数没有自己的 this'
+         },
+         {
+          'pattern': 'return',
+          'explanation': '箭头函数返回对象需要 ({})'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义函数',
+          'verification': 'function',
+          'hint': '用 function 关键字'
+         },
+         {
+          'id': 'step-2',
+          'title': '添加参数',
+          'verification': 'return',
+          'hint': '函数体返回值'
+         },
+         {
+          'id': 'step-3',
+          'title': '调用测试',
+          'verification': 'console.log',
+          'hint': '调用函数测试'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '将普通函数改箭头函数，对比 this 指向',
+          'target': '理解函数与箭头函数区别'
+         }
+        ]
       },
       {
         id: 'sql-8',
@@ -523,7 +831,51 @@ FROM products
 GROUP BY category
 HAVING COUNT(*) > 2;`,
         verification: '使用 HAVING 过滤了分组结果',
-        filePath: 'queries/sql-8.sql'
+        filePath: 'queries/sql-8.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'SELECT *',
+          'explanation': '明确指定列名优于 SELECT *'
+         },
+         {
+          'pattern': 'WHERE',
+          'explanation': 'UPDATE/DELETE 加 WHERE'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-9',
@@ -587,7 +939,51 @@ WHERE price > (???);`,
 FROM products
 WHERE price > (SELECT AVG(price) FROM products);`,
         verification: '使用子查询计算平均价格并进行比较',
-        filePath: 'queries/sql-9.sql'
+        filePath: 'queries/sql-9.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-10',
@@ -646,7 +1042,51 @@ SELECT name FROM products WHERE category = '服装';`,
 UNION
 SELECT name FROM products WHERE category = '服装';`,
         verification: '使用 UNION 合并了两个查询结果',
-        filePath: 'queries/sql-10.sql'
+        filePath: 'queries/sql-10.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -728,7 +1168,51 @@ CREATE TABLE ??? (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );`,
         verification: '使用 CREATE TABLE 创建了包含合适数据类型的表',
-        filePath: 'queries/sql-11.sql'
+        filePath: 'queries/sql-11.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-12',
@@ -817,7 +1301,51 @@ CREATE TABLE orders (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );`,
         verification: '创建了带主键和外键约束的表',
-        filePath: 'queries/sql-12.sql'
+        filePath: 'queries/sql-12.sql',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-13',
@@ -875,7 +1403,51 @@ CREATE INDEX idx_category ON ???;`,
         code: `CREATE INDEX idx_name ON products(name);
 CREATE INDEX idx_category ON products(category);`,
         verification: '使用 CREATE INDEX 为列创建了索引',
-        filePath: 'queries/sql-13.sql'
+        filePath: 'queries/sql-13.sql',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-14',
@@ -951,7 +1523,51 @@ UPDATE accounts SET balance = balance + 100 WHERE id = 2;
 
 COMMIT;`,
         verification: '使用 BEGIN/COMMIT 实现了事务操作',
-        filePath: 'queries/sql-14.sql'
+        filePath: 'queries/sql-14.sql',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'sql-15',
@@ -1115,7 +1731,51 @@ CREATE TABLE order_items (
   FOREIGN KEY (product_id) REFERENCES products(id)
 );`,
         verification: '设计了完整的电商数据库，包含 5 张关联表',
-        filePath: 'queries/sql-15.sql'
+        filePath: 'queries/sql-15.sql',
+        cognitiveLoad: 'high',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   }

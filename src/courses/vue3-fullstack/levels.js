@@ -96,8 +96,8 @@ div { color: blue; }
           { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' },
           { id: 'step-3', title: '模板插值', verification: '{{ message }}', hint: '双花括号显示变量值' }
         ],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
+        transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}]
       },
       {
         id: 'vue3-2',
@@ -171,8 +171,8 @@ const count = ref(0)
           { id: 'step-2', title: '绑定点击事件', verification: '@click', hint: '在 button 上写 @click' },
           { id: 'step-3', title: '显示计数值', verification: '{{ count }}', hint: '模板中用 {{ 变量名 }} 显示' }
         ],
-        variations: [],
-        transferTasks: []
+        variations: [{name: 'v-on: 语法', description: 'v-on:click 是 @click 完整写法，完全等价'}],
+        transferTasks: [{task: '实现带阻止默认行为的表单按钮', target: '掌握事件修饰符'}]
       },
       {
         id: 'vue3-3',
@@ -247,8 +247,8 @@ const visible = ref(true)
           { id: 'step-2', title: '条件渲染', verification: 'v-if="visible"', hint: 'p 标签上加 v-if' },
           { id: 'step-3', title: '切换状态', verification: '@click="visible =', hint: '按钮绑定 @click 切换 visible 值' }
         ],
-        variations: [],
-        transferTasks: []
+        variations: [{name: 'v-show', description: 'v-show 切换 display，频繁切换性能更好'}],
+        transferTasks: [{task: '实现 Tab + 权限门禁页面', target: '掌握条件渲染组合'}]
       },
       {
         id: 'vue3-4',
@@ -334,8 +334,8 @@ const todos = ref([
           { id: 'step-2', title: 'v-for 渲染', verification: 'v-for="item in todos"', hint: 'li 标签上加 v-for' },
           { id: 'step-3', title: '绑定 :key', verification: ':key="item.id"', hint: '每项绑定唯一的 :key' }
         ],
-        variations: [],
-        transferTasks: []
+        variations: [{name: ':key', description: 'v-for 必须绑定 :key 优化渲染'}],
+        transferTasks: [{task: '实现可搜索过滤动态列表', target: '掌握列表渲染过滤'}]
       },
       {
         id: 'vue3-5',
@@ -421,8 +421,8 @@ const password = ref('')
           { id: 'step-2', title: 'v-model 绑定', verification: 'v-model="username"', hint: 'input 上加 v-model' },
           { id: 'step-3', title: '显示输入内容', verification: '{{ username }}', hint: '用 {{}} 显示变量值' }
         ],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '修饰符', description: '.lazy / .number / .trim 增强 v-model'}],
+        transferTasks: [{task: '封装自动补全搜索框组件', target: '掌握 v-model 自定义组件'}]
       },
       {
         id: 'vue3-6',
@@ -506,8 +506,8 @@ const password = ref('')
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '具名插槽', description: '<slot name="header"> 配合 v-slot'}],
+        transferTasks: [{task: '封装表格组件，具名插槽自定义列', target: '掌握高阶组件'}]
       }
     ]
   },
@@ -605,8 +605,8 @@ const totalPrice = computed(() =>
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '方法调用', description: 'computed 有缓存，方法每次重新计算'}],
+        transferTasks: [{task: '实现购物车总价含优惠券折扣', target: '掌握 computed 组合'}]
       },
       {
         id: 'vue3-8',
@@ -692,8 +692,8 @@ watch(keyword, (val) => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: 'watchEffect', description: 'watchEffect 自动追踪依赖'}],
+        transferTasks: [{task: '实现搜索防抖请求 API', target: '掌握 watch 异步'}]
       },
       {
         id: 'vue3-9',
@@ -777,8 +777,8 @@ onMounted(() => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
+        transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}]
       },
       {
         id: 'vue3-10',
@@ -854,8 +854,8 @@ const emit = defineEmits(['update'])
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-3'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '类型标注', description: 'defineProps<{ msg: string }>() TS 泛型'}],
+        transferTasks: [{task: '封装表单输入组件实现双向绑定', target: '掌握组件通信'}]
       },
       {
         id: 'vue3-11',
@@ -932,8 +932,8 @@ const theme = inject('theme')
         dependsOn: ['vue3-10'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
+        transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}]
       }
     ]
   },
@@ -1019,8 +1019,8 @@ export default createRouter({
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
+        transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}]
       },
       {
         id: 'vue3-13',
@@ -1100,8 +1100,8 @@ const userId = route.params.id
         dependsOn: ['vue3-12'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
+        transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}]
       },
       {
         id: 'vue3-14',
@@ -1177,8 +1177,8 @@ export const useUserStore = defineStore('user', () => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '选项式', description: 'Options API 风格与 Vuex 迁移平滑'}],
+        transferTasks: [{task: '购物车 + 用户状态迁移到 Pinia', target: '掌握全局状态管理'}]
       },
       {
         id: 'vue3-15',
@@ -1293,8 +1293,8 @@ export const useCounterStore = defineStore('counter', () => {
         dependsOn: ['vue3-14'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
+        transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}]
       }
     ]
   },
@@ -1385,8 +1385,8 @@ const vFocus = {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
+        transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}]
       },
       {
         id: 'vue3-17',
@@ -1479,8 +1479,8 @@ export function useMousePosition() {
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-9'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
+        transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}]
       },
       {
         id: 'vue3-18',
@@ -1552,8 +1552,8 @@ const HeavyPage = defineAsyncComponent({
         dependsOn: ['vue3-1', 'vue3-12'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
+        transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}]
       },
       {
         id: 'vue3-19',
@@ -1637,8 +1637,8 @@ function updateData() {
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-7'],
         commonMistakes: [],
         microSteps: [],
-        variations: [],
-        transferTasks: []
+        variations: [{name: 'reactive', description: 'reactive() 用于对象类型'}],
+        transferTasks: [{task: '创建计数器 + 待办列管理多 ref', target: '掌握多状态管理'}]
       }
     ]
   }

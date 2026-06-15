@@ -61,7 +61,51 @@ if (true) {
 let age = 25
 console.log(name, age)`,
         verification: '使用了 const 和 let 声明变量',
-        filePath: 'src/variables.js'
+        filePath: 'src/variables.js',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'const',
+          'explanation': 'const 变量不能重新赋值'
+         },
+         {
+          'pattern': 'let',
+          'explanation': 'let 有块级作用域'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '用 const 声明',
+          'verification': 'const',
+          'hint': '尝试 const 声明'
+         },
+         {
+          'id': 'step-2',
+          'title': '用 let 声明',
+          'verification': 'let',
+          'hint': '尝试 let 声明'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证输出',
+          'verification': 'console.log',
+          'hint': '打印变量值'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '用 const/let 声明不同类型的变量，观察作用域差异',
+          'target': '掌握变量声明'
+         }
+        ]
       },
       {
         id: 'js-2',
@@ -127,7 +171,51 @@ console.log(typeof null)      // "object"
 console.log(typeof Symbol())  // "symbol"
 console.log(typeof 123n)      // "bigint"`,
         verification: '使用了 typeof 检测数据类型',
-        filePath: 'src/types.js'
+        filePath: 'src/types.js',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'js-3',
@@ -212,7 +300,51 @@ console.log(add(2, 3))       // 5
 console.log(multiply(2, 3))  // 6
 console.log(subtract(5, 2))  // 3`,
         verification: '使用了三种方式定义函数',
-        filePath: 'src/functions.js'
+        filePath: 'src/functions.js',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': '() =>',
+          'explanation': '箭头函数没有自己的 this'
+         },
+         {
+          'pattern': 'return',
+          'explanation': '箭头函数返回对象需要 ({})'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义函数',
+          'verification': 'function',
+          'hint': '用 function 关键字'
+         },
+         {
+          'id': 'step-2',
+          'title': '添加参数',
+          'verification': 'return',
+          'hint': '函数体返回值'
+         },
+         {
+          'id': 'step-3',
+          'title': '调用测试',
+          'verification': 'console.log',
+          'hint': '调用函数测试'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '将普通函数改箭头函数，对比 this 指向',
+          'target': '理解函数与箭头函数区别'
+         }
+        ]
       },
       {
         id: 'js-4',
@@ -292,7 +424,51 @@ console.log(bigNumbers)  // [4, 5]
 const product = numbers.reduce((acc, n) => acc * n, 1)
 console.log(product)  // 120`,
         verification: '使用了 map、filter、reduce 数组方法',
-        filePath: 'src/arrays.js'
+        filePath: 'src/arrays.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'filter',
+          'explanation': 'filter 返回新数组不修改原数组'
+         },
+         {
+          'pattern': 'map',
+          'explanation': 'map 必须有 return'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '准备数据',
+          'verification': 'const',
+          'hint': '定义数组'
+         },
+         {
+          'id': 'step-2',
+          'title': '链式操作',
+          'verification': '.filter',
+          'hint': '用 filter'
+         },
+         {
+          'id': 'step-3',
+          'title': '转换数据',
+          'verification': '.map',
+          'hint': '用 map 转换'
+         }
+        ],
+        variations: [
+         {
+          'name': 'find',
+          'description': 'find() 返回第一个匹配元素'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '用 filter + map + reduce 组合处理数据',
+          'target': '掌握数组链式操作'
+         }
+        ]
       },
       {
         id: 'js-5',
@@ -377,7 +553,51 @@ console.log(name)        // "Alice"
 console.log(userHobby)   // "编程"
 console.log(role)        // "user"`,
         verification: '使用了解构赋值提取对象属性',
-        filePath: 'src/objects.js'
+        filePath: 'src/objects.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -464,7 +684,51 @@ console.log(doubled)  // [2, 4, 6, 8, 10]
 const evens = numbers.filter(n => n % 2 === 0)
 console.log(evens)  // [2, 4]`,
         verification: '使用了箭头函数简化代码',
-        filePath: 'src/arrow.js'
+        filePath: 'src/arrow.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': '() =>',
+          'explanation': '箭头函数没有自己的 this'
+         },
+         {
+          'pattern': 'return',
+          'explanation': '箭头函数返回对象需要 ({})'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义函数',
+          'verification': 'function',
+          'hint': '用 function 关键字'
+         },
+         {
+          'id': 'step-2',
+          'title': '添加参数',
+          'verification': 'return',
+          'hint': '函数体返回值'
+         },
+         {
+          'id': 'step-3',
+          'title': '调用测试',
+          'verification': 'console.log',
+          'hint': '调用函数测试'
+         }
+        ],
+        variations: [
+         {
+          'name': 'function',
+          'description': '传统 function 有自己的 this，适合对象方法'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '将普通函数改箭头函数，对比 this 指向',
+          'target': '理解函数与箭头函数区别'
+         }
+        ]
       },
       {
         id: 'js-7',
@@ -544,7 +808,51 @@ console.log(userInfo)
 const listHtml = \`&lt;ul&gt;\${items.map(item => \`&lt;li&gt;\${item}&lt;/li&gt;\`).join("")}&lt;/ul&gt;\`
 console.log(listHtml)`,
         verification: '使用了模板字符串构建动态文本',
-        filePath: 'src/template.js'
+        filePath: 'src/template.js',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'js-8',
@@ -617,7 +925,51 @@ const settings = { ...defaults, ...userPrefs }
 console.log(settings)
 // { color: "blue", size: "medium", theme: "dark" }`,
         verification: '使用了展开运算符合并对象',
-        filePath: 'src/spread.js'
+        filePath: 'src/spread.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'js-9',
@@ -692,7 +1044,51 @@ const user = { name: "Alice", age: 25, city: "Beijing" }
 console.log(createUser(user))
 // "Alice, 25岁, 来自Beijing"`,
         verification: '使用了解构赋值简化函数参数',
-        filePath: 'src/destructuring.js'
+        filePath: 'src/destructuring.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -789,7 +1185,51 @@ fetchUser(-1).catch(err => console.error(err))
 fetchUser(1).then(user => console.log(user))
 fetchUser(-1).catch(err => console.error(err))`,
         verification: '使用了 Promise 封装异步操作',
-        filePath: 'src/promise.js'
+        filePath: 'src/promise.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'await',
+          'explanation': 'await 必须在 async 函数内'
+         },
+         {
+          'pattern': 'catch',
+          'explanation': '异步操作用 try/catch 处理错误'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '.then/catch',
+          'description': '.then() 链式是 async/await 的替代写法'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '模拟 API 请求，用 async/await 处理',
+          'target': '掌握异步编程模式'
+         }
+        ]
       },
       {
         id: 'js-11',
@@ -875,7 +1315,51 @@ loadUserPosts()
 
 loadUserPosts()`,
         verification: '使用了 async/await 处理异步操作',
-        filePath: 'src/async.js'
+        filePath: 'src/async.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'await',
+          'explanation': 'await 必须在 async 函数内'
+         },
+         {
+          'pattern': 'catch',
+          'explanation': '异步操作用 try/catch 处理错误'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '.then/catch',
+          'description': '.then() 链式是 async/await 的替代写法'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '模拟 API 请求，用 async/await 处理',
+          'target': '掌握异步编程模式'
+         }
+        ]
       },
       {
         id: 'js-12',
@@ -967,7 +1451,51 @@ console.log(safeJsonParse('invalid'))   // null
 console.log(safeJsonParse('{"a":1}'))  // {a: 1}
 console.log(safeJsonParse('invalid'))   // null`,
         verification: '使用了 try-catch 处理错误',
-        filePath: 'src/error-handling.js'
+        filePath: 'src/error-handling.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   },
@@ -1048,7 +1576,51 @@ items.forEach((item, i) => {
   item.textContent = \`项目\${i + 1}\`
 })`,
         verification: '使用了 querySelector 获取并修改 DOM 元素',
-        filePath: 'src/dom-select.js'
+        filePath: 'src/dom-select.js',
+        cognitiveLoad: 'low',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'SELECT *',
+          'explanation': '明确指定列名优于 SELECT *'
+         },
+         {
+          'pattern': 'WHERE',
+          'explanation': 'UPDATE/DELETE 加 WHERE'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '子查询',
+          'description': '子查询嵌套在 WHERE/FROM/SELECT 中'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '多表 JOIN + GROUP BY + HAVING 聚合',
+          'target': '掌握复杂查询'
+         }
+        ]
       },
       {
         id: 'js-14',
@@ -1136,7 +1708,51 @@ list.addEventListener('click', (e) => {
   }
 })`,
         verification: '使用了事件监听和事件委托',
-        filePath: 'src/dom-events.js'
+        filePath: 'src/dom-events.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       },
       {
         id: 'js-15',
@@ -1229,7 +1845,51 @@ users.forEach(user => {
   container.appendChild(card)
 })`,
         verification: '使用了 createElement 动态创建 DOM 元素',
-        filePath: 'src/dom-create.js'
+        filePath: 'src/dom-create.js',
+        cognitiveLoad: 'medium',
+        dependsOn: [],
+        commonMistakes: [
+         {
+          'pattern': 'error',
+          'explanation': '处理边界情况和错误'
+         },
+         {
+          'pattern': '类型',
+          'explanation': '注意变量类型正确性'
+         }
+        ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '搭建结构',
+          'verification': 'const',
+          'hint': '编写基础结构'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现功能',
+          'verification': 'function',
+          'hint': '实现核心逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '验证结果',
+          'verification': 'console.log',
+          'hint': '输出验证'
+         }
+        ],
+        variations: [
+         {
+          'name': '更多用法',
+          'description': '查阅官方文档获取完整 API'
+         }
+        ],
+        transferTasks: [
+         {
+          'task': '完成关卡后用不同方法实现相同功能',
+          'target': '巩固概念理解'
+         }
+        ]
       }
     ]
   }
