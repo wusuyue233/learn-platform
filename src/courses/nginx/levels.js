@@ -68,4 +68,92 @@ server {
       }
     ]
   }
+  ,
+  {
+    id: 'nginx-advanced',
+    name: '阶段二：Nginx 进阶配置',
+    description: '掌握 HTTPS、缓存和限流安全策略',
+    levels: [
+      { id: 'nginx-4', number: 4, type: 'concept', title: 'HTTPS 配置', concept: 'SSL/TLS', difficulty: 'medium',
+        prerequisites: `<h4>HTTPS</h4><p>ssl_certificate 证书路径。ssl_certificate_key 私钥。Let's Encrypt 免费证书。</p>`,
+        conceptDetail: 'ssl_protocols TLSv1.2/TLSv1.3。ssl_ciphers 加密套件。HTTP/2 需 HTTPS。',
+        code: `server {
+  listen 443 ssl http2;
+  server_name example.com;
+  ssl_certificate /etc/nginx/ssl/cert.pem;
+  ssl_certificate_key /etc/nginx/ssl/key.pem;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers HIGH:!aNULL:!MD5;
+  ssl_prefer_server_ciphers on;
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 10m;
+  location / {
+    root /var/www/html;
+    index index.html;
+  }
+}
+server {
+  listen 80;
+  server_name example.com;
+  return 301 https://$server_name$request_uri;
+}`,
+        verification: 'HTTPS 证书配置和 HTTP 跳转',
+        filePath: '/etc/nginx/conf.d/ssl.conf',
+        hints: ["listen 443 ssl 启用 HTTPS","return 301 强制跳转 HTTPS"],
+        cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'nginx-5', number: 5, type: 'concept', title: '缓存策略', concept: 'proxy_cache', difficulty: 'medium',
+        prerequisites: `<h4>缓存</h4><p>proxy_cache_path 定义缓存区。proxy_cache 启用缓存。Cache-Control 控制缓存时间。</p>`,
+        conceptDetail: 'proxy_cache_valid 按状态码设置缓存时间。proxy_cache_key 缓存键。purger 缓存清理。',
+        code: `proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mycache:10m max_size=1g inactive=60m;
+server {
+  listen 80;
+  server_name api.example.com;
+  location /api/ {
+    proxy_cache mycache;
+    proxy_cache_key "$scheme$request_method$host$request_uri";
+    proxy_cache_valid 200 302 10m;
+    proxy_cache_valid 404 1m;
+    proxy_cache_use_stale error timeout updating;
+    add_header X-Cache-Status $upstream_cache_status;
+    proxy_pass http://localhost:8080/;
+  }
+  location /api/orders/ {
+    proxy_no_cache $cookie_session;
+    proxy_cache_bypass $cookie_session;
+    proxy_pass http://localhost:8080/;
+  }
+}`,
+        verification: 'Nginx 代理缓存配置',
+        filePath: '/etc/nginx/conf.d/cache.conf',
+        hints: ["proxy_cache_path 定义存储位置","proxy_cache_valid 按状态码设置时间"],
+        cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'nginx-6', number: 6, type: 'concept', title: '限流与安全', concept: 'limit_req', difficulty: 'hard',
+        prerequisites: `<h4>限流</h4><p>limit_req_zone 定义限流区。limit_req 应用限流。burst 突发缓冲。</p>`,
+        conceptDetail: 'nodelay 无延迟处理突发。limit_conn 连接数限制。allow/deny IP 黑白名单。',
+        code: `limit_req_zone $binary_remote_addr zone=api:10m rate=30r/m;
+limit_conn_zone $binary_remote_addr zone=conn:10m;
+server {
+  listen 80;
+  server_name api.example.com;
+  location /api/ {
+    limit_req zone=api burst=5 nodelay;
+    limit_conn conn 10;
+    limit_rate 500k;
+    proxy_pass http://localhost:8080/;
+  }
+  location /api/admin/ {
+    allow 192.168.1.0/24;
+    deny all;
+    proxy_pass http://localhost:8080/;
+  }
+}`,
+        verification: '请求限流 IP 限制配置',
+        filePath: '/etc/nginx/conf.d/rate_limit.conf',
+        hints: ["rate=30r/m 每分钟 30 次","burst=5 允许短暂突发"],
+        cognitiveLoad: 'medium', dependsOn: ['nginx-2','nginx-3'], commonMistakes: [], variations: [], transferTasks: []
+      }
+    ]
+  }
 ]

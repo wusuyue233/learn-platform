@@ -18,6 +18,18 @@ export function verify(levelId, { check, results }) {
     case 'java-spring-6':
       check('ProductControllerTest.java', '@SpringBootTest @Aut', '集成测试覆盖商品创建和 404', '集成测试覆盖商品创建和 404')
       break
+    case 'java-spring-7':
+      check('SecurityConfig.java', '@Configuration', 'Spring Security 无状态配置', 'Spring Security 无状态配置')
+      break
+    case 'java-spring-8':
+      check('JwtUtil.java', '@Component', 'JWT 生成和验证完整工具类', 'JWT 生成和验证完整工具类')
+      break
+    case 'java-spring-9':
+      check('AuthController.java', '@RestController', '登录注册认证接口', '登录注册认证接口')
+      break
+    case 'java-spring-10':
+      check('AdminController.java', '@RestController', '角色权限控制接口', '角色权限控制接口')
+      break
     default:
       results.push({ name: '未知关卡', passed: false, detail: '未找到该关卡的验证规则', effect: '', pattern: '' })
   }

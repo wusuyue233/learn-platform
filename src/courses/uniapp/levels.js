@@ -68,4 +68,101 @@ function goDetail(p){uni.navigateTo({url:"/pages/product/detail?id="+p.id})}
       }
     ]
   }
+  ,
+  {
+    id: 'uniapp-pages',
+    name: '阶段二：用户端功能完善',
+    description: '完成购物车、用户中心和订单功能',
+    levels: [
+      { id: 'uniapp-5', number: 5, type: 'concept', title: '购物车页面', concept: '本地存储', difficulty: 'medium',
+        prerequisites: `<h4>本地存储</h4><p>uni.getStorageSync/uni.setStorageSync 读写本地数据。</p>`,
+        conceptDetail: 'checkbox 多选。uni.showModal 确认删除。',
+        code: `<template><view><view v-for="item in cart" :key="item.id" class="cart-item">
+<checkbox :checked="item.checked" @tap="toggleCheck(item)"/>
+<image :src="item.image"/><view><text>{{item.name}}</text><text>¥{{item.price}}</text></view>
+<view class="num-ctrl"><text @tap="decrease(item)">-</text><text>{{item.num}}</text><text @tap="increase(item)">+</text></view>
+</view></view></template>
+<script setup>
+import {ref,computed} from "vue"
+const cart=ref(uni.getStorageSync("cart")||[])
+function toggleCheck(item){item.checked=!item.checked;save()}
+function increase(item){item.num++;save()}
+function decrease(item){if(item.num>1)item.num--;else{cart.value=cart.value.filter(x=>x.id!==item.id)};save()}
+function save(){uni.setStorageSync("cart",cart.value)}
+const total=computed(()=>cart.value.filter(x=>x.checked).reduce((s,x)=>s+x.price*x.num,0))
+</script>`,
+        verification: '购物车增删改和本地持久化',
+        filePath: 'pages/cart/cart.vue',
+        hints: ["uni.getStorageSync 读取购物车","computed 计算总价"],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-3'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'uniapp-6', number: 6, type: 'concept', title: '用户个人中心', concept: '页面生命周期', difficulty: 'easy',
+        prerequisites: `<h4>生命周期</h4><p>onShow 页面显示时触发。onLoad 页面首次加载。</p>`,
+        conceptDetail: 'uni.getStorageSync 读取用户信息。条件渲染 v-if。',
+        code: `<template><view class="profile">
+<view class="user-info"><image :src="user.avatar||'/static/default-avatar.png'"/><text>{{user.nickname||'未登录'}}</text></view>
+<view class="menu-list"><view class="menu-item" @tap="toOrders"><text>我的订单</text><text>></text></view>
+<view class="menu-item" @tap="toAddress"><text>收货地址</text><text>></text></view>
+<view class="menu-item" @tap="toSettings"><text>设置</text><text>></text></view></view>
+<button v-if="user.token" class="logout-btn" @tap="logout">退出登录</button>
+<button v-else class="login-btn" @tap="toLogin">登录/注册</button>
+</view></template>
+<script setup>
+import {ref} from "vue"
+const user=ref({})
+onShow(()=>{user.value={token:uni.getStorageSync("token"),nickname:uni.getStorageSync("nickname")||''}})
+function toOrders(){uni.navigateTo({url:"/pages/orders/orders"})}
+function toAddress(){uni.navigateTo({url:"/pages/address/address"})}
+function logout(){uni.removeStorageSync("token");uni.removeStorageSync("nickname");user.value={}}
+function toLogin(){uni.navigateTo({url:"/pages/login/login"})}
+</script>`,
+        verification: '个人中心页面显示用户状态',
+        filePath: 'pages/user/user.vue',
+        hints: ["onShow 每次显示刷新","v-if/v-else 条件渲染登录状态"],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-1','uniapp-3'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'uniapp-7', number: 7, type: 'concept', title: '地址管理', concept: '表单与验证', difficulty: 'medium',
+        prerequisites: `<h4>表单</h4><p>uni.request 提交数据。v-model 双向绑定。</p>`,
+        conceptDetail: 'picker 省市区选择器。switch 默认地址开关。',
+        code: `<template><view class="address-form">
+<view><text>收货人</text><input v-model="form.name" placeholder="请输入姓名"/></view>
+<view><text>手机号</text><input v-model="form.phone" placeholder="请输入手机号" type="number" maxlength="11"/></view>
+<view><text>详细地址</text><input v-model="form.detail" placeholder="请输入详细地址"/></view>
+<view><text>设为默认</text><switch :checked="form.isDefault" @change="form.isDefault=!form.isDefault"/></view>
+<button @tap="submit">保存</button></view></template>
+<script setup>
+import {ref} from "vue"
+const form=ref({name:'',phone:'',detail:'',isDefault:false})
+function validate(){if(!form.value.name)return uni.showToast({title:'请输入姓名',icon:'none'});if(!/^1\\d{10}$/.test(form.value.phone))return uni.showToast({title:'手机号格式错误',icon:'none'});return true}
+function submit(){if(!validate())return;uni.showToast({title:'保存成功',icon:'success'});setTimeout(()=>uni.navigateBack(),1500)}
+</script>`,
+        verification: '地址表单及验证逻辑',
+        filePath: 'pages/address/address.vue',
+        hints: ["v-model 双向绑定表单","正则校验手机号格式"],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-3'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'uniapp-8', number: 8, type: 'concept', title: '订单确认页', concept: '多页面传参', difficulty: 'hard',
+        prerequisites: `<h4>传参</h4><p>uni.navigateTo 的 url 参数。events 事件通信。</p>`,
+        conceptDetail: 'onLoad options 接收参数。批量提交订单。',
+        code: `<template><view class="confirm-order">
+<view class="addr" @tap="selectAddr"><text>{{addr?addr.name+' '+addr.phone:'请选择地址'}}</text><text>></text></view>
+<view v-for="item in items" :key="item.id" class="order-item">
+<text>{{item.name}} x{{item.num}}</text><text>¥{{item.price*item.num}}</text></view>
+<view class="total">合计：<text>¥{{total}}</text></view>
+<button class="submit-btn" @tap="submitOrder">提交订单</button>
+</view></template>
+<script setup>
+import {ref,computed} from "vue"
+const items=ref([]),addr=ref(null)
+onLoad(options)=>{if(options.items)items.value=JSON.parse(decodeURIComponent(options.items))}
+const total=computed(()=>items.value.reduce((s,x)=>s+x.price*x.num,0))
+function submitOrder(){if(!addr.value)return uni.showToast({title:'请选择地址',icon:'none'});uni.showToast({title:'下单成功',icon:'success'});uni.redirectTo({url:'/pages/orders/orders'})}
+</script>`,
+        verification: '订单确认页面完整流程',
+        filePath: 'pages/order/confirm.vue',
+        hints: ["decodeURIComponent 解码URL参数","computed 计算总价"],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-5','uniapp-7'], commonMistakes: [], variations: [], transferTasks: []
+      }
+    ]
+  }
 ]

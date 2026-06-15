@@ -69,4 +69,106 @@ cv2.waitKey(0)`,
       }
     ]
   }
+  ,
+  {
+    id: 'opencv-advanced',
+    name: '阶段二：图像分析进阶',
+    description: '掌握轮廓检测、形态学操作和人脸识别',
+    levels: [
+      { id: 'opencv-5', number: 5, type: 'concept', title: '轮廓检测', concept: 'findContours', difficulty: 'medium',
+        prerequisites: `<h4>轮廓</h4><p>findContours 检测轮廓。drawContours 绘制轮廓。RETR_EXTERNAL 只检测外轮廓。</p>`,
+        conceptDetail: 'contourArea 计算面积。arcLength 计算周长。approxPolyDP 多边形逼近。',
+        code: `import cv2
+import numpy as np
+img = cv2.imread("shapes.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+_, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+for i, cnt in enumerate(contours):
+  area = cv2.contourArea(cnt)
+  perimeter = cv2.arcLength(cnt, True)
+  cv2.drawContours(img, [cnt], -1, (0,255,0), 2)
+  cv2.putText(img, f"#{i}", tuple(cnt[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,0,0), 1)
+  print(f"Contour #{i}: area={area:.0f}, perim={perimeter:.1f}")
+cv2.imshow("Contours", img)
+cv2.waitKey(0)`,
+        verification: '轮廓检测和特征计算',
+        filePath: 'contours.py',
+        hints: ["RETR_EXTERNAL 仅外部轮廓","contourArea 计算面积"],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'opencv-6', number: 6, type: 'concept', title: '形态学操作', concept: '腐蚀膨胀', difficulty: 'medium',
+        prerequisites: `<h4>形态学</h4><p>erode 腐蚀消除噪点。dilate 膨胀填补空洞。morphologyEx 形态学变换。</p>`,
+        conceptDetail: 'MORPH_OPEN 开运算先腐蚀后膨胀。MORPH_CLOSE 闭运算先膨胀后腐蚀。kernel 结构元素。',
+        code: `import cv2
+import numpy as np
+img = cv2.imread("noisy.png", 0)
+_, bin = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+kernel = np.ones((5,5), np.uint8)
+eroded = cv2.erode(bin, kernel, iterations=1)
+dilated = cv2.dilate(bin, kernel, iterations=1)
+opening = cv2.morphologyEx(bin, cv2.MORPH_OPEN, kernel)
+closing = cv2.morphologyEx(bin, cv2.MORPH_CLOSE, kernel)
+cv2.imshow("Original", bin)
+cv2.imshow("Eroded", eroded)
+cv2.imshow("Dilated", dilated)
+cv2.imshow("Opening", opening)
+cv2.imshow("Closing", closing)
+cv2.waitKey(0)`,
+        verification: '形态学操作处理图像噪声',
+        filePath: 'morphology.py',
+        hints: ["MORPH_OPEN 去噪点","MORPH_CLOSE 填补小洞"],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-5'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'opencv-7', number: 7, type: 'concept', title: '人脸检测', concept: 'Haar Cascade', difficulty: 'hard',
+        prerequisites: `<h4>Haar Cascade</h4><p>haarcascade_frontalface_default.xml 是预训练人脸检测器。</p>`,
+        conceptDetail: 'detectMultiScale 参数：scaleFactor 缩放比例，minNeighbors 最小邻域，minSize 最小尺寸。',
+        code: `import cv2
+face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
+img = cv2.imread("group.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+faces = face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(30,30))
+for (x,y,w,h) in faces:
+  cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
+  roi_gray = gray[y:y+h, x:x+w]
+  eyes = eye_cascade.detectMultiScale(roi_gray)
+  for (ex,ey,ew,eh) in eyes:
+    cv2.rectangle(img, (x+ex,y+ey), (x+ex+ew,y+ey+eh), (255,0,0), 1)
+print(f"检测到 {len(faces)} 张人脸")
+cv2.imshow("Face Detection", img)
+cv2.waitKey(0)`,
+        verification: 'Haar Cascade 人脸和眼睛检测',
+        filePath: 'face_detection.py',
+        hints: ["cv2.data.haarcascades 内置模型路径","detectMultiScale 多尺度检测"],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'opencv-8', number: 8, type: 'concept', title: '图像分割', concept: '分水岭算法', difficulty: 'hard',
+        prerequisites: `<h4>分水岭分割</h4><p>watershed 基于标记的分割。distanceTransform 距离变换。</p>`,
+        conceptDetail: 'connectedComponents 连通域标记。findContours 获取分割边界。',
+        code: `import cv2
+import numpy as np
+img = cv2.imread("coins.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+_, bin = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+kernel = np.ones((3,3), np.uint8)
+opening = cv2.morphologyEx(bin, cv2.MORPH_OPEN, kernel, iterations=2)
+dist = cv2.distanceTransform(opening, cv2.DIST_L2, 5)
+_, sure_fg = cv2.threshold(dist, 0.5*dist.max(), 255, 0)
+sure_fg = np.uint8(sure_fg)
+unknown = cv2.subtract(opening, sure_fg)
+_, markers = cv2.connectedComponents(sure_fg)
+markers = markers + 1
+markers[unknown == 255] = 0
+markers = cv2.watershed(img, markers)
+img[markers == -1] = [0,0,255]
+cv2.imshow("Segmented", img)
+cv2.waitKey(0)`,
+        verification: '分水岭分割图像前景',
+        filePath: 'segmentation.py',
+        hints: ["distanceTransform 计算距离","watershed 标记分水岭"],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-6'], commonMistakes: [], variations: [], transferTasks: []
+      }
+    ]
+  }
 ]

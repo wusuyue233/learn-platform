@@ -113,4 +113,107 @@ class ProductControllerTest {
       }
     ]
   }
+  ,
+  {
+    id: 'spring-security',
+    name: '阶段二：Spring Security + JWT',
+    description: '掌握认证授权，构建安全的 REST API',
+    levels: [
+      { id: 'java-spring-7', number: 7, type: 'concept', title: 'Spring Security 配置', concept: 'SecurityFilterChain', difficulty: 'medium',
+        prerequisites: `<h4>Spring Security</h4><p>@EnableWebSecurity 开启安全配置。SecurityFilterChain 定义过滤链。</p>`,
+        conceptDetail: 'PasswordEncoder 加密密码。SessionCreationPolicy.STATELESS 无状态。',
+        code: `@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http.csrf(csrf -> csrf.disable())
+      .authorizeHttpRequests(auth -> auth
+        .requestMatchers("/api/auth/**").permitAll()
+        .anyRequest().authenticated()
+      )
+      .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    return http.build();
+  }
+  @Bean public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }
+}`,
+        verification: 'Spring Security 无状态配置',
+        filePath: 'src/main/java/com/ecommerce/config/SecurityConfig.java',
+        hints: ["@EnableWebSecurity 开启配置","permitAll() 放行公开路径"],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'java-spring-8', number: 8, type: 'concept', title: 'JWT 工具类', concept: 'JWT Token', difficulty: 'medium',
+        prerequisites: `<h4>JWT</h4><p>jjwt 库生成和验证 Token。setExpiration 设置过期时间。</p>`,
+        conceptDetail: 'HS256 对称签名。Claims 包含用户信息。',
+        code: `@Component
+public class JwtUtil {
+  private final String SECRET = "my-secret-key-1234567890";
+  public String generateToken(String username) {
+    return Jwts.builder()
+      .setSubject(username)
+      .setIssuedAt(new Date())
+      .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+      .signWith(SignatureAlgorithm.HS256, SECRET)
+      .compact();
+  }
+  public String extractUsername(String token) {
+    return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody().getSubject();
+  }
+  public boolean isTokenValid(String token) {
+    try { extractUsername(token); return true; } catch (Exception e) { return false; }
+  }
+}`,
+        verification: 'JWT 生成和验证完整工具类',
+        filePath: 'src/main/java/com/ecommerce/util/JwtUtil.java',
+        hints: ["setSubject 存储用户名","setExpiration 设置 24 小时过期"],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-7'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'java-spring-9', number: 9, type: 'concept', title: '认证 API', concept: 'AuthenticationManager', difficulty: 'hard',
+        prerequisites: `<h4>认证流程</h4><p>AuthenticationManager 验证凭证。UsernamePasswordAuthenticationToken 封装用户名密码。</p>`,
+        conceptDetail: 'authenticate 失败抛异常。JWT 返回给客户端。',
+        code: `@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+  @Autowired private AuthenticationManager authManager;
+  @Autowired private JwtUtil jwtUtil;
+  @PostMapping("/login")
+  public ResponseEntity<?> login(@RequestBody AuthRequest request) {
+    authManager.authenticate(
+      new UsernamePasswordAuthenticationToken(request.username(), request.password()));
+    String token = jwtUtil.generateToken(request.username());
+    return ResponseEntity.ok(Map.of("token", token, "username", request.username()));
+  }
+  @PostMapping("/register")
+  public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+    return ResponseEntity.ok(Map.of("message", "注册成功"));
+  }
+}`,
+        verification: '登录注册认证接口',
+        filePath: 'src/main/java/com/ecommerce/controller/AuthController.java',
+        hints: ["AuthenticationManager 验证身份","返回 JWT Token"],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-8'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'java-spring-10', number: 10, type: 'concept', title: '角色权限控制', concept: '@PreAuthorize', difficulty: 'hard',
+        prerequisites: `<h4>@PreAuthorize</h4><p>@EnableGlobalMethodSecurity 开启注解。hasRole 检查角色。</p>`,
+        conceptDetail: 'hasRole(\'ADMIN\') 需要 ADMIN 角色。#id == authentication.principal.id 检查用户身份。',
+        code: `@RestController
+@RequestMapping("/api/admin")
+@PreAuthorize("hasRole('ADMIN')")
+public class AdminController {
+  @GetMapping("/users")
+  public ResponseEntity<?> listUsers() {
+    return ResponseEntity.ok(List.of("user1", "user2"));
+  }
+  @DeleteMapping("/users/{id}")
+  public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+    return ResponseEntity.ok(Map.of("message", "用户已删除"));
+  }
+}`,
+        verification: '角色权限控制接口',
+        filePath: 'src/main/java/com/ecommerce/controller/AdminController.java',
+        hints: ["@PreAuthorize 方法级别权限控制","hasRole 检查用户角色"],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-9'], commonMistakes: [], variations: [], transferTasks: []
+      }
+    ]
+  }
 ]

@@ -85,4 +85,120 @@ jobs:
       }
     ]
   }
+  ,
+  {
+    id: 'cicd-advanced',
+    name: '阶段二：CI/CD 进阶流水线',
+    description: '掌握矩阵测试、服务容器和自动部署',
+    levels: [
+      { id: 'ci-cd-4', number: 4, type: 'concept', title: '矩阵测试', concept: 'Matrix Strategy', difficulty: 'medium',
+        prerequisites: `<h4>矩阵策略</h4><p>strategy.matrix 多版本并行。include 添加额外组合。fail-fast 快速失败。</p>`,
+        conceptDetail: 'matrix 自动展开为多个 Job。os/node 组合执行。continue-on-error 容忍失败。',
+        code: `name: Matrix Test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: \${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [18, 20, 22]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: \${{ matrix.node }}
+      - run: npm ci
+      - run: npm test
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-\${{ matrix.os }}-\${{ matrix.node }}
+          path: coverage/`,
+        verification: '矩阵测试多 OS/Node 版本并行',
+        filePath: '.github/workflows/matrix.yml',
+        hints: ["matrix 自动生成所有组合","fail-fast: false 继续其他组合"],
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'ci-cd-5', number: 5, type: 'concept', title: '服务容器', concept: 'Services', difficulty: 'medium',
+        prerequisites: `<h4>服务容器</h4><p>services 启动依赖服务（数据库/Redis）。\${{ job.services.xxx }} 访问服务地址。</p>`,
+        conceptDetail: 'Docker Hub 镜像名。ports 映射端口。健康检查自动等待。',
+        code: `name: Integration Test
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: testdb
+          POSTGRES_PASSWORD: testpass
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - name: Run integration tests
+        env:
+          DATABASE_URL: postgres://postgres:testpass@localhost:5432/testdb
+          REDIS_URL: redis://localhost:6379
+        run: npm run test:integration`,
+        verification: '服务容器 Postgres/Redis',
+        filePath: '.github/workflows/integration.yml',
+        hints: ["services 自动拉取 Docker 镜像","health-cmd 等待服务就绪"],
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: []
+      },
+      { id: 'ci-cd-6', number: 6, type: 'concept', title: 'SSH 自动部署', concept: 'SSH Deploy', difficulty: 'hard',
+        prerequisites: `<h4>部署到服务器</h4><p>SSH 密钥在 GitHub Secrets 配置。rsync 同步文件。pm2 管理 Node 进程。</p>`,
+        conceptDetail: '先构建再同步。部署后健康检查。回滚策略。',
+        code: `name: Deploy to Server
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci && npm run build
+      - name: Deploy via rsync
+        uses: easingthemes/ssh-deploy@v5
+        with:
+          SSH_PRIVATE_KEY: \${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-avz --delete"
+          SOURCE: "dist/"
+          REMOTE_HOST: \${{ secrets.HOST }}
+          REMOTE_USER: \${{ secrets.USER }}
+          TARGET: \${{ secrets.TARGET }}
+      - name: Restart service
+        uses: appleboy/ssh-action@v1
+        with:
+          host: \${{ secrets.HOST }}
+          username: \${{ secrets.USER }}
+          key: \${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd \${{ secrets.TARGET }}
+            pm2 restart ecosystem.config.js --update-env
+            pm2 save
+      - name: Health check
+        run: |
+          curl -f http://\${{ secrets.HOST }}/api/health || exit 1`,
+        verification: '构建后 rsync 同步重启',
+        filePath: '.github/workflows/deploy-server.yml',
+        hints: ["rsync --delete 删除多余文件","pm2 restart 重启服务进程"],
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: []
+      }
+    ]
+  }
 ]
