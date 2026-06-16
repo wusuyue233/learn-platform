@@ -308,11 +308,7 @@ const visible = ref(true)
 </template>
 <script setup>
 import { ref } from 'vue'
-const todos = ref([
-  { id: 1, text: '学习 Vue3' },
-  { id: 2, text: '写代码' },
-  { id: 3, text: '提交作业' }
-])
+// 定义待办事项数组
 </script>`,
         hints: [
           'ul 内部写 <li v-for="item in todos" :key="item.id">',

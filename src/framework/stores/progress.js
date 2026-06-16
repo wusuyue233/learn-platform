@@ -47,6 +47,8 @@ export const useProgressStore = defineStore('progress', () => {
     const courseCompleted = getCourseCompleted(courseId)
     const idx = phaseLevels.findIndex(l => l.id === levelId)
     if (idx === -1) return false
+    const level = phaseLevels[idx]
+    if (!checkDependsOn(courseId, level?.dependsOn)) return false
     if (idx === 0) return true
     return courseCompleted.includes(phaseLevels[idx - 1].id)
   }
@@ -79,6 +81,11 @@ export const useProgressStore = defineStore('progress', () => {
     const courseCompleted = getCourseCompleted(courseId)
     const idx = phaseLevels.findIndex(l => l.id === levelId)
     if (idx === -1) return { level: 'ready', unlocked: true, detail: '' }
+    const level = phaseLevels[idx]
+    if (!checkDependsOn(courseId, level?.dependsOn)) {
+      const missing = (level?.dependsOn || []).filter(id => !courseCompleted.includes(id))
+      return { level: 'early', unlocked: false, detail: `需先完成：${missing.join('、')}` }
+    }
     if (idx === 0) return { level: 'ready', unlocked: true, detail: '' }
     if (courseCompleted.includes(phaseLevels[idx - 1].id)) return { level: 'ready', unlocked: true, detail: '' }
     const anyDone = phaseLevels.slice(0, idx).some(l => courseCompleted.includes(l.id))

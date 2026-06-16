@@ -781,7 +781,7 @@ users = {1: "Alice", 2: "Bob", 3: "Charlie"}
 async def get_user(user_id: int):
     return {"user_id": user_id, "name": users.get(user_id, "Unknown")}`,
         verification: '使用了路径参数，能根据 ID 返回用户信息',
-        filePath: 'main.py',
+        filePath: 'routers/users.py',
         cognitiveLoad: 'medium',
         dependsOn: [],
         commonMistakes: [
@@ -900,7 +900,7 @@ async def list_items(page: int = 1, size: int = 10):
         "items": items[start:end]
     }`,
         verification: '使用了查询参数实现分页功能',
-        filePath: 'main.py',
+        filePath: 'routers/items.py',
         cognitiveLoad: 'medium',
         dependsOn: [],
         commonMistakes: [
@@ -1035,7 +1035,7 @@ class Product(BaseModel):
 async def create_product(product: Product):
     return {"message": "创建成功", "product": product.dict()}`,
         verification: '使用了 Pydantic 模型验证请求体',
-        filePath: 'main.py',
+        filePath: 'routers/products.py',
         cognitiveLoad: 'medium',
         dependsOn: [],
         commonMistakes: [
@@ -1170,7 +1170,7 @@ class UserOut(BaseModel):
 async def get_user(id: int):
     return {"id": id, "name": "Alice", "password": "secret123"}`,
         verification: '使用了 response_model 过滤返回字段',
-        filePath: 'main.py',
+        filePath: 'schemas/user.py',
         cognitiveLoad: 'medium',
         dependsOn: [],
         commonMistakes: [
@@ -1298,7 +1298,7 @@ async def get_item(item_id: str):
         raise HTTPException(status_code=404, detail="商品不存在")
     return {"item_id": item_id, "name": items[item_id]}`,
         verification: '使用了 HTTPException 处理错误情况',
-        filePath: 'main.py',
+        filePath: 'routers/errors.py',
         cognitiveLoad: 'medium',
         dependsOn: [],
         commonMistakes: [
@@ -1436,7 +1436,7 @@ async def process_time(request: Request, call_next):
     response.headers["X-Process-Time"] = str(round(process_time, 4))
     return response`,
         verification: '添加了中间件统计请求耗时',
-        filePath: 'main.py',
+        filePath: 'middleware/timing.py',
         cognitiveLoad: 'high',
         dependsOn: [],
         commonMistakes: [
