@@ -17,7 +17,11 @@ print(mul)`,
         verification: '创建和操作张量',
         filePath: 'tensor_basics.py',
         hints: ["x @ x.T 矩阵乘法","torch.ones/zeros/randn 常用创建方式"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-2', number: 2, type: 'concept', title: '自动求导', concept: 'autograd', difficulty: 'medium',
         prerequisites: `<h4>自动求导</h4><p>requires_grad=True 跟踪计算。backward() 反向传播计算梯度。</p>`,
@@ -30,7 +34,11 @@ print(f"dy/dx at x=3: {x.grad}")  # 6.0`,
         verification: '计算 y=x^2 在 x=3 时的导数',
         filePath: 'autograd.py',
         hints: ["requires_grad=True 启用梯度","backward() 计算梯度"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-3', number: 3, type: 'concept', title: '线性回归', concept: 'nn.Linear', difficulty: 'medium',
         prerequisites: `<h4>线性回归</h4><p>nn.Linear 全连接层。MSELoss 均方误差。SGD 优化器。</p>`,
@@ -51,7 +59,11 @@ print(f"w={model.weight.item():.3f}, b={model.bias.item():.3f}")`,
         verification: '训练模型拟合 y=2x+1',
         filePath: 'linear_regression.py',
         hints: ["zero_grad→backward→step 三件套","model.parameters() 可训练参数"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-4', number: 4, type: 'concept', title: 'MNIST 分类', concept: '多层感知机', difficulty: 'hard',
         prerequisites: `<h4>神经网络</h4><p>nn.Module 定义网络。forward 前向传播。</p>`,
@@ -72,7 +84,11 @@ class MLP(nn.Module):
         verification: 'MLP 在 MNIST 上训练及评估',
         filePath: 'mlp_mnist.py',
         hints: ["继承 nn.Module","实现 __init__ 和 forward"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       }
     ]
   }
@@ -112,7 +128,11 @@ class CNN(nn.Module):
         verification: 'CNN 卷积网络结构定义',
         filePath: 'cnn_mnist.py',
         hints: ["nn.Conv2d(输入通道,输出通道,卷积核大小)","F.max_pool2d 池化降维"],
-        cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-6', number: 6, type: 'concept', title: 'DataLoader 数据加载', concept: 'Dataset/DataLoader', difficulty: 'medium',
         prerequisites: `<h4>数据加载</h4><p>torchvision.datasets 内置数据集。DataLoader 批次加载。transforms 数据增强。</p>`,
@@ -134,7 +154,11 @@ for batch_idx, (data, target) in enumerate(train_loader):
         verification: 'DataLoader 加载 MNIST',
         filePath: 'data_loader.py',
         hints: ["transforms.Compose 组合增强","DataLoader(batch_size,shuffle,num_workers)"],
-        cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-7', number: 7, type: 'concept', title: '模型保存与加载', concept: 'state_dict', difficulty: 'medium',
         prerequisites: `<h4>保存加载</h4><p>torch.save(model.state_dict()) 保存参数。torch.load 加载。model.eval() 切换到评估模式。</p>`,
@@ -160,7 +184,11 @@ full_model.eval()`,
         verification: 'PyTorch 模型保存和加载',
         filePath: 'model_save_load.py',
         hints: ["state_dict() 仅保存参数","weights_only=True 安全加载"],
-        cognitiveLoad: 'medium', dependsOn: ['pytorch-5'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-5'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       },
       { id: 'pytorch-8', number: 8, type: 'concept', title: '迁移学习', concept: 'Transfer Learning', difficulty: 'hard',
         prerequisites: `<h4>迁移学习</h4><p>torchvision.models 预训练模型。requires_grad=False 冻结层。</p>`,
@@ -188,7 +216,11 @@ def train_epoch(loader):
         verification: '迁移学习训练自定义分类器',
         filePath: 'transfer_learning.py',
         hints: ["pretrained=True 加载预训练权重","冻结所有层只替换 fc"],
-        cognitiveLoad: 'medium', dependsOn: ['pytorch-5','pytorch-6'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-5','pytorch-6'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
+        { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
+        ],
       }
     ]
   }

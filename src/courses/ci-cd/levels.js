@@ -26,7 +26,11 @@ jobs:
         verification: '创建自动运行测试的工作流',
         filePath: '.github/workflows/test.yml',
         hints: ["push 和 pull_request 均可触发","actions/checkout@v4 检出代码"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       },
       { id: 'ci-cd-2', number: 2, type: 'concept', title: '构建与部署', concept: '多 Job 流水线', difficulty: 'medium',
         prerequisites: `<h4>部署流水线</h4><p>needs 控制 Job 顺序。upload-pages-artifact 上传构建产物。</p>`,
@@ -54,7 +58,11 @@ jobs:
         verification: '构建→部署 GitHub Pages',
         filePath: '.github/workflows/deploy.yml',
         hints: ["needs: build 依赖前置任务","actions/deploy-pages@v4 部署"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       },
       { id: 'ci-cd-3', number: 3, type: 'concept', title: 'Docker 构建推送', concept: 'Docker Build Push', difficulty: 'hard',
         prerequisites: `<h4>Docker CI/CD</h4><p>docker/login-action 登录仓库。\${{ secrets.xxx }} 使用 GitHub 密钥。</p>`,
@@ -81,7 +89,11 @@ jobs:
         verification: '自动构建 Docker 镜像并推送',
         filePath: '.github/workflows/docker.yml',
         hints: ["secrets 在 GitHub Settings 配置","tags 模式触发自动构建"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       }
     ]
   }
@@ -119,7 +131,11 @@ jobs:
         verification: '矩阵测试多 OS/Node 版本并行',
         filePath: '.github/workflows/matrix.yml',
         hints: ["matrix 自动生成所有组合","fail-fast: false 继续其他组合"],
-        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       },
       { id: 'ci-cd-5', number: 5, type: 'concept', title: '服务容器', concept: 'Services', difficulty: 'medium',
         prerequisites: `<h4>服务容器</h4><p>services 启动依赖服务（数据库/Redis）。\${{ job.services.xxx }} 访问服务地址。</p>`,
@@ -157,7 +173,11 @@ jobs:
         verification: '服务容器 Postgres/Redis',
         filePath: '.github/workflows/integration.yml',
         hints: ["services 自动拉取 Docker 镜像","health-cmd 等待服务就绪"],
-        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       },
       { id: 'ci-cd-6', number: 6, type: 'concept', title: 'SSH 自动部署', concept: 'SSH Deploy', difficulty: 'hard',
         prerequisites: `<h4>部署到服务器</h4><p>SSH 密钥在 GitHub Secrets 配置。rsync 同步文件。pm2 管理 Node 进程。</p>`,
@@ -197,7 +217,11 @@ jobs:
         verification: '构建后 rsync 同步重启',
         filePath: '.github/workflows/deploy-server.yml',
         hints: ["rsync --delete 删除多余文件","pm2 restart 重启服务进程"],
-        cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
+        { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
+        ],
       }
     ]
   }

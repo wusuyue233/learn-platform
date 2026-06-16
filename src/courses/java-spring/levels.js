@@ -11,7 +11,11 @@ export const phases = [
         verification: 'pom.xml 配置了 Spring Boot Starter Web',
         filePath: 'pom.xml',
         hints: ["spring-boot-starter-web 内嵌 Tomcat","mvn spring-boot:run 启动"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-2', number: 2, type: 'concept', title: 'REST 控制器', concept: '@RestController', difficulty: 'easy',
         prerequisites: `<h4>Spring MVC 注解</h4><p>@RestController = @Controller + @ResponseBody。</p>`,
@@ -29,7 +33,11 @@ public class ProductController {
         verification: 'ProductController 含 GET/POST 端点',
         filePath: 'src/main/java/com/ecommerce/controller/ProductController.java',
         hints: ["@RestController 标记控制器","@PathVariable 获取 URL 参数"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-3', number: 3, type: 'concept', title: '依赖注入', concept: '@Autowired', difficulty: 'medium',
         prerequisites: `<h4>依赖注入</h4><p>@Autowired 自动注入 Bean。</p>`,
@@ -49,7 +57,11 @@ public class ProductRepository {
         verification: 'Service + Repository 分层注入',
         filePath: 'src/main/java/com/ecommerce/service/ProductService.java',
         hints: ["@Service 标记业务层","DI 容器管理生命周期"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-4', number: 4, type: 'concept', title: 'Spring Data JPA', concept: 'JPA', difficulty: 'medium',
         prerequisites: `<h4>JPA 实体</h4><p>@Entity 标记实体。JpaRepository 提供 CRUD。</p>`,
@@ -66,7 +78,11 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
         verification: 'JPA 实体 + Repository 接口',
         filePath: 'src/main/java/com/ecommerce/model/Product.java',
         hints: ["@Id 标记主键","方法名命名查询"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-5', number: 5, type: 'concept', title: '异常处理', concept: '全局异常', difficulty: 'medium',
         prerequisites: `<h4>异常处理</h4><p>@RestControllerAdvice 全局拦截异常。</p>`,
@@ -89,7 +105,11 @@ public class GlobalExceptionHandler {
         verification: '@RestControllerAdvice 全局异常处理',
         filePath: 'src/main/java/com/ecommerce/exception/GlobalExceptionHandler.java',
         hints: ["@ExceptionHandler 指定异常","ResponseEntity.status(404) 自定义状态码"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-6', number: 6, type: 'concept', title: 'Spring Boot 测试', concept: '@SpringBootTest', difficulty: 'hard',
         prerequisites: `<h4>Spring Boot 测试</h4><p>@SpringBootTest 加载完整上下文。MockMvc 模拟 HTTP 请求。</p>`,
@@ -109,7 +129,11 @@ class ProductControllerTest {
         verification: '集成测试覆盖商品创建和 404',
         filePath: 'src/test/java/com/ecommerce/controller/ProductControllerTest.java',
         hints: ["@AutoConfigureMockMvc 自动配置 MockMvc","jsonPath(\"$.name\") 断言 JSON 字段"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       }
     ]
   }
@@ -140,7 +164,11 @@ public class SecurityConfig {
         verification: 'Spring Security 无状态配置',
         filePath: 'src/main/java/com/ecommerce/config/SecurityConfig.java',
         hints: ["@EnableWebSecurity 开启配置","permitAll() 放行公开路径"],
-        cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-8', number: 8, type: 'concept', title: 'JWT 工具类', concept: 'JWT Token', difficulty: 'medium',
         prerequisites: `<h4>JWT</h4><p>jjwt 库生成和验证 Token。setExpiration 设置过期时间。</p>`,
@@ -166,7 +194,11 @@ public class JwtUtil {
         verification: 'JWT 生成和验证完整工具类',
         filePath: 'src/main/java/com/ecommerce/util/JwtUtil.java',
         hints: ["setSubject 存储用户名","setExpiration 设置 24 小时过期"],
-        cognitiveLoad: 'medium', dependsOn: ['java-spring-7'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-7'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-9', number: 9, type: 'concept', title: '认证 API', concept: 'AuthenticationManager', difficulty: 'hard',
         prerequisites: `<h4>认证流程</h4><p>AuthenticationManager 验证凭证。UsernamePasswordAuthenticationToken 封装用户名密码。</p>`,
@@ -191,7 +223,11 @@ public class AuthController {
         verification: '登录注册认证接口',
         filePath: 'src/main/java/com/ecommerce/controller/AuthController.java',
         hints: ["AuthenticationManager 验证身份","返回 JWT Token"],
-        cognitiveLoad: 'medium', dependsOn: ['java-spring-8'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-8'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       },
       { id: 'java-spring-10', number: 10, type: 'concept', title: '角色权限控制', concept: '@PreAuthorize', difficulty: 'hard',
         prerequisites: `<h4>@PreAuthorize</h4><p>@EnableGlobalMethodSecurity 开启注解。hasRole 检查角色。</p>`,
@@ -212,7 +248,11 @@ public class AdminController {
         verification: '角色权限控制接口',
         filePath: 'src/main/java/com/ecommerce/controller/AdminController.java',
         hints: ["@PreAuthorize 方法级别权限控制","hasRole 检查用户角色"],
-        cognitiveLoad: 'medium', dependsOn: ['java-spring-9'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-9'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
+        { title: 'Spring Initializr', url: 'https://start.spring.io/' }
+        ],
       }
     ]
   }

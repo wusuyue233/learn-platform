@@ -91,7 +91,12 @@ print(1 + 2, "result")           # 混合输出`,
           'task': '编写输入输出交互程序处理用户输入',
           'target': '掌握 IO 操作'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-2',
@@ -201,7 +206,12 @@ print(is_student, type(is_student))`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-3',
@@ -317,7 +327,12 @@ print(result)  # 8`,
           'task': '为函数添加默认参数和关键字参数 **kwargs',
           'target': '理解参数灵活性'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-4',
@@ -435,7 +450,12 @@ print(evens)  # [2, 4, 6, 8, 10]`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-5',
@@ -558,7 +578,12 @@ for student in students:
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       }
     ]
   },
@@ -683,7 +708,12 @@ async def hello():
           'task': '添加一个 POST 端点接收 JSON 请求体',
           'target': '理解不同 HTTP 方法'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-7',
@@ -795,7 +825,12 @@ async def get_user(user_id: int):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-8',
@@ -909,7 +944,12 @@ async def list_items(page: int = 1, size: int = 10):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-9',
@@ -1039,7 +1079,12 @@ async def create_product(product: Product):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       }
     ]
   },
@@ -1169,7 +1214,12 @@ async def get_user(id: int):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-11',
@@ -1292,7 +1342,12 @@ async def get_item(item_id: str):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       },
       {
         id: 'py-12',
@@ -1425,7 +1480,12 @@ async def process_time(request: Request, call_next):
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
       }
     ]
   }
@@ -1477,6 +1537,11 @@ async def process_time(request: Request, call_next):
                   target: '理解不同框架的模块化设计'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-14',
@@ -1530,6 +1595,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握模型关联'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-15',
@@ -1583,6 +1653,11 @@ async def process_time(request: Request, call_next):
                   target: '理解 refresh token 机制'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-16',
@@ -1636,6 +1711,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握请求校验和错误处理'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-17',
@@ -1680,6 +1760,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握状态管理模式'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-18',
@@ -1735,6 +1820,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握列表校验'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-19',
@@ -1788,6 +1878,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握认证测试技巧'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             },
             {
               id: 'py-20',
@@ -1834,6 +1929,11 @@ async def process_time(request: Request, call_next):
                   target: '掌握 CI/CD 流程'
                 }
               ],
+        docLinks: [
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        ],
             }
     ]
   }

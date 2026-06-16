@@ -20,7 +20,11 @@ export const phases = [
         verification: '计算两个边界框的 IoU',
         filePath: 'iou.py',
         hints: ["交集 = 重叠矩形面积","分母是并集面积"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       },
       { id: 'yolo-2', number: 2, type: 'concept', title: 'YOLOv8 推理', concept: 'Ultralytics', difficulty: 'medium',
         prerequisites: `<h4>Ultralytics YOLO</h4><p>yolov8n.pt 是预训练轻量模型。</p>`,
@@ -38,7 +42,11 @@ r.show()`,
         verification: '加载预训练 YOLOv8 检测物体',
         filePath: 'detect.py',
         hints: ["results[0].show() 可视化","model.names 获取类别名"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       },
       { id: 'yolo-3', number: 3, type: 'concept', title: '自定义数据集训练', concept: '训练配置', difficulty: 'hard',
         prerequisites: `<h4>自定义训练</h4><p>dataset.yaml 含 train/val 路径和类别数。</p>`,
@@ -49,7 +57,11 @@ model.train(data="dataset.yaml", epochs=50, imgsz=640, batch=16, device="cpu")`,
         verification: '训练 YOLO 模型检测自定义物体',
         filePath: 'train.py',
         hints: ["dataset.yaml 定义数据集","device=\"cpu\" 无 GPU 时使用"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       }
     ]
   }
@@ -83,7 +95,11 @@ print(cm)`,
         verification: 'YOLO 模型评估指标计算',
         filePath: 'evaluate.py',
         hints: ["model.val() 自动计算 mAP","混淆矩阵可视化分类效果"],
-        cognitiveLoad: 'medium', dependsOn: ['yolo-3'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['yolo-3'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       },
       { id: 'yolo-5', number: 5, type: 'concept', title: '目标跟踪', concept: 'ByteTrack', difficulty: 'hard',
         prerequisites: `<h4>目标跟踪</h4><p>track() 启动跟踪。persist=True 保持帧间 ID 一致。</p>`,
@@ -109,7 +125,11 @@ cv2.destroyAllWindows()`,
         verification: 'YOLO 目标跟踪 ID 分配',
         filePath: 'track.py',
         hints: ["model.track() 替代 predict()","persist=True 保持 ID 连续性"],
-        cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       },
       { id: 'yolo-6', number: 6, type: 'concept', title: 'ONNX 模型导出', concept: '模型部署', difficulty: 'medium',
         prerequisites: `<h4>模型导出</h4><p>model.export() 导出不同格式。ONNX 跨平台部署。TensorRT GPU 加速。</p>`,
@@ -132,7 +152,11 @@ results[0].show()`,
         verification: 'YOLO 模型导出多种格式',
         filePath: 'export.py',
         hints: ["format=\"onnx\" 跨平台格式","half=True FP16 减小体积"],
-        cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
+        { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
+        ],
       }
     ]
   }

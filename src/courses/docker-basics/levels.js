@@ -110,7 +110,12 @@ CMD ["echo", "Hello Docker"]`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-2',
@@ -251,7 +256,12 @@ CMD ["node", "server.js"]`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-3',
@@ -370,7 +380,12 @@ docker-compose*.yml`,
           'task': '编写 Dockerfile + docker-compose 启动',
           'target': '掌握容器化部署'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       }
     ]
   },
@@ -496,7 +511,12 @@ docker rm web-server`,
           'task': '编写 Dockerfile + docker-compose 启动',
           'target': '掌握容器化部署'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-5',
@@ -602,7 +622,12 @@ docker port web-server`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-6',
@@ -715,7 +740,12 @@ docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-7',
@@ -845,7 +875,12 @@ docker run -d --env-file .env shop-api`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       }
     ]
   },
@@ -996,7 +1031,12 @@ services:
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-9',
@@ -1181,7 +1221,12 @@ volumes:
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       },
       {
         id: 'docker-10',
@@ -1368,7 +1413,12 @@ CMD ["node", "dist/index.js"]`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+        docLinks: [
+        { title: 'Docker 官方文档', url: 'https://docs.docker.com/' },
+        { title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/' },
+        { title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/' }
+        ],
       }
     ]
   }

@@ -17,7 +17,11 @@ cv2.imwrite("output.jpg", img)`,
         verification: '成功读取/显示/保存图像',
         filePath: 'read_display.py',
         hints: ["img.shape 获取图像尺寸","cv2.waitKey(0) 等待按键后继续"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-2', number: 2, type: 'concept', title: '颜色空间转换', concept: 'cvtColor', difficulty: 'easy',
         prerequisites: `<h4>颜色空间</h4><p>cv2.cvtColor 转换颜色空间。HSV 便于做颜色分割。</p>`,
@@ -33,7 +37,11 @@ cv2.waitKey(0)`,
         verification: 'HSV 阈值提取颜色区域',
         filePath: 'color_space.py',
         hints: ["COLOR_BGR2GRAY 转灰度","cv2.inRange 阈值提取颜色"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-3', number: 3, type: 'concept', title: '图像滤波', concept: '高斯/中值/双边滤波', difficulty: 'medium',
         prerequisites: `<h4>图像滤波</h4><p>GaussianBlur 去高斯噪声。medianBlur 去椒盐噪声。bilateralFilter 保边去噪。</p>`,
@@ -50,7 +58,11 @@ cv2.waitKey(0)`,
         verification: '实现三种滤波并对比效果',
         filePath: 'filter.py',
         hints: ["高斯滤波 (核大小, sigma)","中值滤波核大小奇数","双边滤波 (直径, sigma颜色, sigma空间)"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-4', number: 4, type: 'concept', title: '边缘检测', concept: 'Canny', difficulty: 'medium',
         prerequisites: `<h4>Canny 边缘检测</h4><p>Canny 步骤：高斯滤波 → 计算梯度 → 非极大值抑制 → 双阈值检测。</p>`,
@@ -66,7 +78,11 @@ cv2.waitKey(0)`,
         verification: 'Canny 边缘检测成功',
         filePath: 'edge_detection.py',
         hints: ["先降噪再检测","低:高阈值 ≈ 1:2"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       }
     ]
   }
@@ -96,7 +112,11 @@ cv2.waitKey(0)`,
         verification: '轮廓检测和特征计算',
         filePath: 'contours.py',
         hints: ["RETR_EXTERNAL 仅外部轮廓","contourArea 计算面积"],
-        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-6', number: 6, type: 'concept', title: '形态学操作', concept: '腐蚀膨胀', difficulty: 'medium',
         prerequisites: `<h4>形态学</h4><p>erode 腐蚀消除噪点。dilate 膨胀填补空洞。morphologyEx 形态学变换。</p>`,
@@ -119,7 +139,11 @@ cv2.waitKey(0)`,
         verification: '形态学操作处理图像噪声',
         filePath: 'morphology.py',
         hints: ["MORPH_OPEN 去噪点","MORPH_CLOSE 填补小洞"],
-        cognitiveLoad: 'medium', dependsOn: ['opencv-5'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['opencv-5'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-7', number: 7, type: 'concept', title: '人脸检测', concept: 'Haar Cascade', difficulty: 'hard',
         prerequisites: `<h4>Haar Cascade</h4><p>haarcascade_frontalface_default.xml 是预训练人脸检测器。</p>`,
@@ -142,7 +166,11 @@ cv2.waitKey(0)`,
         verification: 'Haar Cascade 人脸和眼睛检测',
         filePath: 'face_detection.py',
         hints: ["cv2.data.haarcascades 内置模型路径","detectMultiScale 多尺度检测"],
-        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       },
       { id: 'opencv-8', number: 8, type: 'concept', title: '图像分割', concept: '分水岭算法', difficulty: 'hard',
         prerequisites: `<h4>分水岭分割</h4><p>watershed 基于标记的分割。distanceTransform 距离变换。</p>`,
@@ -168,7 +196,11 @@ cv2.waitKey(0)`,
         verification: '分水岭分割图像前景',
         filePath: 'segmentation.py',
         hints: ["distanceTransform 计算距离","watershed 标记分水岭"],
-        cognitiveLoad: 'medium', dependsOn: ['opencv-6'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['opencv-6'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
+        { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
+        ],
       }
     ]
   }

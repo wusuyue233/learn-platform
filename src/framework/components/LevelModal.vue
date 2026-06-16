@@ -70,6 +70,20 @@
           </div>
 
           <div class="modal-section">
+            <div class="section-collapse" @click="showDocLinks = !showDocLinks">
+              <h3>🔗 参考链接</h3>
+              <span class="collapse-arrow" :class="{ open: showDocLinks }">▼</span>
+            </div>
+            <div v-if="showDocLinks && level.docLinks && level.docLinks.length" class="doc-links-list">
+              <a v-for="(link, i) in level.docLinks" :key="i" class="doc-link-item" :href="link.url" target="_blank" rel="noopener noreferrer">
+                <span class="doc-link-icon">📄</span>
+                <span class="doc-link-title">{{ link.title }}</span>
+                <span class="doc-link-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="modal-section">
             <div class="section-collapse" @click="showContext = !showContext">
               <h3>📄 上下文代码</h3>
               <span class="collapse-arrow" :class="{ open: showContext }">▼</span>
@@ -251,6 +265,7 @@ const verifyDone = ref(false)
 const verifyPassed = ref(false)
 const pendingComplete = ref(false)
 
+const showDocLinks = ref(true)
 const showProjectFiles = ref(false)
 const projectInfo = computed(() => {
   if (props.level.type !== 'project' || !props.level.project) return null
@@ -882,6 +897,43 @@ function handleClose() {
   white-space: pre;
 }
 
+.doc-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.doc-link-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+}
+.doc-link-item:hover {
+  background: var(--hover);
+  border-color: var(--accent);
+}
+.doc-link-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.doc-link-title {
+  flex: 1;
+  font-size: 13px;
+}
+.doc-link-arrow {
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.doc-link-item:hover .doc-link-arrow {
+  color: var(--accent);
+}
 .prereq-content {
   background: var(--card);
   border: 1px solid var(--border);

@@ -19,7 +19,11 @@ export const phases = [
         verification: 'Nginx 配置静态文件服务器',
         filePath: '/etc/nginx/conf.d/static.conf',
         hints: ["root 指向静态目录","try_files 尝试多个文件路径"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       },
       { id: 'nginx-2', number: 2, type: 'concept', title: '反向代理', concept: 'proxy_pass', difficulty: 'medium',
         prerequisites: `<h4>反向代理</h4><p>proxy_pass 转发请求。proxy_set_header 传递请求头。</p>`,
@@ -43,7 +47,11 @@ export const phases = [
         verification: '反向代理转发 API 到后端',
         filePath: '/etc/nginx/conf.d/api.conf',
         hints: ["proxy_set_header 传递真实 IP","location /ws/ 处理 WebSocket"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       },
       { id: 'nginx-3', number: 3, type: 'concept', title: '负载均衡', concept: 'upstream', difficulty: 'medium',
         prerequisites: `<h4>负载均衡</h4><p>upstream 定义服务器组。轮询/最少连接/IP 哈希策略。</p>`,
@@ -64,7 +72,11 @@ server {
         verification: 'upstream 配置多服务器负载均衡',
         filePath: '/etc/nginx/conf.d/lb.conf',
         hints: ["weight 控制流量比例","backup 仅其他服务不可用时启用"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       }
     ]
   }
@@ -100,7 +112,11 @@ server {
         verification: 'HTTPS 证书配置和 HTTP 跳转',
         filePath: '/etc/nginx/conf.d/ssl.conf',
         hints: ["listen 443 ssl 启用 HTTPS","return 301 强制跳转 HTTPS"],
-        cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       },
       { id: 'nginx-5', number: 5, type: 'concept', title: '缓存策略', concept: 'proxy_cache', difficulty: 'medium',
         prerequisites: `<h4>缓存</h4><p>proxy_cache_path 定义缓存区。proxy_cache 启用缓存。Cache-Control 控制缓存时间。</p>`,
@@ -127,7 +143,11 @@ server {
         verification: 'Nginx 代理缓存配置',
         filePath: '/etc/nginx/conf.d/cache.conf',
         hints: ["proxy_cache_path 定义存储位置","proxy_cache_valid 按状态码设置时间"],
-        cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       },
       { id: 'nginx-6', number: 6, type: 'concept', title: '限流与安全', concept: 'limit_req', difficulty: 'hard',
         prerequisites: `<h4>限流</h4><p>limit_req_zone 定义限流区。limit_req 应用限流。burst 突发缓冲。</p>`,
@@ -152,7 +172,11 @@ server {
         verification: '请求限流 IP 限制配置',
         filePath: '/etc/nginx/conf.d/rate_limit.conf',
         hints: ["rate=30r/m 每分钟 30 次","burst=5 允许短暂突发"],
-        cognitiveLoad: 'medium', dependsOn: ['nginx-2','nginx-3'], commonMistakes: [], variations: [], transferTasks: []
+        cognitiveLoad: 'medium', dependsOn: ['nginx-2','nginx-3'], commonMistakes: [], variations: [], transferTasks: [],
+        docLinks: [
+        { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
+        { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
+        ],
       }
     ]
   }
