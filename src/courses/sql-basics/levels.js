@@ -166,7 +166,7 @@ WHERE price > 100;`,
         verification: '使用 WHERE 过滤了 price > 100 的记录',
         filePath: 'queries/sql-2.sql',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['sql-1'],
         commonMistakes: [
          {
           'pattern': 'SELECT *',
@@ -268,7 +268,7 @@ ORDER BY price DESC;`,
         verification: '使用 ORDER BY DESC 按价格降序排列',
         filePath: 'queries/sql-3.sql',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['sql-2'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -374,7 +374,7 @@ LIMIT 5 OFFSET 5;`,
         verification: '使用 LIMIT 和 OFFSET 实现了分页查询',
         filePath: 'queries/sql-4.sql',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['sql-3'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -500,7 +500,7 @@ WHERE name = '测试商品';`,
         verification: '依次执行了 INSERT、UPDATE、DELETE 三种操作',
         filePath: 'queries/sql-5.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-4'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -615,7 +615,7 @@ INNER JOIN products p ON o.product_id = p.id;`,
         verification: '使用 JOIN 关联了 orders、users、products 三张表',
         filePath: 'queries/sql-6.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-5'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -726,7 +726,7 @@ GROUP BY category;`,
         verification: '使用 GROUP BY 和聚合函数统计了分组数据',
         filePath: 'queries/sql-7.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-6'],
         commonMistakes: [
          {
           'pattern': '() =>',
@@ -833,7 +833,7 @@ HAVING COUNT(*) > 2;`,
         verification: '使用 HAVING 过滤了分组结果',
         filePath: 'queries/sql-8.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-7'],
         commonMistakes: [
          {
           'pattern': 'SELECT *',
@@ -941,7 +941,7 @@ WHERE price > (SELECT AVG(price) FROM products);`,
         verification: '使用子查询计算平均价格并进行比较',
         filePath: 'queries/sql-9.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1044,7 +1044,7 @@ SELECT name FROM products WHERE category = '服装';`,
         verification: '使用 UNION 合并了两个查询结果',
         filePath: 'queries/sql-10.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-9'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1170,7 +1170,7 @@ CREATE TABLE ??? (
         verification: '使用 CREATE TABLE 创建了包含合适数据类型的表',
         filePath: 'queries/sql-11.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-10'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1303,7 +1303,7 @@ CREATE TABLE orders (
         verification: '创建了带主键和外键约束的表',
         filePath: 'queries/sql-12.sql',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['sql-11'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1405,7 +1405,7 @@ CREATE INDEX idx_category ON products(category);`,
         verification: '使用 CREATE INDEX 为列创建了索引',
         filePath: 'queries/sql-13.sql',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['sql-12'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1525,7 +1525,7 @@ COMMIT;`,
         verification: '使用 BEGIN/COMMIT 实现了事务操作',
         filePath: 'queries/sql-14.sql',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['sql-13'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1733,7 +1733,7 @@ CREATE TABLE order_items (
         verification: '设计了完整的电商数据库，包含 5 张关联表',
         filePath: 'queries/sql-15.sql',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['sql-14'],
         commonMistakes: [
          {
           'pattern': 'error',

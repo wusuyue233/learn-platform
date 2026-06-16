@@ -37,7 +37,7 @@ cv2.waitKey(0)`,
         verification: 'HSV 阈值提取颜色区域',
         filePath: 'color_space.py',
         hints: ["COLOR_BGR2GRAY 转灰度","cv2.inRange 阈值提取颜色"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -58,7 +58,7 @@ cv2.waitKey(0)`,
         verification: '实现三种滤波并对比效果',
         filePath: 'filter.py',
         hints: ["高斯滤波 (核大小, sigma)","中值滤波核大小奇数","双边滤波 (直径, sigma颜色, sigma空间)"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -78,7 +78,7 @@ cv2.waitKey(0)`,
         verification: 'Canny 边缘检测成功',
         filePath: 'edge_detection.py',
         hints: ["先降噪再检测","低:高阈值 ≈ 1:2"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['opencv-3'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }

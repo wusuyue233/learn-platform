@@ -208,7 +208,7 @@ CMD ["node", "server.js"]`,
         verification: '包含 FROM、WORKDIR、COPY、RUN、EXPOSE、CMD 指令',
         filePath: 'Dockerfile',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['docker-1'],
         commonMistakes: [
          {
           'pattern': 'FROM',
@@ -338,7 +338,7 @@ docker-compose*.yml`,
         verification: '创建了 .dockerignore 文件，排除了敏感和无用文件',
         filePath: '.dockerignore',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['docker-2'],
         commonMistakes: [
          {
           'pattern': '.env',
@@ -469,7 +469,7 @@ docker rm web-server`,
         verification: '使用了 docker run -d --name 启动后台容器',
         filePath: 'commands.sh',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['docker-3'],
         commonMistakes: [
          {
           'pattern': '-p',
@@ -580,7 +580,7 @@ docker port web-server`,
         verification: '使用了 -p 参数进行端口映射',
         filePath: 'commands.sh',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['docker-4'],
         commonMistakes: [
          {
           'pattern': '-p',
@@ -698,7 +698,7 @@ docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
         verification: '使用了 -v 参数进行数据卷挂载',
         filePath: 'commands.sh',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['docker-5'],
         commonMistakes: [
          {
           'pattern': '-v',
@@ -833,7 +833,7 @@ docker run -d --env-file .env shop-api`,
         verification: '使用了 -e 参数或 --env-file 传递环境变量',
         filePath: 'commands.sh',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['docker-6'],
         commonMistakes: [
          {
           'pattern': '-e',
@@ -989,7 +989,7 @@ services:
         verification: '编写了 docker-compose.yml，包含 services、build、ports 等配置',
         filePath: 'docker-compose.yml',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['docker-7'],
         commonMistakes: [
          {
           'pattern': 'version:',
@@ -1179,7 +1179,7 @@ volumes:
         verification: '编排了三个服务并配置了 depends_on 依赖关系',
         filePath: 'docker-compose.yml',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['docker-8'],
         commonMistakes: [
          {
           'pattern': 'depends_on',
@@ -1371,7 +1371,7 @@ CMD ["node", "dist/index.js"]`,
         verification: '编写了多阶段构建的 Dockerfile 和完整的 docker-compose.yml',
         filePath: 'Dockerfile',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['docker-9'],
         commonMistakes: [
          {
           'pattern': 'AS builder',

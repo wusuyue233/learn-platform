@@ -33,7 +33,7 @@ public class ProductController {
         verification: 'ProductController 含 GET/POST 端点',
         filePath: 'src/main/java/com/ecommerce/controller/ProductController.java',
         hints: ["@RestController 标记控制器","@PathVariable 获取 URL 参数"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -57,7 +57,7 @@ public class ProductRepository {
         verification: 'Service + Repository 分层注入',
         filePath: 'src/main/java/com/ecommerce/service/ProductService.java',
         hints: ["@Service 标记业务层","DI 容器管理生命周期"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -78,7 +78,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
         verification: 'JPA 实体 + Repository 接口',
         filePath: 'src/main/java/com/ecommerce/model/Product.java',
         hints: ["@Id 标记主键","方法名命名查询"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-3'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -105,7 +105,7 @@ public class GlobalExceptionHandler {
         verification: '@RestControllerAdvice 全局异常处理',
         filePath: 'src/main/java/com/ecommerce/exception/GlobalExceptionHandler.java',
         hints: ["@ExceptionHandler 指定异常","ResponseEntity.status(404) 自定义状态码"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-4'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -129,7 +129,7 @@ class ProductControllerTest {
         verification: '集成测试覆盖商品创建和 404',
         filePath: 'src/test/java/com/ecommerce/controller/ProductControllerTest.java',
         hints: ["@AutoConfigureMockMvc 自动配置 MockMvc","jsonPath(\"$.name\") 断言 JSON 字段"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['java-spring-5'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }

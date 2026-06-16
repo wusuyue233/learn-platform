@@ -42,7 +42,7 @@ r.show()`,
         verification: '加载预训练 YOLOv8 检测物体',
         filePath: 'detect.py',
         hints: ["results[0].show() 可视化","model.names 获取类别名"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['yolo-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -57,7 +57,7 @@ model.train(data="dataset.yaml", epochs=50, imgsz=640, batch=16, device="cpu")`,
         verification: '训练 YOLO 模型检测自定义物体',
         filePath: 'train.py',
         hints: ["dataset.yaml 定义数据集","device=\"cpu\" 无 GPU 时使用"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }

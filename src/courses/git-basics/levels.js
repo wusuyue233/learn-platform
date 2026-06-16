@@ -201,7 +201,7 @@ git diff --staged`,
         verification: '包含了 status、log、diff 命令',
         filePath: 'git-commands.md',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['git-1'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -331,7 +331,7 @@ git stash pop`,
         verification: '包含了 restore 和 stash 命令',
         filePath: 'git-commands.md',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['git-2'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -463,7 +463,7 @@ dist/`,
         verification: '编写了包含 node_modules 和 .env 的 .gitignore 规则',
         filePath: 'git-commands.md',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['git-3'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -598,7 +598,7 @@ git branch -a`,
         verification: '包含了 branch、checkout/switch 命令',
         filePath: 'git-commands.md',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['git-4'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -726,7 +726,7 @@ git branch -d feature-login
         verification: '包含了 merge 命令和冲突处理流程',
         filePath: 'git-commands.md',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['git-5'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -855,7 +855,7 @@ git merge feature  # Fast-forward 合并`,
         verification: '使用了 rebase 命令进行变基操作',
         filePath: 'git-commands.md',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['git-6'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -988,7 +988,7 @@ git pull origin main`,
         verification: '包含了 remote、push、pull 命令',
         filePath: 'git-commands.md',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['git-7'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1099,7 +1099,7 @@ git remote add upstream https://github.com/original/repo.git`,
         verification: '包含了 clone 和 fork 工作流命令',
         filePath: 'git-commands.md',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['git-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1241,7 +1241,7 @@ git push origin main --tags`,
         verification: '描述了包含分支策略的完整团队协作流程',
         filePath: 'git-commands.md',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['git-9'],
         commonMistakes: [
          {
           'pattern': 'git commit',

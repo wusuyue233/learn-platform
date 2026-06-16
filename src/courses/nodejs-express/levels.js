@@ -211,7 +211,7 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2))`,
         verification: '使用了 fs 模块读写文件，JSON.parse/stringify 解析和序列化',
         filePath: 'config-manager.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['node-1'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -363,7 +363,7 @@ server.listen(3000, () => {
         verification: '使用 http.createServer 创建服务器，返回 JSON 数据',
         filePath: 'server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-2'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -504,7 +504,7 @@ npm install 安装并记录到 dependencies。
         verification: '创建了包含 scripts、dependencies、devDependencies 的 package.json',
         filePath: 'package.json',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['node-3'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -685,7 +685,7 @@ app.listen(3000, () => {
         verification: '使用 Express 创建了 GET/POST 路由，返回 JSON 数据',
         filePath: 'src/server.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['node-4'],
         commonMistakes: [
          {
           'pattern': 'req.body',
@@ -830,7 +830,7 @@ app.listen(3000)`,
         verification: '编写了日志中间件，使用 next() 传递请求',
         filePath: 'src/server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-5'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -994,7 +994,7 @@ app.listen(3000)`,
         verification: '使用 express.json() 解析请求体，从 req.body 获取数据',
         filePath: 'src/server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-6'],
         commonMistakes: [
          {
           'pattern': 'req.body',
@@ -1162,7 +1162,7 @@ app.listen(3000)`,
         verification: '实现了错误处理中间件，使用 next(err) 传递错误',
         filePath: 'src/server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-7'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1329,7 +1329,7 @@ module.exports = { User, Message }`,
         verification: '定义了 Mongoose Schema 和 Model',
         filePath: 'src/models/User.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1583,7 +1583,7 @@ module.exports = router`,
         verification: '实现了 CRUD 操作，使用 async/await 处理异步',
         filePath: 'src/routes/users.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-9'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1793,7 +1793,7 @@ app.get('/api/profile', auth, (req, res) => {
         verification: '实现了 JWT 签发和验证，包含认证中间件',
         filePath: 'src/middleware/auth.js',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['node-10'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1958,7 +1958,7 @@ app.put('/api/posts/:id/review', auth, authorize('admin', 'moderator'), reviewPo
         verification: '实现了 authorize 中间件，基于角色控制访问权限',
         filePath: 'src/middleware/authorize.js',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['node-11'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2144,7 +2144,7 @@ server.listen(8080)`,
         verification: '使用 ws 模块实现了 WebSocket 服务器和消息广播',
         filePath: 'src/ws-server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-12'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2351,7 +2351,7 @@ server.listen(3000)`,
         verification: '使用 Socket.io 实现了房间加入和消息广播',
         filePath: 'src/socket-server.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['node-13'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2630,7 +2630,7 @@ server.listen(3000)`,
         verification: '整合了 Express REST API、JWT 认证和 Socket.io 实时通信',
         filePath: 'src/chat-server.js',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['node-14'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2709,7 +2709,7 @@ server.listen(3000)`,
                 'src/middleware/auth.js': ''
               },
               cognitiveLoad: 'low',
-              dependsOn: [],
+              dependsOn: ['node-15'],
               commonMistakes: [],
               variations: [
                 {

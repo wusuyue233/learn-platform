@@ -58,7 +58,7 @@ jobs:
         verification: '构建→部署 GitHub Pages',
         filePath: '.github/workflows/deploy.yml',
         hints: ["needs: build 依赖前置任务","actions/deploy-pages@v4 部署"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -89,7 +89,7 @@ jobs:
         verification: '自动构建 Docker 镜像并推送',
         filePath: '.github/workflows/docker.yml',
         hints: ["secrets 在 GitHub Settings 配置","tags 模式触发自动构建"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }

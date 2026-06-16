@@ -47,7 +47,7 @@ export const phases = [
         verification: '反向代理转发 API 到后端',
         filePath: '/etc/nginx/conf.d/api.conf',
         hints: ["proxy_set_header 传递真实 IP","location /ws/ 处理 WebSocket"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -72,7 +72,7 @@ server {
         verification: 'upstream 配置多服务器负载均衡',
         filePath: '/etc/nginx/conf.d/lb.conf',
         hints: ["weight 控制流量比例","backup 仅其他服务不可用时启用"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }

@@ -267,7 +267,7 @@ console.log(user, product)`,
 3. 创建符合接口/类型的对象`,
         filePath: 'src/interfaces.ts',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['ts-1'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -419,7 +419,7 @@ doSomething(msg => console.log(msg))`,
 3. 回调参数类型为 (msg: string) => void`,
         filePath: 'src/function-types.ts',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['ts-2'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -576,7 +576,7 @@ console.log(person)`,
 3. type Person = HasName & HasAge 定义交叉类型`,
         filePath: 'src/union-intersect.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-3'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -760,7 +760,7 @@ console.log(getErrorMessage("简单错误"))`,
 3. err instanceof Error 缩窄为 Error 实例`,
         filePath: 'src/type-guards.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-4'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -940,7 +940,7 @@ console.log(num, str, nums, container.getValue())`,
 3. 接口名后加 <T> 声明泛型参数`,
         filePath: 'src/generics.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-5'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1091,7 +1091,7 @@ console.log(getProp(user, "name"))`,
 3. K extends keyof T 约束属性名`,
         filePath: 'src/generic-constraints.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-6'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1262,7 +1262,7 @@ console.log(user1, user2)`,
 2. [P in K]: T[P] — 遍历指定属性并保持类型`,
         filePath: 'src/mapped-types.ts',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['ts-7'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1401,7 +1401,7 @@ console.log(arr)`,
 3. T extends Promise<infer V> ? V : T — 解包 Promise`,
         filePath: 'src/conditional-types.ts',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['ts-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1542,7 +1542,7 @@ console.log(size1, size2, handler)`,
 3. 模板字面量会自动产生笛卡尔积`,
         filePath: 'src/template-literal.ts',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['ts-9'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1742,7 +1742,7 @@ console.log(dog.bark())`,
 3. 子类重写 getInfo 和新增 bark 方法`,
         filePath: 'src/classes.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-10'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1919,7 +1919,7 @@ console.log(getStatus(HttpStatus.NotFound))`,
 3. switch 语句根据枚举值返回描述`,
         filePath: 'src/enums.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-11'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2085,7 +2085,7 @@ declare global {
 3. .d.ts 文件只写类型声明，不写实现`,
         filePath: 'src/declarations.d.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-12'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2263,7 +2263,7 @@ console.log(basic, compact)`,
 4. Required<Product> — 确保完整数据`,
         filePath: 'src/utility-types.ts',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['ts-13'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2489,7 +2489,7 @@ async function getProduct(id: number) {
 4. result.ok 判断成功后安全访问 data`,
         filePath: 'src/api-client.ts',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['ts-14'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2568,7 +2568,7 @@ async function getProduct(id: number) {
                 'src/index.ts': ''
               },
               cognitiveLoad: 'low',
-              dependsOn: [],
+              dependsOn: ['ts-15'],
               commonMistakes: [],
               variations: [
                 {

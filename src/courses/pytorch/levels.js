@@ -34,7 +34,7 @@ print(f"dy/dx at x=3: {x.grad}")  # 6.0`,
         verification: '计算 y=x^2 在 x=3 时的导数',
         filePath: 'autograd.py',
         hints: ["requires_grad=True 启用梯度","backward() 计算梯度"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -59,7 +59,7 @@ print(f"w={model.weight.item():.3f}, b={model.bias.item():.3f}")`,
         verification: '训练模型拟合 y=2x+1',
         filePath: 'linear_regression.py',
         hints: ["zero_grad→backward→step 三件套","model.parameters() 可训练参数"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -84,7 +84,7 @@ class MLP(nn.Module):
         verification: 'MLP 在 MNIST 上训练及评估',
         filePath: 'mlp_mnist.py',
         hints: ["继承 nn.Module","实现 __init__ 和 forward"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['pytorch-3'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }

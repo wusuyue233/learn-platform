@@ -199,7 +199,7 @@ export default UserCard`,
 3. 导出组件供父组件使用`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['react-1'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -331,7 +331,7 @@ export default Counter`,
 4. 按钮绑定 onClick={() => setCount(count + 1)}`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['react-2'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -470,7 +470,7 @@ export default FruitList`,
 3. 每个 <li> 添加 key={fruit} 属性`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['react-3'],
         commonMistakes: [
          {
           'pattern': 'filter',
@@ -613,7 +613,7 @@ export default LoginStatus`,
 3. 按钮点击时切换 isLoggedIn`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['react-4'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -776,7 +776,7 @@ export default Timer`,
 4. 依赖数组传空 [] 只执行一次`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-5'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -929,7 +929,7 @@ export default AutoFocusInput`,
 3. 点击按钮时调用 inputRef.current.focus()`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-6'],
         commonMistakes: [
          {
           'pattern': 'innerHTML',
@@ -1100,7 +1100,7 @@ export default App`,
 4. 按钮切换 theme 状态`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-7'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1294,7 +1294,7 @@ export default TodoApp`,
 4. dispatch 触发对应的 action`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1469,7 +1469,7 @@ export default App`,
 4. 返回 { count, increment, decrement, reset }`,
         filePath: 'src/hooks/useCounter.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-9'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1652,7 +1652,7 @@ export default App`,
 3. 用 Link 实现导航`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-10'],
         commonMistakes: [
          {
           'pattern': 'req.body',
@@ -1834,7 +1834,7 @@ export default App`,
 3. Link 路径为 /dashboard/profile 形式`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-11'],
         commonMistakes: [
          {
           'pattern': 'const',
@@ -2020,7 +2020,7 @@ export default App`,
 3. 组件中用 useCounterStore(state => state.count) 读取`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-12'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2223,7 +2223,7 @@ export default RegisterForm`,
 3. 每个 input 绑定 value 和 onChange`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-13'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2434,7 +2434,7 @@ export default App`,
 4. render 中根据 hasError 条件渲染`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['react-14'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2622,7 +2622,7 @@ export default App`,
 3. 通过 console.log 验证渲染次数`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['react-15'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -2803,7 +2803,7 @@ export default App`,
 3. 配合 React.memo 避免子组件不必要的重渲染`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['react-16'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -3016,7 +3016,7 @@ export default App`,
 4. 容器高度 = 总项数 × 每项高度`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['react-17'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -3200,7 +3200,7 @@ export default App`,
 3. 每个路由的 component 改用 lazy 组件`,
         filePath: 'src/App.jsx',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['react-18'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -3443,7 +3443,7 @@ export default ChatRoom`,
 5. useMemo 计算消息统计`,
         filePath: 'src/ChatRoom.jsx',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['react-19'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -3522,7 +3522,7 @@ export default ChatRoom`,
                 'src/main.jsx': ''
               },
               cognitiveLoad: 'low',
-              dependsOn: [],
+              dependsOn: ['react-20'],
               commonMistakes: [],
               variations: [
                 {

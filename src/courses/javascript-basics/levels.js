@@ -177,7 +177,7 @@ console.log(typeof 123n)      // "bigint"`,
         verification: '使用了 typeof 检测数据类型',
         filePath: 'src/types.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['js-1'],
         commonMistakes: [
          {
           'pattern': 'typeof null',
@@ -310,7 +310,7 @@ console.log(subtract(5, 2))  // 3`,
         verification: '使用了三种方式定义函数',
         filePath: 'src/functions.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['js-2'],
         commonMistakes: [
          {
           'pattern': '() =>',
@@ -438,7 +438,7 @@ console.log(product)  // 120`,
         verification: '使用了 map、filter、reduce 数组方法',
         filePath: 'src/arrays.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-3'],
         commonMistakes: [
          {
           'pattern': 'filter',
@@ -571,7 +571,7 @@ console.log(role)        // "user"`,
         verification: '使用了解构赋值提取对象属性',
         filePath: 'src/objects.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-4'],
         commonMistakes: [
          {
           'pattern': 'const { name } = user',
@@ -706,7 +706,7 @@ console.log(evens)  // [2, 4]`,
         verification: '使用了箭头函数简化代码',
         filePath: 'src/arrow.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-5'],
         commonMistakes: [
          {
           'pattern': '() =>',
@@ -834,7 +834,7 @@ console.log(listHtml)`,
         verification: '使用了模板字符串构建动态文本',
         filePath: 'src/template.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['js-6'],
         commonMistakes: [
          {
           'pattern': '用引号代替',
@@ -955,7 +955,7 @@ console.log(settings)
         verification: '使用了展开运算符合并对象',
         filePath: 'src/spread.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-7'],
         commonMistakes: [
          {
           'pattern': '浅拷贝',
@@ -1078,7 +1078,7 @@ console.log(createUser(user))
         verification: '使用了解构赋值简化函数参数',
         filePath: 'src/destructuring.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-8'],
         commonMistakes: [
          {
           'pattern': '默认值',
@@ -1223,7 +1223,7 @@ fetchUser(-1).catch(err => console.error(err))`,
         verification: '使用了 Promise 封装异步操作',
         filePath: 'src/promise.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-9'],
         commonMistakes: [
          {
           'pattern': 'await',
@@ -1357,7 +1357,7 @@ loadUserPosts()`,
         verification: '使用了 async/await 处理异步操作',
         filePath: 'src/async.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-10'],
         commonMistakes: [
          {
           'pattern': 'await',
@@ -1497,7 +1497,7 @@ console.log(safeJsonParse('invalid'))   // null`,
         verification: '使用了 try-catch 处理错误',
         filePath: 'src/error-handling.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-11'],
         commonMistakes: [
          {
           'pattern': 'catch 不处理',
@@ -1626,7 +1626,7 @@ items.forEach((item, i) => {
         verification: '使用了 querySelector 获取并修改 DOM 元素',
         filePath: 'src/dom-select.js',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['js-12'],
         commonMistakes: [
          {
           'pattern': '.querySelector',
@@ -1762,7 +1762,7 @@ list.addEventListener('click', (e) => {
         verification: '使用了事件监听和事件委托',
         filePath: 'src/dom-events.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-13'],
         commonMistakes: [
          {
           'pattern': 'addEventListener',
@@ -1903,7 +1903,7 @@ users.forEach(user => {
         verification: '使用了 createElement 动态创建 DOM 元素',
         filePath: 'src/dom-create.js',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['js-14'],
         commonMistakes: [
          {
           'pattern': 'innerHTML',
@@ -1989,7 +1989,7 @@ users.forEach(user => {
                 'js/data/articles.js': ''
               },
               cognitiveLoad: 'low',
-              dependsOn: [],
+              dependsOn: ['js-15'],
               commonMistakes: [],
               variations: [
                 {

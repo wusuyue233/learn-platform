@@ -29,7 +29,7 @@ const emit=defineEmits(["click"])
         verification: 'ProductCard 接收 product props 显示',
         filePath: 'components/ProductCard.vue',
         hints: ["defineProps 声明属性类型","rpx 自动适配屏幕宽度"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-1'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'uni-app 官方文档', url: 'https://uniapp.dcloud.net.cn/' },
         { title: 'uni-app API 文档', url: 'https://uniapp.dcloud.net.cn/api/' }
@@ -55,7 +55,7 @@ export function request(config){
         verification: 'HTTP 工具封装 Token 和错误处理',
         filePath: 'utils/request.js',
         hints: ["uni.getStorageSync 读 Token","uni.redirectTo 跳转页面"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-2'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'uni-app 官方文档', url: 'https://uniapp.dcloud.net.cn/' },
         { title: 'uni-app API 文档', url: 'https://uniapp.dcloud.net.cn/api/' }
@@ -76,7 +76,7 @@ function goDetail(p){uni.navigateTo({url:"/pages/product/detail?id="+p.id})}
         verification: 'onLoad 加载数据，下拉刷新',
         filePath: 'pages/index/index.vue',
         hints: ["开启 enablePullDownRefresh","uni.navigateTo 保留当前页面跳转"],
-        cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        cognitiveLoad: 'medium', dependsOn: ['uniapp-3'], commonMistakes: [], variations: [], transferTasks: [],
         docLinks: [
         { title: 'uni-app 官方文档', url: 'https://uniapp.dcloud.net.cn/' },
         { title: 'uni-app API 文档', url: 'https://uniapp.dcloud.net.cn/api/' }

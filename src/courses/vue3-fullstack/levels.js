@@ -1772,7 +1772,7 @@ export default defineConfig({
           }, null, 2)
         },
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['vue3-19'],
         commonMistakes: [
           { pattern: 'target:', explanation: '代理 target 需要写完整 URL（含协议和端口）' },
           { pattern: 'changeOrigin: true', explanation: '跨域代理必须设置 changeOrigin 为 true' }

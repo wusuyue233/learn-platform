@@ -164,7 +164,7 @@ print(is_student, type(is_student))`,
         verification: '创建了字符串、整数、浮点数、布尔类型的变量',
         filePath: 'variables.py',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['py-1'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -285,7 +285,7 @@ print(result)  # 8`,
         verification: '定义了函数并正确返回两数之和',
         filePath: 'functions.py',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['py-2'],
         commonMistakes: [
          {
           'pattern': 'def',
@@ -408,7 +408,7 @@ print(evens)  # [2, 4, 6, 8, 10]`,
         verification: '使用了 for 循环和 if 条件判断',
         filePath: 'loop.py',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['py-3'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -536,7 +536,7 @@ for student in students:
         verification: '正确使用了列表和字典存储数据',
         filePath: 'students.py',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['py-4'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -666,7 +666,7 @@ async def hello():
         verification: '创建了 GET /hello 接口，返回 JSON 数据',
         filePath: 'main.py',
         cognitiveLoad: 'low',
-        dependsOn: [],
+        dependsOn: ['py-5'],
         commonMistakes: [
          {
           'pattern': 'from fastapi',
@@ -783,7 +783,7 @@ async def get_user(user_id: int):
         verification: '使用了路径参数，能根据 ID 返回用户信息',
         filePath: 'routers/users.py',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['py-6'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -902,7 +902,7 @@ async def list_items(page: int = 1, size: int = 10):
         verification: '使用了查询参数实现分页功能',
         filePath: 'routers/items.py',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['py-7'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1037,7 +1037,7 @@ async def create_product(product: Product):
         verification: '使用了 Pydantic 模型验证请求体',
         filePath: 'routers/products.py',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['py-8'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1172,7 +1172,7 @@ async def get_user(id: int):
         verification: '使用了 response_model 过滤返回字段',
         filePath: 'schemas/user.py',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['py-9'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1300,7 +1300,7 @@ async def get_item(item_id: str):
         verification: '使用了 HTTPException 处理错误情况',
         filePath: 'routers/errors.py',
         cognitiveLoad: 'medium',
-        dependsOn: [],
+        dependsOn: ['py-10'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1438,7 +1438,7 @@ async def process_time(request: Request, call_next):
         verification: '添加了中间件统计请求耗时',
         filePath: 'middleware/timing.py',
         cognitiveLoad: 'high',
-        dependsOn: [],
+        dependsOn: ['py-11'],
         commonMistakes: [
          {
           'pattern': 'error',
@@ -1523,7 +1523,7 @@ async def process_time(request: Request, call_next):
                 'app/schemas/__init__.py': ''
               },
               cognitiveLoad: 'low',
-              dependsOn: [],
+              dependsOn: ['py-12'],
               commonMistakes: [],
               variations: [
                 {
