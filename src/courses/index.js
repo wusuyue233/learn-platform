@@ -24,5 +24,12 @@ export const courses = [
   dockerBasics,
   gitBasics,
   nodejsExpress,
-  sqlBasics
+  sqlBasics,
+  cicd,
+  nginx,
+  yolo,
+  pytorch,
+  opencv,
+  uniapp,
+  javaspring
 ]
