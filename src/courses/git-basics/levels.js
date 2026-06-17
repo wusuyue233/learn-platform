@@ -88,24 +88,24 @@ git commit -m "init: 初始化项目"`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '初始化仓库',
+          'verification': 'git init',
+          'hint': '用 git init 初始化一个新仓库'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '暂存文件',
+          'verification': 'git add',
+          'hint': '用 git add 将文件加入暂存区'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '提交更改',
+          'verification': 'git commit',
+          'hint': '用 git commit 提交暂存内容'
          }
         ],
         variations: [
@@ -212,24 +212,24 @@ git diff --staged`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '查看状态',
+          'verification': 'git status',
+          'hint': '用 git status 查看仓库状态'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '查看历史',
+          'verification': 'git log',
+          'hint': '用 git log 查看提交历史'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '查看差异',
+          'verification': 'git diff',
+          'hint': '用 git diff 查看文件修改内容'
          }
         ],
         variations: [
@@ -342,24 +342,24 @@ git stash pop`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '撤销修改',
+          'verification': 'git restore',
+          'hint': '用 git restore 撤销工作区修改'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '暂存进度',
+          'verification': 'git stash',
+          'hint': '用 git stash 临时保存工作进度'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '恢复进度',
+          'verification': 'git stash pop',
+          'hint': '用 git stash pop 恢复暂存工作'
          }
         ],
         variations: [
@@ -474,24 +474,24 @@ dist/`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 .gitignore',
+          'verification': '.gitignore',
+          'hint': '在根目录创建 .gitignore 文件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '添加忽略规则',
+          'verification': 'node_modules',
+          'hint': '添加目录忽略规则'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '提交配置',
+          'verification': 'git add .gitignore',
+          'hint': '将 .gitignore 加入版本控制'
          }
         ],
         variations: [
@@ -609,24 +609,24 @@ git branch -a`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建分支',
+          'verification': 'git branch',
+          'hint': '用 git branch 创建新分支'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '切换分支',
+          'verification': 'git checkout',
+          'hint': '用 checkout 或 switch 切换分支'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '查看分支',
+          'verification': 'git branch -a',
+          'hint': '查看所有本地和远程分支'
          }
         ],
         variations: [
@@ -737,24 +737,24 @@ git branch -d feature-login
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '切换主分支',
+          'verification': 'git checkout main',
+          'hint': '切换到目标接收分支'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '执行合并',
+          'verification': 'git merge',
+          'hint': '用 git merge 将分支合并过来'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '解决冲突',
+          'verification': 'merge conflict',
+          'hint': '手动解决合并冲突后提交'
          }
         ],
         variations: [
@@ -866,24 +866,24 @@ git merge feature  # Fast-forward 合并`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '切换功能分支',
+          'verification': 'git checkout feature',
+          'hint': '切换到需要变基的功能分支'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '执行 rebase',
+          'verification': 'git rebase',
+          'hint': '用 git rebase 移动到最新提交'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '处理冲突',
+          'verification': 'git rebase --continue',
+          'hint': '解决冲突后继续变基操作'
          }
         ],
         variations: [
@@ -999,24 +999,24 @@ git pull origin main`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '添加远程仓库',
+          'verification': 'git remote add',
+          'hint': '添加远程仓库地址'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '推送代码',
+          'verification': 'git push',
+          'hint': '将本地提交推送到远程'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '拉取代码',
+          'verification': 'git pull',
+          'hint': '拉取远程最新代码'
          }
         ],
         variations: [
@@ -1110,24 +1110,24 @@ git remote add upstream https://github.com/original/repo.git`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '克隆仓库',
+          'verification': 'git clone',
+          'hint': '用 git clone 克隆远程仓库'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '查看远程信息',
+          'verification': 'git remote -v',
+          'hint': '查看远程仓库配置'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '同步更新',
+          'verification': 'git fetch',
+          'hint': '用 git fetch 获取远程更新'
          }
         ],
         variations: [
@@ -1252,24 +1252,24 @@ git push origin main --tags`,
           'explanation': '推送前先 git pull'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 feature 分支',
+          'verification': 'git checkout -b',
+          'hint': '从 main 创建功能分支'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '推送功能分支',
+          'verification': 'git push origin feature',
+          'hint': '将功能分支推送到远程'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '创建 PR',
+          'verification': 'pull request',
+          'hint': '发起 Pull Request 请求合并'
          }
         ],
         variations: [
@@ -1332,6 +1332,26 @@ git push origin main --tags`,
                   explanation: 'hotfix 从 main 分叉，修复完后合并到 main 和 develop'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '配置 main 分支',
+                  'verification': 'main',
+                  'hint': '将 main 设为生产分支'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建 develop',
+                  'verification': 'develop',
+                  'hint': '从 main 创建开发分支'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '创建 feature',
+                  'verification': 'feature/',
+                  'hint': '从 develop 创建功能分支'
+                }
+              ],
               variations: [
                 {
                   name: 'GitHub Flow',
@@ -1384,6 +1404,26 @@ git push origin main --tags`,
                   explanation: 'upstream 指向原仓库，定期 git fetch upstream 同步'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': 'Fork 仓库',
+                  'verification': 'fork',
+                  'hint': 'Fork 远程仓库到个人账户'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建 PR',
+                  'verification': 'pull request',
+                  'hint': '从 feature 分支发起 PR'
+                },
+                {
+                  'id': 'step-3',
+                  'title': 'Code Review',
+                  'verification': 'review',
+                  'hint': '审查代码后合并 PR'
+                }
+              ],
               variations: [
                 {
                   name: 'Gerrit',
@@ -1433,6 +1473,26 @@ git push origin main --tags`,
                 {
                   pattern: 'git rebase',
                   explanation: 'rebase 冲突比 merge 更复杂，每个提交都要解决冲突'
+                }
+              ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '模拟冲突场景',
+                  'verification': 'merge',
+                  'hint': '模拟两个分支修改同一文件'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '解决冲突标记',
+                  'verification': 'conflict markers',
+                  'hint': '编辑文件中的冲突标记区域'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '完成合并',
+                  'verification': 'git merge --continue',
+                  'hint': '提交冲突解决结果'
                 }
               ],
               variations: [

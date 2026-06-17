@@ -20,6 +20,7 @@ export const phases = [
         filePath: '/etc/nginx/conf.d/static.conf',
         hints: ["root 指向静态目录","try_files 尝试多个文件路径"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解静态文件服务',verification:'root',hint:'root 指定静态文件目录'},{id:'step-2',title:'配置 server 块',verification:'server_name',hint:'配置域名和根目录'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -48,6 +49,7 @@ export const phases = [
         filePath: '/etc/nginx/conf.d/api.conf',
         hints: ["proxy_set_header 传递真实 IP","location /ws/ 处理 WebSocket"],
         cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解反向代理',verification:'proxy_pass',hint:'proxy_pass 将请求转发到后端'},{id:'step-2',title:'配置代理头信息',verification:'proxy_set_header',hint:'传递客户端真实 IP 和 Host'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -73,6 +75,7 @@ server {
         filePath: '/etc/nginx/conf.d/lb.conf',
         hints: ["weight 控制流量比例","backup 仅其他服务不可用时启用"],
         cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解负载均衡',verification:'upstream',hint:'upstream 定义后端服务器组'},{id:'step-2',title:'配置均衡策略',verification:'least_conn',hint:'配置加权或最少连接策略'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -113,6 +116,7 @@ server {
         filePath: '/etc/nginx/conf.d/ssl.conf',
         hints: ["listen 443 ssl 启用 HTTPS","return 301 强制跳转 HTTPS"],
         cognitiveLoad: 'medium', dependsOn: ['nginx-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解 HTTPS 配置',verification:'ssl_certificate',hint:'配置 SSL 证书和密钥路径'},{id:'step-2',title:'配置 HTTP 跳转',verification:'return 301',hint:'强制 HTTP 跳转到 HTTPS'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -144,6 +148,7 @@ server {
         filePath: '/etc/nginx/conf.d/cache.conf',
         hints: ["proxy_cache_path 定义存储位置","proxy_cache_valid 按状态码设置时间"],
         cognitiveLoad: 'medium', dependsOn: ['nginx-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解缓存策略',verification:'expires',hint:'expires 设置静态资源缓存时间'},{id:'step-2',title:'配置缓存头',verification:'Cache-Control',hint:'配置 max-age 和 public/private'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }
@@ -173,6 +178,7 @@ server {
         filePath: '/etc/nginx/conf.d/rate_limit.conf',
         hints: ["rate=30r/m 每分钟 30 次","burst=5 允许短暂突发"],
         cognitiveLoad: 'medium', dependsOn: ['nginx-2','nginx-3'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解限流机制',verification:'limit_req_zone',hint:'定义限流区域和速率'},{id:'step-2',title:'配置安全头',verification:'add_header',hint:'添加 X-Frame-Options 等安全响应头'}],
         docLinks: [
         { title: 'Nginx 官方文档', url: 'https://nginx.org/en/docs/' },
         { title: 'Nginx 初学者指南', url: 'https://nginx.org/en/docs/beginners_guide.html' }

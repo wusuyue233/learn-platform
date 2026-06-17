@@ -18,6 +18,7 @@ cv2.imwrite("output.jpg", img)`,
         filePath: 'read_display.py',
         hints: ["img.shape 获取图像尺寸","cv2.waitKey(0) 等待按键后继续"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解图像读取',verification:'cv2.imread',hint:'imread 读取图像为 numpy 数组'},{id:'step-2',title:'图像显示与保存',verification:'cv2.imshow',hint:'imshow 显示图像，imwrite 保存'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -38,6 +39,7 @@ cv2.waitKey(0)`,
         filePath: 'color_space.py',
         hints: ["COLOR_BGR2GRAY 转灰度","cv2.inRange 阈值提取颜色"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解颜色空间',verification:'cv2.cvtColor',hint:'BGR 是 OpenCV 默认格式'},{id:'step-2',title:'颜色通道分离',verification:'cv2.split',hint:'split 分离 BGR 三个通道'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -59,6 +61,7 @@ cv2.waitKey(0)`,
         filePath: 'filter.py',
         hints: ["高斯滤波 (核大小, sigma)","中值滤波核大小奇数","双边滤波 (直径, sigma颜色, sigma空间)"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解图像滤波',verification:'cv2.GaussianBlur',hint:'高斯滤波平滑图像去噪'},{id:'step-2',title:'配置滤波参数',verification:'ksize',hint:'核大小必须为正奇数'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -79,6 +82,7 @@ cv2.waitKey(0)`,
         filePath: 'edge_detection.py',
         hints: ["先降噪再检测","低:高阈值 ≈ 1:2"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-3'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解边缘检测',verification:'cv2.Canny',hint:'Canny 边缘检测三步：高斯→梯度→阈值'},{id:'step-2',title:'配置阈值参数',verification:'threshold1',hint:'调整 minVal 和 maxVal 控制边缘数量'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -113,6 +117,7 @@ cv2.waitKey(0)`,
         filePath: 'contours.py',
         hints: ["RETR_EXTERNAL 仅外部轮廓","contourArea 计算面积"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解轮廓检测',verification:'cv2.findContours',hint:'轮廓是基于边缘的闭合曲线'},{id:'step-2',title:'绘制轮廓',verification:'cv2.drawContours',hint:'在原图上绘制检测到的轮廓'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -140,6 +145,7 @@ cv2.waitKey(0)`,
         filePath: 'morphology.py',
         hints: ["MORPH_OPEN 去噪点","MORPH_CLOSE 填补小洞"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-5'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解形态学操作',verification:'cv2.morphologyEx',hint:'腐蚀膨胀用于消除噪声和连接区域'},{id:'step-2',title:'配置核结构',verification:'cv2.getStructuringElement',hint:'定义矩形/椭圆/十字形核'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -167,6 +173,7 @@ cv2.waitKey(0)`,
         filePath: 'face_detection.py',
         hints: ["cv2.data.haarcascades 内置模型路径","detectMultiScale 多尺度检测"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-4'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解人脸检测',verification:'CascadeClassifier',hint:'Haar 级联分类器检测人脸'},{id:'step-2',title:'检测与绘制',verification:'detectMultiScale',hint:'返回人脸矩形框坐标'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }
@@ -197,6 +204,7 @@ cv2.waitKey(0)`,
         filePath: 'segmentation.py',
         hints: ["distanceTransform 计算距离","watershed 标记分水岭"],
         cognitiveLoad: 'medium', dependsOn: ['opencv-6'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解图像分割',verification:'cv2.threshold',hint:'阈值分割将图像分为前景和背景'},{id:'step-2',title:'配置分割方法',verification:'THRESH_OTSU',hint:'Otsu 自动计算最佳阈值'}],
         docLinks: [
         { title: 'OpenCV-Python 教程', url: 'https://docs.opencv.org/master/d6/d00/tutorial_py_root.html' },
         { title: 'OpenCV 文档', url: 'https://docs.opencv.org/' }

@@ -1525,6 +1525,26 @@ async def process_time(request: Request, call_next):
               cognitiveLoad: 'low',
               dependsOn: ['py-12'],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建应用入口',
+                  'verification': 'FastAPI()',
+                  'hint': '用 FastAPI() 创建应用实例'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '导入路由模块',
+                  'verification': 'include_router',
+                  'hint': '用 include_router 注册路由模块'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '创建项目结构',
+                  'verification': 'routers',
+                  'hint': '创建 routers/models/schemas 包目录'
+                }
+              ],
               variations: [
                 {
                   name: '蓝本模式',
@@ -1581,6 +1601,26 @@ async def process_time(request: Request, call_next):
                 {
                   pattern: 'Base',
                   explanation: '模型类需要继承 declarative_base() 返回的 Base'
+                }
+              ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义 Product 模型',
+                  'verification': 'Column(Integer',
+                  'hint': '用 Column 定义数据库字段'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '定义 Pydantic 模式',
+                  'verification': 'BaseModel',
+                  'hint': '定义请求和响应的校验模式'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '实现 CRUD 路由',
+                  'verification': 'async def',
+                  'hint': '实现商品列表/详情/创建 API'
                 }
               ],
               variations: [
@@ -1641,6 +1681,26 @@ async def process_time(request: Request, call_next):
                   explanation: 'jwt.decode 需要指定 algorithms=[ALGORITHM] 参数'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建 JWT Token',
+                  'verification': 'jwt.encode',
+                  'hint': '用 jose 创建并签名 JWT'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '验证 Token',
+                  'verification': 'jwt.decode',
+                  'hint': '解码并验证 token 有效性'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '注册认证路由',
+                  'verification': 'create_access_token',
+                  'hint': '注册登录端点返回 token'
+                }
+              ],
               variations: [
                 {
                   name: 'OAuth2 + Google',
@@ -1699,6 +1759,26 @@ async def process_time(request: Request, call_next):
                   explanation: '两端 relationship 要互相指定 back_populates'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义 CartItem 模型',
+                  'verification': 'ForeignKey',
+                  'hint': '定义含 user_id/product_id/quantity 的模型'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '添加商品到购物车',
+                  'verification': 'CartItem(',
+                  'hint': '创建新购物车条目记录'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '更新和删除',
+                  'verification': 'quantity',
+                  'hint': '实现数量更新和商品删除'
+                }
+              ],
               variations: [
                 {
                   name: 'Redis 缓存',
@@ -1748,6 +1828,26 @@ async def process_time(request: Request, call_next):
                 'py-16'
               ],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义订单模型',
+                  'verification': 'Order(Base)',
+                  'hint': '定义 Order 和 OrderItem 模型'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建订单事务',
+                  'verification': 'db.begin',
+                  'hint': '在事务中创建订单并扣减库存'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '查询订单列表',
+                  'verification': 'user_id',
+                  'hint': '根据用户 ID 查询订单列表'
+                }
+              ],
               variations: [
                 {
                   name: 'Celery 异步',
@@ -1808,6 +1908,26 @@ async def process_time(request: Request, call_next):
                   explanation: 'from_attributes=True 允许从 ORM 模型创建 Pydantic 实例'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义输入模式',
+                  'verification': 'Field(',
+                  'hint': '用 Field 定义字段校验约束'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '自定义验证器',
+                  'verification': 'field_validator',
+                  'hint': '用 @field_validator 自定义校验'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '配置 ORM 模式',
+                  'verification': 'from_attributes',
+                  'hint': '配置 ConfigDict(from_attributes=True)'
+                }
+              ],
               variations: [
                 {
                   name: 'marshmallow',
@@ -1866,6 +1986,26 @@ async def process_time(request: Request, call_next):
                   explanation: '测试响应状态码用 response.status_code 获取'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建 TestClient',
+                  'verification': 'TestClient(app)',
+                  'hint': '用 TestClient 创建测试客户端'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '测试正常流程',
+                  'verification': 'response.status_code',
+                  'hint': '断言响应状态码为 200'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '测试异常流程',
+                  'verification': 'status_code == 404',
+                  'hint': '测试不存在的资源返回 404'
+                }
+              ],
               variations: [
                 {
                   name: 'unittest',
@@ -1917,6 +2057,26 @@ async def process_time(request: Request, call_next):
                 'py-18'
               ],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '配置 CORS 中间件',
+                  'verification': 'CORSMiddleware',
+                  'hint': '用 add_middleware 配置跨域'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '配置环境变量',
+                  'verification': 'SECRET_KEY',
+                  'hint': '用环境变量管理敏感配置'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '配置数据库迁移',
+                  'verification': 'alembic',
+                  'hint': '用 Alembic 管理数据库迁移脚本'
+                }
+              ],
               variations: [
                 {
                   name: 'Docker Compose',

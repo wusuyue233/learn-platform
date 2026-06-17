@@ -86,24 +86,24 @@ module.exports = { greet }`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导出模块函数',
+          'verification': 'module.exports',
+          'hint': '用 module.exports 导出工具函数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '导入模块',
+          'verification': 'require(',
+          'hint': '用 require 导入自定义模块'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '调用函数',
+          'verification': 'const',
+          'hint': '调用导入的函数实现功能'
          }
         ],
         variations: [
@@ -222,24 +222,24 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2))`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 fs 模块',
+          'verification': 'require(\'fs\')',
+          'hint': '导入 Node.js 内置 fs 模块'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '读取文件',
+          'verification': 'readFileSync',
+          'hint': '用 readFileSync 读取 JSON 文件'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '写入文件',
+          'verification': 'writeFileSync',
+          'hint': '用 writeFileSync 写入 JSON 文件'
          }
         ],
         variations: [
@@ -374,24 +374,24 @@ server.listen(3000, () => {
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 http 模块',
+          'verification': 'require(\'http\')',
+          'hint': '导入 Node.js http 模块'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建服务器',
+          'verification': 'createServer',
+          'hint': '用 http.createServer 创建服务器'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '返回 JSON',
+          'verification': 'JSON.stringify',
+          'hint': '设置响应头并返回 JSON 数据'
          }
         ],
         variations: [
@@ -515,24 +515,24 @@ npm install 安装并记录到 dependencies。
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '初始化项目',
+          'verification': '"name"',
+          'hint': '创建 package.json 定义项目元信息'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '安装依赖',
+          'verification': 'dependencies',
+          'hint': '配置 dependencies 依赖列表'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '配置脚本',
+          'verification': '"scripts"',
+          'hint': '配置 start 和 dev 运行脚本'
          }
         ],
         variations: [
@@ -696,24 +696,24 @@ app.listen(3000, () => {
           'explanation': '一个请求只调一次 res.send'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 Express',
+          'verification': 'require(\'express\')',
+          'hint': '导入 express 并创建应用实例'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义路由',
+          'verification': 'app.get(',
+          'hint': '定义 GET/POST/PUT/DELETE 路由'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '启动服务',
+          'verification': 'app.listen',
+          'hint': '监听端口启动 Express 服务'
          }
         ],
         variations: [
@@ -841,24 +841,24 @@ app.listen(3000)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建中间件',
+          'verification': 'app.use(',
+          'hint': '用 app.use 注册中间件函数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '记录日志',
+          'verification': 'req.method',
+          'hint': '在中间件中记录请求方法和路径'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '调用 next',
+          'verification': 'next()',
+          'hint': '调用 next() 将控制权传到下一步'
          }
         ],
         variations: [
@@ -1005,24 +1005,24 @@ app.listen(3000)`,
           'explanation': '一个请求只调一次 res.send'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '配置解析器',
+          'verification': 'express.json()',
+          'hint': '用 express.json() 解析 JSON 请求体'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '处理 POST',
+          'verification': 'req.body',
+          'hint': '从 req.body 获取请求参数'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '验证数据',
+          'verification': 'if (!req.body',
+          'hint': '验证请求体数据的完整性'
          }
         ],
         variations: [
@@ -1173,24 +1173,24 @@ app.listen(3000)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '自定义错误类',
+          'verification': 'class AppError',
+          'hint': '创建带状态码的错误类'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '错误中间件',
+          'verification': 'err.status',
+          'hint': '定义 4 参数错误处理中间件'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '统一响应',
+          'verification': 'res.status(err.status)',
+          'hint': '返回统一的错误响应格式'
          }
         ],
         variations: [
@@ -1340,24 +1340,24 @@ module.exports = { User, Message }`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 Schema',
+          'verification': 'new Schema',
+          'hint': '用 Mongoose Schema 定义数据结构'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建模型',
+          'verification': 'mongoose.model',
+          'hint': '用 mongoose.model 注册模型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '连接数据库',
+          'verification': 'mongoose.connect',
+          'hint': '连接 MongoDB 数据库'
          }
         ],
         variations: [
@@ -1594,24 +1594,24 @@ module.exports = router`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建用户',
+          'verification': 'User.create',
+          'hint': '用 create 方法添加用户'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '查询用户列表',
+          'verification': 'User.find',
+          'hint': '用 find 查询所有用户'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '更新和删除',
+          'verification': 'User.findByIdAndUpdate',
+          'hint': '实现用户信息修改和删除'
          }
         ],
         variations: [
@@ -1804,24 +1804,24 @@ app.get('/api/profile', auth, (req, res) => {
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '签名 Token',
+          'verification': 'jwt.sign',
+          'hint': '用 jwt.sign 签名生成 Token'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '验证 Token',
+          'verification': 'jwt.verify',
+          'hint': '用 jwt.verify 验证 Token 有效性'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '登录端点',
+          'verification': 'bcrypt.compare',
+          'hint': '验证密码后返回 JWT Token'
          }
         ],
         variations: [
@@ -1969,24 +1969,24 @@ app.put('/api/posts/:id/review', auth, authorize('admin', 'moderator'), reviewPo
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '角色中间件',
+          'verification': 'req.user.role',
+          'hint': '检查用户角色字段'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '权限校验',
+          'verification': 'if (role !==',
+          'hint': '在中间件中判断角色权限'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '白名单路由',
+          'verification': 'adminOnly',
+          'hint': '为管理路由添加角色限制'
          }
         ],
         variations: [
@@ -2155,24 +2155,24 @@ server.listen(8080)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 WS 服务器',
+          'verification': 'require(\'ws\')',
+          'hint': '导入 ws 库创建 WebSocket 服务'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '监听连接',
+          'verification': 'connection',
+          'hint': '监听 connection 事件处理新连接'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '广播消息',
+          'verification': 'clients.forEach',
+          'hint': '遍历所有客户端广播消息'
          }
         ],
         variations: [
@@ -2362,24 +2362,24 @@ server.listen(3000)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 io 实例',
+          'verification': 'Server(httpServer)',
+          'hint': '创建 Socket.io 服务器实例'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '房间管理',
+          'verification': 'socket.join',
+          'hint': '用 join 方法加入聊天房间'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '房间广播',
+          'verification': 'io.to(room)',
+          'hint': '向指定房间广播消息'
          }
         ],
         variations: [
@@ -2641,24 +2641,24 @@ server.listen(3000)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+                microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '整合 HTTP 和 WS',
+          'verification': 'http.createServer',
+          'hint': '创建 HTTP 服务器同时提供 HTTP 和 WebSocket'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'WebSocket 鉴权',
+          'verification': 'socket.middleware',
+          'hint': '在 WebSocket 连接中验证 JWT Token'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '消息存储广播',
+          'verification': 'socket.on("message")',
+          'hint': '接收客户端消息并持久化广播'
          }
         ],
         variations: [
@@ -2711,6 +2711,26 @@ server.listen(3000)`,
               cognitiveLoad: 'low',
               dependsOn: ['node-15'],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建 Express 应用',
+                  'verification': 'require(\'express\')',
+                  'hint': '创建 Express 实例并配置中间件'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建 WS 服务',
+                  'verification': 'require(\'ws\')',
+                  'hint': '创建 WebSocket 服务器实例'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '配置项目结构',
+                  'verification': 'routers',
+                  'hint': '创建路由和中间件目录'
+                }
+              ],
               variations: [
                 {
                   name: 'Fastify',
@@ -2762,6 +2782,26 @@ server.listen(3000)`,
                 {
                   pattern: 'module.exports',
                   explanation: 'Node.js 使用 module.exports 导出模块内容'
+                }
+              ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '用户注册',
+                  'verification': 'User.create',
+                  'hint': '创建用户注册接口'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '用户登录',
+                  'verification': 'jwt.sign',
+                  'hint': '创建登录并返回 JWT Token'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '消息历史',
+                  'verification': 'Message.find',
+                  'hint': '实现消息历史查询接口'
                 }
               ],
               variations: [
@@ -2817,6 +2857,26 @@ server.listen(3000)`,
                   explanation: 'WebSocket 收到的是 Buffer，需要 toString() 再 JSON.parse'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '连接管理',
+                  'verification': 'wss.on("connection")',
+                  'hint': '管理 WebSocket 客户端连接'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '消息广播',
+                  'verification': 'ws.send',
+                  'hint': '向所有连通的客户端广播消息'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '心跳检测',
+                  'verification': 'ping/pong',
+                  'hint': '实现心跳检测机制保持连接'
+                }
+              ],
               variations: [
                 {
                   name: 'Socket.IO',
@@ -2867,6 +2927,26 @@ server.listen(3000)`,
                 {
                   pattern: 'run/all/get',
                   explanation: 'run=插入/更新, all=多行, get=单行'
+                }
+              ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义消息模型',
+                  'verification': 'db.run',
+                  'hint': '用 SQLite 创建消息表'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '插入消息',
+                  'verification': 'db.prepare',
+                  'hint': '将收到的消息存入数据库'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '历史查询',
+                  'verification': 'db.all',
+                  'hint': '实现消息历史分页查询'
                 }
               ],
               variations: [
@@ -2921,6 +3001,26 @@ server.listen(3000)`,
                   explanation: '未授权应返回 401 状态码'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': 'JWT 中间件',
+                  'verification': 'jwt.verify',
+                  'hint': '创建 JWT 验证中间件保护路由'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '更新用户',
+                  'verification': 'User.findByIdAndUpdate',
+                  'hint': '实现用户信息更新接口'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '用户列表',
+                  'verification': 'User.find',
+                  'hint': '实现管理员用户列表查询'
+                }
+              ],
               variations: [
                 {
                   name: 'Passport.js',
@@ -2966,6 +3066,26 @@ server.listen(3000)`,
                 'node-20'
               ],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': 'WS Token 验证',
+                  'verification': 'wss.on("connection")',
+                  'hint': '在 WebSocket 连接时验证 Token'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '速率限制',
+                  'verification': 'rateLimit',
+                  'hint': '添加 API 速率限制中间件'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '整合路由',
+                  'verification': 'app.use',
+                  'hint': '整合所有路由和中间件'
+                }
+              ],
               variations: [
                 {
                   name: 'gRPC',
@@ -3018,6 +3138,26 @@ server.listen(3000)`,
                   explanation: 'Supertest 请求要 await 等待返回'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '测试 REST 端点',
+                  'verification': 'request(app)',
+                  'hint': '用 Supertest 测试 HTTP 接口'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '测试认证',
+                  'verification': 'set("Authorization")',
+                  'hint': '测试需要 Token 的接口'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '测试 WebSocket',
+                  'verification': 'WebSocket',
+                  'hint': '测试 WebSocket 连接和消息'
+                }
+              ],
               variations: [
                 {
                   name: 'Mocha',
@@ -3061,6 +3201,26 @@ server.listen(3000)`,
                 'node-21'
               ],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '配置 Docker',
+                  'verification': 'Dockerfile',
+                  'hint': '编写 Dockerfile 构建镜像'
+                },
+                {
+                  'id': 'step-2',
+                  'title': 'PM2 进程管理',
+                  'verification': 'ecosystem.config',
+                  'hint': '配置 PM2 进程管理文件'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '健康检查',
+                  'verification': '"/health"',
+                  'hint': '添加健康检查端点'
+                }
+              ],
               variations: [
                 {
                   name: 'Kubernetes',

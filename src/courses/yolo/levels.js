@@ -21,6 +21,7 @@ export const phases = [
         filePath: 'iou.py',
         hints: ["交集 = 重叠矩形面积","分母是并集面积"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解目标检测',verification:'YOLO',hint:'YOLO 是单阶段目标检测算法'},{id:'step-2',title:'安装 YOLOv8',verification:'ultralytics',hint:'pip install ultralytics'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -43,6 +44,7 @@ r.show()`,
         filePath: 'detect.py',
         hints: ["results[0].show() 可视化","model.names 获取类别名"],
         cognitiveLoad: 'medium', dependsOn: ['yolo-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解模型推理',verification:'model.predict',hint:'用 predict 方法对图像进行推理'},{id:'step-2',title:'配置推理参数',verification:'conf=0.5',hint:'调整置信度阈值控制检测结果'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -58,6 +60,7 @@ model.train(data="dataset.yaml", epochs=50, imgsz=640, batch=16, device="cpu")`,
         filePath: 'train.py',
         hints: ["dataset.yaml 定义数据集","device=\"cpu\" 无 GPU 时使用"],
         cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解数据集格式',verification:'data.yaml',hint:'YOLO 标注格式为 txt 文件'},{id:'step-2',title:'配置训练参数',verification:'model.train',hint:'设置 epochs 和 batch size'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -96,6 +99,7 @@ print(cm)`,
         filePath: 'evaluate.py',
         hints: ["model.val() 自动计算 mAP","混淆矩阵可视化分类效果"],
         cognitiveLoad: 'medium', dependsOn: ['yolo-3'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解评估指标',verification:'mAP',hint:'mAP 是目标检测核心评估指标'},{id:'step-2',title:'分析验证结果',verification:'model.val',hint:'用 val 方法计算 mAP 和混淆矩阵'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -126,6 +130,7 @@ cv2.destroyAllWindows()`,
         filePath: 'track.py',
         hints: ["model.track() 替代 predict()","persist=True 保持 ID 连续性"],
         cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解目标跟踪',verification:'track',hint:'跟踪为每一帧分配唯一 ID'},{id:'step-2',title:'配置跟踪器',verification:'persist=True',hint:'设置 persist 保持跨帧的跟踪 ID'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }
@@ -153,6 +158,7 @@ results[0].show()`,
         filePath: 'export.py',
         hints: ["format=\"onnx\" 跨平台格式","half=True FP16 减小体积"],
         cognitiveLoad: 'medium', dependsOn: ['yolo-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解模型导出',verification:'export',hint:'导出为 ONNX/TensorRT 加速推理'},{id:'step-2',title:'配置导出格式',verification:'format=',hint:'选择 onnx 或 engine 格式'}],
         docLinks: [
         { title: 'Ultralytics YOLO 文档', url: 'https://docs.ultralytics.com/' },
         { title: 'YOLOv8 快速入门', url: 'https://docs.ultralytics.com/quickstart/' }

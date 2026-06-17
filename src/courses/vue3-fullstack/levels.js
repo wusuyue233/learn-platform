@@ -526,7 +526,11 @@ const password = ref('')
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '定义 Card 组件', verification: 'Card', hint: '定义带插槽的 Card 组件' },
+          { id: 'step-2', title: '使用 slot 插槽', verification: '<slot', hint: '在 Card 组件内放置 <slot> 标签' },
+          { id: 'step-3', title: '传递插槽内容', verification: '<Card>', hint: '用 Card 包裹需要插入的内容' }
+        ],
         variations: [{name: '具名插槽', description: '<slot name="header"> 配合 v-slot'}],
         transferTasks: [{task: '封装表格组件，具名插槽自定义列', target: '掌握高阶组件'}],
         docLinks: [
@@ -630,7 +634,11 @@ const totalPrice = computed(() =>
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '定义响应式数据', verification: 'ref(', hint: '创建商品价格和数量数据' },
+          { id: 'step-2', title: '导入计算属性', verification: 'computed(', hint: '用 computed 计算购物车总价' },
+          { id: 'step-3', title: '绑定计算结果', verification: 'totalPrice', hint: '模板中显示 totalPrice 计算结果' }
+        ],
         variations: [{name: '方法调用', description: 'computed 有缓存，方法每次重新计算'}],
         transferTasks: [{task: '实现购物车总价含优惠券折扣', target: '掌握 computed 组合'}],
         docLinks: [
@@ -722,7 +730,11 @@ watch(keyword, (val) => {
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '创建搜索关键词', verification: 'ref(', hint: '用 ref 定义搜索输入框关键词' },
+          { id: 'step-2', title: '监听输入变化', verification: 'watch(', hint: '用 watch 监听搜索词变化' },
+          { id: 'step-3', title: '实现搜索防抖', verification: 'setTimeout', hint: '用 setTimeout 延迟搜索请求' }
+        ],
         variations: [{name: 'watchEffect', description: 'watchEffect 自动追踪依赖'}],
         transferTasks: [{task: '实现搜索防抖请求 API', target: '掌握 watch 异步'}],
         docLinks: [
@@ -812,7 +824,11 @@ onMounted(() => {
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '导入生命周期钩子', verification: 'import.*onMounted', hint: '从 vue 导入 onMounted' },
+          { id: 'step-2', title: '定义异步加载函数', verification: 'async function', hint: '定义数据加载的异步函数' },
+          { id: 'step-3', title: '组件挂载时加载', verification: 'onMounted(', hint: '在 onMounted 中调用加载函数' }
+        ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
         docLinks: [
@@ -894,7 +910,11 @@ const emit = defineEmits(['update'])
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-3'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '父组件传递属性', verification: ':', hint: '父组件用 :xxx 绑定属性传值' },
+          { id: 'step-2', title: '子组件接收 props', verification: 'defineProps', hint: '子组件用 defineProps 接收数据' },
+          { id: 'step-3', title: '子组件 emit 事件', verification: 'defineEmits', hint: '用 defineEmits 声明并触发事件' }
+        ],
         variations: [{name: '类型标注', description: 'defineProps<{ msg: string }>() TS 泛型'}],
         transferTasks: [{task: '封装表单输入组件实现双向绑定', target: '掌握组件通信'}],
         docLinks: [
@@ -968,7 +988,11 @@ const theme = inject('theme')
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-10'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: 'provide 提供数据', verification: 'provide(', hint: '祖先组件用 provide 提供共享数据' },
+          { id: 'step-2', title: 'inject 注入数据', verification: 'inject(', hint: '后代组件用 inject 注入数据' },
+          { id: 'step-3', title: '数据响应式更新', verification: 'ref(', hint: 'provide 的值应该是 ref 响应式数据' }
+        ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
         docLinks: [
@@ -1060,7 +1084,11 @@ export default createRouter({
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '创建路由实例', verification: 'createRouter', hint: '用 createRouter 创建路由实例' },
+          { id: 'step-2', title: '定义路由表', verification: 'routes:', hint: '配置 path 和 component 映射关系' },
+          { id: 'step-3', title: '渲染路由页面', verification: '<router-view>', hint: '用 router-view 渲染匹配的组件' }
+        ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
         docLinks: [
@@ -1146,7 +1174,11 @@ const userId = route.params.id
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-12'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '配置动态路由参数', verification: ':', hint: '用 :userId 定义动态路由参数' },
+          { id: 'step-2', title: '获取路由参数', verification: 'useRoute(', hint: '用 useRoute 获取当前路由信息' },
+          { id: 'step-3', title: '加载用户数据', verification: 'route.params', hint: '从 params 中提取用户 ID 并加载' }
+        ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
         docLinks: [
@@ -1228,7 +1260,11 @@ export const useUserStore = defineStore('user', () => {
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '定义 Pinia store', verification: 'defineStore', hint: '用 defineStore 定义全局状态管理' },
+          { id: 'step-2', title: '声明状态和方法', verification: 'state:', hint: '在 state 中定义用户数据字段' },
+          { id: 'step-3', title: '组件中使用 store', verification: 'useUserStore', hint: '在组件中用 useUserStore 访问状态' }
+        ],
         variations: [{name: '选项式', description: 'Options API 风格与 Vuex 迁移平滑'}],
         transferTasks: [{task: '购物车 + 用户状态迁移到 Pinia', target: '掌握全局状态管理'}],
         docLinks: [
@@ -1349,7 +1385,11 @@ export const useCounterStore = defineStore('counter', () => {
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-14'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '订阅状态变化', verification: '$subscribe', hint: '用 $subscribe 监听 store 变化' },
+          { id: 'step-2', title: '保存到本地存储', verification: 'localStorage.setItem', hint: '将状态序列化保存到 localStorage' },
+          { id: 'step-3', title: '初始化时恢复', verification: 'localStorage.getItem', hint: 'APP 启动时从 localStorage 恢复状态' }
+        ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
         docLinks: [
@@ -1446,7 +1486,11 @@ const vFocus = {
         cognitiveLoad: 'high',
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '注册自定义指令', verification: 'directive(', hint: '用 app.directive 注册自定义指令' },
+          { id: 'step-2', title: '实现自动聚焦', verification: 'el.focus()', hint: '在 mounted 钩子中执行焦点操作' },
+          { id: 'step-3', title: '在模板中使用', verification: 'v-focus', hint: '在 input 元素上使用 v-focus 指令' }
+        ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
         docLinks: [
@@ -1545,7 +1589,11 @@ export function useMousePosition() {
         cognitiveLoad: 'high',
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-9'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '定义组合式函数', verification: 'function useMouse', hint: '创建以 use 开头的组合式函数' },
+          { id: 'step-2', title: '监听鼠标事件', verification: 'mousemove', hint: '监听 document 的鼠标移动事件' },
+          { id: 'step-3', title: '返回响应式坐标', verification: 'return {', hint: '将 x/y 坐标返回给组件使用' }
+        ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
         docLinks: [
@@ -1623,7 +1671,11 @@ const HeavyPage = defineAsyncComponent({
         cognitiveLoad: 'high',
         dependsOn: ['vue3-1', 'vue3-12'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '导入异步组件函数', verification: 'defineAsyncComponent', hint: '从 vue 导入异步组件功能' },
+          { id: 'step-2', title: '配置路由懒加载', verification: 'import(', hint: '用动态 import 实现组件懒加载' },
+          { id: 'step-3', title: '注册异步组件', verification: 'component:', hint: '在 components 选项中注册异步组件' }
+        ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
         transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}],
         docLinks: [
@@ -1713,7 +1765,11 @@ function updateData() {
         cognitiveLoad: 'high',
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-7'],
         commonMistakes: [],
-        microSteps: [],
+                 microSteps: [
+          { id: 'step-1', title: '使用 shallowRef', verification: 'shallowRef', hint: '用 shallowRef 代替 ref 减少深层代理' },
+          { id: 'step-2', title: '静态内容缓存', verification: 'v-once', hint: '静态内容添加 v-once 指令避免重复渲染' },
+          { id: 'step-3', title: '计算属性缓存', verification: 'computed(', hint: '用 computed 缓存需要计算的数据结果' }
+        ],
         variations: [{name: 'reactive', description: 'reactive() 用于对象类型'}],
         transferTasks: [{task: '创建计数器 + 待办列管理多 ref', target: '掌握多状态管理'}],
         docLinks: [
@@ -1777,7 +1833,11 @@ export default defineConfig({
           { pattern: 'target:', explanation: '代理 target 需要写完整 URL（含协议和端口）' },
           { pattern: 'changeOrigin: true', explanation: '跨域代理必须设置 changeOrigin 为 true' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '创建 Vite 项目', verification: 'npm create vite', hint: '用 Vite 脚手架创建 Vue3 项目' },
+         { id: 'step-2', title: '安装必要依赖', verification: 'npm install', hint: '安装 vue-router 和 pinia 依赖' },
+         { id: 'step-3', title: '配置基础路由', verification: 'createRouter', hint: '创建路由实例并挂载到应用' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -1866,7 +1926,11 @@ export default router`
         commonMistakes: [
           { pattern: 'createWebHashHistory', explanation: '电商项目用 createWebHistory 更标准，hash 模式不利于 SEO' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '定义页面路由表', verification: 'routes', hint: '定义所有业务页面的路由映射' },
+         { id: 'step-2', title: '创建主布局组件', verification: '<router-view>', hint: '布局组件包含导航区和路由出口' },
+         { id: 'step-3', title: '配置嵌套路由', verification: 'children:', hint: '用 children 实现嵌套页面结构' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -1971,7 +2035,11 @@ export const useUserStore = defineStore('user', () => {
         commonMistakes: [
           { pattern: 'defineStore("product", {', explanation: '选项式 API 的 state 必须是函数返回对象，不是直接对象' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '管理商品状态', verification: 'defineStore.*product', hint: '创建商品列表和分类的 store' },
+         { id: 'step-2', title: '管理购物车状态', verification: 'defineStore.*cart', hint: '创建购物车增删改查的 store' },
+         { id: 'step-3', title: '管理用户状态', verification: 'defineStore.*user', hint: '创建用户登录信息和权限的 store' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2055,7 +2123,11 @@ onMounted(() => store.fetchProducts())
         commonMistakes: [
           { pattern: 'product-list', explanation: 'CSS class 用 kebab-case 命名' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '获取商品列表', verification: 'fetch(', hint: '从后端 API 获取商品列表数据' },
+         { id: 'step-2', title: '渲染商品卡片', verification: 'v-for', hint: '用 v-for 循环渲染商品卡片网格' },
+         { id: 'step-3', title: '添加加载状态', verification: 'loading', hint: '请求数据时显示加载中转圈效果' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2124,7 +2196,11 @@ onMounted(loadProduct)
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-proj-3', 'vue3-proj-4'],
         commonMistakes: [],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '获取商品 ID', verification: 'useRoute', hint: '从路由参数获取商品唯一 ID' },
+         { id: 'step-2', title: '请求商品详情', verification: 'fetch(', hint: '用商品 ID 请求后端详情接口' },
+         { id: 'step-3', title: '渲染商品信息', verification: 'v-if', hint: '数据到达后渲染商品图片和描述' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2188,7 +2264,11 @@ const user = useUserStore()
         commonMistakes: [
           { pattern: 'v-model="item.quantity"', explanation: '数字输入框用 v-model.number 修饰符确保类型正确' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '显示购物车列表', verification: 'cartStore', hint: '从购物车 store 获取商品列表' },
+         { id: 'step-2', title: '调节商品数量', verification: 'increase', hint: '点击加减按钮改变商品数量' },
+         { id: 'step-3', title: '计算购物车总价', verification: 'computed', hint: '用计算属性汇总所有商品价格' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2267,7 +2347,11 @@ async function handleLogin() {
         commonMistakes: [
           { pattern: '@submit="handleLogin"', explanation: '表单提交要用 @submit.prevent 阻止页面刷新' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '创建登录表单', verification: 'v-model', hint: '用 v-model 绑定用户名和密码输入' },
+         { id: 'step-2', title: '调用登录接口', verification: 'axios.post', hint: '发送登录请求获取 JWT Token' },
+         { id: 'step-3', title: '持久化登录状态', verification: 'localStorage.setItem', hint: '将 Token 保存到 localStorage' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2354,7 +2438,11 @@ async function submitOrder() {
         commonMistakes: [
           { pattern: 'cart.items', explanation: '提交前确认购物车不为空' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '收集收货地址', verification: 'address', hint: '表单绑定收货人地址电话信息' },
+         { id: 'step-2', title: '确认商品清单', verification: 'cartStore', hint: '展示购物车待结算的商品列表' },
+         { id: 'step-3', title: '提交创建订单', verification: 'createOrder', hint: '调用订单 API 提交并清空购物车' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2444,7 +2532,11 @@ onMounted(async () => {
         cognitiveLoad: 'medium',
         dependsOn: ['vue3-proj-8'],
         commonMistakes: [],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '获取订单列表', verification: 'fetch(', hint: '从 API 获取当前用户订单数据' },
+         { id: 'step-2', title: '按状态筛选', verification: 'filter', hint: '根据订单状态筛选显示列表' },
+         { id: 'step-3', title: '跳转订单详情', verification: 'router.push', hint: '点击订单跳转到详情页面' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
@@ -2520,7 +2612,11 @@ onMounted(() => {
         commonMistakes: [
           { pattern: 'Bearer', explanation: 'Authorization header 格式为 "Bearer <token>"，注意 Bearer 后有一个空格' }
         ],
-        variations: [],
+        microSteps: [
+         { id: 'step-1', title: '配置请求拦截器', verification: 'axios.interceptors', hint: '配置全局请求和响应拦截器' },
+         { id: 'step-2', title: '注册全局插件', verification: 'createPinia', hint: '在 APP 入口注册 Pinia 和 Router' },
+         { id: 'step-3', title: '联调验证流程', verification: 'router', hint: '确保页面跳转和数据流完整正确' }
+        ],        variations: [],
         transferTasks: [],
         docLinks: [
         { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },

@@ -94,21 +94,21 @@ export default HelloWorld`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义函数组件',
+          'verification': 'function HelloWorld',
+          'hint': '用 function 关键字定义 HelloWorld 组件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '返回 JSX',
+          'verification': 'return <div>',
+          'hint': '在函数中 return JSX 元素'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '导出组件',
+          'verification': 'export default',
+          'hint': '用 export default 导出组件'
          }
         ],
         variations: [
@@ -213,21 +213,21 @@ export default UserCard`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义组件函数',
+          'verification': 'function UserCard',
+          'hint': '定义 UserCard 函数组件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '解构 props',
+          'verification': '{ name, age }',
+          'hint': '在函数参数中解构 name 和 age'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '渲染数据',
+          'verification': '{name} - {age}',
+          'hint': '在 JSX 中显示 name 和 age'
          }
         ],
         variations: [
@@ -345,21 +345,21 @@ export default Counter`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 useState',
+          'verification': 'import.*useState',
+          'hint': '从 react 导入 useState'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '声明状态',
+          'verification': 'useState(0)',
+          'hint': '用 useState(0) 声明 count 状态'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '更新状态',
+          'verification': 'setCount',
+          'hint': '按钮点击时调用 setCount 更新数值'
          }
         ],
         variations: [
@@ -484,21 +484,21 @@ export default FruitList`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '准备数据',
-          'verification': 'const',
-          'hint': '定义数组'
+          'title': '准备数据数组',
+          'verification': 'const fruits',
+          'hint': '定义水果列表数据'
          },
          {
           'id': 'step-2',
-          'title': '链式操作',
-          'verification': '.filter',
-          'hint': '用 filter'
+          'title': '用 map 遍历',
+          'verification': '.map(',
+          'hint': '用 map 方法遍历数组返回 JSX'
          },
          {
           'id': 'step-3',
-          'title': '转换数据',
-          'verification': '.map',
-          'hint': '用 map 转换'
+          'title': '添加唯一 key',
+          'verification': 'key={fruit}',
+          'hint': '为每个 li 元素添加唯一的 key 属性'
          }
         ],
         variations: [
@@ -627,21 +627,21 @@ export default LoginStatus`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明登录状态',
+          'verification': 'useState(false)',
+          'hint': '用 useState(false) 管理 isLoggedIn'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '条件渲染',
+          'verification': 'isLoggedIn ?',
+          'hint': '用三元表达式根据状态显示不同内容'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '切换按钮',
+          'verification': 'setIsLoggedIn',
+          'hint': '按钮点击时切换 isLoggedIn 的值'
          }
         ],
         variations: [
@@ -790,21 +790,21 @@ export default Timer`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入 useEffect',
+          'verification': 'import.*useEffect',
+          'hint': '从 react 导入 useEffect'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建定时器',
+          'verification': 'setInterval',
+          'hint': '用 setInterval 每秒更新 seconds'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '返回清理函数',
+          'verification': 'clearInterval',
+          'hint': '返回 clearInterval 清理函数防内存泄漏'
          }
         ],
         variations: [
@@ -943,21 +943,21 @@ export default AutoFocusInput`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 useRef',
+          'verification': 'useRef(null)',
+          'hint': '用 useRef(null) 创建输入框引用'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '绑定 ref 到 input',
+          'verification': 'ref={inputRef}',
+          'hint': '在 input 元素上添加 ref={inputRef}'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '聚焦输入框',
+          'verification': '.focus()',
+          'hint': '点击按钮时调用 inputRef.current.focus()'
          }
         ],
         variations: [
@@ -1114,21 +1114,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 Context',
+          'verification': 'createContext(',
+          'hint': '用 createContext 创建 ThemeContext'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'Provider 提供数据',
+          'verification': 'ThemeContext.Provider',
+          'hint': '用 Provider value={theme} 传递主题'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'useContext 消费',
+          'verification': 'useContext(ThemeContext)',
+          'hint': '子组件中用 useContext 获取当前主题'
          }
         ],
         variations: [
@@ -1308,21 +1308,21 @@ export default TodoApp`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 reducer 函数',
+          'verification': 'function reducer',
+          'hint': '创建接收 state 和 action 的纯函数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '处理 add 操作',
+           'verification': "case 'add'",
+          'hint': 'add 时展开数组追加新待办'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '处理 remove 操作',
+           'verification': "case 'remove'",
+          'hint': 'remove 时用 filter 过滤掉指定索引'
          }
         ],
         variations: [
@@ -1483,21 +1483,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 Hook 函数',
+          'verification': 'function useCounter',
+          'hint': '创建以 use 开头的自定义 Hook'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '封装操作方法',
+          'verification': 'increment',
+          'hint': '定义 increment/decrement/reset 方法'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '返回状态和方法',
+          'verification': 'return {',
+          'hint': '返回 { count, increment, decrement, reset }'
          }
         ],
         variations: [
@@ -1666,21 +1666,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '导入路由组件',
+          'verification': 'react-router-dom',
+          'hint': '从 react-router-dom 导入所需组件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '配置 Route 规则',
+          'verification': 'Route path="/"',
+          'hint': '在 Routes 中定义 path 和 element 映射'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '用 Link 导航',
+          'verification': 'Link to=',
+          'hint': '用 Link 组件实现页面间导航切换'
          }
         ],
         variations: [
@@ -1848,21 +1848,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '用 const 声明',
-          'verification': 'const',
-          'hint': '尝试 const 声明'
+          'title': '添加 Outlet 出口',
+          'verification': '<Outlet />',
+          'hint': '在父组件中放置 Outlet 渲染子路由'
          },
          {
           'id': 'step-2',
-          'title': '用 let 声明',
-          'verification': 'let',
-          'hint': '尝试 let 声明'
+          'title': '配置嵌套子路由',
+          'verification': 'path="profile"',
+          'hint': '子 Route 嵌套在父 Route 内，path 不以 / 开头'
          },
          {
           'id': 'step-3',
-          'title': '验证输出',
-          'verification': 'console.log',
-          'hint': '打印变量值'
+          'title': '添加导航链接',
+          'verification': 'Link to="/dashboard/profile"',
+          'hint': '用完整路径导航到子路由'
          }
         ],
         variations: [
@@ -2034,21 +2034,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建 Zustand store',
+          'verification': 'create(set =>',
+          'hint': '用 create 创建全局计数器 store'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义状态和方法',
+          'verification': 'count: 0',
+          'hint': '定义 count 状态和 increment 方法'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '在组件中消费',
+          'verification': 'useCounterStore',
+          'hint': '组件中调用 useCounterStore 读取状态'
          }
         ],
         variations: [
@@ -2237,21 +2237,21 @@ export default RegisterForm`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明表单状态',
+          'verification': 'formData',
+          'hint': '用 useState 管理 formData 对象'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '绑定 onChange 处理',
+          'verification': 'handleChange',
+          'hint': '用 [e.target.name] 动态更新对应字段'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '绑定表单提交',
+          'verification': 'onSubmit',
+          'hint': '表单绑定 onSubmit 阻止默认行为并处理数据'
          }
         ],
         variations: [
@@ -2448,21 +2448,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '继承 React.Component',
+          'verification': 'extends React.Component',
+          'hint': '错误边界必须是 class 组件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '初始化错误状态',
+          'verification': 'hasError: false',
+          'hint': 'constructor 中设置初始错误状态'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '捕获渲染错误',
+          'verification': 'getDerivedStateFromError',
+          'hint': '实现静态方法捕获子组件错误'
          }
         ],
         variations: [
@@ -2636,21 +2636,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义子组件',
+          'verification': 'function Child',
+          'hint': '定义一个简单的子组件'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '用 memo 包裹',
+          'verification': 'React.memo(',
+          'hint': '用 React.memo 包裹子组件避免不必要渲染'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
+          'title': '验证渲染次数',
           'verification': 'console.log',
-          'hint': '输出验证'
+          'hint': '添加日志观察子组件是否重新渲染'
          }
         ],
         variations: [
@@ -2817,21 +2817,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'useMemo 缓存计算',
+          'verification': 'useMemo(',
+          'hint': '缓存 count * 2 的计算结果'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'useCallback 缓存函数',
+          'verification': 'useCallback(',
+          'hint': '缓存 handleClick 函数引用'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '传递给 memo 子组件',
+          'verification': 'MemoChild',
+          'hint': '将缓存的函数传给 memo 子组件'
          }
         ],
         variations: [
@@ -3030,21 +3030,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '计算可见范围',
+          'verification': 'Math.floor(scrollTop / itemHeight)',
+          'hint': '根据滚动位置计算起始索引'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'slice 截取数据',
+          'verification': '.slice(',
+          'hint': '用 slice 截取可视范围的数据'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'translateY 偏移定位',
+          'verification': 'translateY(',
+          'hint': '用 transform translateY 定位渲染区域'
          }
         ],
         variations: [
@@ -3214,21 +3214,21 @@ export default App`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'lazy 懒加载组件',
+          'verification': 'lazy(() => import(',
+          'hint': '用 React.lazy 包装动态导入'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'Suspense 包裹',
+          'verification': '<Suspense',
+          'hint': '用 Suspense 包裹路由组件'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '设置 fallback',
+          'verification': 'fallback={',
+          'hint': '设置加载中的 fallback UI 内容'
          }
         ],
         variations: [
@@ -3457,21 +3457,21 @@ export default ChatRoom`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '管理消息列表',
+          'verification': 'useState',
+          'hint': '用 useState 管理 messages 状态'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '实现自动滚动',
+          'verification': 'scrollIntoView',
+          'hint': 'useRef + useEffect 新消息自动滚动到底部'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '处理消息发送',
+          'verification': 'handleSend',
+          'hint': '实现发送消息和清空输入框'
          }
         ],
         variations: [
@@ -3536,6 +3536,26 @@ export default ChatRoom`,
                   target: '掌握路由进阶用法'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '创建路由配置',
+          'verification': 'createBrowserRouter',
+          'hint': '使用 createBrowserRouter 创建路由'
+         },
+         {
+          'id': 'step-2',
+          'title': '配置 RouterProvider',
+          'verification': 'RouterProvider',
+          'hint': '用 RouterProvider 提供路由上下文'
+         },
+         {
+          'id': 'step-3',
+          'title': '定义页面组件',
+          'verification': 'element={<ChatRoom />}',
+          'hint': '定义路径和页面组件的映射规则'
+         }
+        ],
             },
             {
               id: 'react-22',
@@ -3591,6 +3611,26 @@ export default ChatRoom`,
                   target: '掌握条件渲染'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '创建 ChatInput 组件',
+          'verification': 'function ChatInput',
+          'hint': '创建独立的聊天输入组件'
+         },
+         {
+          'id': 'step-2',
+          'title': '受控表单输入',
+          'verification': 'useState(',
+          'hint': '用 useState 管理输入框内容'
+         },
+         {
+          'id': 'step-3',
+          'title': '回调传递消息',
+          'verification': 'onSend',
+          'hint': '通过 onSend prop 将消息传给父组件'
+         }
+        ],
             },
             {
               id: 'react-23',
@@ -3643,6 +3683,26 @@ export default ChatRoom`,
                   target: '掌握 reducer 模式扩展'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义消息 reducer',
+          'verification': 'function messageReducer',
+          'hint': '创建消息状态管理的 reducer 函数'
+         },
+         {
+          'id': 'step-2',
+          'title': '处理 ADD_MESSAGE',
+           'verification': "case 'ADD_MESSAGE'",
+          'hint': '展开数组追加新消息'
+         },
+         {
+          'id': 'step-3',
+          'title': '处理 DELETE_MESSAGE',
+           'verification': "case 'DELETE_MESSAGE'",
+          'hint': '用 filter 删除指定消息'
+         }
+        ],
             },
             {
               id: 'react-24',
@@ -3696,6 +3756,26 @@ export default ChatRoom`,
                   target: '掌握无限滚动模式'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '创建底部 ref',
+          'verification': 'useRef(null)',
+          'hint': '用 useRef 创建底部元素引用'
+         },
+         {
+          'id': 'step-2',
+          'title': 'useEffect 自动滚动',
+          'verification': 'scrollIntoView',
+          'hint': 'messages 变化时自动滚到底部'
+         },
+         {
+          'id': 'step-3',
+          'title': '绑定 ref 到 div',
+          'verification': 'ref={bottomRef}',
+          'hint': '将 ref 绑定到消息列表底部占位 div'
+         }
+        ],
             },
             {
               id: 'react-25',
@@ -3748,6 +3828,26 @@ export default ChatRoom`,
                   target: '掌握 UI 与状态同步'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '创建 WebSocket 连接',
+          'verification': 'new WebSocket',
+          'hint': '在 useEffect 中创建 WebSocket 实例'
+         },
+         {
+          'id': 'step-2',
+          'title': '接收消息',
+          'verification': 'onmessage',
+          'hint': '监听 onmessage 事件解析 JSON 数据'
+         },
+         {
+          'id': 'step-3',
+          'title': '清理连接',
+          'verification': 'onclose',
+          'hint': '组件卸载时关闭连接并清理重连定时器'
+         }
+        ],
             },
             {
               id: 'react-26',
@@ -3802,6 +3902,26 @@ export default ChatRoom`,
                   target: '掌握派生状态计算'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '创建 UserContext',
+          'verification': 'createContext',
+          'hint': '用 createContext 创建用户上下文'
+         },
+         {
+          'id': 'step-2',
+          'title': 'Provider 管理状态',
+          'verification': 'UserContext.Provider',
+          'hint': '在 Provider 中管理 user 和 login/logout'
+         },
+         {
+          'id': 'step-3',
+          'title': 'localStorage 持久化',
+          'verification': 'localStorage',
+          'hint': '登录信息保存到 localStorage 保持登录'
+         }
+        ],
             },
             {
               id: 'react-27',
@@ -3845,6 +3965,26 @@ export default ChatRoom`,
                   target: '掌握功能扩展流程'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '调用 useWebSocket',
+          'verification': 'useWebSocket(',
+          'hint': '连接 WebSocket 并处理接收的消息'
+         },
+         {
+          'id': 'step-2',
+          'title': 'dispatch 消息更新',
+          'verification': 'dispatch',
+          'hint': '收到消息后 dispatch 到 reducer'
+         },
+         {
+          'id': 'step-3',
+          'title': '整合子组件',
+          'verification': 'ChatInput onSend',
+          'hint': '将 MessageList/ChatInput 组合在一起'
+         }
+        ],
             },
             {
               id: 'react-28',
@@ -3897,6 +4037,26 @@ export default ChatRoom`,
                   target: '掌握 CI/CD 配置'
                 }
               ],
+        microSteps: [
+         {
+          'id': 'step-1',
+          'title': '配置 API 代理',
+           'verification': "'/api'",
+          'hint': '配置 /api 代理到后端服务器'
+         },
+         {
+          'id': 'step-2',
+          'title': '配置 WebSocket 代理',
+           'verification': "'/ws'",
+          'hint': '配置 /ws 代理并设置 ws: true'
+         },
+         {
+          'id': 'step-3',
+          'title': '配置构建选项',
+          'verification': 'outDir',
+          'hint': '设置构建输出目录和 sourcemap'
+         }
+        ],
             }
     ]
   }

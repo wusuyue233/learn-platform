@@ -12,6 +12,7 @@ export const phases = [
         filePath: 'pom.xml',
         hints: ["spring-boot-starter-web 内嵌 Tomcat","mvn spring-boot:run 启动"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解 Maven 结构',verification:'pom.xml',hint:'Maven 用 pom.xml 管理依赖'},{id:'step-2',title:'配置依赖',verification:'dependencies',hint:'在 pom.xml 中添加 Spring Boot 起步依赖'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -34,6 +35,7 @@ public class ProductController {
         filePath: 'src/main/java/com/ecommerce/controller/ProductController.java',
         hints: ["@RestController 标记控制器","@PathVariable 获取 URL 参数"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解 REST 控制器',verification:'@RestController',hint:'@RestController 处理 HTTP 请求'},{id:'step-2',title:'定义 API 端点',verification:'@GetMapping',hint:'用 GetMapping/PostMapping 映射路由'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -58,6 +60,7 @@ public class ProductRepository {
         filePath: 'src/main/java/com/ecommerce/service/ProductService.java',
         hints: ["@Service 标记业务层","DI 容器管理生命周期"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-2'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解依赖注入',verification:'@Autowired',hint:'@Autowired 自动注入 Bean'},{id:'step-2',title:'定义 Service 层',verification:'@Service',hint:'业务逻辑写在 Service 层中'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -79,6 +82,7 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
         filePath: 'src/main/java/com/ecommerce/model/Product.java',
         hints: ["@Id 标记主键","方法名命名查询"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-3'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解 JPA',verification:'@Entity',hint:'@Entity 标注数据库实体类'},{id:'step-2',title:'定义 Repository',verification:'JpaRepository',hint:'继承 JpaRepository 获得 CRUD 方法'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -106,6 +110,7 @@ public class GlobalExceptionHandler {
         filePath: 'src/main/java/com/ecommerce/exception/GlobalExceptionHandler.java',
         hints: ["@ExceptionHandler 指定异常","ResponseEntity.status(404) 自定义状态码"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-4'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解异常处理',verification:'@ExceptionHandler',hint:'统一异常处理避免堆栈泄露'},{id:'step-2',title:'定义全局处理器',verification:'@ControllerAdvice',hint:'用 @ControllerAdvice 全局捕获异常'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -130,6 +135,7 @@ class ProductControllerTest {
         filePath: 'src/test/java/com/ecommerce/controller/ProductControllerTest.java',
         hints: ["@AutoConfigureMockMvc 自动配置 MockMvc","jsonPath(\"$.name\") 断言 JSON 字段"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-5'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解测试',verification:'@SpringBootTest',hint:'@SpringBootTest 加载完整上下文'},{id:'step-2',title:'编写测试用例',verification:'@Test',hint:'用断言验证接口返回值'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -165,6 +171,7 @@ public class SecurityConfig {
         filePath: 'src/main/java/com/ecommerce/config/SecurityConfig.java',
         hints: ["@EnableWebSecurity 开启配置","permitAll() 放行公开路径"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-1'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解安全配置',verification:'SecurityFilterChain',hint:'声明式配置安全过滤链'},{id:'step-2',title:'配置权限规则',verification:'requestMatchers',hint:'配置公开接口和鉴权接口'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -195,6 +202,7 @@ public class JwtUtil {
         filePath: 'src/main/java/com/ecommerce/util/JwtUtil.java',
         hints: ["setSubject 存储用户名","setExpiration 设置 24 小时过期"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-7'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解 JWT 结构',verification:'JWT',hint:'JWT 三部分：Header/Payload/Signature'},{id:'step-2',title:'编写 JWT 工具',verification:'generateToken',hint:'实现生成和验证 Token 的方法'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -224,6 +232,7 @@ public class AuthController {
         filePath: 'src/main/java/com/ecommerce/controller/AuthController.java',
         hints: ["AuthenticationManager 验证身份","返回 JWT Token"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-8'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解认证流程',verification:'Authentication',hint:'登录验证后签发 JWT Token'},{id:'step-2',title:'实现登录接口',verification:'@PostMapping',hint:'接收用户名密码返回 Token'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }
@@ -249,6 +258,7 @@ public class AdminController {
         filePath: 'src/main/java/com/ecommerce/controller/AdminController.java',
         hints: ["@PreAuthorize 方法级别权限控制","hasRole 检查用户角色"],
         cognitiveLoad: 'medium', dependsOn: ['java-spring-9'], commonMistakes: [], variations: [], transferTasks: [],
+        microSteps:[{id:'step-1',title:'理解角色权限',verification:'@PreAuthorize',hint:'基于角色的方法级授权'},{id:'step-2',title:'配置权限注解',verification:"hasRole('ADMIN')",hint:'用 @PreAuthorize 限制接口访问'}],
         docLinks: [
         { title: 'Spring 官方文档', url: 'https://spring.io/projects/spring-boot' },
         { title: 'Spring Initializr', url: 'https://start.spring.io/' }

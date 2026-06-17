@@ -1991,6 +1991,27 @@ users.forEach(user => {
               cognitiveLoad: 'low',
               dependsOn: ['js-15'],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建 HTML 结构',
+                  'verification': 'index.html',
+                  'hint': '编写 HTML 入口文件骨架'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建目录结构',
+                  'verification': 'js/components',
+                  'hint': '在 js/ 下创建 components/ 目录'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '创建数据文件',
+                  'verification': 'articles.js',
+                  'hint': '定义包含文章数据的数组'
+                }
+              ],
+
               variations: [
                 {
                   name: 'SPA 框架',
@@ -2048,6 +2069,27 @@ users.forEach(user => {
                   explanation: '每个事件绑定都需要独立的 addEventListener 调用'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '导入文章数据',
+                  'verification': 'import { articles',
+                  'hint': '从 data 导入文章数据'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '创建文章卡片',
+                  'verification': 'createElement',
+                  'hint': '用 document.createElement 创建卡片'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '添加点击跳转',
+                  'verification': 'location.hash',
+                  'hint': '点击卡片导航到详情'
+                }
+              ],
+
               variations: [
                 {
                   name: '模板引擎',
@@ -2104,6 +2146,27 @@ users.forEach(user => {
                   explanation: '页面首次加载不会触发 hashchange，需要手动调用一次'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '解析 Hash 路由',
+                  'verification': 'parseHash',
+                  'hint': '解析 location.hash 为路由对象'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '路由分发',
+                  'verification': 'if (route.page',
+                  'hint': '根据路由类型渲染不同页面'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '监听路由变化',
+                  'verification': 'hashchange',
+                  'hint': '用 hashchange 事件监听路由切换'
+                }
+              ],
+
               variations: [
                 {
                   name: 'History API',
@@ -2160,6 +2223,27 @@ users.forEach(user => {
                   explanation: 'localStorage 可能被用户禁用或存储满，需要 try/catch'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '读取已存评论',
+                  'verification': 'getItem',
+                  'hint': '用 localStorage.getItem 读取评论'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '添加新评论',
+                  'verification': 'push({',
+                  'hint': '构造评论对象并添加到数组'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '删除评论',
+                  'verification': 'filter',
+                  'hint': '用 filter 过滤掉要删除的评论'
+                }
+              ],
+
               variations: [
                 {
                   name: 'IndexedDB',
@@ -2216,6 +2300,27 @@ users.forEach(user => {
                   explanation: '优先用系统偏好，用户手动切换后覆盖'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '定义 CSS 变量',
+                  'verification': '--bg',
+                  'hint': '在 :root 中定义浅色主题色'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '定义深色主题',
+                  'verification': 'data-theme',
+                  'hint': '用 data-theme 选择器定义深色变量'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '切换主题',
+                  'verification': 'body.dataset.theme',
+                  'hint': '用 JS 切换 body 的 data-theme'
+                }
+              ],
+
               variations: [
                 {
                   name: 'CSS 自定义属性',
@@ -2272,6 +2377,27 @@ users.forEach(user => {
                   explanation: 'reducer 是纯函数，不能修改原 state，要返回新对象'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '实现 createStore',
+                  'verification': 'getState',
+                  'hint': '创建包含 getState/dispatch/subscribe 的 store'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '实现 dispatch',
+                  'verification': 'listeners.forEach',
+                  'hint': 'dispatch 更新状态并通知订阅者'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '实现搜索功能',
+                  'verification': 'keyword',
+                  'hint': '基于 keyword 状态过滤文章列表'
+                }
+              ],
+
               variations: [
                 {
                   name: 'Redux',
@@ -2328,6 +2454,27 @@ users.forEach(user => {
                   explanation: 'rootMargin 提前加载阈值，设为 200px 提前加载避免闪烁'
                 }
               ],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '创建 observer',
+                  'verification': 'IntersectionObserver',
+                  'hint': '用 IntersectionObserver 创建观察器'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '懒加载图片',
+                  'verification': 'img.dataset.src',
+                  'hint': '图片可见时把 data-src 赋给 src'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '清理观察器',
+                  'verification': 'observer.disconnect',
+                  'hint': '组件卸载时断开 observer'
+                }
+              ],
+
               variations: [
                 {
                   name: 'loading="lazy"',
@@ -2377,6 +2524,27 @@ users.forEach(user => {
                 'js-22'
               ],
               commonMistakes: [],
+              microSteps: [
+                {
+                  'id': 'step-1',
+                  'title': '整合主入口',
+                  'verification': 'import',
+                  'hint': '在 app.js 中导入所有组件模块'
+                },
+                {
+                  'id': 'step-2',
+                  'title': '配置 Vite',
+                  'verification': 'base:',
+                  'hint': '设置 vite.config.js 的 base'
+                },
+                {
+                  'id': 'step-3',
+                  'title': '构建发布',
+                  'verification': 'build',
+                  'hint': '运行 npm run build 部署 dist/'
+                }
+              ],
+
               variations: [
                 {
                   name: 'SSG',

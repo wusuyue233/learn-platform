@@ -110,26 +110,26 @@ console.log(typeof name, typeof age, typeof isActive, typeof city)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '声明 string 变量',
+          'verification': ': string',
+          'hint': '给 name 变量添加 string 类型注解'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '声明 number 变量',
+          'verification': ': number',
+          'hint': '给 age 变量添加 number 类型注解'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '声明 boolean 变量',
+          'verification': ': boolean',
+          'hint': '给 isActive 变量添加 boolean 类型注解'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -278,26 +278,26 @@ console.log(user, product)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义接口',
+          'verification': 'interface',
+          'hint': '用 interface 定义用户对象的结构'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义类型别名',
+          'verification': 'type',
+          'hint': '用 type 定义联合类型或别名'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '使用接口',
+          'verification': ': User',
+          'hint': '给变量添加 User 接口类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -430,26 +430,26 @@ doSomething(msg => console.log(msg))`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '参数类型注解',
+          'verification': '(a: number, b: number)',
+          'hint': '为函数参数添加类型注解'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '返回值类型',
+          'verification': ': number',
+          'hint': '在参数列表后标注返回值类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '箭头函数类型',
+          'verification': '=>',
+          'hint': '用 => 定义函数类型签名'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -587,26 +587,26 @@ console.log(person)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义联合类型',
+          'verification': 'string | number',
+          'hint': '用 | 定义可接受多种类型的变量'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义交叉类型',
+          'verification': '&',
+          'hint': '用 & 合并多个类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '类型收窄',
+          'verification': 'typeof',
+          'hint': '用 typeof 判断类型并收窄联合类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -771,26 +771,26 @@ console.log(getErrorMessage("简单错误"))`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'typeof 守卫',
+          'verification': "typeof value === 'string'",
+          'hint': '用 typeof 判断基本类型'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'in 守卫',
+          'verification': "'type' in obj",
+          'hint': '用 in 判断属性是否存在'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '自定义守卫',
+          'verification': 'is Fish',
+          'hint': '用 is 关键字定义谓词返回类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -951,26 +951,26 @@ console.log(num, str, nums, container.getValue())`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义泛型函数',
+          'verification': '<T>',
+          'hint': '在函数名后添加泛型参数 <T>'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '使用泛型参数',
+          'verification': ': T',
+          'hint': '用 T 标注参数或返回值类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '显式指定泛型',
+          'verification': 'identity<string>',
+          'hint': '调用时显式指定泛型类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -1102,26 +1102,26 @@ console.log(getProp(user, "name"))`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'extends 约束',
+          'verification': 'extends',
+          'hint': '用 extends 约束泛型参数'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '约束为对象',
+          'verification': 'extends object',
+          'hint': '将泛型约束为对象类型'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'keyof 约束',
+          'verification': 'keyof T',
+          'hint': '用 keyof T 约束为对象键名'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -1273,26 +1273,26 @@ console.log(user1, user2)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '使用 keyof',
+          'verification': 'keyof',
+          'hint': '用 keyof 获取对象的所有键'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'in 映射',
+          'verification': 'in keyof',
+          'hint': '用 in keyof 遍历所有键'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加修饰符',
+          'verification': 'readonly',
+          'hint': '添加 readonly 或可选修饰符'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -1412,26 +1412,26 @@ console.log(arr)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'extends 条件',
+          'verification': 'extends string',
+          'hint': '用 extends 写条件类型'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '三元类型判断',
+          'verification': '? true : false',
+          'hint': '真分支和假分支都需定义'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'infer 推断',
+          'verification': 'infer',
+          'hint': '用 infer 在条件中推断类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': 'v-show',
@@ -1553,26 +1553,26 @@ console.log(size1, size2, handler)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '模板字面量类型',
+          'verification': '`${string}`',
+          'hint': '用模板字面量语法创建类型'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '联合组合',
+          'verification': "'on' | 'off'",
+          'hint': '用联合类型组合多个字面量'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '模板与泛型',
+          'verification': '`${T}`',
+          'hint': '结合泛型参数生成动态类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -1753,26 +1753,26 @@ console.log(dog.bark())`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义类',
+          'verification': 'class',
+          'hint': '用 class 关键字定义类'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '访问修饰符',
+          'verification': 'private',
+          'hint': '用 private/public/protected 控制访问'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'extends 继承',
+          'verification': 'extends',
+          'hint': '用 extends 实现类继承'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -1930,26 +1930,26 @@ console.log(getStatus(HttpStatus.NotFound))`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义枚举',
+          'verification': 'enum',
+          'hint': '用 enum 关键字定义枚举类型'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '访问枚举成员',
+          'verification': 'Direction.Up',
+          'hint': '通过枚举名.成员名访问'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '字符串枚举',
+          'verification': "Status.Success = 'SUCCESS'",
+          'hint': '枚举成员可以赋字符串值'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -2096,26 +2096,26 @@ declare global {
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '全局类型声明',
+          'verification': 'declare',
+          'hint': '用 declare 声明全局类型'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '模块声明',
+          'verification': "declare module 'lodash'",
+          'hint': '用 declare module 声明第三方模块'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '合并声明',
+          'verification': 'interface',
+          'hint': '同名声明自动合并'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -2274,26 +2274,26 @@ console.log(basic, compact)`,
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': 'Partial',
+          'verification': 'Partial<',
+          'hint': 'Partial 将所有属性变为可选'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': 'Pick 和 Omit',
+          'verification': 'Pick<',
+          'hint': 'Pick 选取指定属性，Omit 排除'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': 'Record',
+          'verification': 'Record<',
+          'hint': 'Record 创建键值映射类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -2500,26 +2500,26 @@ async function getProduct(id: number) {
           'explanation': '注意变量类型正确性'
          }
         ],
-        microSteps: [
+         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '定义 API 响应类型',
+          'verification': 'interface ApiResponse',
+          'hint': '定义泛型响应接口'
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '泛型请求函数',
+          'verification': '<T>',
+          'hint': '请求函数使用泛型参数'
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '类型安全调用',
+          'verification': 'get<User>',
+          'hint': '调用时指定返回类型'
          }
-        ],
+         ],
         variations: [
          {
           'name': '更多用法',
@@ -2570,6 +2570,26 @@ async function getProduct(id: number) {
               cognitiveLoad: 'low',
               dependsOn: ['ts-15'],
               commonMistakes: [],
+         microSteps: [
+         {
+          'id': 'step-1',
+          'title': '初始化项目',
+          'verification': 'npm init',
+          'hint': '用 npm init 创建项目'
+         },
+         {
+          'id': 'step-2',
+          'title': '安装依赖',
+          'verification': 'npm install',
+          'hint': '安装 typescript 和 tsconfig 配置'
+         },
+         {
+          'id': 'step-3',
+          'title': '添加构建脚本',
+          'verification': '"build"',
+          'hint': '在 package.json 中添加构建命令'
+         }
+         ],
               variations: [
                 {
                   name: 'tsup',
@@ -2622,6 +2642,26 @@ async function getProduct(id: number) {
                   explanation: '用 Parameters<T> 提取函数参数类型'
                 }
               ],
+         microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义泛型函数签名',
+          'verification': '<T>',
+          'hint': '定义接收泛型参数的函数'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现通用逻辑',
+          'verification': 'extends',
+          'hint': '用泛型约束实现类型安全逻辑'
+         },
+         {
+          'id': 'step-3',
+          'title': '导出工具函数',
+          'verification': 'export',
+          'hint': '导出工具函数供外部使用'
+         }
+         ],
               variations: [
                 {
                   name: 'lodash',
@@ -2674,6 +2714,26 @@ async function getProduct(id: number) {
                   explanation: 'typeof null === "object"，需额外 null 检查'
                 }
               ],
+         microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义类型谓词',
+          'verification': 'is Fish',
+          'hint': '用 is 关键字定义谓词返回类型'
+         },
+         {
+          'id': 'step-2',
+          'title': '实现守卫函数',
+          'verification': ': value is',
+          'hint': '函数返回类型用 is 谓词'
+         },
+         {
+          'id': 'step-3',
+          'title': '使用守卫',
+          'verification': 'if (isFish(pet))',
+          'hint': '在条件中使用类型守卫收窄类型'
+         }
+         ],
               variations: [
                 {
                   name: 'zod',
@@ -2726,6 +2786,26 @@ async function getProduct(id: number) {
                   explanation: 'infer 只能在条件类型的 extends 子句中使用'
                 }
               ],
+         microSteps: [
+         {
+          'id': 'step-1',
+          'title': '定义映射类型',
+          'verification': 'in keyof',
+          'hint': '用 in keyof 遍历类型属性'
+         },
+         {
+          'id': 'step-2',
+          'title': '条件类型转换',
+          'verification': 'extends',
+          'hint': '根据条件转换属性类型'
+         },
+         {
+          'id': 'step-3',
+          'title': '组合工具类型',
+          'verification': '&',
+          'hint': '用交叉类型组合多个工具类型'
+         }
+         ],
               variations: [
                 {
                   name: 'type-fest',
@@ -2779,6 +2859,26 @@ async function getProduct(id: number) {
                   explanation: 'types 字段指向生成的 .d.ts 文件'
                 }
               ],
+         microSteps: [
+         {
+          'id': 'step-1',
+          'title': '配置 tsconfig',
+          'verification': '"declaration": true',
+          'hint': '开启类型声明文件生成'
+         },
+         {
+          'id': 'step-2',
+          'title': '配置构建输出',
+          'verification': '"outDir"',
+          'hint': '设置编译输出目录为 dist'
+         },
+         {
+          'id': 'step-3',
+          'title': '配置入口文件',
+          'verification': '"main"',
+          'hint': '在 package.json 中设置主入口'
+         }
+         ],
               variations: [
                 {
                   name: 'unpkg/cdn',
