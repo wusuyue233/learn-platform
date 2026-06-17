@@ -93,9 +93,9 @@ print(1 + 2, "result")           # 混合输出`,
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -208,9 +208,9 @@ print(is_student, type(is_student))`,
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -329,9 +329,9 @@ print(result)  # 8`,
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -452,9 +452,9 @@ print(evens)  # [2, 4, 6, 8, 10]`,
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -580,9 +580,9 @@ for student in students:
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       }
     ]
@@ -710,9 +710,9 @@ async def hello():
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -827,9 +827,9 @@ async def get_user(user_id: int):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -946,9 +946,9 @@ async def list_items(page: int = 1, size: int = 10):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -1081,9 +1081,9 @@ async def create_product(product: Product):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       }
     ]
@@ -1216,9 +1216,9 @@ async def get_user(id: int):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -1344,9 +1344,9 @@ async def get_item(item_id: str):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       },
       {
@@ -1482,9 +1482,9 @@ async def process_time(request: Request, call_next):
          }
         ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
       }
     ]
@@ -1538,9 +1538,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1596,9 +1596,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1654,9 +1654,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1712,9 +1712,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1761,9 +1761,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1821,9 +1821,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1879,9 +1879,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             },
             {
@@ -1930,9 +1930,9 @@ async def process_time(request: Request, call_next):
                 }
               ],
         docLinks: [
-        { title: 'Python 3 官方文档', url: 'https://docs.python.org/3/' },
-        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/' },
-        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/tutorial/' }
+        { title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/' },
+        { title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/' },
+        { title: 'FastAPI 入门指南', url: 'https://fastapi.tiangolo.com/zh/tutorial/' }
         ],
             }
     ]
