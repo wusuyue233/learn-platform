@@ -46,19 +46,19 @@ src/
 - `microSteps[]` — `{ id, title, verification, hint }`
 - `variations[]`, `transferTasks[]`, `docLinks[]`
 
-## 课程清单（16门，253关，649 docLinks）
+## 课程清单（16门，253关，780 docLinks）
 | 课程 | 关卡数 | 阶段 | microSteps | docLinks | 验证对齐 |
 |------|--------|------|-----------|----------|---------|
-| vue3-fullstack | 29 | 5 | 全部完成 | 116 | ✅ |
-| python-fastapi | 20 | 4 | 全部完成 | 80 | ✅ |
+| vue3-fullstack | 29 | 5 | 全部完成 | 87 | ✅ |
+| python-fastapi | 20 | 4 | 全部完成 | 60 | ✅ |
 | javascript-basics | 23 | 4 | 全部完成 | 69 | ✅ |
 | nodejs-express | 23 | 5 | 全部完成 | 69 | ✅ (修复27处) |
-| git-basics | 13 | 4 | 全部完成 | 39 | ✅ |
-| react-basics | 28 | 4 | 全部完成 | 84 | ✅ |
-| typescript-basics | 20 | 4 | 全部完成 | 60 | ✅ (修复13处) |
+| git-basics | 13 | 4 | 全部完成 | 52 | ✅ |
+| react-basics | 28 | 4 | 全部完成 | 112 | ✅ |
+| typescript-basics | 20 | 4 | 全部完成 | 80 | ✅ |
 | docker-basics | 10 | 3 | 全部完成 | 30 | ✅ |
-| sql-basics | 15 | 3 | 全部完成 | 45 | ✅ (修复45处占位符) |
-| ci-cd | 6 | 2 | 全部完成 | 18 | ✅ |
+| sql-basics | 15 | 3 | 全部完成 | 60 | ✅ |
+| ci-cd | 6 | 2 | 全部完成 | 19 | ✅ |
 | nginx | 6 | 2 | 全部完成 | 18 | ✅ |
 | yolo | 6 | 2 | 全部完成 | 18 | ✅ |
 | pytorch | 8 | 3 | 全部完成 | 24 | ✅ |
