@@ -84,19 +84,22 @@ CMD ["echo", "Hello Docker"]`,
           'id': 'step-1',
           'title': '选定基础镜像',
           'verification': 'FROM alpine',
-          'hint': 'FROM alpine:latest 指定基础镜像'
+          'hint': 'FROM alpine:latest 指定基础镜像',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-2',
           'title': '添加打印命令',
           'verification': 'echo "Hello Docker"',
-          'hint': 'RUN echo "Hello Docker" 执行打印命令'
+          'hint': 'RUN echo "Hello Docker" 执行打印命令',
+          docLinks: [{title: 'Docker 官方文档', url: 'https://docs.docker.com/'}, {title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-3',
           'title': '设置启动命令',
           'verification': 'CMD',
-          'hint': 'CMD ["echo", "Hello Docker"] 容器启动时打印'
+          'hint': 'CMD ["echo", "Hello Docker"] 容器启动时打印',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
         ],
         variations: [
@@ -224,25 +227,29 @@ CMD ["node", "server.js"]`,
           'id': 'step-1',
           'title': '选择基础镜像',
           'verification': 'FROM node:20-alpine',
-          'hint': 'FROM node:20-alpine 选择 Node.js 基础镜像'
+          'hint': 'FROM node:20-alpine 选择 Node.js 基础镜像',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-2',
           'title': '设置工作目录',
           'verification': 'WORKDIR',
-          'hint': 'WORKDIR /app 设置容器内工作目录'
+          'hint': 'WORKDIR /app 设置容器内工作目录',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-3',
           'title': '复制依赖并安装',
           'verification': 'npm install',
-          'hint': '先 COPY package*.json 再 npm install 利用缓存'
+          'hint': '先 COPY package*.json 再 npm install 利用缓存',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-4',
           'title': '设置启动命令',
           'verification': 'CMD',
-          'hint': 'CMD ["node", "server.js"] 启动应用'
+          'hint': 'CMD ["node", "server.js"] 启动应用',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
         ],
         variations: [
@@ -354,19 +361,22 @@ docker-compose*.yml`,
           'id': 'step-1',
           'title': '排除 node_modules',
           'verification': 'node_modules',
-          'hint': '排除依赖目录，避免构建上下文过大'
+          'hint': '排除依赖目录，避免构建上下文过大',
+          docLinks: [{title: '.dockerignore', url: 'https://docs.docker.com/engine/reference/builder/#dockerignore-file'}],
          },
          {
           'id': 'step-2',
           'title': '排除 .git',
           'verification': '.git',
-          'hint': '排除版本控制文件'
+          'hint': '排除版本控制文件',
+          docLinks: [{title: '.dockerignore', url: 'https://docs.docker.com/engine/reference/builder/#dockerignore-file'}],
          },
          {
           'id': 'step-3',
           'title': '排除 .env',
           'verification': '.env',
-          'hint': '排除环境变量文件，防泄露密钥'
+          'hint': '排除环境变量文件，防泄露密钥',
+          docLinks: [{title: '.dockerignore', url: 'https://docs.docker.com/engine/reference/builder/#dockerignore-file'}],
          },
         ],
         variations: [
@@ -485,19 +495,22 @@ docker rm web-server`,
           'id': 'step-1',
           'title': '后台运行容器',
           'verification': 'docker run -d',
-          'hint': '-d 后台运行不阻塞终端'
+          'hint': '-d 后台运行不阻塞终端',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}],
          },
          {
           'id': 'step-2',
           'title': '命名容器',
           'verification': '--name',
-          'hint': '--name web-server 给容器命名，便于管理'
+          'hint': '--name web-server 给容器命名，便于管理',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}],
          },
          {
           'id': 'step-3',
           'title': '查看运行状态',
           'verification': 'docker ps',
-          'hint': 'docker ps 查看运行中的容器'
+          'hint': 'docker ps 查看运行中的容器',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}],
          },
         ],
         variations: [
@@ -596,19 +609,22 @@ docker port web-server`,
           'id': 'step-1',
           'title': '使用 -p 映射端口',
           'verification': '-p',
-          'hint': '-p 8000:3000 宿主机 8000 → 容器 3000'
+          'hint': '-p 8000:3000 宿主机 8000 → 容器 3000',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}],
          },
          {
           'id': 'step-2',
           'title': '限定绑定地址',
           'verification': '127.0.0.1:3306',
-          'hint': '127.0.0.1:3306:3306 只允许本机访问数据库'
+          'hint': '127.0.0.1:3306:3306 只允许本机访问数据库',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}],
          },
          {
           'id': 'step-3',
           'title': '查看端口映射',
           'verification': 'docker port',
-          'hint': 'docker port web-server 查看当前容器的端口映射'
+          'hint': 'docker port web-server 查看当前容器的端口映射',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}, {title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
         ],
         variations: [
@@ -714,19 +730,22 @@ docker run -d -v $(pwd)/.env:/app/.env:ro shop-api`,
           'id': 'step-1',
           'title': '绑定挂载源码',
           'verification': '-v $(pwd)/src:/app/src',
-          'hint': '-v $(pwd)/src:/app/src 源码目录挂载到容器实现热更新'
+          'hint': '-v $(pwd)/src:/app/src 源码目录挂载到容器实现热更新',
+          docLinks: [{title: 'Docker 数据卷', url: 'https://docs.docker.com/storage/volumes/'}],
          },
          {
           'id': 'step-2',
           'title': '命名卷持久化数据',
           'verification': 'shop-db-data',
-          'hint': '-v shop-db-data:/var/lib/mysql 使用命名卷持久化数据库'
+          'hint': '-v shop-db-data:/var/lib/mysql 使用命名卷持久化数据库',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}, {title: 'Docker 数据卷', url: 'https://docs.docker.com/storage/volumes/'}],
          },
          {
           'id': 'step-3',
           'title': '只读挂载配置',
           'verification': ':ro',
-          'hint': '-v $(pwd)/.env:/app/.env:ro 只读挂载配置文件'
+          'hint': '-v $(pwd)/.env:/app/.env:ro 只读挂载配置文件',
+          docLinks: [{title: 'Docker 数据卷', url: 'https://docs.docker.com/storage/volumes/'}],
          },
         ],
         variations: [
@@ -849,19 +868,22 @@ docker run -d --env-file .env shop-api`,
           'id': 'step-1',
           'title': '传入环境变量',
           'verification': '-e NODE_ENV',
-          'hint': '-e NODE_ENV=production 设置运行环境'
+          'hint': '-e NODE_ENV=production 设置运行环境',
+          docLinks: [{title: 'Docker 环境变量', url: 'https://docs.docker.com/compose/environment-variables/'}],
          },
          {
           'id': 'step-2',
           'title': '配置数据库连接',
           'verification': '-e DB_HOST',
-          'hint': '-e DB_HOST=mysql 指定数据库地址'
+          'hint': '-e DB_HOST=mysql 指定数据库地址',
+          docLinks: [{title: 'Docker 环境变量', url: 'https://docs.docker.com/compose/environment-variables/'}],
          },
          {
           'id': 'step-3',
           'title': '从文件加载配置',
           'verification': '--env-file',
-          'hint': '--env-file .env 从文件批量加载变量'
+          'hint': '--env-file .env 从文件批量加载变量',
+          docLinks: [{title: 'Docker 环境变量', url: 'https://docs.docker.com/compose/environment-variables/'}],
          },
         ],
         variations: [
@@ -1005,19 +1027,22 @@ services:
           'id': 'step-1',
           'title': '定义 services',
           'verification': 'services:',
-          'hint': 'services 下列出所有服务，web 是服务名'
+          'hint': 'services 下列出所有服务，web 是服务名',
+          docLinks: [{title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
          {
           'id': 'step-2',
           'title': '配置构建方式',
           'verification': 'build:',
-          'hint': 'build: . 从当前目录的 Dockerfile 构建'
+          'hint': 'build: . 从当前目录的 Dockerfile 构建',
+          docLinks: [{title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
          {
           'id': 'step-3',
           'title': '配置端口映射',
           'verification': '3000:3000',
-          'hint': 'ports 下的 "3000:3000" 映射应用端口'
+          'hint': 'ports 下的 "3000:3000" 映射应用端口',
+          docLinks: [{title: 'Docker 运行容器', url: 'https://docs.docker.com/engine/reference/run/'}, {title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
         ],
         variations: [
@@ -1195,19 +1220,22 @@ volumes:
           'id': 'step-1',
           'title': '定义 API 服务',
           'verification': 'depends_on',
-          'hint': 'depends_on 控制服务启动顺序，api 依赖 db 和 redis'
+          'hint': 'depends_on 控制服务启动顺序，api 依赖 db 和 redis',
+          docLinks: [{title: 'Docker 官方文档', url: 'https://docs.docker.com/'}, {title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-2',
           'title': '配置 MySQL',
           'verification': 'mysql:8',
-          'hint': 'MySQL 8 镜像，设置 root 密码和数据卷'
+          'hint': 'MySQL 8 镜像，设置 root 密码和数据卷',
+          docLinks: [{title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
          {
           'id': 'step-3',
           'title': '配置 Redis',
           'verification': 'redis:7-alpine',
-          'hint': 'Redis 7 Alpine 镜像，redis-server 加密码启动'
+          'hint': 'Redis 7 Alpine 镜像，redis-server 加密码启动',
+          docLinks: [{title: 'Docker Compose 文档', url: 'https://docs.docker.com/compose/'}],
          },
         ],
         variations: [
@@ -1387,19 +1415,22 @@ CMD ["node", "dist/index.js"]`,
           'id': 'step-1',
           'title': '多阶段构建',
           'verification': 'AS builder',
-          'hint': 'builder 阶段安装依赖构建，生产阶段只复制产物减小体积'
+          'hint': 'builder 阶段安装依赖构建，生产阶段只复制产物减小体积',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-2',
           'title': '健康检查',
           'verification': 'HEALTHCHECK',
-          'hint': 'HEALTHCHECK 让 Docker 自动检测服务是否健康'
+          'hint': 'HEALTHCHECK 让 Docker 自动检测服务是否健康',
+          docLinks: [{title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
          {
           'id': 'step-3',
           'title': '配置文件',
           'verification': 'healthcheck',
-          'hint': 'Compose 文件中配置 healthcheck 和 restart 策略'
+          'hint': 'Compose 文件中配置 healthcheck 和 restart 策略',
+          docLinks: [{title: 'Docker 官方文档', url: 'https://docs.docker.com/'}, {title: 'Dockerfile 参考', url: 'https://docs.docker.com/reference/dockerfile/'}],
          },
         ],
         variations: [

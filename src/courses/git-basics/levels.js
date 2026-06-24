@@ -93,19 +93,22 @@ git commit -m "init: 初始化项目"`,
           'id': 'step-1',
           'title': '初始化仓库',
           'verification': 'git init',
-          'hint': '用 git init 初始化一个新仓库'
+          'hint': '用 git init 初始化一个新仓库',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
          },
          {
           'id': 'step-2',
           'title': '暂存文件',
           'verification': 'git add',
-          'hint': '用 git add 将文件加入暂存区'
+          'hint': '用 git add 将文件加入暂存区',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
          },
          {
           'id': 'step-3',
           'title': '提交更改',
           'verification': 'git commit',
-          'hint': '用 git commit 提交暂存内容'
+          'hint': '用 git commit 提交暂存内容',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
          }
         ],
         variations: [
@@ -217,19 +220,22 @@ git diff --staged`,
           'id': 'step-1',
           'title': '查看状态',
           'verification': 'git status',
-          'hint': '用 git status 查看仓库状态'
+          'hint': '用 git status 查看仓库状态',
+          docLinks: [{title: 'Git 状态与历史', url: 'https://git-scm.com/book/zh/v2/Git-基础-查看提交历史'}],
          },
          {
           'id': 'step-2',
           'title': '查看历史',
           'verification': 'git log',
-          'hint': '用 git log 查看提交历史'
+          'hint': '用 git log 查看提交历史',
+          docLinks: [{title: 'Git 状态与历史', url: 'https://git-scm.com/book/zh/v2/Git-基础-查看提交历史'}],
          },
          {
           'id': 'step-3',
           'title': '查看差异',
           'verification': 'git diff',
-          'hint': '用 git diff 查看文件修改内容'
+          'hint': '用 git diff 查看文件修改内容',
+          docLinks: [{title: 'Git 状态与历史', url: 'https://git-scm.com/book/zh/v2/Git-基础-查看提交历史'}],
          }
         ],
         variations: [
@@ -347,19 +353,22 @@ git stash pop`,
           'id': 'step-1',
           'title': '撤销修改',
           'verification': 'git restore',
-          'hint': '用 git restore 撤销工作区修改'
+          'hint': '用 git restore 撤销工作区修改',
+          docLinks: [{title: 'Git 撤销与暂存', url: 'https://git-scm.com/book/zh/v2/Git-工具-贮藏与清理'}],
          },
          {
           'id': 'step-2',
           'title': '暂存进度',
           'verification': 'git stash',
-          'hint': '用 git stash 临时保存工作进度'
+          'hint': '用 git stash 临时保存工作进度',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}, {title: 'Git 撤销与暂存', url: 'https://git-scm.com/book/zh/v2/Git-工具-贮藏与清理'}],
          },
          {
           'id': 'step-3',
           'title': '恢复进度',
           'verification': 'git stash pop',
-          'hint': '用 git stash pop 恢复暂存工作'
+          'hint': '用 git stash pop 恢复暂存工作',
+          docLinks: [{title: 'Git 撤销与暂存', url: 'https://git-scm.com/book/zh/v2/Git-工具-贮藏与清理'}],
          }
         ],
         variations: [
@@ -479,19 +488,22 @@ dist/`,
           'id': 'step-1',
           'title': '创建 .gitignore',
           'verification': '.gitignore',
-          'hint': '在根目录创建 .gitignore 文件'
+          'hint': '在根目录创建 .gitignore 文件',
+          docLinks: [{title: 'Git .gitignore', url: 'https://git-scm.com/book/zh/v2/Git-基础-记录每次更新到仓库#_ignoring'}, {title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-2',
           'title': '添加忽略规则',
           'verification': 'node_modules',
-          'hint': '添加目录忽略规则'
+          'hint': '添加目录忽略规则',
+          docLinks: [{title: 'Git .gitignore', url: 'https://git-scm.com/book/zh/v2/Git-基础-记录每次更新到仓库#_ignoring'}],
          },
          {
           'id': 'step-3',
           'title': '提交配置',
           'verification': 'git add .gitignore',
-          'hint': '将 .gitignore 加入版本控制'
+          'hint': '将 .gitignore 加入版本控制',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
          }
         ],
         variations: [
@@ -614,19 +626,22 @@ git branch -a`,
           'id': 'step-1',
           'title': '创建分支',
           'verification': 'git branch',
-          'hint': '用 git branch 创建新分支'
+          'hint': '用 git branch 创建新分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-2',
           'title': '切换分支',
           'verification': 'git checkout',
-          'hint': '用 checkout 或 switch 切换分支'
+          'hint': '用 checkout 或 switch 切换分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-3',
           'title': '查看分支',
           'verification': 'git branch -a',
-          'hint': '查看所有本地和远程分支'
+          'hint': '查看所有本地和远程分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          }
         ],
         variations: [
@@ -742,19 +757,22 @@ git branch -d feature-login
           'id': 'step-1',
           'title': '切换主分支',
           'verification': 'git checkout main',
-          'hint': '切换到目标接收分支'
+          'hint': '切换到目标接收分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-2',
           'title': '执行合并',
           'verification': 'git merge',
-          'hint': '用 git merge 将分支合并过来'
+          'hint': '用 git merge 将分支合并过来',
+          docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
          },
          {
           'id': 'step-3',
           'title': '解决冲突',
           'verification': 'merge conflict',
-          'hint': '手动解决合并冲突后提交'
+          'hint': '手动解决合并冲突后提交',
+          docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
          }
         ],
         variations: [
@@ -871,19 +889,22 @@ git merge feature  # Fast-forward 合并`,
           'id': 'step-1',
           'title': '切换功能分支',
           'verification': 'git checkout feature',
-          'hint': '切换到需要变基的功能分支'
+          'hint': '切换到需要变基的功能分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-2',
           'title': '执行 rebase',
           'verification': 'git rebase',
-          'hint': '用 git rebase 移动到最新提交'
+          'hint': '用 git rebase 移动到最新提交',
+          docLinks: [{title: 'Git Rebase', url: 'https://git-scm.com/book/zh/v2/Git-分支-变基'}],
          },
          {
           'id': 'step-3',
           'title': '处理冲突',
           'verification': 'git rebase --continue',
-          'hint': '解决冲突后继续变基操作'
+          'hint': '解决冲突后继续变基操作',
+          docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
          }
         ],
         variations: [
@@ -1004,19 +1025,22 @@ git pull origin main`,
           'id': 'step-1',
           'title': '添加远程仓库',
           'verification': 'git remote add',
-          'hint': '添加远程仓库地址'
+          'hint': '添加远程仓库地址',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}, {title: 'Git 远程仓库', url: 'https://git-scm.com/book/zh/v2/Git-基础-远程仓库的使用'}],
          },
          {
           'id': 'step-2',
           'title': '推送代码',
           'verification': 'git push',
-          'hint': '将本地提交推送到远程'
+          'hint': '将本地提交推送到远程',
+          docLinks: [{title: 'Git 官方文档', url: 'https://git-scm.com/book/zh/v2'}, {title: 'GitHub 文档', url: 'https://docs.github.com/zh'}],
          },
          {
           'id': 'step-3',
           'title': '拉取代码',
           'verification': 'git pull',
-          'hint': '拉取远程最新代码'
+          'hint': '拉取远程最新代码',
+          docLinks: [{title: 'Git 官方文档', url: 'https://git-scm.com/book/zh/v2'}, {title: 'GitHub 文档', url: 'https://docs.github.com/zh'}],
          }
         ],
         variations: [
@@ -1115,19 +1139,22 @@ git remote add upstream https://github.com/original/repo.git`,
           'id': 'step-1',
           'title': '克隆仓库',
           'verification': 'git clone',
-          'hint': '用 git clone 克隆远程仓库'
+          'hint': '用 git clone 克隆远程仓库',
+          docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
          },
          {
           'id': 'step-2',
           'title': '查看远程信息',
           'verification': 'git remote -v',
-          'hint': '查看远程仓库配置'
+          'hint': '查看远程仓库配置',
+          docLinks: [{title: 'Git 远程仓库', url: 'https://git-scm.com/book/zh/v2/Git-基础-远程仓库的使用'}],
          },
          {
           'id': 'step-3',
           'title': '同步更新',
           'verification': 'git fetch',
-          'hint': '用 git fetch 获取远程更新'
+          'hint': '用 git fetch 获取远程更新',
+          docLinks: [{title: 'Git 远程仓库', url: 'https://git-scm.com/book/zh/v2/Git-基础-远程仓库的使用'}],
          }
         ],
         variations: [
@@ -1257,19 +1284,22 @@ git push origin main --tags`,
           'id': 'step-1',
           'title': '创建 feature 分支',
           'verification': 'git checkout -b',
-          'hint': '从 main 创建功能分支'
+          'hint': '从 main 创建功能分支',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-2',
           'title': '推送功能分支',
           'verification': 'git push origin feature',
-          'hint': '将功能分支推送到远程'
+          'hint': '将功能分支推送到远程',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
          },
          {
           'id': 'step-3',
           'title': '创建 PR',
           'verification': 'pull request',
-          'hint': '发起 Pull Request 请求合并'
+          'hint': '发起 Pull Request 请求合并',
+          docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}, {title: 'GitHub 文档', url: 'https://docs.github.com/zh'}],
          }
         ],
         variations: [
@@ -1337,19 +1367,22 @@ git push origin main --tags`,
                   'id': 'step-1',
                   'title': '配置 main 分支',
                   'verification': 'main',
-                  'hint': '将 main 设为生产分支'
+                  'hint': '将 main 设为生产分支',
+                 docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建 develop',
                   'verification': 'develop',
-                  'hint': '从 main 创建开发分支'
+                  'hint': '从 main 创建开发分支',
+                 docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}, {title: 'Git Flow', url: 'https://www.atlassian.com/zh/git/tutorials/comparing-workflows/gitflow-workflow'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '创建 feature',
                   'verification': 'feature/',
-                  'hint': '从 develop 创建功能分支'
+                  'hint': '从 develop 创建功能分支',
+                 docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}],
                 }
               ],
               variations: [
@@ -1409,19 +1442,22 @@ git push origin main --tags`,
                   'id': 'step-1',
                   'title': 'Fork 仓库',
                   'verification': 'fork',
-                  'hint': 'Fork 远程仓库到个人账户'
+                  'hint': 'Fork 远程仓库到个人账户',
+                 docLinks: [{title: 'Git 基础', url: 'https://git-scm.com/book/zh/v2/Git-基础-获取-Git-仓库'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建 PR',
                   'verification': 'pull request',
-                  'hint': '从 feature 分支发起 PR'
+                  'hint': '从 feature 分支发起 PR',
+                 docLinks: [{title: 'Git 分支', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支简介'}, {title: 'GitHub 文档', url: 'https://docs.github.com/zh'}],
                 },
                 {
                   'id': 'step-3',
                   'title': 'Code Review',
                   'verification': 'review',
-                  'hint': '审查代码后合并 PR'
+                  'hint': '审查代码后合并 PR',
+                 docLinks: [{title: 'GitHub 文档', url: 'https://docs.github.com/zh'}],
                 }
               ],
               variations: [
@@ -1480,19 +1516,22 @@ git push origin main --tags`,
                   'id': 'step-1',
                   'title': '模拟冲突场景',
                   'verification': 'merge',
-                  'hint': '模拟两个分支修改同一文件'
+                  'hint': '模拟两个分支修改同一文件',
+                 docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '解决冲突标记',
                   'verification': 'conflict markers',
-                  'hint': '编辑文件中的冲突标记区域'
+                  'hint': '编辑文件中的冲突标记区域',
+                 docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '完成合并',
                   'verification': 'git merge --continue',
-                  'hint': '提交冲突解决结果'
+                  'hint': '提交冲突解决结果',
+                 docLinks: [{title: 'Git 合并', url: 'https://git-scm.com/book/zh/v2/Git-分支-分支的新建与合并'}],
                 }
               ],
               variations: [

@@ -73,21 +73,24 @@ FROM products;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择查询列',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定要查询的列名',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '指定数据来源',
+          'verification': 'FROM',
+          'hint': '用 FROM 子句指定表名',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '完成查询',
+          'verification': ';',
+          'hint': '语句末尾加分号结束',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          }
         ],
         variations: [
@@ -180,21 +183,24 @@ WHERE price > 100;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择查询列',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定要查询的列',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '指定数据来源',
+          'verification': 'FROM',
+          'hint': '用 FROM 子句指定表名',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加过滤条件',
+          'verification': 'WHERE',
+          'hint': '用 WHERE 子句指定价格条件',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          }
         ],
         variations: [
@@ -282,21 +288,24 @@ ORDER BY price DESC;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择查询列',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定要查询的列',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '指定数据来源',
+          'verification': 'FROM',
+          'hint': '用 FROM 子句指定表名',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加排序',
+          'verification': 'ORDER BY',
+          'hint': '用 ORDER BY 和 DESC 降序排列',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          }
         ],
         variations: [
@@ -388,21 +397,24 @@ LIMIT 5 OFFSET 5;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择查询列',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定要查询的列',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '指定数据来源',
+          'verification': 'FROM',
+          'hint': '用 FROM 子句指定表名',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加分页限制',
+          'verification': 'LIMIT',
+          'hint': '用 LIMIT 和 OFFSET 实现分页',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}],
          }
         ],
         variations: [
@@ -514,21 +526,24 @@ WHERE name = '测试商品';`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '插入新数据',
+          'verification': 'INSERT INTO',
+          'hint': '用 INSERT INTO 插入新商品',
+          docLinks: [{title: 'SQL 数据修改', url: 'https://www.postgresql.org/docs/current/dml.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '更新已有数据',
+          'verification': 'UPDATE',
+          'hint': '用 UPDATE SET 修改商品价格',
+          docLinks: [{title: 'SQL 数据修改', url: 'https://www.postgresql.org/docs/current/dml.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '删除数据',
+          'verification': 'DELETE FROM',
+          'hint': '用 DELETE FROM 删除商品',
+          docLinks: [{title: 'SQL 数据修改', url: 'https://www.postgresql.org/docs/current/dml.html'}],
          }
         ],
         variations: [
@@ -629,21 +644,24 @@ INNER JOIN products p ON o.product_id = p.id;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择查询字段',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定需要查询的字段',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL JOIN 连表', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '连接另一张表',
+          'verification': 'JOIN',
+          'hint': '用 JOIN 连接 orders 和 products 表',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL JOIN 连表', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '指定连接条件',
+          'verification': 'ON',
+          'hint': '用 ON 指定两表的关联条件',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL JOIN 连表', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html'}],
          }
         ],
         variations: [
@@ -740,21 +758,24 @@ GROUP BY category;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '定义函数',
-          'verification': 'function',
-          'hint': '用 function 关键字'
+          'title': '选择分组字段',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定分类和聚合字段',
+          docLinks: [{title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          },
          {
           'id': 'step-2',
-          'title': '添加参数',
-          'verification': 'return',
-          'hint': '函数体返回值'
+          'title': '添加聚合函数',
+          'verification': 'COUNT',
+          'hint': '用 COUNT 统计商品数量',
+          docLinks: [{title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          },
          {
           'id': 'step-3',
-          'title': '调用测试',
-          'verification': 'console.log',
-          'hint': '调用函数测试'
+          'title': '指定分组',
+          'verification': 'GROUP BY',
+          'hint': '用 GROUP BY 按 category 分组',
+          docLinks: [{title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          }
         ],
         variations: [
@@ -847,21 +868,24 @@ HAVING COUNT(*) > 2;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '选择分组字段',
+          'verification': 'SELECT',
+          'hint': '在 SELECT 后指定分类字段',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '统计商品数量',
+          'verification': 'COUNT',
+          'hint': '用 COUNT(*) 统计每个分类的商品数',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '过滤分组结果',
+          'verification': 'HAVING',
+          'hint': '用 HAVING 筛选商品数大于 2 的分类',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 分组聚合', url: 'https://www.postgresql.org/docs/current/tutorial-agg.html'}],
          }
         ],
         variations: [
@@ -955,21 +979,24 @@ WHERE price > (SELECT AVG(price) FROM products);`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '编写子查询',
+          'verification': 'SELECT AVG',
+          'hint': '先写子查询计算平均价格',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 子查询', url: 'https://www.postgresql.org/docs/current/functions-subquery.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '外层查询',
+          'verification': 'FROM products',
+          'hint': '外层查询从 products 表选择',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 子查询', url: 'https://www.postgresql.org/docs/current/functions-subquery.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '组合过滤条件',
+          'verification': 'WHERE price',
+          'hint': '用 WHERE price > (子查询) 组合',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL 子查询', url: 'https://www.postgresql.org/docs/current/functions-subquery.html'}],
          }
         ],
         variations: [
@@ -1058,21 +1085,24 @@ SELECT name FROM products WHERE category = '服装';`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '第一个查询语句',
+          'verification': 'SELECT',
+          'hint': '查询电子产品类别的商品名称',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL UNION', url: 'https://www.postgresql.org/docs/current/queries-union.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '合并操作符',
+          'verification': 'UNION',
+          'hint': '用 UNION 连接两个查询',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL UNION', url: 'https://www.postgresql.org/docs/current/queries-union.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '第二个查询语句',
+          'verification': 'SELECT',
+          'hint': '查询服装类别的商品名称',
+          docLinks: [{title: 'SQL 查询基础', url: 'https://www.postgresql.org/docs/current/queries.html'}, {title: 'SQL UNION', url: 'https://www.postgresql.org/docs/current/queries-union.html'}],
          }
         ],
         variations: [
@@ -1184,21 +1214,24 @@ CREATE TABLE ??? (
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建数据表',
+          'verification': 'CREATE TABLE',
+          'hint': '用 CREATE TABLE 创建 products 表',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '定义字段类型',
+          'verification': 'VARCHAR',
+          'hint': '为每个字段指定数据类型',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加约束',
+          'verification': 'NOT NULL',
+          'hint': '添加非空和主键约束',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          }
         ],
         variations: [
@@ -1317,21 +1350,24 @@ CREATE TABLE orders (
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '创建用户表',
+          'verification': 'CREATE TABLE users',
+          'hint': '创建 users 表并指定 id 主键',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '创建订单表',
+          'verification': 'CREATE TABLE orders',
+          'hint': '创建 orders 表',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '添加外键关联',
+          'verification': 'FOREIGN KEY',
+          'hint': '用 FOREIGN KEY 关联 orders 和 users',
+          docLinks: [{title: 'SQL 建表与约束', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          }
         ],
         variations: [
@@ -1419,21 +1455,24 @@ CREATE INDEX idx_category ON products(category);`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '为 name 建索引',
+          'verification': 'CREATE INDEX',
+          'hint': '用 CREATE INDEX 为 name 列建索引',
+          docLinks: [{title: 'SQL 索引优化', url: 'https://www.postgresql.org/docs/current/indexes.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '为 category 建索引',
+          'verification': 'CREATE INDEX',
+          'hint': '为 category 列创建索引',
+          docLinks: [{title: 'SQL 索引优化', url: 'https://www.postgresql.org/docs/current/indexes.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '验证索引效果',
+          'verification': 'EXPLAIN',
+          'hint': '用 EXPLAIN 查看查询计划',
+          docLinks: [{title: 'SQL 索引优化', url: 'https://www.postgresql.org/docs/current/indexes.html'}],
          }
         ],
         variations: [
@@ -1539,21 +1578,24 @@ COMMIT;`,
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '开启事务',
+          'verification': 'BEGIN',
+          'hint': '用 BEGIN 或 START TRANSACTION 开启',
+          docLinks: [{title: 'SQL 事务', url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '执行转账',
+          'verification': 'UPDATE',
+          'hint': '执行两个 UPDATE 完成扣款和加款',
+          docLinks: [{title: 'SQL 事务', url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '确认提交',
+          'verification': 'COMMIT',
+          'hint': '确认后提交事务',
+          docLinks: [{title: 'SQL 事务', url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html'}],
          }
         ],
         variations: [
@@ -1747,21 +1789,24 @@ CREATE TABLE order_items (
         microSteps: [
          {
           'id': 'step-1',
-          'title': '搭建结构',
-          'verification': 'const',
-          'hint': '编写基础结构'
+          'title': '表结构设计',
+          'verification': 'CREATE TABLE',
+          'hint': '创建用户、商品、分类等各表',
+          docLinks: [{title: 'SQL 数据库设计', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-2',
-          'title': '实现功能',
-          'verification': 'function',
-          'hint': '实现核心逻辑'
+          'title': '建立关联关系',
+          'verification': 'FOREIGN KEY',
+          'hint': '通过外键建立表间关联',
+          docLinks: [{title: 'SQL 数据库设计', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          },
          {
           'id': 'step-3',
-          'title': '验证结果',
-          'verification': 'console.log',
-          'hint': '输出验证'
+          'title': '设置主键约束',
+          'verification': 'PRIMARY KEY',
+          'hint': '为每张表设置主键约束',
+          docLinks: [{title: 'SQL 数据库设计', url: 'https://www.postgresql.org/docs/current/ddl.html'}],
          }
         ],
         variations: [

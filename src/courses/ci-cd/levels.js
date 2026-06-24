@@ -27,7 +27,7 @@ jobs:
         filePath: '.github/workflows/test.yml',
         hints: ["push 和 pull_request 均可触发","actions/checkout@v4 检出代码"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解 CI/CD 概念',verification:'GitHub Actions',hint:'理解 CI/CD 自动化的意义'},{id:'step-2',title:'创建工作流文件',verification:'on:',hint:'在 .github/workflows 下创建 YAML 文件'},{id:'step-3',title:'配置触发条件',verification:'push:',hint:'配置 push 和 pull_request 触发'}],
+        microSteps:[{id:'step-1',title:'理解 CI/CD 概念',verification:'GitHub Actions',hint:'理解 CI/CD 自动化的意义',docLinks:[{title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions'}]},{id:'step-2',title:'创建工作流文件',verification:'on:',hint:'在 .github/workflows 下创建 YAML 文件',docLinks:[{title: '工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions'}]},{id:'step-3',title:'配置触发条件',verification:'push:',hint:'配置 push 和 pull_request 触发',docLinks:[{title: '触发工作流的事件', url: 'https://docs.github.com/zh/actions/using-workflows/events-that-trigger-workflows'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -60,7 +60,7 @@ jobs:
         filePath: '.github/workflows/deploy.yml',
         hints: ["needs: build 依赖前置任务","actions/deploy-pages@v4 部署"],
         cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解构建流程',verification:'build',hint:'理解构建、测试、部署三阶段'},{id:'step-2',title:'配置部署步骤',verification:'deploy:',hint:'添加部署到服务器的步骤'}],
+        microSteps:[{id:'step-1',title:'理解构建流程',verification:'build',hint:'理解构建、测试、部署三阶段',docLinks:[{title: '构建与测试', url: 'https://docs.github.com/zh/actions/automating-builds-and-tests/about-continuous-integration'}]},{id:'step-2',title:'配置部署步骤',verification:'deploy:',hint:'添加部署到服务器的步骤',docLinks:[{title: '部署工作流', url: 'https://docs.github.com/zh/actions/deployment/about-deployments/deploying-with-github-actions'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -92,7 +92,7 @@ jobs:
         filePath: '.github/workflows/docker.yml',
         hints: ["secrets 在 GitHub Settings 配置","tags 模式触发自动构建"],
         cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解 Docker 部署',verification:'docker',hint:'理解镜像构建和推送流程'},{id:'step-2',title:'配置镜像标签',verification:'tags:',hint:'给镜像打版本标签'}],
+        microSteps:[{id:'step-1',title:'理解 Docker 部署',verification:'docker',hint:'理解镜像构建和推送流程',docLinks:[{title: '发布 Docker 镜像', url: 'https://docs.github.com/zh/actions/publishing-packages/publishing-docker-images'}]},{id:'step-2',title:'配置镜像标签',verification:'tags:',hint:'给镜像打版本标签',docLinks:[{title: 'Docker 标签策略', url: 'https://docs.github.com/zh/actions/publishing-packages/publishing-docker-images#tagging-your-image-with-the-registry'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -135,7 +135,7 @@ jobs:
         filePath: '.github/workflows/matrix.yml',
         hints: ["matrix 自动生成所有组合","fail-fast: false 继续其他组合"],
         cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解矩阵构建',verification:'matrix',hint:'理解跨版本并行测试策略'},{id:'step-2',title:'配置矩阵策略',verification:'strategy:',hint:'配置 node 版本矩阵'}],
+        microSteps:[{id:'step-1',title:'理解矩阵构建',verification:'matrix',hint:'理解跨版本并行测试策略',docLinks:[{title: '矩阵构建', url: 'https://docs.github.com/zh/actions/using-jobs/using-a-matrix-for-your-jobs'}]},{id:'step-2',title:'配置矩阵策略',verification:'strategy:',hint:'配置 node 版本矩阵',docLinks:[{title: '矩阵策略', url: 'https://docs.github.com/zh/actions/using-jobs/using-a-matrix-for-your-jobs#defining-the-matrix'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -178,7 +178,7 @@ jobs:
         filePath: '.github/workflows/integration.yml',
         hints: ["services 自动拉取 Docker 镜像","health-cmd 等待服务就绪"],
         cognitiveLoad: 'medium', dependsOn: ['ci-cd-1'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解服务容器',verification:'services:',hint:'理解集成测试中的依赖服务'},{id:'step-2',title:'配置数据库服务',verification:'image:',hint:'配置 MySQL/Redis 作为服务容器'}],
+        microSteps:[{id:'step-1',title:'理解服务容器',verification:'services:',hint:'理解集成测试中的依赖服务',docLinks:[{title: '服务容器', url: 'https://docs.github.com/zh/actions/using-containerized-services/about-service-containers'}]},{id:'step-2',title:'配置数据库服务',verification:'image:',hint:'配置 MySQL/Redis 作为服务容器',docLinks:[{title: '配置数据库服务', url: 'https://docs.github.com/zh/actions/using-containerized-services/creating-redis-service-container'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }
@@ -223,7 +223,7 @@ jobs:
         filePath: '.github/workflows/deploy-server.yml',
         hints: ["rsync --delete 删除多余文件","pm2 restart 重启服务进程"],
         cognitiveLoad: 'medium', dependsOn: ['ci-cd-2'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解 SSH 部署',verification:'ssh',hint:'理解 SSH 免密登录部署流程'},{id:'step-2',title:'配置部署脚本',verification:'script:',hint:'编写远程服务器部署命令'}],
+        microSteps:[{id:'step-1',title:'理解 SSH 部署',verification:'ssh',hint:'理解 SSH 免密登录部署流程',docLinks:[{title: 'SSH 部署', url: 'https://docs.github.com/zh/actions/deployment/deploying-ssh'}]},{id:'step-2',title:'配置部署脚本',verification:'script:',hint:'编写远程服务器部署命令',docLinks:[{title: '部署脚本', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun'}]}],
         docLinks: [
         { title: 'GitHub Actions 文档', url: 'https://docs.github.com/zh/actions' },
         { title: 'GitHub Actions 工作流语法', url: 'https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions' }

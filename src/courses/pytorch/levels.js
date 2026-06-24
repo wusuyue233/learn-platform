@@ -18,7 +18,7 @@ print(mul)`,
         filePath: 'tensor_basics.py',
         hints: ["x @ x.T 矩阵乘法","torch.ones/zeros/randn 常用创建方式"],
         cognitiveLoad: 'medium', dependsOn: [], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解张量',verification:'torch.tensor',hint:'张量是 PyTorch 的核心数据结构'},{id:'step-2',title:'张量运算',verification:'torch.zeros',hint:'用 torch.zeros/ones/rand 创建张量'}],
+        microSteps:[{id:'step-1',title:'理解张量',verification:'torch.tensor',hint:'张量是 PyTorch 的核心数据结构',docLinks:[{title: 'torch.tensor', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.tensor.html'}]},{id:'step-2',title:'张量运算',verification:'torch.zeros',hint:'用 torch.zeros/ones/rand 创建张量',docLinks:[{title: 'torch.zeros', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.zeros.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -36,7 +36,7 @@ print(f"dy/dx at x=3: {x.grad}")  # 6.0`,
         filePath: 'autograd.py',
         hints: ["requires_grad=True 启用梯度","backward() 计算梯度"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-1'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解自动求导',verification:'requires_grad=True',hint:'设置 requires_grad 追踪计算图'},{id:'step-2',title:'反向传播',verification:'backward()',hint:'调用 backward 自动计算梯度'}],
+        microSteps:[{id:'step-1',title:'理解自动求导',verification:'requires_grad=True',hint:'设置 requires_grad 追踪计算图',docLinks:[{title: '自动求导机制', url: 'https://pytorch.ac.cn/docs/stable/notes/autograd.html'}]},{id:'step-2',title:'反向传播',verification:'backward()',hint:'调用 backward 自动计算梯度',docLinks:[{title: 'torch.Tensor.backward', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.Tensor.backward.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -62,7 +62,7 @@ print(f"w={model.weight.item():.3f}, b={model.bias.item():.3f}")`,
         filePath: 'linear_regression.py',
         hints: ["zero_grad→backward→step 三件套","model.parameters() 可训练参数"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-2'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解线性回归',verification:'nn.Linear',hint:'nn.Linear 实现线性变换'},{id:'step-2',title:'定义损失函数',verification:'MSELoss',hint:'均方误差适合回归任务'}],
+        microSteps:[{id:'step-1',title:'理解线性回归',verification:'nn.Linear',hint:'nn.Linear 实现线性变换',docLinks:[{title: 'torch.nn.Linear', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.Linear.html'}]},{id:'step-2',title:'定义损失函数',verification:'MSELoss',hint:'均方误差适合回归任务',docLinks:[{title: 'torch.nn.MSELoss', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.MSELoss.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -88,7 +88,7 @@ class MLP(nn.Module):
         filePath: 'mlp_mnist.py',
         hints: ["继承 nn.Module","实现 __init__ 和 forward"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-3'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解分类任务',verification:'CrossEntropyLoss',hint:'交叉熵适合多分类任务'},{id:'step-2',title:'定义网络结构',verification:'nn.Sequential',hint:'用 Sequential 堆叠层'}],
+        microSteps:[{id:'step-1',title:'理解分类任务',verification:'CrossEntropyLoss',hint:'交叉熵适合多分类任务',docLinks:[{title: '交叉熵损失', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.CrossEntropyLoss.html'}]},{id:'step-2',title:'定义网络结构',verification:'nn.Sequential',hint:'用 Sequential 堆叠层',docLinks:[{title: 'torch.nn.Sequential', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.Sequential.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -133,7 +133,7 @@ class CNN(nn.Module):
         filePath: 'cnn_mnist.py',
         hints: ["nn.Conv2d(输入通道,输出通道,卷积核大小)","F.max_pool2d 池化降维"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解卷积网络',verification:'nn.Conv2d',hint:'卷积层提取空间特征'},{id:'step-2',title:'定义池化层',verification:'nn.MaxPool2d',hint:'池化层降采样减少参数量'}],
+        microSteps:[{id:'step-1',title:'理解卷积网络',verification:'nn.Conv2d',hint:'卷积层提取空间特征',docLinks:[{title: 'torch.nn.Conv2d', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.Conv2d.html'}]},{id:'step-2',title:'定义池化层',verification:'nn.MaxPool2d',hint:'池化层降采样减少参数量',docLinks:[{title: 'torch.nn.MaxPool2d', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.nn.MaxPool2d.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -160,7 +160,7 @@ for batch_idx, (data, target) in enumerate(train_loader):
         filePath: 'data_loader.py',
         hints: ["transforms.Compose 组合增强","DataLoader(batch_size,shuffle,num_workers)"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-4'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解数据加载',verification:'DataLoader',hint:'DataLoader 批量加载数据'},{id:'step-2',title:'定义数据集',verification:'Dataset',hint:'自定义 Dataset 实现 __getitem__'}],
+        microSteps:[{id:'step-1',title:'理解数据加载',verification:'DataLoader',hint:'DataLoader 批量加载数据',docLinks:[{title: 'torch.utils.data.DataLoader', url: 'https://pytorch.ac.cn/docs/stable/data.html#torch.utils.data.DataLoader'}]},{id:'step-2',title:'定义数据集',verification:'Dataset',hint:'自定义 Dataset 实现 __getitem__',docLinks:[{title: 'torch.utils.data.Dataset', url: 'https://pytorch.ac.cn/docs/stable/data.html#torch.utils.data.Dataset'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -191,7 +191,7 @@ full_model.eval()`,
         filePath: 'model_save_load.py',
         hints: ["state_dict() 仅保存参数","weights_only=True 安全加载"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-5'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解模型保存',verification:'torch.save',hint:'保存模型权重为 pth 文件'},{id:'step-2',title:'模型加载',verification:'torch.load',hint:'用 load_state_dict 恢复模型'}],
+        microSteps:[{id:'step-1',title:'理解模型保存',verification:'torch.save',hint:'保存模型权重为 pth 文件',docLinks:[{title: 'torch.save', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.save.html'}]},{id:'step-2',title:'模型加载',verification:'torch.load',hint:'用 load_state_dict 恢复模型',docLinks:[{title: 'torch.load', url: 'https://pytorch.ac.cn/docs/stable/generated/torch.load.html'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }
@@ -224,7 +224,7 @@ def train_epoch(loader):
         filePath: 'transfer_learning.py',
         hints: ["pretrained=True 加载预训练权重","冻结所有层只替换 fc"],
         cognitiveLoad: 'medium', dependsOn: ['pytorch-5','pytorch-6'], commonMistakes: [], variations: [], transferTasks: [],
-        microSteps:[{id:'step-1',title:'理解迁移学习',verification:'pretrained=True',hint:'加载预训练模型权重'},{id:'step-2',title:'冻结特征层',verification:'requires_grad = False',hint:'冻结前面的层只训练分类头'}],
+        microSteps:[{id:'step-1',title:'理解迁移学习',verification:'pretrained=True',hint:'加载预训练模型权重',docLinks:[{title: '迁移学习指南', url: 'https://pytorch.ac.cn/tutorials/beginner/transfer_learning_tutorial.html'}]},{id:'step-2',title:'冻结特征层',verification:'requires_grad = False',hint:'冻结前面的层只训练分类头',docLinks:[{title: '冻结参数', url: 'https://pytorch.ac.cn/docs/stable/notes/autograd.html#setting-requires-grad'}]}],
         docLinks: [
         { title: 'PyTorch 官方文档', url: 'https://pytorch.org/docs/stable/' },
         { title: 'PyTorch 教程', url: 'https://pytorch.org/tutorials/' }

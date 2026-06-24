@@ -92,9 +92,9 @@ div { color: blue; }
           { pattern: 'const message', explanation: '记得从 vue 导入 ref：import { ref } from "vue"' }
         ],
         microSteps: [
-          { id: 'step-1', title: '导入 ref', verification: 'import { ref } from \'vue\'', hint: '在 script setup 中导入 ref' },
-          { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' },
-          { id: 'step-3', title: '模板插值', verification: '{{ message }}', hint: '双花括号显示变量值' }
+          { id: 'step-1', title: '导入 ref', verification: 'import { ref } from \'vue\'', hint: '在 script setup 中导入 ref' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-3', title: '模板插值', verification: '{{ message }}', hint: '双花括号显示变量值' , docLinks: [{title: '模板插值', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html'}]}
         ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
         transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}],
@@ -172,9 +172,9 @@ const count = ref(0)
           { pattern: 'count++', explanation: '模板中 {{ count }} 直接显示，JS 中才用 count.value++' }
         ],
         microSteps: [
-          { id: 'step-1', title: '创建 count', verification: 'ref(0)', hint: 'ref(0) 创建初始值 0 的响应式变量' },
-          { id: 'step-2', title: '绑定点击事件', verification: '@click', hint: '在 button 上写 @click' },
-          { id: 'step-3', title: '显示计数值', verification: '{{ count }}', hint: '模板中用 {{ 变量名 }} 显示' }
+          { id: 'step-1', title: '创建 count', verification: 'ref(0)', hint: 'ref(0) 创建初始值 0 的响应式变量' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '绑定点击事件', verification: '@click', hint: '在 button 上写 @click' , docLinks: [{title: '事件处理 - @click', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html'}]},
+          { id: 'step-3', title: '显示计数值', verification: '{{ count }}', hint: '模板中用 {{ 变量名 }} 显示' , docLinks: [{title: '模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html'}]}
         ],
         variations: [{name: 'v-on: 语法', description: 'v-on:click 是 @click 完整写法，完全等价'}],
         transferTasks: [{task: '实现带阻止默认行为的表单按钮', target: '掌握事件修饰符'}],
@@ -253,9 +253,9 @@ const visible = ref(true)
           { pattern: 'v-if="visible == true"', explanation: 'v-if 直接写变量名即可，无需 == true 比较' }
         ],
         microSteps: [
-          { id: 'step-1', title: '创建布尔状态', verification: 'ref(true)', hint: 'ref(true) 创建初始为 true 的变量' },
-          { id: 'step-2', title: '条件渲染', verification: 'v-if="visible"', hint: 'p 标签上加 v-if' },
-          { id: 'step-3', title: '切换状态', verification: '@click="visible =', hint: '按钮绑定 @click 切换 visible 值' }
+          { id: 'step-1', title: '创建布尔状态', verification: 'ref(true)', hint: 'ref(true) 创建初始为 true 的变量' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '条件渲染', verification: 'v-if="visible"', hint: 'p 标签上加 v-if' , docLinks: [{title: 'v-if 条件渲染', url: 'https://cn.vuejs.org/guide/essentials/conditional.html'}]},
+          { id: 'step-3', title: '切换状态', verification: '@click="visible =', hint: '按钮绑定 @click 切换 visible 值' , docLinks: [{title: '事件处理', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html'}]}
         ],
         variations: [{name: 'v-show', description: 'v-show 切换 display，频繁切换性能更好'}],
         transferTasks: [{task: '实现 Tab + 权限门禁页面', target: '掌握条件渲染组合'}],
@@ -341,9 +341,9 @@ const todos = ref([
           { pattern: ':key="index"', explanation: '避免用 index 作 key，用数据的唯一 id 更可靠' }
         ],
         microSteps: [
-          { id: 'step-1', title: '定义数组', verification: 'ref([', hint: 'ref([]) 创建待办事项数组' },
-          { id: 'step-2', title: 'v-for 渲染', verification: 'v-for="item in todos"', hint: 'li 标签上加 v-for' },
-          { id: 'step-3', title: '绑定 :key', verification: ':key="item.id"', hint: '每项绑定唯一的 :key' }
+          { id: 'step-1', title: '定义数组', verification: 'ref([', hint: 'ref([]) 创建待办事项数组' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: 'v-for 渲染', verification: 'v-for="item in todos"', hint: 'li 标签上加 v-for' , docLinks: [{title: 'v-for 列表渲染', url: 'https://cn.vuejs.org/guide/essentials/list.html'}]},
+          { id: 'step-3', title: '绑定 :key', verification: ':key="item.id"', hint: '每项绑定唯一的 :key' , docLinks: [{title: ':key 属性', url: 'https://cn.vuejs.org/api/built-in-special-attributes.html#key'}]}
         ],
         variations: [{name: ':key', description: 'v-for 必须绑定 :key 优化渲染'}],
         transferTasks: [{task: '实现可搜索过滤动态列表', target: '掌握列表渲染过滤'}],
@@ -433,9 +433,9 @@ const password = ref('')
           { pattern: 'v-model="username.value"', explanation: 'v-model 直接绑定 ref 变量名，不需要 .value' }
         ],
         microSteps: [
-          { id: 'step-1', title: '定义表单变量', verification: 'ref(\'\')', hint: 'ref("") 创建空字符串变量' },
-          { id: 'step-2', title: 'v-model 绑定', verification: 'v-model="username"', hint: 'input 上加 v-model' },
-          { id: 'step-3', title: '显示输入内容', verification: '{{ username }}', hint: '用 {{}} 显示变量值' }
+          { id: 'step-1', title: '定义表单变量', verification: 'ref(\'\')', hint: 'ref("") 创建空字符串变量' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: 'v-model 绑定', verification: 'v-model="username"', hint: 'input 上加 v-model' , docLinks: [{title: 'v-model 表单绑定', url: 'https://cn.vuejs.org/guide/essentials/forms.html'}]},
+          { id: 'step-3', title: '显示输入内容', verification: '{{ username }}', hint: '用 {{}} 显示变量值' , docLinks: [{title: '模板插值', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html'}]}
         ],
         variations: [{name: '修饰符', description: '.lazy / .number / .trim 增强 v-model'}],
         transferTasks: [{task: '封装自动补全搜索框组件', target: '掌握 v-model 自定义组件'}],
@@ -527,9 +527,9 @@ const password = ref('')
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '定义 Card 组件', verification: 'Card', hint: '定义带插槽的 Card 组件' },
-          { id: 'step-2', title: '使用 slot 插槽', verification: '<slot', hint: '在 Card 组件内放置 <slot> 标签' },
-          { id: 'step-3', title: '传递插槽内容', verification: '<Card>', hint: '用 Card 包裹需要插入的内容' }
+          { id: 'step-1', title: '定义 Card 组件', verification: 'Card', hint: '定义带插槽的 Card 组件' , docLinks: [{title: '组件基础', url: 'https://cn.vuejs.org/guide/essentials/component-basics.html'}, {title: 'SFC', url: 'https://cn.vuejs.org/guide/scaling-up/sfc.html'}]},
+          { id: 'step-2', title: '使用 slot 插槽', verification: '<slot', hint: '在 Card 组件内放置 <slot> 标签' , docLinks: [{title: '插槽 slot', url: 'https://cn.vuejs.org/guide/components/slots.html'}]},
+          { id: 'step-3', title: '传递插槽内容', verification: '</slot>', hint: '在 Card 组件内用 <slot> 定义插槽' , docLinks: [{title: '插槽传递内容', url: 'https://cn.vuejs.org/guide/components/slots.html'}]}
         ],
         variations: [{name: '具名插槽', description: '<slot name="header"> 配合 v-slot'}],
         transferTasks: [{task: '封装表格组件，具名插槽自定义列', target: '掌握高阶组件'}],
@@ -635,9 +635,9 @@ const totalPrice = computed(() =>
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '定义响应式数据', verification: 'ref(', hint: '创建商品价格和数量数据' },
-          { id: 'step-2', title: '导入计算属性', verification: 'computed(', hint: '用 computed 计算购物车总价' },
-          { id: 'step-3', title: '绑定计算结果', verification: 'totalPrice', hint: '模板中显示 totalPrice 计算结果' }
+          { id: 'step-1', title: '定义响应式数据', verification: 'ref(', hint: '创建商品价格和数量数据' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '导入计算属性', verification: 'computed(', hint: '用 computed 计算购物车总价' , docLinks: [{title: 'computed()', url: 'https://cn.vuejs.org/api/reactivity-core.html#computed'}]},
+          { id: 'step-3', title: '绑定计算结果', verification: 'totalPrice', hint: '模板中显示 totalPrice 计算结果' , docLinks: [{title: '计算属性', url: 'https://cn.vuejs.org/guide/essentials/computed.html'}]}
         ],
         variations: [{name: '方法调用', description: 'computed 有缓存，方法每次重新计算'}],
         transferTasks: [{task: '实现购物车总价含优惠券折扣', target: '掌握 computed 组合'}],
@@ -731,9 +731,9 @@ watch(keyword, (val) => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '创建搜索关键词', verification: 'ref(', hint: '用 ref 定义搜索输入框关键词' },
-          { id: 'step-2', title: '监听输入变化', verification: 'watch(', hint: '用 watch 监听搜索词变化' },
-          { id: 'step-3', title: '实现搜索防抖', verification: 'setTimeout', hint: '用 setTimeout 延迟搜索请求' }
+          { id: 'step-1', title: '创建搜索关键词', verification: 'ref(', hint: '用 ref 定义搜索输入框关键词' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '监听输入变化', verification: 'watch(', hint: '用 watch 监听搜索词变化' , docLinks: [{title: 'watch()', url: 'https://cn.vuejs.org/api/reactivity-core.html#watch'}]},
+          { id: 'step-3', title: '实现搜索防抖', verification: 'setTimeout', hint: '用 setTimeout 延迟搜索请求' , docLinks: [{title: 'setTimeout', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout'}]}
         ],
         variations: [{name: 'watchEffect', description: 'watchEffect 自动追踪依赖'}],
         transferTasks: [{task: '实现搜索防抖请求 API', target: '掌握 watch 异步'}],
@@ -825,9 +825,9 @@ onMounted(() => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '导入生命周期钩子', verification: 'import.*onMounted', hint: '从 vue 导入 onMounted' },
-          { id: 'step-2', title: '定义异步加载函数', verification: 'async function', hint: '定义数据加载的异步函数' },
-          { id: 'step-3', title: '组件挂载时加载', verification: 'onMounted(', hint: '在 onMounted 中调用加载函数' }
+          { id: 'step-1', title: '导入生命周期钩子', verification: 'onMounted', hint: '从 vue 导入 onMounted' , docLinks: [{title: 'onMounted()', url: 'https://cn.vuejs.org/api/composition-api-lifecycle.html#onmounted'}]},
+          { id: 'step-2', title: '定义异步加载函数', verification: 'setTimeout', hint: '用 setTimeout 模拟异步加载' , docLinks: [{title: 'async/await', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function'}]},
+          { id: 'step-3', title: '组件挂载时加载', verification: 'onMounted(', hint: '在 onMounted 中调用加载函数' , docLinks: [{title: '生命周期', url: 'https://cn.vuejs.org/guide/essentials/lifecycle.html'}]}
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
@@ -911,9 +911,9 @@ const emit = defineEmits(['update'])
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-3'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '父组件传递属性', verification: ':', hint: '父组件用 :xxx 绑定属性传值' },
-          { id: 'step-2', title: '子组件接收 props', verification: 'defineProps', hint: '子组件用 defineProps 接收数据' },
-          { id: 'step-3', title: '子组件 emit 事件', verification: 'defineEmits', hint: '用 defineEmits 声明并触发事件' }
+          { id: 'step-1', title: '父组件传递属性', verification: ':', hint: '父组件用 :xxx 绑定属性传值' , docLinks: [{title: 'Props', url: 'https://cn.vuejs.org/guide/components/props.html'}]},
+          { id: 'step-2', title: '子组件接收 props', verification: 'defineProps', hint: '子组件用 defineProps 接收数据' , docLinks: [{title: 'defineProps', url: 'https://cn.vuejs.org/api/components-props.html#defineprops'}]},
+          { id: 'step-3', title: '子组件 emit 事件', verification: 'defineEmits', hint: '用 defineEmits 声明并触发事件' , docLinks: [{title: 'defineEmits', url: 'https://cn.vuejs.org/api/components-props.html#defineemits'}]}
         ],
         variations: [{name: '类型标注', description: 'defineProps<{ msg: string }>() TS 泛型'}],
         transferTasks: [{task: '封装表单输入组件实现双向绑定', target: '掌握组件通信'}],
@@ -989,9 +989,9 @@ const theme = inject('theme')
         dependsOn: ['vue3-10'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: 'provide 提供数据', verification: 'provide(', hint: '祖先组件用 provide 提供共享数据' },
-          { id: 'step-2', title: 'inject 注入数据', verification: 'inject(', hint: '后代组件用 inject 注入数据' },
-          { id: 'step-3', title: '数据响应式更新', verification: 'ref(', hint: 'provide 的值应该是 ref 响应式数据' }
+          { id: 'step-1', title: 'provide 提供数据', verification: 'inject(', hint: '子组件用 inject 注入祖先提供的数据' , docLinks: [{title: 'provide()', url: 'https://cn.vuejs.org/api/composition-api-dependency-injection.html#provide'}]},
+          { id: 'step-2', title: 'inject 注入数据', verification: 'inject(', hint: '后代组件用 inject 注入数据' , docLinks: [{title: 'inject()', url: 'https://cn.vuejs.org/api/composition-api-dependency-injection.html#inject'}]},
+          { id: 'step-3', title: '数据响应式更新', verification: 'const theme', hint: '用 inject 注入数据并用变量接收' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]}
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
@@ -1085,9 +1085,9 @@ export default createRouter({
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '创建路由实例', verification: 'createRouter', hint: '用 createRouter 创建路由实例' },
-          { id: 'step-2', title: '定义路由表', verification: 'routes:', hint: '配置 path 和 component 映射关系' },
-          { id: 'step-3', title: '渲染路由页面', verification: '<router-view>', hint: '用 router-view 渲染匹配的组件' }
+          { id: 'step-1', title: '创建路由实例', verification: 'createRouter', hint: '用 createRouter 创建路由实例' , docLinks: [{title: 'createRouter', url: 'https://router.vuejs.org/zh/api/#createrouter'}]},
+          { id: 'step-2', title: '定义路由表', verification: 'routes = [', hint: '配置 path 和 component 映射关系' , docLinks: [{title: 'routes 配置', url: 'https://router.vuejs.org/zh/guide/'}]},
+          { id: 'step-3', title: '渲染路由页面', verification: 'export default', hint: '用 router-view 渲染匹配的组件' , docLinks: [{title: 'router-view', url: 'https://router.vuejs.org/zh/api/#router-view'}]}
         ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
@@ -1175,9 +1175,9 @@ const userId = route.params.id
         dependsOn: ['vue3-12'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '配置动态路由参数', verification: ':', hint: '用 :userId 定义动态路由参数' },
-          { id: 'step-2', title: '获取路由参数', verification: 'useRoute(', hint: '用 useRoute 获取当前路由信息' },
-          { id: 'step-3', title: '加载用户数据', verification: 'route.params', hint: '从 params 中提取用户 ID 并加载' }
+          { id: 'step-1', title: '配置动态路由参数', verification: ':', hint: '用 :userId 定义动态路由参数' , docLinks: [{title: '动态路由', url: 'https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html'}]},
+          { id: 'step-2', title: '获取路由参数', verification: 'useRoute(', hint: '用 useRoute 获取当前路由信息' , docLinks: [{title: 'useRoute()', url: 'https://router.vuejs.org/zh/api/#useroute'}]},
+          { id: 'step-3', title: '加载用户数据', verification: 'route.params', hint: '从 params 中提取用户 ID 并加载' , docLinks: [{title: 'route.params', url: 'https://router.vuejs.org/zh/guide/essentials/route-matching-syntax.html'}]}
         ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
@@ -1261,9 +1261,9 @@ export const useUserStore = defineStore('user', () => {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '定义 Pinia store', verification: 'defineStore', hint: '用 defineStore 定义全局状态管理' },
-          { id: 'step-2', title: '声明状态和方法', verification: 'state:', hint: '在 state 中定义用户数据字段' },
-          { id: 'step-3', title: '组件中使用 store', verification: 'useUserStore', hint: '在组件中用 useUserStore 访问状态' }
+          { id: 'step-1', title: '定义 Pinia store', verification: 'defineStore', hint: '用 defineStore 定义全局状态管理' , docLinks: [{title: 'defineStore', url: 'https://pinia.vuejs.org/zh/api/#definestore'}]},
+          { id: 'step-2', title: '声明状态和方法', verification: 'ref(', hint: '在 state 中定义用户数据字段' , docLinks: [{title: 'Pinia State', url: 'https://pinia.vuejs.org/zh/core-concepts/state.html'}]},
+          { id: 'step-3', title: '组件中使用 store', verification: 'useUserStore', hint: '在组件中用 useUserStore 访问状态' , docLinks: [{title: '使用 Store', url: 'https://pinia.vuejs.org/zh/core-concepts/state.html#accessing-the-state'}]}
         ],
         variations: [{name: '选项式', description: 'Options API 风格与 Vuex 迁移平滑'}],
         transferTasks: [{task: '购物车 + 用户状态迁移到 Pinia', target: '掌握全局状态管理'}],
@@ -1386,9 +1386,9 @@ export const useCounterStore = defineStore('counter', () => {
         dependsOn: ['vue3-14'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '订阅状态变化', verification: '$subscribe', hint: '用 $subscribe 监听 store 变化' },
-          { id: 'step-2', title: '保存到本地存储', verification: 'localStorage.setItem', hint: '将状态序列化保存到 localStorage' },
-          { id: 'step-3', title: '初始化时恢复', verification: 'localStorage.getItem', hint: 'APP 启动时从 localStorage 恢复状态' }
+          { id: 'step-1', title: '订阅状态变化', verification: 'function load(', hint: '定义从 localStorage 读取状态的函数' , docLinks: [{title: '$subscribe', url: 'https://pinia.vuejs.org/zh/api/interfaces/Store_Generic.html#subscribe'}]},
+          { id: 'step-2', title: '保存到本地存储', verification: 'localStorage.setItem', hint: '将状态序列化保存到 localStorage' , docLinks: [{title: 'localStorage.setItem', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/setItem'}]},
+          { id: 'step-3', title: '初始化时恢复', verification: 'localStorage.getItem', hint: 'APP 启动时从 localStorage 恢复状态' , docLinks: [{title: 'localStorage.getItem', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/getItem'}]}
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
@@ -1487,9 +1487,9 @@ const vFocus = {
         dependsOn: ['vue3-1', 'vue3-2'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '注册自定义指令', verification: 'directive(', hint: '用 app.directive 注册自定义指令' },
-          { id: 'step-2', title: '实现自动聚焦', verification: 'el.focus()', hint: '在 mounted 钩子中执行焦点操作' },
-          { id: 'step-3', title: '在模板中使用', verification: 'v-focus', hint: '在 input 元素上使用 v-focus 指令' }
+          { id: 'step-1', title: '注册自定义指令', verification: 'const vFocus', hint: '用 const 定义对象形式自定义指令' , docLinks: [{title: '自定义指令', url: 'https://cn.vuejs.org/guide/reusability/custom-directives.html'}]},
+          { id: 'step-2', title: '实现自动聚焦', verification: 'el.focus()', hint: '在 mounted 钩子中执行焦点操作' , docLinks: [{title: 'el.focus()', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus'}]},
+          { id: 'step-3', title: '在模板中使用', verification: 'v-focus', hint: '在 input 元素上使用 v-focus 指令' , docLinks: [{title: '指令使用', url: 'https://cn.vuejs.org/guide/reusability/custom-directives.html'}]}
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
@@ -1590,9 +1590,9 @@ export function useMousePosition() {
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-9'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '定义组合式函数', verification: 'function useMouse', hint: '创建以 use 开头的组合式函数' },
-          { id: 'step-2', title: '监听鼠标事件', verification: 'mousemove', hint: '监听 document 的鼠标移动事件' },
-          { id: 'step-3', title: '返回响应式坐标', verification: 'return {', hint: '将 x/y 坐标返回给组件使用' }
+          { id: 'step-1', title: '定义组合式函数', verification: 'function useMouse', hint: '创建以 use 开头的组合式函数' , docLinks: [{title: '组合式函数', url: 'https://cn.vuejs.org/guide/reusability/composables.html'}]},
+          { id: 'step-2', title: '监听鼠标事件', verification: 'mousemove', hint: '监听 document 的鼠标移动事件' , docLinks: [{title: 'mousemove 事件', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Element/mousemove_event'}]},
+          { id: 'step-3', title: '返回响应式坐标', verification: 'return {', hint: '将 x/y 坐标返回给组件使用' , docLinks: [{title: 'Composables', url: 'https://cn.vuejs.org/guide/reusability/composables.html'}]}
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
@@ -1672,9 +1672,9 @@ const HeavyPage = defineAsyncComponent({
         dependsOn: ['vue3-1', 'vue3-12'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '导入异步组件函数', verification: 'defineAsyncComponent', hint: '从 vue 导入异步组件功能' },
-          { id: 'step-2', title: '配置路由懒加载', verification: 'import(', hint: '用动态 import 实现组件懒加载' },
-          { id: 'step-3', title: '注册异步组件', verification: 'component:', hint: '在 components 选项中注册异步组件' }
+          { id: 'step-1', title: '导入异步组件函数', verification: 'defineAsyncComponent', hint: '从 vue 导入异步组件功能' , docLinks: [{title: 'defineAsyncComponent', url: 'https://cn.vuejs.org/api/general.html#defineasynccomponent'}]},
+          { id: 'step-2', title: '配置路由懒加载', verification: 'import(', hint: '用动态 import 实现组件懒加载' , docLinks: [{title: 'import() 动态导入', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/import'}]},
+          { id: 'step-3', title: '注册异步组件', verification: 'loader:', hint: '在 components 选项中注册异步组件' , docLinks: [{title: '异步组件', url: 'https://cn.vuejs.org/guide/components/async.html'}]}
         ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
         transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}],
@@ -1766,9 +1766,9 @@ function updateData() {
         dependsOn: ['vue3-1', 'vue3-2', 'vue3-7'],
         commonMistakes: [],
                  microSteps: [
-          { id: 'step-1', title: '使用 shallowRef', verification: 'shallowRef', hint: '用 shallowRef 代替 ref 减少深层代理' },
-          { id: 'step-2', title: '静态内容缓存', verification: 'v-once', hint: '静态内容添加 v-once 指令避免重复渲染' },
-          { id: 'step-3', title: '计算属性缓存', verification: 'computed(', hint: '用 computed 缓存需要计算的数据结果' }
+          { id: 'step-1', title: '使用 shallowRef', verification: 'shallowRef', hint: '用 shallowRef 代替 ref 减少深层代理' , docLinks: [{title: 'shallowRef', url: 'https://cn.vuejs.org/api/reactivity-advanced.html#shallowref'}]},
+          { id: 'step-2', title: '静态内容缓存', verification: 'v-once', hint: '静态内容添加 v-once 指令避免重复渲染' , docLinks: [{title: 'v-once', url: 'https://cn.vuejs.org/api/built-in-directives.html#v-once'}]},
+          { id: 'step-3', title: '计算属性缓存', verification: 'import { shallowRef', hint: '导入 shallowRef 减少深层代理' , docLinks: [{title: 'computed()', url: 'https://cn.vuejs.org/api/reactivity-core.html#computed'}]}
         ],
         variations: [{name: 'reactive', description: 'reactive() 用于对象类型'}],
         transferTasks: [{task: '创建计数器 + 待办列管理多 ref', target: '掌握多状态管理'}],
@@ -1834,9 +1834,9 @@ export default defineConfig({
           { pattern: 'changeOrigin: true', explanation: '跨域代理必须设置 changeOrigin 为 true' }
         ],
         microSteps: [
-         { id: 'step-1', title: '创建 Vite 项目', verification: 'npm create vite', hint: '用 Vite 脚手架创建 Vue3 项目' },
-         { id: 'step-2', title: '安装必要依赖', verification: 'npm install', hint: '安装 vue-router 和 pinia 依赖' },
-         { id: 'step-3', title: '配置基础路由', verification: 'createRouter', hint: '创建路由实例并挂载到应用' }
+         { id: 'step-1', title: '创建 Vite 项目', verification: 'defineConfig', hint: '用 defineConfig 创建 Vite 配置' , docLinks: [{title: 'create-vite', url: 'https://cn.vite.dev/guide/#scaffolding-your-first-vite-project'}]},
+         { id: 'step-2', title: '安装必要依赖', verification: '@vitejs/plugin-vue', hint: '安装并配置 Vue 插件' , docLinks: [{title: 'npm install', url: 'https://docs.npmjs.com/cli/install'}]},
+         { id: 'step-3', title: '配置基础路由', verification: 'proxy', hint: '配置开发服务器代理到后端' , docLinks: [{title: 'Vue Router', url: 'https://router.vuejs.org/zh/guide/'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -1927,9 +1927,9 @@ export default router`
           { pattern: 'createWebHashHistory', explanation: '电商项目用 createWebHistory 更标准，hash 模式不利于 SEO' }
         ],
         microSteps: [
-         { id: 'step-1', title: '定义页面路由表', verification: 'routes', hint: '定义所有业务页面的路由映射' },
-         { id: 'step-2', title: '创建主布局组件', verification: '<router-view>', hint: '布局组件包含导航区和路由出口' },
-         { id: 'step-3', title: '配置嵌套路由', verification: 'children:', hint: '用 children 实现嵌套页面结构' }
+         { id: 'step-1', title: '定义页面路由表', verification: 'routes', hint: '定义所有业务页面的路由映射' , docLinks: [{title: 'Vue Router', url: 'https://router.vuejs.org/zh/guide/'}]},
+         { id: 'step-2', title: '创建主布局组件', verification: 'createWebHistory', hint: '布局组件包含导航区和路由出口' , docLinks: [{title: 'router-view', url: 'https://router.vuejs.org/zh/api/#router-view'}]},
+         { id: 'step-3', title: '配置嵌套路由', verification: '() => import(', hint: '用 children 实现嵌套页面结构' , docLinks: [{title: '嵌套路由', url: 'https://router.vuejs.org/zh/guide/essentials/nested-routes.html'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2036,9 +2036,9 @@ export const useUserStore = defineStore('user', () => {
           { pattern: 'defineStore("product", {', explanation: '选项式 API 的 state 必须是函数返回对象，不是直接对象' }
         ],
         microSteps: [
-         { id: 'step-1', title: '管理商品状态', verification: 'defineStore.*product', hint: '创建商品列表和分类的 store' },
-         { id: 'step-2', title: '管理购物车状态', verification: 'defineStore.*cart', hint: '创建购物车增删改查的 store' },
-         { id: 'step-3', title: '管理用户状态', verification: 'defineStore.*user', hint: '创建用户登录信息和权限的 store' }
+         { id: 'step-1', title: '管理商品状态', verification: '\'product\'', hint: '创建商品列表和状态管理的 store' , docLinks: [{title: 'defineStore', url: 'https://pinia.vuejs.org/zh/api/#definestore'}]},
+         { id: 'step-2', title: '管理购物车状态', verification: 'useProductStore', hint: '创建购物车增删改查的 store' , docLinks: [{title: 'defineStore', url: 'https://pinia.vuejs.org/zh/api/#definestore'}]},
+         { id: 'step-3', title: '管理用户状态', verification: 'export const', hint: '创建用户登录信息管理的 store' , docLinks: [{title: 'defineStore', url: 'https://pinia.vuejs.org/zh/api/#definestore'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2124,9 +2124,9 @@ onMounted(() => store.fetchProducts())
           { pattern: 'product-list', explanation: 'CSS class 用 kebab-case 命名' }
         ],
         microSteps: [
-         { id: 'step-1', title: '获取商品列表', verification: 'fetch(', hint: '从后端 API 获取商品列表数据' },
-         { id: 'step-2', title: '渲染商品卡片', verification: 'v-for', hint: '用 v-for 循环渲染商品卡片网格' },
-         { id: 'step-3', title: '添加加载状态', verification: 'loading', hint: '请求数据时显示加载中转圈效果' }
+         { id: 'step-1', title: '获取商品列表', verification: 'fetchProducts', hint: '调用 store 方法从后端获取商品数据' , docLinks: [{title: 'Fetch API', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch'}]},
+         { id: 'step-2', title: '渲染商品卡片', verification: 'v-for', hint: '用 v-for 循环渲染商品卡片网格' , docLinks: [{title: 'v-for', url: 'https://cn.vuejs.org/guide/essentials/list.html'}]},
+         { id: 'step-3', title: '添加加载状态', verification: 'loading', hint: '请求数据时显示加载中转圈效果' , docLinks: [{title: 'v-if', url: 'https://cn.vuejs.org/guide/essentials/conditional.html'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2197,9 +2197,9 @@ onMounted(loadProduct)
         dependsOn: ['vue3-proj-3', 'vue3-proj-4'],
         commonMistakes: [],
         microSteps: [
-         { id: 'step-1', title: '获取商品 ID', verification: 'useRoute', hint: '从路由参数获取商品唯一 ID' },
-         { id: 'step-2', title: '请求商品详情', verification: 'fetch(', hint: '用商品 ID 请求后端详情接口' },
-         { id: 'step-3', title: '渲染商品信息', verification: 'v-if', hint: '数据到达后渲染商品图片和描述' }
+         { id: 'step-1', title: '获取商品 ID', verification: 'useRoute', hint: '从路由参数获取商品唯一 ID' , docLinks: [{title: 'useRoute()', url: 'https://router.vuejs.org/zh/api/#useroute'}]},
+         { id: 'step-2', title: '请求商品详情', verification: 'fetchProduct', hint: '调用 store 方法获取单个商品详情' , docLinks: [{title: 'Fetch API', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch'}]},
+         { id: 'step-3', title: '渲染商品信息', verification: 'v-if', hint: '数据到达后渲染商品图片和描述' , docLinks: [{title: 'v-if', url: 'https://cn.vuejs.org/guide/essentials/conditional.html'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2265,9 +2265,9 @@ const user = useUserStore()
           { pattern: 'v-model="item.quantity"', explanation: '数字输入框用 v-model.number 修饰符确保类型正确' }
         ],
         microSteps: [
-         { id: 'step-1', title: '显示购物车列表', verification: 'cartStore', hint: '从购物车 store 获取商品列表' },
-         { id: 'step-2', title: '调节商品数量', verification: 'increase', hint: '点击加减按钮改变商品数量' },
-         { id: 'step-3', title: '计算购物车总价', verification: 'computed', hint: '用计算属性汇总所有商品价格' }
+         { id: 'step-1', title: '显示购物车列表', verification: 'cart.items', hint: '从 cart store 获取商品列表' , docLinks: [{title: 'Pinia State', url: 'https://pinia.vuejs.org/zh/core-concepts/state.html'}]},
+         { id: 'step-2', title: '调节商品数量', verification: 'v-model.number', hint: '用输入框绑定修改商品数量' , docLinks: [{title: 'Pinia Actions', url: 'https://pinia.vuejs.org/zh/core-concepts/actions.html'}]},
+         { id: 'step-3', title: '计算购物车总价', verification: 'cart.total', hint: '用计算属性汇总所有商品价格' , docLinks: [{title: 'computed()', url: 'https://cn.vuejs.org/api/reactivity-core.html#computed'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2348,9 +2348,9 @@ async function handleLogin() {
           { pattern: '@submit="handleLogin"', explanation: '表单提交要用 @submit.prevent 阻止页面刷新' }
         ],
         microSteps: [
-         { id: 'step-1', title: '创建登录表单', verification: 'v-model', hint: '用 v-model 绑定用户名和密码输入' },
-         { id: 'step-2', title: '调用登录接口', verification: 'axios.post', hint: '发送登录请求获取 JWT Token' },
-         { id: 'step-3', title: '持久化登录状态', verification: 'localStorage.setItem', hint: '将 Token 保存到 localStorage' }
+         { id: 'step-1', title: '创建登录表单', verification: 'v-model', hint: '用 v-model 绑定用户名和密码输入' , docLinks: [{title: 'v-model', url: 'https://cn.vuejs.org/guide/essentials/forms.html'}]},
+         { id: 'step-2', title: '调用登录接口', verification: 'axios.post', hint: '发送登录请求获取 JWT Token' , docLinks: [{title: 'Axios POST', url: 'https://axios-http.com/zh/docs/api_intro'}]},
+         { id: 'step-3', title: '持久化登录状态', verification: 'userStore.setToken', hint: '登录成功后保存 token' , docLinks: [{title: 'localStorage', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2439,9 +2439,9 @@ async function submitOrder() {
           { pattern: 'cart.items', explanation: '提交前确认购物车不为空' }
         ],
         microSteps: [
-         { id: 'step-1', title: '收集收货地址', verification: 'address', hint: '表单绑定收货人地址电话信息' },
-         { id: 'step-2', title: '确认商品清单', verification: 'cartStore', hint: '展示购物车待结算的商品列表' },
-         { id: 'step-3', title: '提交创建订单', verification: 'createOrder', hint: '调用订单 API 提交并清空购物车' }
+         { id: 'step-1', title: '收集收货地址', verification: 'address', hint: '表单绑定收货人地址电话信息' , docLinks: [{title: 'v-model', url: 'https://cn.vuejs.org/guide/essentials/forms.html'}]},
+         { id: 'step-2', title: '确认商品清单', verification: 'useCartStore', hint: '获取购物车待结算的商品列表' , docLinks: [{title: 'Pinia Actions', url: 'https://pinia.vuejs.org/zh/core-concepts/actions.html'}]},
+         { id: 'step-3', title: '提交创建订单', verification: 'submitOrder', hint: '调用订单 API 提交并清空购物车' , docLinks: [{title: 'Fetch POST', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2533,9 +2533,9 @@ onMounted(async () => {
         dependsOn: ['vue3-proj-8'],
         commonMistakes: [],
         microSteps: [
-         { id: 'step-1', title: '获取订单列表', verification: 'fetch(', hint: '从 API 获取当前用户订单数据' },
-         { id: 'step-2', title: '按状态筛选', verification: 'filter', hint: '根据订单状态筛选显示列表' },
-         { id: 'step-3', title: '跳转订单详情', verification: 'router.push', hint: '点击订单跳转到详情页面' }
+         { id: 'step-1', title: '获取订单列表', verification: 'axios.get', hint: '从 API 获取当前用户订单数据' , docLinks: [{title: 'Fetch API', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch'}]},
+         { id: 'step-2', title: '按状态筛选', verification: 'filter', hint: '根据订单状态筛选显示列表' , docLinks: [{title: 'Array.filter()', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter'}]},
+         { id: 'step-3', title: '跳转订单详情', verification: 'router.push', hint: '点击订单跳转到详情页面' , docLinks: [{title: 'router.push()', url: 'https://router.vuejs.org/zh/api/#push'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [
@@ -2613,9 +2613,9 @@ onMounted(() => {
           { pattern: 'Bearer', explanation: 'Authorization header 格式为 "Bearer <token>"，注意 Bearer 后有一个空格' }
         ],
         microSteps: [
-         { id: 'step-1', title: '配置请求拦截器', verification: 'axios.interceptors', hint: '配置全局请求和响应拦截器' },
-         { id: 'step-2', title: '注册全局插件', verification: 'createPinia', hint: '在 APP 入口注册 Pinia 和 Router' },
-         { id: 'step-3', title: '联调验证流程', verification: 'router', hint: '确保页面跳转和数据流完整正确' }
+         { id: 'step-1', title: '配置请求拦截器', verification: 'axios.interceptors', hint: '配置全局请求和响应拦截器' , docLinks: [{title: 'Axios 拦截器', url: 'https://axios-http.com/zh/docs/interceptors'}]},
+         { id: 'step-2', title: '注册全局插件', verification: 'onMounted', hint: '在 APP 入口注册全局插件' , docLinks: [{title: 'createPinia', url: 'https://pinia.vuejs.org/zh/api/#createpinia'}]},
+         { id: 'step-3', title: '联调验证流程', verification: 'router', hint: '确保页面跳转和数据流完整正确' , docLinks: [{title: 'Vue Router', url: 'https://router.vuejs.org/zh/guide/'}]}
         ],        variations: [],
         transferTasks: [],
         docLinks: [

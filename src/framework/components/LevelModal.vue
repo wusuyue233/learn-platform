@@ -179,6 +179,13 @@
                 </div>
                 <strong>{{ currentMicroStep.title }}</strong>
                 <p class="microstep-hint">{{ currentMicroStep.hint }}</p>
+                <div v-if="currentMicroStep.docLinks?.length" class="microstep-docs">
+                  <a v-for="(link, i) in currentMicroStep.docLinks" :key="i" class="microstep-doc-link" :href="link.url" target="_blank" rel="noopener noreferrer">
+                    <span class="doc-link-icon">📄</span>
+                    <span>{{ link.title }}</span>
+                    <span class="doc-link-arrow">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -1107,6 +1114,27 @@ function handleClose() {
   margin: 4px 0 0;
   color: var(--text-secondary);
   font-size: 12px;
+}
+.microstep-docs {
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.microstep-doc-link {
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 0;
+}
+.microstep-doc-link:hover {
+  text-decoration: underline;
+}
+.microstep-doc-link .doc-link-arrow {
+  font-size: 10px;
 }
 
 .tag-project {

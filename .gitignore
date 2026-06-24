@@ -106,6 +106,8 @@ dist
 *.bak
 *.pre-enhance.*
 scripts/
+src/data/
+src/microStep-docLinks.json
 
 # yarn v2
 .yarn/cache

@@ -65,19 +65,22 @@ print(1 + 2, "result")           # 混合输出`,
           'id': 'step-1',
           'title': '调用 print 函数',
           'verification': 'print(',
-          'hint': 'print() 是 Python 内置输出函数'
+          'hint': 'print() 是 Python 内置输出函数',
+          docLinks: [{title: 'Python print()', url: 'https://docs.python.org/zh-cn/3/library/functions.html#print'}, {title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '输出字符串',
           'verification': '"Hello, Python!"',
-          'hint': '字符串用引号包裹，双引号单引号均可'
+          'hint': '字符串用引号包裹，双引号单引号均可',
+          docLinks: [{title: 'Python print()', url: 'https://docs.python.org/zh-cn/3/library/functions.html#print'}, {title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '闭合括号',
           'verification': ')',
-          'hint': 'print 函数括号闭合表示函数调用结束'
+          'hint': 'print 函数括号闭合表示函数调用结束',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -180,19 +183,22 @@ print(is_student, type(is_student))`,
           'id': 'step-1',
           'title': '创建字符串变量',
           'verification': 'name = "Alice"',
-          'hint': 'name = "Alice" 字符串变量赋值'
+          'hint': 'name = "Alice" 字符串变量赋值',
+          docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '创建数字变量',
           'verification': 'age = 25',
-          'hint': '整数和浮点数直接赋值，不需要引号'
+          'hint': '整数和浮点数直接赋值，不需要引号',
+          docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '查看变量类型',
           'verification': 'type(',
-          'hint': 'type() 查看变量类型，验证赋值结果'
+          'hint': 'type() 查看变量类型，验证赋值结果',
+          docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
         ],
         variations: [
@@ -301,19 +307,22 @@ print(result)  # 8`,
           'id': 'step-1',
           'title': '定义函数',
           'verification': 'def add(a, b):',
-          'hint': 'def 关键字定义函数，参数放在括号中'
+          'hint': 'def 关键字定义函数，参数放在括号中',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
          {
           'id': 'step-2',
           'title': '返回结果',
           'verification': 'return a + b',
-          'hint': 'return 语句返回计算结果'
+          'hint': 'return 语句返回计算结果',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
          {
           'id': 'step-3',
           'title': '调用并打印',
           'verification': 'print(result)',
-          'hint': '调用函数后 print 输出结果到控制台'
+          'hint': '调用函数后 print 输出结果到控制台',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
         ],
         variations: [
@@ -424,19 +433,22 @@ print(evens)  # [2, 4, 6, 8, 10]`,
           'id': 'step-1',
           'title': '用 for 循环遍历',
           'verification': 'for i in range(1, 11):',
-          'hint': 'range(1, 11) 生成 1 到 10 的整数序列'
+          'hint': 'range(1, 11) 生成 1 到 10 的整数序列',
+          docLinks: [{title: 'Python 流程控制', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html'}],
          },
          {
           'id': 'step-2',
           'title': '用 if 判断偶数',
           'verification': 'if i % 2 == 0:',
-          'hint': '% 取模运算符，i % 2 == 0 表示偶数'
+          'hint': '% 取模运算符，i % 2 == 0 表示偶数',
+          docLinks: [{title: 'Python 流程控制', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html'}],
          },
          {
           'id': 'step-3',
           'title': '收集结果',
           'verification': 'even_numbers.append',
-          'hint': '列表的 append 方法添加符合条件的元素'
+          'hint': '列表的 append 方法添加符合条件的元素',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -552,19 +564,22 @@ for student in students:
           'id': 'step-1',
           'title': '创建列表',
           'verification': '\'[',
-          'hint': '列表用方括号 []，元素用逗号分隔'
+          'hint': '列表用方括号 []，元素用逗号分隔',
+          docLinks: [{title: 'Python 数据结构', url: 'https://docs.python.org/zh-cn/3/tutorial/datastructures.html'}],
          },
          {
           'id': 'step-2',
           'title': '创建字典',
           'verification': '\':',
-          'hint': '字典用花括号 {}，键值对用冒号分隔'
+          'hint': '字典用花括号 {}，键值对用冒号分隔',
+          docLinks: [{title: 'Python 数据结构', url: 'https://docs.python.org/zh-cn/3/tutorial/datastructures.html'}],
          },
          {
           'id': 'step-3',
           'title': '增删改查',
           'verification': '.append(',
-          'hint': '列表的 append/remove 方法操作数据'
+          'hint': '列表的 append/remove 方法操作数据',
+          docLinks: [{title: 'Python 数据结构', url: 'https://docs.python.org/zh-cn/3/tutorial/datastructures.html'}],
          },
         ],
         variations: [
@@ -682,19 +697,22 @@ async def hello():
           'id': 'step-1',
           'title': '导入 FastAPI',
           'verification': 'from fastapi import FastAPI',
-          'hint': 'FastAPI() 创建应用实例'
+          'hint': 'FastAPI() 创建应用实例',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-2',
           'title': '注册路由',
           'verification': '@app.get(',
-          'hint': '@app.get("/hello") 装饰器注册 GET 端点'
+          'hint': '@app.get("/hello") 装饰器注册 GET 端点',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-3',
           'title': '返回 JSON',
           'verification': 'return {',
-          'hint': '直接 return 字典，FastAPI 自动转 JSON'
+          'hint': '直接 return 字典，FastAPI 自动转 JSON',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -799,19 +817,22 @@ async def get_user(user_id: int):
           'id': 'step-1',
           'title': '定义路径参数',
           'verification': '{user_id}',
-          'hint': '{user_id} 路径中的动态参数段'
+          'hint': '{user_id} 路径中的动态参数段',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-2',
           'title': '类型提示',
           'verification': 'user_id: int',
-          'hint': 'user_id: int 声明参数类型，FastAPI 自动转换'
+          'hint': 'user_id: int 声明参数类型，FastAPI 自动转换',
+          docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '返回参数值',
           'verification': 'return {"user_id": user_id}',
-          'hint': 'return 字典形式的响应数据'
+          'hint': 'return 字典形式的响应数据',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
         ],
         variations: [
@@ -918,19 +939,22 @@ async def list_items(page: int = 1, size: int = 10):
           'id': 'step-1',
           'title': '声明查询参数',
           'verification': 'page: int',
-          'hint': '函数参数自动成为查询参数'
+          'hint': '函数参数自动成为查询参数',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-2',
           'title': '设置默认值',
-          'verification': 'skip: int = 0',
-          'hint': '默认值为 0，客户端可省略'
+          'verification': 'size: int = 10',
+          'hint': '默认值为 0，客户端可省略',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-3',
           'title': '分页返回',
           'verification': 'return {"items"',
-          'hint': '返回 items 列表和 total 总数'
+          'hint': '返回 items 列表和 total 总数',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
         ],
         variations: [
@@ -1052,20 +1076,23 @@ async def create_product(product: Product):
          {
           'id': 'step-1',
           'title': '定义 Pydantic 模型',
-          'verification': 'class Item(BaseModel):',
-          'hint': '继承 BaseModel 定义请求体结构'
+          'verification': 'class Product(BaseModel):',
+          'hint': '继承 BaseModel 定义请求体结构',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-2',
           'title': '声明字段类型',
           'verification': 'name: str',
-          'hint': '类型注解声明必填字段类型'
+          'hint': '类型注解声明必填字段类型',
+          docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '请求体参数',
-          'verification': 'item: Item',
-          'hint': '函数参数声明为 Pydantic 模型'
+          'verification': 'product: Product',
+          'hint': '函数参数声明为 Pydantic 模型',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -1188,19 +1215,22 @@ async def get_user(id: int):
           'id': 'step-1',
           'title': '声明 response_model',
           'verification': 'response_model',
-          'hint': 'response_model 过滤敏感字段'
+          'hint': 'response_model 过滤敏感字段',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-2',
           'title': '定义输出模型',
-          'verification': 'class ItemOut(BaseModel):',
-          'hint': '只包含需要返回的字段'
+          'verification': 'class UserOut(BaseModel):',
+          'hint': '只包含需要返回的字段',
+          docLinks: [{title: 'Python print()', url: 'https://docs.python.org/zh-cn/3/library/functions.html#print'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
          {
           'id': 'step-3',
           'title': '返回实体',
-          'verification': 'return item',
-          'hint': '实际返回的数据会被 response_model 过滤'
+          'verification': '"id": id',
+          'hint': '实际返回的数据会被 response_model 过滤',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
         ],
         variations: [
@@ -1315,20 +1345,23 @@ async def get_item(item_id: str):
          {
           'id': 'step-1',
           'title': '导入 HTTPException',
-          'verification': 'from fastapi import HTTPException',
-          'hint': 'HTTPException 用于返回 HTTP 错误'
+          'verification': 'HTTPException',
+          'hint': 'HTTPException 用于返回 HTTP 错误',
+          docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}, {title: 'FastAPI 错误处理', url: 'https://fastapi.tiangolo.com/zh/tutorial/handling-errors/'}],
          },
          {
           'id': 'step-2',
           'title': '抛出异常',
           'verification': 'raise HTTPException',
-          'hint': 'raise 抛出错误，中断请求处理'
+          'hint': 'raise 抛出错误，中断请求处理',
+          docLinks: [{title: 'FastAPI 错误处理', url: 'https://fastapi.tiangolo.com/zh/tutorial/handling-errors/'}],
          },
          {
           'id': 'step-3',
           'title': '设置状态码',
           'verification': 'status_code=404',
-          'hint': '404 表示资源不存在，400 表示参数错误'
+          'hint': '404 表示资源不存在，400 表示参数错误',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -1454,19 +1487,22 @@ async def process_time(request: Request, call_next):
           'id': 'step-1',
           'title': '注册中间件',
           'verification': '@app.middleware("http")',
-          'hint': '"http" 中间件拦截所有 HTTP 请求'
+          'hint': '"http" 中间件拦截所有 HTTP 请求',
+          docLinks: [{title: 'FastAPI 中间件', url: 'https://fastapi.tiangolo.com/zh/tutorial/middleware/'}],
          },
          {
           'id': 'step-2',
           'title': '调用下一个处理器',
           'verification': 'await call_next(request)',
-          'hint': 'call_next 将请求转发给下一个中间件或路由'
+          'hint': 'call_next 将请求转发给下一个中间件或路由',
+          docLinks: [{title: 'Python 函数定义', url: 'https://docs.python.org/zh-cn/3/tutorial/controlflow.html#defining-functions'}],
          },
          {
           'id': 'step-3',
           'title': '统计耗时',
           'verification': 'process_time',
-          'hint': '处理前后记录时间，计算差值'
+          'hint': '处理前后记录时间，计算差值',
+          docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
          },
         ],
         variations: [
@@ -1529,20 +1565,23 @@ async def process_time(request: Request, call_next):
                 {
                   'id': 'step-1',
                   'title': '创建应用入口',
-                  'verification': 'FastAPI()',
-                  'hint': '用 FastAPI() 创建应用实例'
+                  'verification': 'FastAPI',
+                  'hint': '用 FastAPI() 创建应用实例',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '导入路由模块',
                   'verification': 'include_router',
-                  'hint': '用 include_router 注册路由模块'
+                  'hint': '用 include_router 注册路由模块',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '创建项目结构',
                   'verification': 'routers',
-                  'hint': '创建 routers/models/schemas 包目录'
+                  'hint': '创建 routers/models/schemas 包目录',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 }
               ],
               variations: [
@@ -1608,19 +1647,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '定义 Product 模型',
                   'verification': 'Column(Integer',
-                  'hint': '用 Column 定义数据库字段'
+                  'hint': '用 Column 定义数据库字段',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '定义 Pydantic 模式',
-                  'verification': 'BaseModel',
-                  'hint': '定义请求和响应的校验模式'
+                  'verification': 'Column',
+                  'hint': '定义请求和响应的校验模式',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '实现 CRUD 路由',
-                  'verification': 'async def',
-                  'hint': '实现商品列表/详情/创建 API'
+                  'verification': '__tablename__',
+                  'hint': '实现商品列表/详情/创建 API',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 }
               ],
               variations: [
@@ -1686,19 +1728,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '创建 JWT Token',
                   'verification': 'jwt.encode',
-                  'hint': '用 jose 创建并签名 JWT'
+                  'hint': '用 jose 创建并签名 JWT',
+                 docLinks: [{title: 'JWT 认证', url: 'https://fastapi.tiangolo.com/zh/tutorial/security/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '验证 Token',
                   'verification': 'jwt.decode',
-                  'hint': '解码并验证 token 有效性'
+                  'hint': '解码并验证 token 有效性',
+                 docLinks: [{title: 'JWT 认证', url: 'https://fastapi.tiangolo.com/zh/tutorial/security/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '注册认证路由',
                   'verification': 'create_access_token',
-                  'hint': '注册登录端点返回 token'
+                  'hint': '注册登录端点返回 token',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}, {title: 'JWT 认证', url: 'https://fastapi.tiangolo.com/zh/tutorial/security/'}],
                 }
               ],
               variations: [
@@ -1764,19 +1809,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '定义 CartItem 模型',
                   'verification': 'ForeignKey',
-                  'hint': '定义含 user_id/product_id/quantity 的模型'
+                  'hint': '定义含 user_id/product_id/quantity 的模型',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '添加商品到购物车',
                   'verification': 'CartItem(',
-                  'hint': '创建新购物车条目记录'
+                  'hint': '创建新购物车条目记录',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '更新和删除',
                   'verification': 'quantity',
-                  'hint': '实现数量更新和商品删除'
+                  'hint': '实现数量更新和商品删除',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 }
               ],
               variations: [
@@ -1833,19 +1881,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '定义订单模型',
                   'verification': 'Order(Base)',
-                  'hint': '定义 Order 和 OrderItem 模型'
+                  'hint': '定义 Order 和 OrderItem 模型',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建订单事务',
-                  'verification': 'db.begin',
-                  'hint': '在事务中创建订单并扣减库存'
+                  'verification': 'relationship',
+                  'hint': '在事务中创建订单并扣减库存',
+                 docLinks: [{title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '查询订单列表',
                   'verification': 'user_id',
-                  'hint': '根据用户 ID 查询订单列表'
+                  'hint': '根据用户 ID 查询订单列表',
+                 docLinks: [{title: 'Python 数据结构', url: 'https://docs.python.org/zh-cn/3/tutorial/datastructures.html'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 }
               ],
               variations: [
@@ -1913,19 +1964,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '定义输入模式',
                   'verification': 'Field(',
-                  'hint': '用 Field 定义字段校验约束'
+                  'hint': '用 Field 定义字段校验约束',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '自定义验证器',
-                  'verification': 'field_validator',
-                  'hint': '用 @field_validator 自定义校验'
+                  'verification': 'gt=0',
+                  'hint': '用 @field_validator 自定义校验',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '配置 ORM 模式',
                   'verification': 'from_attributes',
-                  'hint': '配置 ConfigDict(from_attributes=True)'
+                  'hint': '配置 ConfigDict(from_attributes=True)',
+                 docLinks: [{title: 'Python 3 官方文档', url: 'https://docs.python.org/zh-cn/3/'}, {title: 'FastAPI 官方文档', url: 'https://fastapi.tiangolo.com/zh/'}],
                 }
               ],
               variations: [
@@ -1991,19 +2045,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '创建 TestClient',
                   'verification': 'TestClient(app)',
-                  'hint': '用 TestClient 创建测试客户端'
+                  'hint': '用 TestClient 创建测试客户端',
+                 docLinks: [{title: 'FastAPI 测试', url: 'https://fastapi.tiangolo.com/zh/tutorial/testing/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '测试正常流程',
                   'verification': 'response.status_code',
-                  'hint': '断言响应状态码为 200'
+                  'hint': '断言响应状态码为 200',
+                 docLinks: [{title: 'FastAPI 测试', url: 'https://fastapi.tiangolo.com/zh/tutorial/testing/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '测试异常流程',
                   'verification': 'status_code == 404',
-                  'hint': '测试不存在的资源返回 404'
+                  'hint': '测试不存在的资源返回 404',
+                 docLinks: [{title: 'FastAPI 错误处理', url: 'https://fastapi.tiangolo.com/zh/tutorial/handling-errors/'}, {title: 'FastAPI 测试', url: 'https://fastapi.tiangolo.com/zh/tutorial/testing/'}],
                 }
               ],
               variations: [
@@ -2062,19 +2119,22 @@ async def process_time(request: Request, call_next):
                   'id': 'step-1',
                   'title': '配置 CORS 中间件',
                   'verification': 'CORSMiddleware',
-                  'hint': '用 add_middleware 配置跨域'
+                  'hint': '用 add_middleware 配置跨域',
+                 docLinks: [{title: 'FastAPI 中间件', url: 'https://fastapi.tiangolo.com/zh/tutorial/middleware/'}, {title: 'CORS 中间件', url: 'https://fastapi.tiangolo.com/zh/tutorial/cors/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '配置环境变量',
-                  'verification': 'SECRET_KEY',
-                  'hint': '用环境变量管理敏感配置'
+                  'verification': 'allow_origins',
+                  'hint': '用环境变量管理敏感配置',
+                 docLinks: [{title: 'Python 数据类型', url: 'https://docs.python.org/zh-cn/3/tutorial/intro.html'}, {title: 'SQLAlchemy 文档', url: 'https://docs.sqlalchemy.org/en/20/'}],
                 },
                 {
                   'id': 'step-3',
                   'title': '配置数据库迁移',
-                  'verification': 'alembic',
-                  'hint': '用 Alembic 管理数据库迁移脚本'
+                  'verification': 'add_middleware',
+                  'hint': '用 Alembic 管理数据库迁移脚本',
+                 docLinks: [{title: 'SQLAlchemy 文档', url: 'https://docs.sqlalchemy.org/en/20/'}],
                 }
               ],
               variations: [

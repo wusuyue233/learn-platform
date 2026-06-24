@@ -46,25 +46,25 @@ src/
 - `microSteps[]` — `{ id, title, verification, hint }`
 - `variations[]`, `transferTasks[]`, `docLinks[]`
 
-## 课程清单（16门，253关）
-| 课程 | 关卡数 | 阶段 | microSteps 状态 |
-|------|--------|------|----------------|
-| vue3-fullstack | 29 | 5 | 全部完成 |
-| python-fastapi | 20 | 4 | 全部完成 |
-| javascript-basics | 23 | 4 | 全部完成 |
-| nodejs-express | 23 | 5 | 全部完成 |
-| git-basics | 13 | 4 | 全部完成 |
-| react-basics | 28 | 4 | 全部完成 |
-| typescript-basics | 20 | 4 | 全部完成 |
-| docker-basics | 10 | 3 | 全部完成 |
-| sql-basics | 15 | 3 | 全部完成 |
-| ci-cd | 6 | 2 | 全部完成 |
-| nginx | 6 | 2 | 全部完成 |
-| yolo | 6 | 2 | 全部完成 |
-| pytorch | 8 | 3 | 全部完成 |
-| opencv | 8 | 3 | 全部完成 |
-| uniapp | 8 | 3 | 全部完成 |
-| java-spring | 10 | 3 | 全部完成 |
+## 课程清单（16门，253关，649 docLinks）
+| 课程 | 关卡数 | 阶段 | microSteps | docLinks | 验证对齐 |
+|------|--------|------|-----------|----------|---------|
+| vue3-fullstack | 29 | 5 | 全部完成 | 116 | ✅ |
+| python-fastapi | 20 | 4 | 全部完成 | 80 | ✅ |
+| javascript-basics | 23 | 4 | 全部完成 | 69 | ✅ |
+| nodejs-express | 23 | 5 | 全部完成 | 69 | ✅ (修复27处) |
+| git-basics | 13 | 4 | 全部完成 | 39 | ✅ |
+| react-basics | 28 | 4 | 全部完成 | 84 | ✅ |
+| typescript-basics | 20 | 4 | 全部完成 | 60 | ✅ (修复13处) |
+| docker-basics | 10 | 3 | 全部完成 | 30 | ✅ |
+| sql-basics | 15 | 3 | 全部完成 | 45 | ✅ (修复45处占位符) |
+| ci-cd | 6 | 2 | 全部完成 | 18 | ✅ |
+| nginx | 6 | 2 | 全部完成 | 18 | ✅ |
+| yolo | 6 | 2 | 全部完成 | 18 | ✅ |
+| pytorch | 8 | 3 | 全部完成 | 24 | ✅ |
+| opencv | 8 | 3 | 全部完成 | 24 | ✅ |
+| uniapp | 8 | 3 | 全部完成 | 24 | ✅ |
+| java-spring | 10 | 3 | 全部完成 | 30 | ✅ |
 
 ## 验证机制
 - 通用验证器 `verifier.js`：`check(filePath, pattern, name, effect, options)`
