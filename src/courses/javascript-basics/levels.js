@@ -109,10 +109,6 @@ console.log(name, age)`,
           'target': '掌握变量声明'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       },
       {
         id: 'js-2',
@@ -225,10 +221,6 @@ console.log(typeof 123n)      // "bigint"`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -362,10 +354,6 @@ console.log(subtract(5, 2))  // 3`,
           'target': '理解函数与箭头函数区别'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       },
       {
         id: 'js-4',
@@ -492,10 +480,6 @@ console.log(product)  // 120`,
           'task': '用 filter + map + reduce 组合处理数据',
           'target': '掌握数组链式操作'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -628,10 +612,6 @@ console.log(role)        // "user"`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       }
     ]
@@ -767,10 +747,6 @@ console.log(evens)  // [2, 4]`,
           'target': '理解函数与箭头函数区别'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       },
       {
         id: 'js-7',
@@ -898,10 +874,6 @@ console.log(listHtml)`,
           'target': '巩固概念理解'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       },
       {
         id: 'js-8',
@@ -1021,10 +993,6 @@ console.log(settings)
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -1147,10 +1115,6 @@ console.log(createUser(user))
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       }
     ]
@@ -1296,10 +1260,6 @@ fetchUser(-1).catch(err => console.error(err))`,
           'target': '掌握异步编程模式'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       },
       {
         id: 'js-11',
@@ -1432,10 +1392,6 @@ loadUserPosts()`,
           'task': '模拟 API 请求，用 async/await 处理',
           'target': '掌握异步编程模式'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -1576,10 +1532,6 @@ console.log(safeJsonParse('invalid'))   // null`,
           'target': '巩固概念理解'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       }
     ]
   },
@@ -1707,10 +1659,6 @@ items.forEach((item, i) => {
           'task': '实现一个可折叠的手风琴组件，用 querySelector/classList 切换显隐',
           'target': '掌握 DOM 操作综合应用'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -1846,10 +1794,6 @@ list.addEventListener('click', (e) => {
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
         ],
       },
       {
@@ -1991,10 +1935,6 @@ users.forEach(user => {
           'target': '巩固概念理解'
          }
         ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
       }
     ]
   }
@@ -2072,10 +2012,6 @@ users.forEach(user => {
                   target: '了解博客生态标准'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-17',
@@ -2153,10 +2089,6 @@ users.forEach(user => {
                   target: '掌握数组过滤方法'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-18',
@@ -2233,10 +2165,6 @@ users.forEach(user => {
                   target: '掌握路由兜底策略'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-19',
@@ -2313,10 +2241,6 @@ users.forEach(user => {
                   target: '掌握数据分页模式'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-20',
@@ -2393,10 +2317,6 @@ users.forEach(user => {
                   target: '掌握 CSS transition 动画'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-21',
@@ -2473,10 +2393,6 @@ users.forEach(user => {
                   target: '掌握多条件筛选模式'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-22',
@@ -2553,10 +2469,6 @@ users.forEach(user => {
                   target: '掌握长列表性能优化'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             },
             {
               id: 'js-23',
@@ -2626,10 +2538,6 @@ users.forEach(user => {
                   target: '了解前端 SEO 基础'
                 }
               ],
-        docLinks: [
-        { title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide' },
-        { title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API' }
-        ],
             }
     ]
   }
