@@ -179,9 +179,9 @@ const count = ref(0)
         variations: [{name: 'v-on: 语法', description: 'v-on:click 是 @click 完整写法，完全等价'}],
         transferTasks: [{task: '实现带阻止默认行为的表单按钮', target: '掌握事件修饰符'}],
         docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
+        { title: 'Vue3 事件处理', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html' },
+        { title: 'v-on 指令 API', url: 'https://cn.vuejs.org/api/built-in-directives.html#v-on' },
+        { title: '事件修饰符', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html#event-modifiers' }
         ],
       },
       {
