@@ -104,7 +104,12 @@ FROM products;`,
           'task': '多表 JOIN + GROUP BY + HAVING 聚合',
           'target': '掌握复杂查询'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'PostgreSQL 查询', url: 'https://www.postgresql.org/docs/current/queries.html' },
+        { title: 'SQL SELECT (w3schools)', url: 'https://www.w3schools.com/sql/sql_select.asp' }
+        ],
       },
       {
         id: 'sql-2',
@@ -214,7 +219,12 @@ WHERE price > 100;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'WHERE 子句', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-WHERE' },
+        { title: 'SQL WHERE (w3schools)', url: 'https://www.w3schools.com/sql/sql_where.asp' }
+        ],
       },
       {
         id: 'sql-3',
@@ -319,7 +329,12 @@ ORDER BY price DESC;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'ORDER BY 排序', url: 'https://www.postgresql.org/docs/current/queries-order.html' },
+        { title: 'SQL ORDER BY (w3schools)', url: 'https://www.w3schools.com/sql/sql_orderby.asp' }
+        ],
       },
       {
         id: 'sql-4',
@@ -428,7 +443,11 @@ LIMIT 5 OFFSET 5;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'LIMIT 和 OFFSET', url: 'https://www.postgresql.org/docs/current/queries-limit.html' }
+        ],
       },
       {
         id: 'sql-5',
@@ -557,7 +576,12 @@ WHERE name = '测试商品';`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '数据操作语言 (DML)', url: 'https://www.postgresql.org/docs/current/dml.html' },
+        { title: 'SQL INSERT (w3schools)', url: 'https://www.w3schools.com/sql/sql_insert.asp' }
+        ],
       }
     ]
   },
@@ -675,7 +699,12 @@ INNER JOIN products p ON o.product_id = p.id;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'JOIN 连表查询', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-JOIN' },
+        { title: 'SQL JOIN (w3schools)', url: 'https://www.w3schools.com/sql/sql_join.asp' }
+        ],
       },
       {
         id: 'sql-7',
@@ -789,7 +818,12 @@ GROUP BY category;`,
           'task': '将普通函数改箭头函数，对比 this 指向',
           'target': '理解函数与箭头函数区别'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'GROUP BY 分组', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP' },
+        { title: 'SQL GROUP BY (w3schools)', url: 'https://www.w3schools.com/sql/sql_groupby.asp' }
+        ],
       },
       {
         id: 'sql-8',
@@ -899,7 +933,12 @@ HAVING COUNT(*) > 2;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'HAVING 过滤分组', url: 'https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-HAVING' },
+        { title: 'SQL HAVING (w3schools)', url: 'https://www.w3schools.com/sql/sql_having.asp' }
+        ],
       },
       {
         id: 'sql-9',
@@ -1010,7 +1049,12 @@ WHERE price > (SELECT AVG(price) FROM products);`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '子查询表达式', url: 'https://www.postgresql.org/docs/current/functions-subquery.html' },
+        { title: '子查询 (SQL 教程)', url: 'https://www.w3schools.com/sql/sql_subqueries.asp' }
+        ],
       },
       {
         id: 'sql-10',
@@ -1116,7 +1160,11 @@ SELECT name FROM products WHERE category = '服装';`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'UNION 合并查询', url: 'https://www.postgresql.org/docs/current/queries-union.html' }
+        ],
       }
     ]
   },
@@ -1245,7 +1293,12 @@ CREATE TABLE ??? (
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '数据定义语言 (DDL)', url: 'https://www.postgresql.org/docs/current/ddl.html' },
+        { title: 'PostgreSQL 数据类型', url: 'https://www.postgresql.org/docs/current/datatype.html' }
+        ],
       },
       {
         id: 'sql-12',
@@ -1381,7 +1434,11 @@ CREATE TABLE orders (
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '约束 - 主键与外键', url: 'https://www.postgresql.org/docs/current/ddl-constraints.html' }
+        ],
       },
       {
         id: 'sql-13',
@@ -1486,7 +1543,11 @@ CREATE INDEX idx_category ON products(category);`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '索引优化', url: 'https://www.postgresql.org/docs/current/indexes.html' }
+        ],
       },
       {
         id: 'sql-14',
@@ -1609,7 +1670,12 @@ COMMIT;`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '事务与 ACID', url: 'https://www.postgresql.org/docs/current/tutorial-transactions.html' },
+        { title: 'MVCC 并发控制', url: 'https://www.postgresql.org/docs/current/mvcc.html' }
+        ],
       },
       {
         id: 'sql-15',
@@ -1820,7 +1886,12 @@ CREATE TABLE order_items (
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '数据库设计基础', url: 'https://www.postgresql.org/docs/current/ddl.html' },
+        { title: 'SQL 约束与索引', url: 'https://www.postgresql.org/docs/current/indexes.html' }
+        ],
       }
     ]
   }

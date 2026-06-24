@@ -122,7 +122,12 @@ git commit -m "init: 初始化项目"`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '获取 Git 仓库', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%8E%B7%E5%8F%96-Git-%E4%BB%93%E5%BA%93' },
+        { title: '记录每次更新到仓库', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93' }
+        ],
       },
       {
         id: 'git-2',
@@ -249,7 +254,12 @@ git diff --staged`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '查看提交历史', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2' },
+        { title: '查看已暂存和未暂存的修改', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E5%B7%B2%E6%9A%82%E5%AD%98%E5%92%8C%E6%9C%AA%E6%9A%82%E5%AD%98%E7%9A%84%E4%BF%AE%E6%94%B9' }
+        ],
       },
       {
         id: 'git-3',
@@ -382,7 +392,12 @@ git stash pop`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '撤消操作', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%92%A4%E6%B6%88%E6%93%8D%E4%BD%9C' },
+        { title: '贮藏与清理', url: 'https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E8%B4%AE%E8%97%8F%E4%B8%8E%E6%B8%85%E7%90%86' }
+        ],
       },
       {
         id: 'git-4',
@@ -517,7 +532,11 @@ dist/`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '忽略文件 .gitignore', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93#_ignoring' }
+        ],
       }
     ]
   },
@@ -655,7 +674,12 @@ git branch -a`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '分支简介', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%80%E4%BB%8B' },
+        { title: '分支管理', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86' }
+        ],
       },
       {
         id: 'git-6',
@@ -786,7 +810,12 @@ git branch -d feature-login
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '分支的新建与合并', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6' },
+        { title: '遇到冲突时的分支合并', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E9%81%87%E5%88%B0%E5%86%B2%E7%AA%81%E6%97%B6%E7%9A%84%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6' }
+        ],
       },
       {
         id: 'git-7',
@@ -918,7 +947,11 @@ git merge feature  # Fast-forward 合并`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '变基', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%8F%98%E5%9F%BA' }
+        ],
       }
     ]
   },
@@ -1054,7 +1087,11 @@ git pull origin main`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '远程仓库的使用', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8' }
+        ],
       },
       {
         id: 'git-9',
@@ -1168,7 +1205,11 @@ git remote add upstream https://github.com/original/repo.git`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '获取 Git 仓库 - 克隆', url: 'https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%8E%B7%E5%8F%96-Git-%E4%BB%93%E5%BA%93#_git_cloning' }
+        ],
       },
       {
         id: 'git-10',
@@ -1313,7 +1354,12 @@ git push origin main --tags`,
           'task': '创建分支→修改→合并→解决冲突',
           'target': '掌握 Git 分支协作'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'Git 分支开发工作流', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81' },
+        { title: 'GitFlow 工作流', url: 'https://www.atlassian.com/zh/git/tutorials/comparing-workflows/gitflow-workflow' }
+        ],
       }
     ]
   }
@@ -1397,6 +1443,11 @@ git push origin main --tags`,
                   target: '理解不同分支策略的权衡'
                 }
               ],
+
+        docLinks: [
+        { title: '成功的 Git 分支模型', url: 'https://nvie.com/posts/a-successful-git-branching-model/' },
+        { title: 'Git Flow 详解', url: 'https://www.atlassian.com/zh/git/tutorials/comparing-workflows/gitflow-workflow' }
+        ],
             },
             {
               id: 'git-12',
@@ -1472,6 +1523,10 @@ git push origin main --tags`,
                   target: '掌握 CI 集成'
                 }
               ],
+
+        docLinks: [
+        { title: 'Pull Request 文档', url: 'https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests' }
+        ],
             },
             {
               id: 'git-13',
@@ -1546,6 +1601,10 @@ git push origin main --tags`,
                   target: '掌握跨平台协作技巧'
                 }
               ],
+
+        docLinks: [
+        { title: '遇到冲突时的分支合并', url: 'https://git-scm.com/book/zh/v2/Git-%E5%88%86%E6%94%AF-%E9%81%87%E5%88%B0%E5%86%B2%E7%AA%81%E6%97%B6%E7%9A%84%E5%88%86%E6%94%AF%E5%90%88%E5%B9%B6' }
+        ],
             }
     ]
   }

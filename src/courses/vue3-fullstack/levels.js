@@ -98,11 +98,6 @@ div { color: blue; }
         ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
         transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-2',
@@ -178,11 +173,6 @@ const count = ref(0)
         ],
         variations: [{name: 'v-on: 语法', description: 'v-on:click 是 @click 完整写法，完全等价'}],
         transferTasks: [{task: '实现带阻止默认行为的表单按钮', target: '掌握事件修饰符'}],
-        docLinks: [
-        { title: 'Vue3 事件处理', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html' },
-        { title: 'v-on 指令 API', url: 'https://cn.vuejs.org/api/built-in-directives.html#v-on' },
-        { title: '事件修饰符', url: 'https://cn.vuejs.org/guide/essentials/event-handling.html#event-modifiers' }
-        ],
       },
       {
         id: 'vue3-3',
@@ -259,11 +249,6 @@ const visible = ref(true)
         ],
         variations: [{name: 'v-show', description: 'v-show 切换 display，频繁切换性能更好'}],
         transferTasks: [{task: '实现 Tab + 权限门禁页面', target: '掌握条件渲染组合'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-4',
@@ -347,11 +332,6 @@ const todos = ref([
         ],
         variations: [{name: ':key', description: 'v-for 必须绑定 :key 优化渲染'}],
         transferTasks: [{task: '实现可搜索过滤动态列表', target: '掌握列表渲染过滤'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-5',
@@ -439,11 +419,6 @@ const password = ref('')
         ],
         variations: [{name: '修饰符', description: '.lazy / .number / .trim 增强 v-model'}],
         transferTasks: [{task: '封装自动补全搜索框组件', target: '掌握 v-model 自定义组件'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-6',
@@ -533,11 +508,6 @@ const password = ref('')
         ],
         variations: [{name: '具名插槽', description: '<slot name="header"> 配合 v-slot'}],
         transferTasks: [{task: '封装表格组件，具名插槽自定义列', target: '掌握高阶组件'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       }
     ]
   },
@@ -641,11 +611,6 @@ const totalPrice = computed(() =>
         ],
         variations: [{name: '方法调用', description: 'computed 有缓存，方法每次重新计算'}],
         transferTasks: [{task: '实现购物车总价含优惠券折扣', target: '掌握 computed 组合'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-8',
@@ -737,11 +702,6 @@ watch(keyword, (val) => {
         ],
         variations: [{name: 'watchEffect', description: 'watchEffect 自动追踪依赖'}],
         transferTasks: [{task: '实现搜索防抖请求 API', target: '掌握 watch 异步'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-9',
@@ -831,11 +791,6 @@ onMounted(() => {
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-10',
@@ -917,11 +872,6 @@ const emit = defineEmits(['update'])
         ],
         variations: [{name: '类型标注', description: 'defineProps<{ msg: string }>() TS 泛型'}],
         transferTasks: [{task: '封装表单输入组件实现双向绑定', target: '掌握组件通信'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-11',
@@ -995,11 +945,6 @@ const theme = inject('theme')
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       }
     ]
   },
@@ -1091,11 +1036,6 @@ export default createRouter({
         ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-13',
@@ -1181,11 +1121,6 @@ const userId = route.params.id
         ],
         variations: [{name: '编程式导航', description: 'router.push() 等效 <router-link>'}],
         transferTasks: [{task: '实现用户详情 + 路由守卫', target: '掌握路由守卫'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-14',
@@ -1267,11 +1202,6 @@ export const useUserStore = defineStore('user', () => {
         ],
         variations: [{name: '选项式', description: 'Options API 风格与 Vuex 迁移平滑'}],
         transferTasks: [{task: '购物车 + 用户状态迁移到 Pinia', target: '掌握全局状态管理'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-15',
@@ -1392,11 +1322,6 @@ export const useCounterStore = defineStore('counter', () => {
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       }
     ]
   },
@@ -1493,11 +1418,6 @@ const vFocus = {
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-17',
@@ -1596,11 +1516,6 @@ export function useMousePosition() {
         ],
         variations: [{name: '更多用法', description: '查阅 Vue3 官方文档'}],
         transferTasks: [{task: '结合实际场景应用所学概念', target: '巩固知识'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-18',
@@ -1678,11 +1593,6 @@ const HeavyPage = defineAsyncComponent({
         ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],
         transferTasks: [{task: '抽离通用布局为组合式函数', target: '掌握逻辑复用'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-19',
@@ -1772,11 +1682,6 @@ function updateData() {
         ],
         variations: [{name: 'reactive', description: 'reactive() 用于对象类型'}],
         transferTasks: [{task: '创建计数器 + 待办列管理多 ref', target: '掌握多状态管理'}],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       }
     ]
   },
@@ -1839,11 +1744,6 @@ export default defineConfig({
          { id: 'step-3', title: '配置基础路由', verification: 'proxy', hint: '配置开发服务器代理到后端' , docLinks: [{title: 'Vue Router', url: 'https://router.vuejs.org/zh/guide/'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-2',
@@ -1932,11 +1832,6 @@ export default router`
          { id: 'step-3', title: '配置嵌套路由', verification: '() => import(', hint: '用 children 实现嵌套页面结构' , docLinks: [{title: '嵌套路由', url: 'https://router.vuejs.org/zh/guide/essentials/nested-routes.html'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-3',
@@ -2041,11 +1936,6 @@ export const useUserStore = defineStore('user', () => {
          { id: 'step-3', title: '管理用户状态', verification: 'export const', hint: '创建用户登录信息管理的 store' , docLinks: [{title: 'defineStore', url: 'https://pinia.vuejs.org/zh/api/#definestore'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-4',
@@ -2129,11 +2019,6 @@ onMounted(() => store.fetchProducts())
          { id: 'step-3', title: '添加加载状态', verification: 'loading', hint: '请求数据时显示加载中转圈效果' , docLinks: [{title: 'v-if', url: 'https://cn.vuejs.org/guide/essentials/conditional.html'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-5',
@@ -2202,11 +2087,6 @@ onMounted(loadProduct)
          { id: 'step-3', title: '渲染商品信息', verification: 'v-if', hint: '数据到达后渲染商品图片和描述' , docLinks: [{title: 'v-if', url: 'https://cn.vuejs.org/guide/essentials/conditional.html'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-6',
@@ -2270,11 +2150,6 @@ const user = useUserStore()
          { id: 'step-3', title: '计算购物车总价', verification: 'cart.total', hint: '用计算属性汇总所有商品价格' , docLinks: [{title: 'computed()', url: 'https://cn.vuejs.org/api/reactivity-core.html#computed'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-7',
@@ -2353,11 +2228,6 @@ async function handleLogin() {
          { id: 'step-3', title: '持久化登录状态', verification: 'userStore.setToken', hint: '登录成功后保存 token' , docLinks: [{title: 'localStorage', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-8',
@@ -2444,11 +2314,6 @@ async function submitOrder() {
          { id: 'step-3', title: '提交创建订单', verification: 'submitOrder', hint: '调用订单 API 提交并清空购物车' , docLinks: [{title: 'Fetch POST', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-9',
@@ -2538,11 +2403,6 @@ onMounted(async () => {
          { id: 'step-3', title: '跳转订单详情', verification: 'router.push', hint: '点击订单跳转到详情页面' , docLinks: [{title: 'router.push()', url: 'https://router.vuejs.org/zh/api/#push'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       },
       {
         id: 'vue3-proj-10',
@@ -2618,11 +2478,6 @@ onMounted(() => {
          { id: 'step-3', title: '联调验证流程', verification: 'router', hint: '确保页面跳转和数据流完整正确' , docLinks: [{title: 'Vue Router', url: 'https://router.vuejs.org/zh/guide/'}]}
         ],        variations: [],
         transferTasks: [],
-        docLinks: [
-        { title: 'Vue3 官方文档', url: 'https://cn.vuejs.org/' },
-        { title: 'Vue3 组合式 API', url: 'https://cn.vuejs.org/api/composition-api-setup.html' },
-        { title: 'Vue3 模板语法', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html' }
-        ],
       }
     ]
   }

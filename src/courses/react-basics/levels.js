@@ -125,7 +125,12 @@ export default HelloWorld`,
           'task': '封装可复用表单组件含验证逻辑',
           'target': '掌握组件化开发'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '你的第一个组件', url: 'https://zh-hans.react.dev/learn/your-first-component' },
+        { title: '使用 JSX 编写标记', url: 'https://zh-hans.react.dev/learn/writing-markup-with-jsx' }
+        ],
       },
       {
         id: 'react-2',
@@ -247,7 +252,11 @@ export default UserCard`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '向组件传递 Props', url: 'https://zh-hans.react.dev/learn/passing-props-to-a-component' }
+        ],
       },
       {
         id: 'react-3',
@@ -382,7 +391,12 @@ export default Counter`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'useState 参考文档', url: 'https://zh-hans.react.dev/reference/react/useState' },
+        { title: '组件的记忆', url: 'https://zh-hans.react.dev/learn/state-a-components-memory' }
+        ],
       },
       {
         id: 'react-4',
@@ -524,7 +538,12 @@ export default FruitList`,
           'task': '用 filter + map + reduce 组合处理数据',
           'target': '掌握数组链式操作'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '渲染列表', url: 'https://zh-hans.react.dev/learn/rendering-lists' },
+        { title: 'key 的作用', url: 'https://zh-hans.react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key' }
+        ],
       },
       {
         id: 'react-5',
@@ -670,7 +689,11 @@ export default LoginStatus`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '条件渲染', url: 'https://zh-hans.react.dev/learn/conditional-rendering' }
+        ],
       }
     ]
   },
@@ -836,7 +859,12 @@ export default Timer`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '使用 Effect 同步', url: 'https://zh-hans.react.dev/learn/synchronizing-with-effects' },
+        { title: 'useEffect 参考文档', url: 'https://zh-hans.react.dev/reference/react/useEffect' }
+        ],
       },
       {
         id: 'react-7',
@@ -992,7 +1020,12 @@ export default AutoFocusInput`,
           'task': '创建动态列表，增删改查 DOM 元素',
           'target': '掌握 DOM 操作'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'useRef 参考文档', url: 'https://zh-hans.react.dev/reference/react/useRef' },
+        { title: '使用 Ref 操作 DOM', url: 'https://zh-hans.react.dev/learn/manipulating-the-dom-with-refs' }
+        ],
       },
       {
         id: 'react-8',
@@ -1166,7 +1199,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '使用 Context 深层传递', url: 'https://zh-hans.react.dev/learn/passing-data-deeply-with-context' },
+        { title: 'useContext 参考文档', url: 'https://zh-hans.react.dev/reference/react/useContext' }
+        ],
       },
       {
         id: 'react-9',
@@ -1363,7 +1401,12 @@ export default TodoApp`,
           'task': '用 filter + map + reduce 组合处理数据',
           'target': '掌握数组链式操作'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '将状态逻辑提取到 Reducer', url: 'https://zh-hans.react.dev/learn/extracting-state-logic-into-a-reducer' },
+        { title: 'useReducer 参考文档', url: 'https://zh-hans.react.dev/reference/react/useReducer' }
+        ],
       },
       {
         id: 'react-10',
@@ -1541,7 +1584,11 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '复用逻辑与自定义 Hook', url: 'https://zh-hans.react.dev/learn/reusing-logic-with-custom-hooks' }
+        ],
       }
     ]
   },
@@ -1727,7 +1774,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'React Router 快速开始', url: 'https://reactrouter.com/en/main/start/tutorial' },
+        { title: 'Route 组件', url: 'https://reactrouter.com/en/main/components/route' }
+        ],
       },
       {
         id: 'react-12',
@@ -1912,7 +1964,12 @@ export default App`,
           'task': '用 const/let 声明不同类型的变量，观察作用域差异',
           'target': '掌握变量声明'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '嵌套路由与布局', url: 'https://reactrouter.com/en/main/start/concepts#nested-routes' },
+        { title: 'Outlet 组件', url: 'https://reactrouter.com/en/main/components/outlet' }
+        ],
       },
       {
         id: 'react-13',
@@ -2101,7 +2158,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '使用 Reducer 和 Context 扩展', url: 'https://zh-hans.react.dev/learn/scaling-up-with-reducer-and-context' },
+        { title: 'Zustand 入门', url: 'https://github.com/pmndrs/zustand' }
+        ],
       },
       {
         id: 'react-14',
@@ -2307,7 +2369,12 @@ export default RegisterForm`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '响应事件', url: 'https://zh-hans.react.dev/learn/responding-to-events' },
+        { title: '受控组件与表单', url: 'https://zh-hans.react.dev/reference/react-dom/components/input' }
+        ],
       },
       {
         id: 'react-15',
@@ -2521,7 +2588,11 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '错误边界', url: 'https://zh-hans.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary' }
+        ],
       }
     ]
   },
@@ -2712,7 +2783,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'React.memo 参考文档', url: 'https://zh-hans.react.dev/reference/react/memo' },
+        { title: '跳过不必要的重渲染', url: 'https://zh-hans.react.dev/learn/performance' }
+        ],
       },
       {
         id: 'react-17',
@@ -2896,7 +2972,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'useMemo 参考文档', url: 'https://zh-hans.react.dev/reference/react/useMemo' },
+        { title: 'useCallback 参考文档', url: 'https://zh-hans.react.dev/reference/react/useCallback' }
+        ],
       },
       {
         id: 'react-18',
@@ -3112,7 +3193,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '虚拟列表概念', url: 'https://react-window.vercel.app/' },
+        { title: 'react-window 库', url: 'https://github.com/bvaughn/react-window' }
+        ],
       },
       {
         id: 'react-19',
@@ -3299,7 +3385,12 @@ export default App`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'React.lazy 代码分割', url: 'https://react.dev/reference/react/lazy' },
+        { title: 'Suspense 参考文档', url: 'https://react.dev/reference/react/Suspense' }
+        ],
       },
       {
         id: 'react-20',
@@ -3545,7 +3636,12 @@ export default ChatRoom`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'React Router 嵌套布局', url: 'https://reactrouter.com/en/main/start/concepts#index-routes' },
+        { title: 'WebSocket MDN', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket' }
+        ],
       }
     ]
   }
@@ -3602,7 +3698,11 @@ export default ChatRoom`,
           'title': '创建路由配置',
           'verification': 'createBrowserRouter',
           'hint': '使用 createBrowserRouter 创建路由',
-          docLinks: [{title: '创建路由配置', url: 'https://zh-hans.react.dev/learn/describing-the-ui'}],
+
+        docLinks: [
+        { title: 'Vite 项目初始化', url: 'https://cn.vitejs.dev/guide/' },
+        { title: 'React 项目结构', url: 'https://zh-hans.react.dev/learn/start-a-new-react-project' }
+        ],
          },
          {
           'id': 'step-2',
@@ -3680,7 +3780,11 @@ export default ChatRoom`,
           'title': '创建 ChatInput 组件',
           'verification': 'function ChatInput',
           'hint': '创建独立的聊天输入组件',
-          docLinks: [{title: '创建 ChatInput 组件', url: 'https://zh-hans.react.dev/learn/your-first-component'}],
+
+        docLinks: [
+        { title: '组件树与组件拆分', url: 'https://zh-hans.react.dev/learn/importing-and-exporting-components' },
+        { title: 'Props 传递', url: 'https://zh-hans.react.dev/learn/passing-props-to-a-component' }
+        ],
          },
          {
           'id': 'step-2',
@@ -3755,7 +3859,11 @@ export default ChatRoom`,
           'title': '定义消息 reducer',
           'verification': 'function messageReducer',
           'hint': '创建消息状态管理的 reducer 函数',
-          docLinks: [{title: '定义消息 reducer', url: 'https://zh-hans.react.dev/learn/extracting-state-logic-into-a-reducer'}],
+
+        docLinks: [
+        { title: 'useReducer 复杂状态', url: 'https://zh-hans.react.dev/reference/react/useReducer' },
+        { title: 'Reducer 模式', url: 'https://zh-hans.react.dev/learn/extracting-state-logic-into-a-reducer' }
+        ],
          },
          {
           'id': 'step-2',
@@ -3831,7 +3939,11 @@ export default ChatRoom`,
           'title': '创建底部 ref',
           'verification': 'useRef(null)',
           'hint': '用 useRef 创建底部元素引用',
-          docLinks: [{title: '创建底部 ref', url: 'https://zh-hans.react.dev/learn/referencing-values-with-refs'}],
+
+        docLinks: [
+        { title: 'useRef 操作 DOM', url: 'https://zh-hans.react.dev/learn/manipulating-the-dom-with-refs' },
+        { title: 'Element.scrollIntoView', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView' }
+        ],
          },
          {
           'id': 'step-2',
@@ -3906,7 +4018,11 @@ export default ChatRoom`,
           'title': '创建 WebSocket 连接',
           'verification': 'new WebSocket',
           'hint': '在 useEffect 中创建 WebSocket 实例',
-          docLinks: [{title: '创建 WebSocket 连接', url: 'https://zh-hans.react.dev/learn/describing-the-ui'}],
+
+        docLinks: [
+        { title: 'WebSocket API', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket' },
+        { title: 'useEffect 生命周期', url: 'https://zh-hans.react.dev/learn/lifecycle-of-reactive-effects' }
+        ],
          },
          {
           'id': 'step-2',
@@ -3983,7 +4099,11 @@ export default ChatRoom`,
           'title': '创建 UserContext',
           'verification': 'createContext',
           'hint': '用 createContext 创建用户上下文',
-          docLinks: [{title: '创建 UserContext', url: 'https://zh-hans.react.dev/learn/passing-data-deeply-with-context'}],
+
+        docLinks: [
+        { title: '用户认证与状态', url: 'https://zh-hans.react.dev/learn/scaling-up-with-reducer-and-context' },
+        { title: 'Context 全局状态', url: 'https://zh-hans.react.dev/reference/react/useContext' }
+        ],
          },
          {
           'id': 'step-2',
@@ -4049,7 +4169,11 @@ export default ChatRoom`,
           'title': '调用 useWebSocket',
           'verification': 'useWebSocket(',
           'hint': '连接 WebSocket 并处理接收的消息',
-          docLinks: [{title: '调用 useWebSocket', url: 'https://zh-hans.react.dev/learn/describing-the-ui'}],
+
+        docLinks: [
+        { title: '组合式函数模式', url: 'https://zh-hans.react.dev/learn/reusing-logic-with-custom-hooks' },
+        { title: 'Props 与组件组合', url: 'https://zh-hans.react.dev/learn/passing-props-to-a-component' }
+        ],
          },
          {
           'id': 'step-2',
@@ -4124,7 +4248,11 @@ export default ChatRoom`,
           'title': '配置 API 代理',
            'verification': "'/api'",
           'hint': '配置 /api 代理到后端服务器',
-          docLinks: [{title: '配置 API 代理', url: 'https://zh-hans.react.dev/learn/describing-the-ui'}],
+
+        docLinks: [
+        { title: 'Vite 构建部署', url: 'https://cn.vitejs.dev/guide/static-deploy' },
+        { title: 'GitHub Pages 部署', url: 'https://cn.vitejs.dev/guide/static-deploy#github-pages' }
+        ],
          },
          {
           'id': 'step-2',

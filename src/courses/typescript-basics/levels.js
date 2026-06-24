@@ -144,7 +144,12 @@ console.log(typeof name, typeof age, typeof isActive, typeof city)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '日常类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html' },
+        { title: '基本类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#the-primitives-string-number-and-boolean' }
+        ],
       },
       {
         id: 'ts-2',
@@ -315,7 +320,12 @@ console.log(user, product)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '接口 (Interface)', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html' },
+        { title: '类型别名 (Type)', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#type-aliases' }
+        ],
       },
       {
         id: 'ts-3',
@@ -470,7 +480,12 @@ doSomething(msg => console.log(msg))`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html' },
+        { title: '函数重载', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html#function-overloads' }
+        ],
       },
       {
         id: 'ts-4',
@@ -630,7 +645,12 @@ console.log(person)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types' },
+        { title: '交叉类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html#intersection-types' }
+        ],
       },
       {
         id: 'ts-5',
@@ -817,7 +837,12 @@ console.log(getErrorMessage("简单错误"))`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '类型收窄 (Narrowing)', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html' },
+        { title: 'typeof 类型守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html#typeof-type-guards' }
+        ],
       }
     ]
   },
@@ -1000,7 +1025,12 @@ console.log(num, str, nums, container.getValue())`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html' },
+        { title: '泛型函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html#hello-world-of-generics' }
+        ],
       },
       {
         id: 'ts-7',
@@ -1154,7 +1184,11 @@ console.log(getProp(user, "name"))`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '泛型约束', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html#generic-constraints' }
+        ],
       },
       {
         id: 'ts-8',
@@ -1328,7 +1362,11 @@ console.log(user1, user2)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html' }
+        ],
       },
       {
         id: 'ts-9',
@@ -1470,7 +1508,11 @@ console.log(arr)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '条件类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html' }
+        ],
       },
       {
         id: 'ts-10',
@@ -1614,7 +1656,11 @@ console.log(size1, size2, handler)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '模板字面量类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/template-literal-types.html' }
+        ],
       }
     ]
   },
@@ -1817,7 +1863,12 @@ console.log(dog.bark())`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '类 (Class)', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html' },
+        { title: '继承与 implements', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html#implements-clauses' }
+        ],
       },
       {
         id: 'ts-12',
@@ -1997,7 +2048,11 @@ console.log(getStatus(HttpStatus.NotFound))`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '枚举 (Enum)', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html' }
+        ],
       },
       {
         id: 'ts-13',
@@ -2166,7 +2221,12 @@ declare global {
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html' },
+        { title: '声明合并', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-merging.html' }
+        ],
       },
       {
         id: 'ts-14',
@@ -2347,7 +2407,11 @@ console.log(basic, compact)`,
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: '工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html' }
+        ],
       },
       {
         id: 'ts-15',
@@ -2576,7 +2640,12 @@ async function getProduct(id: number) {
           'task': '完成关卡后用不同方法实现相同功能',
           'target': '巩固概念理解'
          }
-        ]
+        ],
+
+        docLinks: [
+        { title: 'TypeScript 类型操作', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/types-from-types.html' },
+        { title: '泛型实践', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html' }
+        ],
       }
     ]
   }
@@ -2650,6 +2719,11 @@ async function getProduct(id: number) {
                   target: '掌握代码质量工具配置'
                 }
               ],
+
+        docLinks: [
+        { title: 'TypeScript 项目配置', url: 'https://www.typescriptlang.org/zh/tsconfig/' },
+        { title: 'npm 包管理', url: 'https://docs.npmjs.com/packages-and-modules' }
+        ],
             },
             {
               id: 'ts-17',
@@ -2725,6 +2799,10 @@ async function getProduct(id: number) {
                   target: '掌握递归类型'
                 }
               ],
+
+        docLinks: [
+        { title: '泛型工具函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html' }
+        ],
             },
             {
               id: 'ts-18',
@@ -2800,6 +2878,10 @@ async function getProduct(id: number) {
                   target: '掌握递归类型守卫'
                 }
               ],
+
+        docLinks: [
+        { title: '类型守卫与类型谓词', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html#using-type-predicates' }
+        ],
             },
             {
               id: 'ts-19',
@@ -2875,6 +2957,10 @@ async function getProduct(id: number) {
                   target: '掌握模板字面量类型'
                 }
               ],
+
+        docLinks: [
+        { title: '映射类型与条件类型结合', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html' }
+        ],
             },
             {
               id: 'ts-20',
@@ -2951,6 +3037,11 @@ async function getProduct(id: number) {
                   target: '掌握 npm version 命令'
                 }
               ],
+
+        docLinks: [
+        { title: 'TypeScript 构建配置', url: 'https://www.typescriptlang.org/zh/tsconfig/' },
+        { title: 'npm publish', url: 'https://docs.npmjs.com/cli/v10/commands/npm-publish' }
+        ],
             }
     ]
   }
