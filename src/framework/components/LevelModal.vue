@@ -74,8 +74,8 @@
               <h3>🔗 参考链接</h3>
               <span class="collapse-arrow" :class="{ open: showDocLinks }">▼</span>
             </div>
-            <div v-if="showDocLinks && level.docLinks && level.docLinks.length" class="doc-links-list">
-              <a v-for="(link, i) in level.docLinks" :key="i" class="doc-link-item" :href="link.url" target="_blank" rel="noopener noreferrer">
+            <div v-if="showDocLinks && aggregatedDocLinks.length" class="doc-links-list">
+              <a v-for="(link, i) in aggregatedDocLinks" :key="i" class="doc-link-item" :href="link.url" target="_blank" rel="noopener noreferrer">
                 <span class="doc-link-icon">📄</span>
                 <span class="doc-link-title">{{ link.title }}</span>
                 <span class="doc-link-arrow">↗</span>
@@ -273,6 +273,20 @@ const verifyPassed = ref(false)
 const pendingComplete = ref(false)
 
 const showDocLinks = ref(true)
+const aggregatedDocLinks = computed(() => {
+  if (props.level.docLinks?.length) return props.level.docLinks
+  const links = []
+  const seen = new Set()
+  for (const step of props.level.microSteps || []) {
+    for (const link of step.docLinks || []) {
+      if (!seen.has(link.url)) {
+        seen.add(link.url)
+        links.push(link)
+      }
+    }
+  }
+  return links
+})
 const showProjectFiles = ref(false)
 const projectInfo = computed(() => {
   if (props.level.type !== 'project' || !props.level.project) return null

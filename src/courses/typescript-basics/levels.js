@@ -116,21 +116,21 @@ console.log(typeof name, typeof age, typeof isActive, typeof city)`,
           'title': '声明 string 变量',
           'verification': ': string',
           'hint': '给 name 变量添加 string 类型注解',
-          docLinks: [{title: 'TS 基本类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html'}, {title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '声明 string 变量', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html'}],
          },
          {
           'id': 'step-2',
           'title': '声明 number 变量',
           'verification': ': number',
           'hint': '给 age 变量添加 number 类型注解',
-          docLinks: [{title: 'TS 基本类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html'}, {title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '声明 number 变量', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html'}],
          },
          {
           'id': 'step-3',
           'title': '声明 boolean 变量',
           'verification': ': boolean',
           'hint': '给 isActive 变量添加 boolean 类型注解',
-          docLinks: [{title: 'TS 基本类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html'}, {title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '声明 boolean 变量', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html'}],
          }
          ],
         variations: [
@@ -287,21 +287,21 @@ console.log(user, product)`,
           'title': '定义接口',
           'verification': 'interface',
           'hint': '用 interface 定义用户对象的结构',
-          docLinks: [{title: 'TS 接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}],
+          docLinks: [{title: '定义接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}],
          },
          {
           'id': 'step-2',
           'title': '定义类型别名',
           'verification': 'type',
           'hint': '用 type 定义联合类型或别名',
-          docLinks: [{title: 'TS 接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义类型别名', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html'}],
          },
          {
           'id': 'step-3',
           'title': '使用接口',
           'verification': ': User',
           'hint': '给变量添加 User 接口类型',
-          docLinks: [{title: 'TS 接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}],
+          docLinks: [{title: '使用接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}],
          }
          ],
         variations: [
@@ -442,21 +442,21 @@ doSomething(msg => console.log(msg))`,
           'title': '参数类型注解',
           'verification': '(a: number, b: number)',
           'hint': '为函数参数添加类型注解',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '参数类型注解', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '返回值类型',
           'verification': ': number',
           'hint': '在参数列表后标注返回值类型',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '返回值类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '箭头函数类型',
           'verification': '=>',
           'hint': '用 => 定义函数类型签名',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '箭头函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}],
          }
          ],
         variations: [
@@ -602,21 +602,21 @@ console.log(person)`,
           'title': '定义联合类型',
           'verification': 'string | number',
           'hint': '用 | 定义可接受多种类型的变量',
-          docLinks: [{title: 'TS 联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}],
          },
          {
           'id': 'step-2',
           'title': '定义交叉类型',
           'verification': '&',
           'hint': '用 & 合并多个类型',
-          docLinks: [{title: 'TS 联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义交叉类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '类型收窄',
           'verification': 'typeof',
           'hint': '用 typeof 判断类型并收窄联合类型',
-          docLinks: [{title: 'TS 联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '类型收窄', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -789,21 +789,21 @@ console.log(getErrorMessage("简单错误"))`,
           'title': 'typeof 守卫',
           'verification': "typeof value === 'string'",
           'hint': '用 typeof 判断基本类型',
-          docLinks: [{title: 'TS 接口', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/objects.html'}, {title: 'TS 类型守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html'}],
+          docLinks: [{title: 'typeof 守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html'}],
          },
          {
           'id': 'step-2',
           'title': 'in 守卫',
           'verification': "'type' in obj",
           'hint': '用 in 判断属性是否存在',
-          docLinks: [{title: 'TS 类型守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html'}],
+          docLinks: [{title: 'in 守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '自定义守卫',
           'verification': 'isString(',
           'hint': '用 is 关键字定义谓词返回类型',
-          docLinks: [{title: 'TS 类型守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html'}],
+          docLinks: [{title: '自定义守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -972,21 +972,21 @@ console.log(num, str, nums, container.getValue())`,
           'title': '定义泛型函数',
           'verification': '<T>',
           'hint': '在函数名后添加泛型参数 <T>',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '定义泛型函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          },
          {
           'id': 'step-2',
           'title': '使用泛型参数',
           'verification': ': T',
           'hint': '用 T 标注参数或返回值类型',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '使用泛型参数', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          },
          {
           'id': 'step-3',
           'title': '显式指定泛型',
           'verification': 'Container<string>',
           'hint': '调用时显式指定泛型类型',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '显式指定泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          }
          ],
         variations: [
@@ -1126,21 +1126,21 @@ console.log(getProp(user, "name"))`,
           'title': 'extends 约束',
           'verification': 'extends',
           'hint': '用 extends 约束泛型参数',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: 'extends 约束', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '约束为对象',
           'verification': 'extends { length',
           'hint': '将泛型约束为对象类型',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '约束为对象', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': 'keyof 约束',
           'verification': 'keyof T',
           'hint': '用 keyof T 约束为对象键名',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: 'keyof 约束', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -1300,21 +1300,21 @@ console.log(user1, user2)`,
           'title': '使用 keyof',
           'verification': 'keyof',
           'hint': '用 keyof 获取对象的所有键',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '使用 keyof', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': 'in 映射',
           'verification': 'in keyof',
           'hint': '用 in keyof 遍历所有键',
-          docLinks: [{title: 'TS 映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}],
+          docLinks: [{title: 'in 映射', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}],
          },
          {
           'id': 'step-3',
           'title': '添加修饰符',
           'verification': '?: T[K]',
           'hint': '添加 readonly 或可选修饰符',
-          docLinks: [{title: 'TS 映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '添加修饰符', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -1442,21 +1442,21 @@ console.log(arr)`,
           'title': 'extends 条件',
           'verification': 'extends any[]',
           'hint': '用 extends 写条件类型',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}, {title: 'TS 条件类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html'}],
+          docLinks: [{title: 'extends 条件', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '三元类型判断',
           'verification': '? true : false',
           'hint': '真分支和假分支都需定义',
-          docLinks: [{title: 'TS 条件类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '三元类型判断', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': 'infer 推断',
           'verification': 'infer',
           'hint': '用 infer 在条件中推断类型',
-          docLinks: [{title: 'TS 条件类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html'}],
+          docLinks: [{title: 'infer 推断', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -1586,21 +1586,21 @@ console.log(size1, size2, handler)`,
           'title': '模板字面量类型',
            'verification': '\`\${Color}\`',
           'hint': '用模板字面量语法创建类型',
-          docLinks: [{title: 'TS 模板字面量', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/template-literal-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '模板字面量类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '联合组合',
            'verification': '"red" |',
           'hint': '用联合类型组合多个字面量',
-          docLinks: [{title: 'TS 联合类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}, {title: 'TS 模板字面量', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/template-literal-types.html'}],
+          docLinks: [{title: '联合组合', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/everyday-types.html#union-types'}],
          },
          {
           'id': 'step-3',
           'title': '模板与泛型',
            'verification': 'Capitalize<',
           'hint': '结合泛型参数生成动态类型',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '模板与泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          }
          ],
         variations: [
@@ -1789,21 +1789,21 @@ console.log(dog.bark())`,
           'title': '定义类',
           'verification': 'class',
           'hint': '用 class 关键字定义类',
-          docLinks: [{title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义类', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '访问修饰符',
           'verification': 'public',
           'hint': '用 private/public/protected 控制访问',
-          docLinks: [{title: 'TS 映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '访问修饰符', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': 'extends 继承',
           'verification': 'extends',
           'hint': '用 extends 实现类继承',
-          docLinks: [{title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: 'extends 继承', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -1969,21 +1969,21 @@ console.log(getStatus(HttpStatus.NotFound))`,
           'title': '定义枚举',
           'verification': 'enum',
           'hint': '用 enum 关键字定义枚举类型',
-          docLinks: [{title: 'TS 枚举', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
+          docLinks: [{title: '定义枚举', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
          },
          {
           'id': 'step-2',
           'title': '访问枚举成员',
           'verification': 'Direction.Up',
           'hint': '通过枚举名.成员名访问',
-          docLinks: [{title: 'TS 枚举', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
+          docLinks: [{title: '访问枚举成员', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
          },
          {
           'id': 'step-3',
           'title': '字符串枚举',
           'verification': "Status.Success = 'SUCCESS'",
           'hint': '枚举成员可以赋字符串值',
-          docLinks: [{title: 'TS 枚举', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
+          docLinks: [{title: '字符串枚举', url: 'https://www.typescriptlang.org/zh/docs/handbook/enums.html'}],
          }
          ],
         variations: [
@@ -2138,21 +2138,21 @@ declare global {
           'title': '全局类型声明',
           'verification': 'declare',
           'hint': '用 declare 声明全局类型',
-          docLinks: [{title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}, {title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '全局类型声明', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html'}],
          },
          {
           'id': 'step-2',
           'title': '模块声明',
           'verification': "declare module 'lodash'",
           'hint': '用 declare module 声明第三方模块',
-          docLinks: [{title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '模块声明', url: 'https://www.typescriptlang.org/zh/docs/handbook/modules.html'}],
          },
          {
           'id': 'step-3',
           'title': '合并声明',
           'verification': 'interface',
           'hint': '同名声明自动合并',
-          docLinks: [{title: 'TS 声明文件', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files.html'}],
+          docLinks: [{title: '合并声明', url: 'https://www.typescriptlang.org/zh/docs/handbook/declaration-files/introduction.html'}],
          }
          ],
         variations: [
@@ -2319,21 +2319,21 @@ console.log(basic, compact)`,
           'title': 'Partial',
           'verification': 'Partial<',
           'hint': 'Partial 将所有属性变为可选',
-          docLinks: [{title: 'TS 工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
+          docLinks: [{title: 'Partial', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': 'Pick 和 Omit',
           'verification': 'Pick<',
           'hint': 'Pick 选取指定属性，Omit 排除',
-          docLinks: [{title: 'TS 工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
+          docLinks: [{title: 'Pick 和 Omit', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': 'Record',
           'verification': 'Pick<',
           'hint': 'Record 创建键值映射类型',
-          docLinks: [{title: 'TS 工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
+          docLinks: [{title: 'Record', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -2548,21 +2548,21 @@ async function getProduct(id: number) {
           'title': '定义 API 响应类型',
           'verification': 'interface ApiResponse',
           'hint': '定义泛型响应接口',
-          docLinks: [{title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义 API 响应类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '泛型请求函数',
           'verification': '<T>',
           'hint': '请求函数使用泛型参数',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '泛型请求函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          },
          {
           'id': 'step-3',
           'title': '类型安全调用',
           'verification': 'get<User>',
           'hint': '调用时指定返回类型',
-          docLinks: [{title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '类型安全调用', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
         variations: [
@@ -2621,21 +2621,21 @@ async function getProduct(id: number) {
           'title': '初始化项目',
           'verification': 'compilerOptions',
           'hint': '用 npm init 创建项目',
-          docLinks: [{title: 'TypeScript 官方文档', url: 'https://www.typescriptlang.org/zh/docs/'}, {title: 'TypeScript 手册', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
+          docLinks: [{title: '初始化项目', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '安装依赖',
           'verification': '"include"',
           'hint': '安装 typescript 和 tsconfig 配置',
-          docLinks: [{title: 'TypeScript 官方文档', url: 'https://www.typescriptlang.org/zh/docs/'}, {title: 'TypeScript 手册', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
+          docLinks: [{title: '安装依赖', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '添加构建脚本',
           'verification': '"build"',
           'hint': '在 package.json 中添加构建命令',
-          docLinks: [{title: 'TS 配置', url: 'https://www.typescriptlang.org/zh/tsconfig/'}],
+          docLinks: [{title: '添加构建脚本', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
               variations: [
@@ -2696,21 +2696,21 @@ async function getProduct(id: number) {
           'title': '定义泛型函数签名',
           'verification': '<T>',
           'hint': '定义接收泛型参数的函数',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TypeScript 泛型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
+          docLinks: [{title: '定义泛型函数签名', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/generics.html'}],
          },
          {
           'id': 'step-2',
           'title': '实现通用逻辑',
           'verification': 'extends',
           'hint': '用泛型约束实现类型安全逻辑',
-          docLinks: [{title: 'TypeScript 官方文档', url: 'https://www.typescriptlang.org/zh/docs/'}, {title: 'TypeScript 手册', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
+          docLinks: [{title: '实现通用逻辑', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '导出工具函数',
           'verification': 'function deepClone',
           'hint': '导出工具函数供外部使用',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}, {title: 'TS 工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
+          docLinks: [{title: '导出工具函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
          }
          ],
               variations: [
@@ -2771,21 +2771,21 @@ async function getProduct(id: number) {
           'title': '定义类型谓词',
           'verification': 'isString(',
           'hint': '用 is 关键字定义谓词返回类型',
-          docLinks: [{title: 'TS 类型守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/narrowing.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义类型谓词', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-2',
           'title': '实现守卫函数',
           'verification': ': value is',
           'hint': '函数返回类型用 is 谓词',
-          docLinks: [{title: 'TS 函数类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/functions.html'}],
+          docLinks: [{title: '实现守卫函数', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          },
          {
           'id': 'step-3',
           'title': '使用守卫',
           'verification': 'if (isString(value))',
           'hint': '在条件中使用类型守卫收窄类型',
-          docLinks: [{title: 'TypeScript 官方文档', url: 'https://www.typescriptlang.org/zh/docs/'}, {title: 'TypeScript 手册', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
+          docLinks: [{title: '使用守卫', url: 'https://www.typescriptlang.org/zh/docs/handbook/intro.html'}],
          }
          ],
               variations: [
@@ -2846,21 +2846,21 @@ async function getProduct(id: number) {
           'title': '定义映射类型',
           'verification': 'in keyof',
           'hint': '用 in keyof 遍历类型属性',
-          docLinks: [{title: 'TS 映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '定义映射类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/mapped-types.html'}],
          },
          {
           'id': 'step-2',
           'title': '条件类型转换',
           'verification': 'extends',
           'hint': '根据条件转换属性类型',
-          docLinks: [{title: 'TS 条件类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html'}, {title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}],
+          docLinks: [{title: '条件类型转换', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/conditional-types.html'}],
          },
          {
           'id': 'step-3',
           'title': '组合工具类型',
           'verification': '&',
           'hint': '用交叉类型组合多个工具类型',
-          docLinks: [{title: 'TS 类', url: 'https://www.typescriptlang.org/zh/docs/handbook/2/classes.html'}, {title: 'TS 工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
+          docLinks: [{title: '组合工具类型', url: 'https://www.typescriptlang.org/zh/docs/handbook/utility-types.html'}],
          }
          ],
               variations: [
@@ -2922,21 +2922,21 @@ async function getProduct(id: number) {
           'title': '配置 tsconfig',
           'verification': '"declaration": true',
           'hint': '开启类型声明文件生成',
-          docLinks: [{title: 'TS 配置', url: 'https://www.typescriptlang.org/zh/tsconfig/'}],
+          docLinks: [{title: '配置 tsconfig', url: 'https://www.typescriptlang.org/zh/tsconfig'}],
          },
          {
           'id': 'step-2',
           'title': '配置构建输出',
           'verification': '"outDir"',
           'hint': '设置编译输出目录为 dist',
-          docLinks: [{title: 'TS 配置', url: 'https://www.typescriptlang.org/zh/tsconfig/'}],
+          docLinks: [{title: '配置构建输出', url: 'https://www.typescriptlang.org/zh/tsconfig'}],
          },
          {
           'id': 'step-3',
           'title': '配置入口文件',
           'verification': '"main"',
           'hint': '在 package.json 中设置主入口',
-          docLinks: [{title: 'TS 配置', url: 'https://www.typescriptlang.org/zh/tsconfig/'}],
+          docLinks: [{title: '配置入口文件', url: 'https://www.typescriptlang.org/zh/tsconfig'}],
          }
          ],
               variations: [

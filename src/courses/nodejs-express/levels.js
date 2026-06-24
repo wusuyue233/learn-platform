@@ -92,14 +92,14 @@ module.exports = { greet }`,
           'title': '导出模块函数',
           'verification': 'module.exports',
           'hint': '用 module.exports 导出工具函数',
-          docLinks: [{title: 'Node.js 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}]
+          docLinks: [{title: '导出模块函数', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}],
          },
          {
           'id': 'step-2',
           'title': '导入模块',
           'verification': 'require(',
           'hint': '用 require 导入自定义模块',
-          docLinks: [{title: 'Node.js 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}]
+          docLinks: [{title: '导入模块', url: 'https://nodejs.org/docs/latest/api/modules.html#require'}],
          },
          {
           'id': 'step-3',
@@ -231,14 +231,14 @@ fs.writeFileSync(configPath, JSON.stringify(config, null, 2))`,
           'title': '导入 fs 模块',
           'verification': 'require(\'fs\')',
           'hint': '导入 Node.js 内置 fs 模块',
-          docLinks: [{title: 'Node.js 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}, {title: 'Node.js fs 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/fs.html'}]
+          docLinks: [{title: '导入 fs 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/fs.html'}],
          },
          {
           'id': 'step-2',
           'title': '读取文件',
           'verification': 'readFileSync',
           'hint': '用 readFileSync 读取 JSON 文件',
-          docLinks: [{title: 'Node.js fs 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/fs.html'}]
+          docLinks: [{title: '读取文件', url: 'https://nodejs.org/docs/latest/api/fs.html#fspromises'}],
          },
          {
           'id': 'step-3',
@@ -386,14 +386,14 @@ server.listen(3000, () => {
           'title': '导入 http 模块',
           'verification': 'require(\'http\')',
           'hint': '导入 Node.js http 模块',
-          docLinks: [{title: 'Node.js 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}, {title: 'Node.js http 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/http.html'}]
+          docLinks: [{title: '导入 http 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/http.html'}],
          },
          {
           'id': 'step-2',
           'title': '创建服务器',
           'verification': 'createServer',
           'hint': '用 http.createServer 创建服务器',
-          docLinks: [{title: 'Node.js http 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/http.html'}]
+          docLinks: [{title: '创建服务器', url: 'https://expressjs.com/zh-cn/starter/basic-routing.html'}],
          },
          {
           'id': 'step-3',
@@ -530,14 +530,14 @@ npm install 安装并记录到 dependencies。
           'title': '初始化项目',
           'verification': '"name"',
           'hint': '创建 package.json 定义项目元信息',
-          docLinks: [{title: 'npm 文档', url: 'https://docs.npmjs.com/'}]
+          docLinks: [{title: '初始化项目', url: 'https://docs.npmjs.com/cli/init'}],
          },
          {
           'id': 'step-2',
           'title': '安装依赖',
           'verification': 'dependencies',
           'hint': '配置 dependencies 依赖列表',
-          docLinks: [{title: 'npm 文档', url: 'https://docs.npmjs.com/'}]
+          docLinks: [{title: '安装依赖', url: 'https://www.npmjs.com/package/express'}],
          },
          {
           'id': 'step-3',
@@ -714,14 +714,14 @@ app.listen(3000, () => {
           'title': '导入 Express',
           'verification': 'require(\'express\')',
           'hint': '导入 express 并创建应用实例',
-          docLinks: [{title: 'Node.js 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/modules.html'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '导入 Express', url: 'https://expressjs.com/zh-cn/starter/installing.html'}],
          },
          {
           'id': 'step-2',
           'title': '定义路由',
           'verification': 'app.get(',
           'hint': '定义 GET/POST/PUT/DELETE 路由',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '定义路由', url: 'https://expressjs.com/zh-cn/starter/basic-routing.html'}],
          },
          {
           'id': 'step-3',
@@ -862,14 +862,14 @@ app.listen(3000)`,
           'title': '创建中间件',
           'verification': 'app.use(',
           'hint': '用 app.use 注册中间件函数',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '创建中间件', url: 'https://expressjs.com/zh-cn/guide/writing-middleware.html'}],
          },
          {
           'id': 'step-2',
           'title': '记录日志',
           'verification': 'req.method',
           'hint': '在中间件中记录请求方法和路径',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '记录日志', url: 'https://www.npmjs.com/package/morgan'}],
          },
          {
           'id': 'step-3',
@@ -1029,14 +1029,14 @@ app.listen(3000)`,
           'title': '配置解析器',
           'verification': 'express.json()',
           'hint': '用 express.json() 解析 JSON 请求体',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '配置解析器', url: 'https://expressjs.com/zh-cn/api.html#express.json'}],
          },
          {
           'id': 'step-2',
           'title': '处理 POST',
           'verification': 'req.body',
           'hint': '从 req.body 获取请求参数',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '处理 POST', url: 'https://expressjs.com/zh-cn/api.html#app.post.method'}],
          },
          {
           'id': 'step-3',
@@ -1200,14 +1200,14 @@ app.listen(3000)`,
           'title': '自定义错误类',
           'verification': 'new Error',
           'hint': '创建带状态码的错误类',
-          docLinks: [{title: 'Express 错误处理', url: 'https://expressjs.com/zh-cn/guide/error-handling.html'}]
+          docLinks: [{title: '自定义错误类', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new'}],
          },
          {
           'id': 'step-2',
           'title': '错误中间件',
           'verification': 'err.status',
           'hint': '定义 4 参数错误处理中间件',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}, {title: 'Express 错误处理', url: 'https://expressjs.com/zh-cn/guide/error-handling.html'}]
+          docLinks: [{title: '错误中间件', url: 'https://expressjs.com/zh-cn/guide/error-handling.html#writing-error-handlers'}],
          },
          {
           'id': 'step-3',
@@ -1370,14 +1370,14 @@ module.exports = { User, Message }`,
           'title': '定义 Schema',
           'verification': 'new mongoose.Schema',
           'hint': '用 Mongoose Schema 定义数据结构',
-          docLinks: [{title: 'Mongoose 文档', url: 'https://mongoosejs.com/docs/'}]
+          docLinks: [{title: '定义 Schema', url: 'https://mongoosejs.com/docs/schemas.html'}],
          },
          {
           'id': 'step-2',
           'title': '创建模型',
           'verification': 'mongoose.model',
           'hint': '用 mongoose.model 注册模型',
-          docLinks: [{title: 'Mongoose 文档', url: 'https://mongoosejs.com/docs/'}]
+          docLinks: [{title: '创建模型', url: 'https://mongoosejs.com/docs/schemas.html'}],
          },
          {
           'id': 'step-3',
@@ -1627,14 +1627,14 @@ module.exports = router`,
           'title': '创建用户',
           'verification': 'User.create',
           'hint': '用 create 方法添加用户',
-          docLinks: [{title: 'Mongoose 文档', url: 'https://mongoosejs.com/docs/'}]
+          docLinks: [{title: '创建用户', url: 'https://mongoosejs.com/docs/models.html'}],
          },
          {
           'id': 'step-2',
           'title': '查询用户列表',
           'verification': 'User.find',
           'hint': '用 find 查询所有用户',
-          docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '查询用户列表', url: 'https://mongoosejs.com/docs/api/model.html#Model.find()'}],
          },
          {
           'id': 'step-3',
@@ -1840,14 +1840,14 @@ app.get('/api/profile', auth, (req, res) => {
           'title': '签名 Token',
           'verification': 'jwt.sign',
           'hint': '用 jwt.sign 签名生成 Token',
-          docLinks: [{title: 'JWT 教程', url: 'https://jwt.io/introduction'}]
+          docLinks: [{title: '签名 Token', url: 'https://www.npmjs.com/package/jsonwebtoken'}],
          },
          {
           'id': 'step-2',
           'title': '验证 Token',
           'verification': 'jwt.verify',
           'hint': '用 jwt.verify 验证 Token 有效性',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}, {title: 'JWT 教程', url: 'https://jwt.io/introduction'}]
+          docLinks: [{title: '验证 Token', url: 'https://www.npmjs.com/package/jsonwebtoken#token-verification'}],
          },
          {
           'id': 'step-3',
@@ -2008,14 +2008,14 @@ app.put('/api/posts/:id/review', auth, authorize('admin', 'moderator'), reviewPo
           'title': '角色中间件',
           'verification': 'req.user.role',
           'hint': '检查用户角色字段',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '角色中间件', url: 'https://expressjs.com/zh-cn/guide/writing-middleware.html'}],
          },
          {
           'id': 'step-2',
           'title': '权限校验',
           'verification': 'if (!req.user',
           'hint': '在中间件中判断角色权限',
-          docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+          docLinks: [{title: '权限校验', url: 'https://nodejs.org/zh-cn/docs/latest/api/http.html'}],
          },
          {
           'id': 'step-3',
@@ -2197,14 +2197,14 @@ server.listen(8080)`,
           'title': '创建 WS 服务器',
           'verification': 'require(\'ws\')',
           'hint': '导入 ws 库创建 WebSocket 服务',
-          docLinks: [{title: 'Node.js http 模块', url: 'https://nodejs.org/zh-cn/docs/latest/api/http.html'}, {title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+          docLinks: [{title: '创建 WS 服务器', url: 'https://www.npmjs.com/package/ws'}],
          },
          {
           'id': 'step-2',
           'title': '监听连接',
           'verification': 'connection',
           'hint': '监听 connection 事件处理新连接',
-          docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+          docLinks: [{title: '监听连接', url: 'https://www.npmjs.com/package/ws#sending-and-receiving-text-data'}],
          },
          {
           'id': 'step-3',
@@ -2407,14 +2407,14 @@ server.listen(3000)`,
           'title': '创建 io 实例',
           'verification': 'new Server(server)',
           'hint': '创建 Socket.io 服务器实例',
-          docLinks: [{title: 'Socket.io 文档', url: 'https://socket.io/zh-CN/docs/'}]
+          docLinks: [{title: '创建 io 实例', url: 'https://socket.io/zh-CN/docs/v4/server-initialization/'}],
          },
          {
           'id': 'step-2',
           'title': '房间管理',
           'verification': 'socket.join',
           'hint': '用 join 方法加入聊天房间',
-          docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+          docLinks: [{title: '房间管理', url: 'https://socket.io/zh-CN/docs/v4/broadcasting-events/'}],
          },
          {
           'id': 'step-3',
@@ -2689,14 +2689,14 @@ server.listen(3000)`,
           'title': '整合 HTTP 和 WS',
           'verification': 'http.createServer',
           'hint': '创建 HTTP 服务器同时提供 HTTP 和 WebSocket',
-          docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+          docLinks: [{title: '整合 HTTP 和 WS', url: 'https://www.npmjs.com/package/ws#server'}],
          },
          {
           'id': 'step-2',
           'title': 'WebSocket 鉴权',
           'verification': 'io.use(',
           'hint': '在 WebSocket 连接中验证 JWT Token',
-          docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}, {title: 'Socket.io 文档', url: 'https://socket.io/zh-CN/docs/'}]
+          docLinks: [{title: 'WebSocket 鉴权', url: 'https://www.npmjs.com/package/jsonwebtoken'}],
          },
          {
           'id': 'step-3',
@@ -2762,14 +2762,14 @@ server.listen(3000)`,
                   'title': '创建 Express 应用',
                   'verification': 'require(\'express\')',
                   'hint': '创建 Express 实例并配置中间件',
-                  docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '创建 Express 应用', url: 'https://expressjs.com/zh-cn/starter/hello-world.html'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建 WS 服务',
                   'verification': 'require(\'ws\')',
                   'hint': '创建 WebSocket 服务器实例',
-                  docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+                  docLinks: [{title: '创建 WS 服务', url: 'https://www.npmjs.com/package/ws#client'}],
                 },
                 {
                   'id': 'step-3',
@@ -2838,14 +2838,14 @@ server.listen(3000)`,
                   'title': '用户注册',
                   'verification': 'messages.push',
                   'hint': '创建用户注册接口',
-                  docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '用户注册', url: 'https://expressjs.com/zh-cn/guide/routing.html'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '用户登录',
                   'verification': 'router.post(\'/messages\'',
                   'hint': '创建登录并返回 JWT Token',
-                  docLinks: [{title: 'JWT 教程', url: 'https://jwt.io/introduction'}]
+                  docLinks: [{title: '用户登录', url: 'https://www.npmjs.com/package/jsonwebtoken#usage'}],
                 },
                 {
                   'id': 'step-3',
@@ -2914,14 +2914,14 @@ server.listen(3000)`,
                   'title': '连接管理',
                   'verification': 'wss.on(\'connection\'',
                   'hint': '管理 WebSocket 客户端连接',
-                  docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+                  docLinks: [{title: '连接管理', url: 'https://www.npmjs.com/package/ws'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '消息广播',
                   'verification': 'client.send',
                   'hint': '向所有连通的客户端广播消息',
-                  docLinks: [{title: 'WebSocket (ws)', url: 'https://github.com/websockets/ws'}]
+                  docLinks: [{title: '消息广播', url: 'https://www.npmjs.com/package/ws#server'}],
                 },
                 {
                   'id': 'step-3',
@@ -2989,14 +2989,14 @@ server.listen(3000)`,
                   'title': '定义消息模型',
                   'verification': 'db.exec',
                   'hint': '用 SQLite 创建消息表',
-                  docLinks: [{title: 'Mongoose 文档', url: 'https://mongoosejs.com/docs/'}]
+                  docLinks: [{title: '定义消息模型', url: 'https://mongoosejs.com/docs/schemas.html'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '插入消息',
                   'verification': 'db.prepare',
                   'hint': '将收到的消息存入数据库',
-                  docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '插入消息', url: 'https://mongoosejs.com/docs/api/model.html#Model.create()'}],
                 },
                 {
                   'id': 'step-3',
@@ -3064,14 +3064,14 @@ server.listen(3000)`,
                   'title': 'JWT 中间件',
                   'verification': 'jwt.verify',
                   'hint': '创建 JWT 验证中间件保护路由',
-                  docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}, {title: 'JWT 教程', url: 'https://jwt.io/introduction'}]
+                  docLinks: [{title: 'JWT 中间件', url: 'https://www.npmjs.com/package/jsonwebtoken'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '更新用户',
                   'verification': 'authMiddleware',
                   'hint': '实现用户信息更新接口',
-                  docLinks: [{title: 'Mongoose 文档', url: 'https://mongoosejs.com/docs/'}]
+                  docLinks: [{title: '更新用户', url: 'https://expressjs.com/zh-cn/guide/routing.html'}],
                 },
                 {
                   'id': 'step-3',
@@ -3132,14 +3132,14 @@ server.listen(3000)`,
                   'title': 'WS Token 验证',
                   'verification': 'handleUpgrade',
                   'hint': '在 WebSocket 连接时验证 Token',
-                  docLinks: [{title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}, {title: 'JWT 教程', url: 'https://jwt.io/introduction'}]
+                  docLinks: [{title: 'WS Token 验证', url: 'https://www.npmjs.com/package/ws'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '速率限制',
                   'verification': 'rateLimit',
                   'hint': '添加 API 速率限制中间件',
-                  docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '速率限制', url: 'https://expressjs.com/zh-cn/guide/error-handling.html'}],
                 },
                 {
                   'id': 'step-3',
@@ -3207,14 +3207,14 @@ server.listen(3000)`,
                   'title': '测试 REST 端点',
                   'verification': 'request(app)',
                   'hint': '用 Supertest 测试 HTTP 接口',
-                  docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '测试 REST 端点', url: 'https://www.npmjs.com/package/supertest'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '测试认证',
                   'verification': 'request(app)',
                   'hint': '测试需要 Token 的接口',
-                  docLinks: [{title: 'Node.js 文档', url: 'https://nodejs.org/zh-cn/docs/'}, {title: 'Express 官方文档', url: 'https://expressjs.com/zh-cn/'}]
+                  docLinks: [{title: '测试认证', url: 'https://www.npmjs.com/package/jsonwebtoken'}],
                 },
                 {
                   'id': 'step-3',
@@ -3273,14 +3273,14 @@ server.listen(3000)`,
                   'title': '配置 Docker',
                   'verification': 'ecosystem.config',
                   'hint': '编写 Dockerfile 构建镜像',
-                  docLinks: [{title: 'Docker 官方文档', url: 'https://docs.docker.com/'}]
+                  docLinks: [{title: '配置 Docker', url: 'https://docs.docker.com/engine/reference/builder/'}],
                 },
                 {
                   'id': 'step-2',
                   'title': 'PM2 进程管理',
                   'verification': 'ecosystem.config',
                   'hint': '配置 PM2 进程管理文件',
-                  docLinks: [{title: 'PM2 文档', url: 'https://pm2.keymetrics.io/docs/usage/quick-start/'}]
+                  docLinks: [{title: 'PM2 进程管理', url: 'https://pm2.keymetrics.io/docs/usage/cluster-mode/'}],
                 },
                 {
                   'id': 'step-3',

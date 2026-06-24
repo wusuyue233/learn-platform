@@ -93,7 +93,7 @@ div { color: blue; }
         ],
         microSteps: [
           { id: 'step-1', title: '导入 ref', verification: 'import { ref } from \'vue\'', hint: '在 script setup 中导入 ref' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
-          { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' , docLinks: [{title: 'ref()', url: 'https://cn.vuejs.org/api/reactivity-core.html#ref'}]},
+          { id: 'step-2', title: '创建响应式变量', verification: 'ref(', hint: '用 ref() 包裹字符串' , docLinks: [{title: '响应式基础', url: 'https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html'}]},
           { id: 'step-3', title: '模板插值', verification: '{{ message }}', hint: '双花括号显示变量值' , docLinks: [{title: '模板插值', url: 'https://cn.vuejs.org/guide/essentials/template-syntax.html'}]}
         ],
         variations: [{name: '动态组件', description: '<component :is="x"> 动态切换'}],

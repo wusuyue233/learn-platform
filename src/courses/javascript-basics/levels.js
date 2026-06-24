@@ -80,14 +80,14 @@ console.log(name, age)`,
           'title': '用 const 声明',
           'verification': 'const',
           'hint': '尝试 const 声明',
-          docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}],
+          docLinks: [{title: '用 const 声明', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const'}],
          },
          {
           'id': 'step-2',
           'title': '用 let 声明',
           'verification': 'let',
           'hint': '尝试 let 声明',
-          docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}],
+          docLinks: [{title: '用 let 声明', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}],
          },
          {
           'id': 'step-3',
@@ -197,14 +197,14 @@ console.log(typeof 123n)      // "bigint"`,
           'title': '用 typeof 检测',
           'verification': 'typeof',
           'hint': 'typeof 返回类型字符串',
-          docLinks: [{title: 'MDN typeof', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof'}],
+          docLinks: [{title: '用 typeof 检测', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof'}],
          },
          {
           'id': 'step-2',
           'title': '检测多种类型',
           'verification': 'typeof null',
           'hint': '检测 null 等特殊类型',
-          docLinks: [{title: 'MDN typeof', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof'}],
+          docLinks: [{title: '检测多种类型', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#data_types'}],
          },
          {
           'id': 'step-3',
@@ -333,14 +333,14 @@ console.log(subtract(5, 2))  // 3`,
           'title': '定义函数',
           'verification': 'function',
           'hint': '用 function 关键字',
-          docLinks: [{title: 'MDN 函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions'}],
+          docLinks: [{title: '定义函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions'}],
          },
          {
           'id': 'step-2',
           'title': '添加参数',
           'verification': 'return',
           'hint': '函数体返回值',
-          docLinks: [{title: 'MDN 函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions'}],
+          docLinks: [{title: '添加参数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#function_parameters'}],
          },
          {
           'id': 'step-3',
@@ -464,14 +464,14 @@ console.log(product)  // 120`,
           'title': '准备数据',
           'verification': 'const',
           'hint': '定义数组',
-          docLinks: [{title: 'MDN 数组方法', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array'}],
+          docLinks: [{title: '准备数据', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals'}],
          },
          {
           'id': 'step-2',
           'title': '链式操作',
           'verification': '.filter',
           'hint': '用 filter',
-          docLinks: [{title: 'MDN 数组方法', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array'}, {title: 'MDN Promise', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise'}],
+          docLinks: [{title: '链式操作', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map'}],
          },
          {
           'id': 'step-3',
@@ -600,14 +600,14 @@ console.log(role)        // "user"`,
           'title': '解构对象',
           'verification': 'const {',
           'hint': '从 user 对象提取 name 和 age',
-          docLinks: [{title: 'MDN 解构赋值', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment'}],
+          docLinks: [{title: '解构对象', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment'}],
          },
          {
           'id': 'step-2',
           'title': '重命名变量',
           'verification': 'hobby:',
           'hint': '用冒号重命名 hobby→userHobby',
-          docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}, {title: 'MDN 解构赋值', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment'}],
+          docLinks: [{title: '重命名变量', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E9%87%8D%E5%91%BD%E5%90%8D'}],
          },
          {
           'id': 'step-3',
@@ -738,14 +738,14 @@ console.log(evens)  // [2, 4]`,
           'title': '箭头函数',
           'verification': '=>',
           'hint': '用 => 定义箭头函数',
-          docLinks: [{title: 'MDN 函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions'}, {title: 'MDN 箭头函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions'}],
+          docLinks: [{title: '箭头函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions'}],
          },
          {
           'id': 'step-2',
           'title': '回调中使用',
           'verification': '.map(',
           'hint': '数组方法回调中使用箭头函数',
-          docLinks: [{title: 'MDN 箭头函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions'}],
+          docLinks: [{title: '回调中使用', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions#%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F'}],
          },
          {
           'id': 'step-3',
@@ -869,14 +869,14 @@ console.log(listHtml)`,
           'title': '使用反引号',
           'verification': 'userInfo =',
           'hint': '用模板字符串构建用户信息',
-          docLinks: [{title: 'MDN 模板字符串', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals'}],
+          docLinks: [{title: '使用反引号', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals'}],
          },
          {
           'id': 'step-2',
           'title': '插入变量',
           'verification': '.map(',
           'hint': '用 map 和模板字符串渲染列表',
-          docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}, {title: 'MDN 模板字符串', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals'}],
+          docLinks: [{title: '插入变量', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8F%92%E5%85%A5'}],
          },
          {
           'id': 'step-3',
@@ -993,14 +993,14 @@ console.log(settings)
           'title': '数组展开',
           'verification': '...',
           'hint': '用 ... 展开数组',
-          docLinks: [{title: 'MDN 数组方法', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array'}, {title: 'MDN 展开语法', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax'}],
+          docLinks: [{title: '数组展开', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax'}],
          },
          {
           'id': 'step-2',
           'title': '对象展开',
           'verification': '...defaults',
           'hint': '展开对象合并到新对象',
-          docLinks: [{title: 'MDN 展开语法', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax'}],
+          docLinks: [{title: '对象展开', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals'}],
          },
          {
           'id': 'step-3',
@@ -1119,14 +1119,14 @@ console.log(createUser(user))
           'title': '参数解构',
           'verification': 'function createUser({',
           'hint': '在参数位置直接解构对象',
-          docLinks: [{title: 'MDN 函数', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions'}, {title: 'MDN 解构赋值', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment'}],
+          docLinks: [{title: '参数解构', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment'}],
          },
          {
           'id': 'step-2',
           'title': '构建返回',
           'verification': '`${',
           'hint': '用模板字符串拼接结果',
-          docLinks: [{title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+          docLinks: [{title: '构建返回', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/rest_parameters'}],
          },
          {
           'id': 'step-3',
@@ -1267,14 +1267,14 @@ fetchUser(-1).catch(err => console.error(err))`,
           'title': '创建 Promise',
           'verification': 'return new Promise(',
           'hint': '用 new Promise 创建异步容器',
-          docLinks: [{title: 'MDN Promise', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise'}],
+          docLinks: [{title: '创建 Promise', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise'}],
          },
          {
           'id': 'step-2',
           'title': '处理结果',
           'verification': 'resolve(',
           'hint': '成功时 resolve，失败时 reject',
-          docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}, {title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '处理结果', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then'}],
          },
          {
           'id': 'step-3',
@@ -1404,14 +1404,14 @@ loadUserPosts()`,
           'title': '声明 async',
           'verification': 'async function',
           'hint': 'async 声明异步函数',
-          docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}, {title: 'MDN async/await', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function'}],
+          docLinks: [{title: '声明 async', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function'}],
          },
          {
           'id': 'step-2',
           'title': '使用 await',
           'verification': 'await',
           'hint': 'await 等待 Promise 完成',
-          docLinks: [{title: 'MDN async/await', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function'}],
+          docLinks: [{title: '使用 await', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await'}],
          },
          {
           'id': 'step-3',
@@ -1547,14 +1547,14 @@ console.log(safeJsonParse('invalid'))   // null`,
           'title': 'try 包裹',
           'verification': 'try {',
           'hint': '将可能出错的代码放入 try 块',
-          docLinks: [{title: 'MDN try/catch', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch'}],
+          docLinks: [{title: 'try 包裹', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch'}],
          },
          {
           'id': 'step-2',
           'title': '捕获错误',
           'verification': 'catch',
           'hint': 'catch 捕获错误对象',
-          docLinks: [{title: 'MDN try/catch', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch'}],
+          docLinks: [{title: '捕获错误', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch'}],
          },
          {
           'id': 'step-3',
@@ -1679,14 +1679,14 @@ items.forEach((item, i) => {
           'title': '获取元素',
           'verification': 'document.querySelector',
           'hint': '用 querySelector 获取元素',
-          docLinks: [{title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '获取元素', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelector'}],
          },
          {
           'id': 'step-2',
           'title': '修改内容',
           'verification': 'textContent',
           'hint': '用 textContent 或 innerHTML 修改',
-          docLinks: [{title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '修改内容', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML'}],
          },
          {
           'id': 'step-3',
@@ -1818,14 +1818,14 @@ list.addEventListener('click', (e) => {
           'title': '绑定事件',
           'verification': "addEventListener('click'",
           'hint': '给按钮添加 click 事件',
-          docLinks: [{title: 'MDN 事件', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener'}],
+          docLinks: [{title: '绑定事件', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener'}],
          },
          {
           'id': 'step-2',
           'title': '创建元素',
           'verification': 'createElement(',
           'hint': '创建 li 添加到列表',
-          docLinks: [{title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '创建元素', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Node/appendChild'}],
          },
          {
           'id': 'step-3',
@@ -1962,14 +1962,14 @@ users.forEach(user => {
           'title': '创建元素',
           'verification': 'createElement(',
           'hint': '用 createElement 创建 div',
-          docLinks: [{title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '创建元素', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement'}],
          },
          {
           'id': 'step-2',
           'title': '设置内容',
           'verification': '.className',
           'hint': '用 className 和 innerHTML 设置',
-          docLinks: [{title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+          docLinks: [{title: '设置内容', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Node/textContent'}],
          },
          {
           'id': 'step-3',
@@ -2042,14 +2042,14 @@ users.forEach(user => {
                   'title': '创建 HTML 结构',
                   'verification': 'index.html',
                   'hint': '编写 HTML 入口文件骨架',
-                 docLinks: [{title: 'MDN 模板字符串', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals'}, {title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+                 docLinks: [{title: '创建 HTML 结构', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Element/outerHTML'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建目录结构',
                   'verification': 'js/components',
                   'hint': '在 js/ 下创建 components/ 目录',
-                 docLinks: [{title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+                 docLinks: [{title: '创建目录结构', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement'}],
                 },
                 {
                   'id': 'step-3',
@@ -2123,14 +2123,14 @@ users.forEach(user => {
                   'title': '导入文章数据',
                   'verification': 'import { articles',
                   'hint': '从 data 导入文章数据',
-                 docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}, {title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+                 docLinks: [{title: '导入文章数据', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '创建文章卡片',
                   'verification': 'createElement',
                   'hint': '用 document.createElement 创建卡片',
-                 docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}, {title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+                 docLinks: [{title: '创建文章卡片', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML'}],
                 },
                 {
                   'id': 'step-3',
@@ -2203,14 +2203,14 @@ users.forEach(user => {
                   'title': '解析 Hash 路由',
                   'verification': 'parseHash',
                   'hint': '解析 location.hash 为路由对象',
-                 docLinks: [{title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+                 docLinks: [{title: '解析 Hash 路由', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Location/hash'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '路由分发',
                   'verification': 'if (route.page',
                   'hint': '根据路由类型渲染不同页面',
-                 docLinks: [{title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+                 docLinks: [{title: '路由分发', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/History/pushState'}],
                 },
                 {
                   'id': 'step-3',
@@ -2283,14 +2283,14 @@ users.forEach(user => {
                   'title': '读取已存评论',
                   'verification': 'getItem',
                   'hint': '用 localStorage.getItem 读取评论',
-                 docLinks: [{title: 'MDN localStorage', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage'}],
+                 docLinks: [{title: '读取已存评论', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/getItem'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '添加新评论',
                   'verification': 'push({',
                   'hint': '构造评论对象并添加到数组',
-                 docLinks: [{title: 'MDN localStorage', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage'}],
+                 docLinks: [{title: '添加新评论', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/setItem'}],
                 },
                 {
                   'id': 'step-3',
@@ -2363,14 +2363,14 @@ users.forEach(user => {
                   'title': '定义 CSS 变量',
                   'verification': '--bg',
                   'hint': '在 :root 中定义浅色主题色',
-                 docLinks: [{title: 'MDN let/const', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let'}, {title: 'MDN CSS 变量', url: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties'}],
+                 docLinks: [{title: '定义 CSS 变量', url: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '定义深色主题',
                   'verification': 'data-theme',
                   'hint': '用 data-theme 选择器定义深色变量',
-                 docLinks: [{title: 'MDN CSS 变量', url: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties'}],
+                 docLinks: [{title: '定义深色主题', url: 'https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value'}],
                 },
                 {
                   'id': 'step-3',
@@ -2443,14 +2443,14 @@ users.forEach(user => {
                   'title': '实现 createStore',
                   'verification': 'getState',
                   'hint': '创建包含 getState/dispatch/subscribe 的 store',
-                 docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}, {title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+                 docLinks: [{title: '实现 createStore', url: 'https://developer.mozilla.org/zh-CN/docs/Glossary/State_machine'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '实现 dispatch',
                   'verification': 'listeners.forEach',
                   'hint': 'dispatch 更新状态并通知订阅者',
-                 docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}],
+                 docLinks: [{title: '实现 dispatch', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce'}],
                 },
                 {
                   'id': 'step-3',
@@ -2523,14 +2523,14 @@ users.forEach(user => {
                   'title': '创建 observer',
                   'verification': 'IntersectionObserver',
                   'hint': '用 IntersectionObserver 创建观察器',
-                 docLinks: [{title: 'MDN IntersectionObserver', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver'}],
+                 docLinks: [{title: '创建 observer', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '懒加载图片',
                   'verification': 'img.dataset.src',
                   'hint': '图片可见时把 data-src 赋给 src',
-                 docLinks: [{title: 'MDN IntersectionObserver', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver'}],
+                 docLinks: [{title: '懒加载图片', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver'}],
                 },
                 {
                   'id': 'step-3',
@@ -2596,14 +2596,14 @@ users.forEach(user => {
                   'title': '整合主入口',
                   'verification': 'import',
                   'hint': '在 app.js 中导入所有组件模块',
-                 docLinks: [{title: 'MDN JavaScript 指南', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide'}, {title: 'MDN Web API 文档', url: 'https://developer.mozilla.org/zh-CN/docs/Web/API'}],
+                 docLinks: [{title: '整合主入口', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules'}],
                 },
                 {
                   'id': 'step-2',
                   'title': '配置 Vite',
                   'verification': 'base:',
                   'hint': '设置 vite.config.js 的 base',
-                 docLinks: [{title: 'Vite 文档', url: 'https://cn.vitejs.dev/guide/'}],
+                 docLinks: [{title: '配置 Vite', url: 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import'}],
                 },
                 {
                   'id': 'step-3',
